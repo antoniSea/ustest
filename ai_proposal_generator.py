@@ -1,7 +1,6 @@
 import os
 import json
 import csv
-import google.generativeai as genai
 from rich.console import Console
 from rich.markdown import Markdown
 import time
@@ -16,6 +15,7 @@ from urllib.parse import quote_plus
 from database import Database
 import logging
 from extract_useme_email import extract_employer_email
+import random
 
 # Configure logging
 logging.basicConfig(
@@ -35,20 +35,23 @@ def create_ipv6first_session():
     setattr(session, 'dns_result_order', 'ipv6first')
     return session
     
-# Configure the Gemini API
+# Configure the Gemini API - Direct HTTP approach
 API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
 MODEL = "gemini-2.5-pro-exp-03-25"
 
-genai.configure(api_key=API_KEY)
-# Set up model with timeout and retry configuration
-generation_config = {
-    "max_output_tokens": 2048,
-    "temperature": 0.7,
-    "top_p": 0.95,
-    "top_k": 40
-}
-safety_settings = []
-model = genai.GenerativeModel(MODEL, generation_config=generation_config, safety_settings=safety_settings)
+# Free proxy list - to be rotated
+FREE_PROXIES = [
+    "http://34.142.51.21:80",
+    "http://142.93.126.114:80",
+    "http://20.205.61.143:80",
+    "http://199.60.103.28:80",
+    "http://165.154.243.154:80",
+    "http://142.132.178.248:3128",
+    "http://154.12.251.133:80",
+    "http://47.56.110.204:8989",
+    "http://168.119.232.85:8080",
+    "http://51.79.152.70:80"
+]
 
 # Max number of retries and timeout settings
 MAX_RETRIES = 3
@@ -57,25 +60,76 @@ BACKOFF_FACTOR = 1.5  # exponential backoff
 
 console = Console()
 
+def get_random_proxy():
+    """Return a random proxy from the list"""
+    return random.choice(FREE_PROXIES)
+
 def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
-    """Generate content with retry logic for handling timeouts and errors."""
+    """Generate content with retry logic using direct HTTP requests."""
     retry_count = 0
+    
+    # Prepare the request payload
+    payload = {
+        "contents": [{
+            "parts": [{
+                "text": prompt
+            }]
+        }],
+        "generationConfig": {
+            "maxOutputTokens": 2048,
+            "temperature": 0.7,
+            "topP": 0.95,
+            "topK": 40
+        }
+    }
+    
+    api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={API_KEY}"
+    
+    headers = {
+        "Content-Type": "application/json"
+    }
+    
     while retry_count <= max_retries:
         try:
             current_timeout = timeout * (BACKOFF_FACTOR ** retry_count)
             logger.info(f"Attempting API call (retry {retry_count}) with timeout {current_timeout:.1f}s")
             
-            # Try to generate content with timeout
-            response = model.generate_content(
-                prompt, 
-                request_options={"timeout": current_timeout}
+            # Select a random proxy
+            current_proxy = get_random_proxy()
+            logger.info(f"Using proxy: {current_proxy}")
+            
+            proxies = {
+                "http": current_proxy,
+                "https": current_proxy
+            }
+            
+            # Make the API request
+            response = requests.post(
+                api_url,
+                json=payload,
+                headers=headers,
+                proxies=proxies,
+                timeout=current_timeout
             )
             
-            # Check if response is empty or problematic
-            if not response or not hasattr(response, 'text') or not response.text:
-                raise ValueError("Empty response received from API")
+            # Check for errors
+            if response.status_code != 200:
+                error_message = f"API error: HTTP {response.status_code}: {response.text}"
+                logger.warning(error_message)
+                raise Exception(error_message)
                 
-            return response.text
+            # Parse the response
+            response_json = response.json()
+            
+            # Extract the text from the response
+            if 'candidates' in response_json and len(response_json['candidates']) > 0:
+                if 'content' in response_json['candidates'][0] and 'parts' in response_json['candidates'][0]['content']:
+                    parts = response_json['candidates'][0]['content']['parts']
+                    if parts and 'text' in parts[0]:
+                        return parts[0]['text']
+            
+            raise ValueError("Empty or invalid response received from API")
+                
         except Exception as e:
             retry_count += 1
             error_str = str(e)
@@ -83,23 +137,19 @@ def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
             
             # Check for specific error types to give better error messages
             is_timeout_error = any(error_term in error_str.lower() for error_term in ["504", "timeout", "deadline", "timed out"])
+            is_location_error = "user location is not supported" in error_str.lower()
             
-            # If we've exhausted retries or it's not a timeout-related error
+            # If we've exhausted retries or it's not a timeout-related error or location error
             if retry_count > max_retries:
                 logger.error(f"Failed after {retry_count} attempts: {error_str}")
                 if is_timeout_error:
                     return f"Błąd generowania: przekroczono limit czasu oczekiwania na odpowiedź (504 Deadline Exceeded). Proszę spróbować ponownie później."
+                elif is_location_error:
+                    return f"Błąd generowania: lokalizacja użytkownika nie jest wspierana. Spróbuj użyć VPN lub proxy."
                 else:
                     return f"Błąd generowania: {error_str}"
             
-            # If it's not a timeout error and we haven't exhausted retries yet, decide whether to retry
-            if not is_timeout_error:
-                # Only retry non-timeout errors once
-                if retry_count > 1:
-                    logger.error(f"Non-timeout error persists after retry: {error_str}")
-                    return f"Błąd generowania: {error_str}"
-            
-            # For timeout errors, wait before retrying
+            # Wait before retrying
             wait_time = min(2 ** retry_count, 30)  # Exponential backoff, capped at 30 seconds
             logger.info(f"Waiting {wait_time}s before retry...")
             time.sleep(wait_time)
