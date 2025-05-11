@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}Zlecenia - Useme Bot{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-800">Zlecenia z Useme</h1>
+        <div>
+            <button id="showFiltersBtn" class="px-4 py-2 bg-primary-50 text-primary-600 rounded-md hover:bg-primary-100 transition-colors duration-200 flex items-center">
+                <i class="fas fa-filter mr-2"></i>Filtry
+            </button>
+        </div>
+    </div>
+    
+    <!-- Filter Section -->
+    <div id="filterSection" class="bg-card rounded-lg shadow-vuexy border border-gray-100 p-5 hidden">
+        <form id="filterForm" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label for="categoryFilter" class="block text-sm font-medium text-gray-700 mb-1">Kategoria</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" id="categoryFilter">
+                        <option value="">Wszystkie kategorie</option>
+                        <option value="IT">IT i programowanie</option>
+                        <option value="Web">Web development</option>
+                        <option value="App">Aplikacje mobilne</option>
+                        <option value="Grafika">Grafika</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="relevanceFilter" class="block text-sm font-medium text-gray-700 mb-1">Min. zgodność</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" id="relevanceFilter">
+                        <option value="0">Wszystkie zlecenia</option>
+                        <option value="5">5+ (Przeciętna zgodność)</option>
+                        <option value="7">7+ (Dobra zgodność)</option>
+                        <option value="9">9+ (Doskonała zgodność)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="statusFilter" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" id="statusFilter">
+                        <option value="">Wszystkie statusy</option>
+                        <option value="processed">Przetworzone</option>
+                        <option value="with_proposals">Z propozycjami</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="searchInput" class="block text-sm font-medium text-gray-700 mb-1">Wyszukiwanie</label>
+                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" id="searchInput" placeholder="Szukaj...">
+                </div>
+            </div>
+            <div class="flex space-x-2">
+                <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors duration-200">
+                    <i class="fas fa-search mr-2"></i>Filtruj
+                </button>
+                <button type="reset" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors duration-200">
+                    <i class="fas fa-times mr-2"></i>Resetuj
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Jobs Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="jobsList">
+        {% if jobs %}
+            {% for job in jobs %}
+                <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden hover:shadow-vuexy-lg transition-shadow duration-300">
+                    {% if job.relevance_score %}
+                        <div class="absolute top-3 right-3">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ 'success' if job.relevance_score >= 8 else 'warning' if job.relevance_score >= 5 else 'gray-500' }} bg-opacity-10 text-{{ 'success' if job.relevance_score >= 8 else 'warning' if job.relevance_score >= 5 else 'gray-500' }}">
+                                <i class="fas fa-chart-line mr-1"></i>{{ job.relevance_score }}/10
+                            </span>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="p-5">
+                        <div class="flex items-start space-x-3 mb-4">
+                            {% if job.avatar_filename_for_web %}
+                                <img src="/avatars/{{ job.avatar_filename_for_web }}" class="w-12 h-12 rounded-full object-cover flex-shrink-0" alt="{{ job.username }}">
+                            {% else %}
+                                <div class="w-12 h-12 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center flex-shrink-0 font-semibold">
+                                    {{ job.username[:1] }}
+                                </div>
+                            {% endif %}
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 line-clamp-1">{{ job.title }}</h3>
+                                <p class="text-gray-500 text-sm">{{ job.username }}</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-4 line-clamp-2">{{ job.short_description }}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-info bg-opacity-10 text-info">
+                                {{ job.category }}
+                            </span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-700">
+                                {{ job.budget }}
+                            </span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                <i class="fas fa-users mr-1"></i>{{ job.offers }}
+                            </span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-1">
+                                {% if job.processed %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success bg-opacity-10 text-success">
+                                        <i class="fas fa-check-circle mr-1"></i>Przetworzone
+                                    </span>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning bg-opacity-10 text-warning">
+                                        <i class="fas fa-clock mr-1"></i>Oczekuje
+                                    </span>
+                                {% endif %}
+                                
+                                {% if job.proposal_generated %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-info bg-opacity-10 text-info">
+                                        <i class="fas fa-file-alt mr-1"></i>Propozycja
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 px-5 py-3 border-t border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <p class="text-xs text-gray-500">
+                                <i class="fas fa-calendar-alt mr-1"></i>{{ job.expiry_date }}
+                            </p>
+                            <div class="flex space-x-2">
+                                <a href="/job/{{ job.job_id }}" class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium rounded bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-200">
+                                    <i class="fas fa-eye mr-1"></i>Szczegóły
+                                </a>
+                                <a href="{{ job.url }}" target="_blank" class="inline-flex items-center justify-center px-3 py-1 text-xs font-medium rounded bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors duration-200">
+                                    <i class="fas fa-external-link-alt mr-1"></i>Useme
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-span-full">
+                <div class="bg-blue-50 text-blue-700 p-4 rounded-md flex items-start">
+                    <i class="fas fa-info-circle mt-1 mr-3 text-blue-500"></i>
+                    <p>Brak zleceń do wyświetlenia. Uruchom scrapowanie aby pobrać zlecenia z Useme.</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle filter section
+        const showFiltersBtn = document.getElementById('showFiltersBtn');
+        const filterSection = document.getElementById('filterSection');
+        
+        showFiltersBtn.addEventListener('click', function() {
+            filterSection.classList.toggle('hidden');
+        });
+        
+        // Handle filtering
+        const filterForm = document.getElementById('filterForm');
+        
+        filterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Build query parameters
+            const relevance = document.getElementById('relevanceFilter').value;
+            const status = document.getElementById('statusFilter').value;
+            const search = document.getElementById('searchInput').value;
+            
+            let url = '/jobs?';
+            if (relevance) url += `relevance_min=${relevance}&`;
+            if (status === 'processed') url += 'processed=true&';
+            if (status === 'with_proposals') url += 'with_proposals=true&';
+            if (search) url += `search=${encodeURIComponent(search)}&`;
+            
+            // Redirect to filtered URL
+            window.location.href = url;
+        });
+        
+        filterForm.addEventListener('reset', function() {
+            window.location.href = '/jobs';
+        });
+    });
+</script>
+{% endblock %} 

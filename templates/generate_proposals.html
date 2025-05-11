@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generowanie propozycji - Useme Bot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .container { max-width: 1200px; }
+        .config-card { margin-bottom: 20px; }
+        .result-card { margin-top: 30px; display: none; }
+        .proposal-item { margin-bottom: 15px; padding: 15px; border-radius: 5px; background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Useme Bot</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Strona główna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/jobs">Zlecenia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/generate-proposals">Generowanie propozycji</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/schedule-scrape">Harmonogram scrapowania</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Generowanie propozycji AI</h1>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card config-card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Konfiguracja generowania</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="generateForm">
+                            <div class="mb-3">
+                                <label for="minRelevance" class="form-label">Minimalna zgodność (1-10)</label>
+                                <input type="range" class="form-range" id="minRelevance" min="1" max="10" value="6">
+                                <div class="d-flex justify-content-between">
+                                    <span>Wszystkie zlecenia</span>
+                                    <span id="relevanceValue">6</span>
+                                    <span>Tylko idealne dopasowania</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="limit" class="form-label">Maksymalna liczba propozycji do wygenerowania</label>
+                                <input type="number" class="form-control" id="limit" min="1" max="50" value="10">
+                                <div class="form-text">Wyższa liczba może spowodować dłuższy czas generowania.</div>
+                            </div>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="autoPost">
+                                <label class="form-check-label" for="autoPost">Automatycznie publikuj wygenerowane propozycje na Useme</label>
+                            </div>
+                            
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle"></i> Propozycje zostaną wygenerowane tylko dla zleceń, które zostały przetworzone, ale nie mają jeszcze wygenerowanych propozycji.
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary" id="generateBtn">
+                                    <i class="bi bi-magic"></i> Generuj propozycje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="card result-card" id="resultCard">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Wyniki generowania</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="generationStatus">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="spinner-border text-primary me-3" role="status">
+                                    <span class="visually-hidden">Generowanie...</span>
+                                </div>
+                                <h5 class="mb-0">Trwa generowanie propozycji...</h5>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+                            </div>
+                            <p>Proces może potrwać kilka minut. Proszę nie zamykać tej strony.</p>
+                        </div>
+                        
+                        <div id="generationResults" style="display: none;">
+                            <h5>Wygenerowane propozycje:</h5>
+                            <div id="proposalsList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Informacje</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Proces generowania propozycji</h6>
+                        <ol>
+                            <li>System pobiera zlecenia z bazy danych, które są oznaczone jako przetworzone, ale nie mają jeszcze wygenerowanych propozycji.</li>
+                            <li>Dla każdego zlecenia ocenia jego zgodność z profilem firmy (na skali 1-10).</li>
+                            <li>Jeśli zgodność jest wyższa niż ustawiony próg, system generuje propozycję oferty.</li>
+                            <li>Dla każdej propozycji generowana jest prezentacja oferty.</li>
+                            <li>Opcjonalnie, propozycje mogą być automatycznie publikowane na Useme.</li>
+                        </ol>
+                        
+                        <div class="alert alert-warning mt-3">
+                            <i class="bi bi-exclamation-triangle"></i> Generowanie propozycji wykorzystuje API Google AI. Upewnij się, że Twój klucz API jest aktualny i masz wystarczającą liczbę kredytów.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>Useme Bot &copy; 2024 - System automatyzacji scrapowania i generowania propozycji</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const minRelevance = document.getElementById('minRelevance');
+            const relevanceValue = document.getElementById('relevanceValue');
+            const generateForm = document.getElementById('generateForm');
+            const resultCard = document.getElementById('resultCard');
+            const generationStatus = document.getElementById('generationStatus');
+            const generationResults = document.getElementById('generationResults');
+            const proposalsList = document.getElementById('proposalsList');
+            
+            // Update relevance value display
+            minRelevance.addEventListener('input', function() {
+                relevanceValue.textContent = this.value;
+            });
+            
+            // Handle form submission
+            generateForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show result card and reset its content
+                resultCard.style.display = 'block';
+                generationStatus.style.display = 'block';
+                generationResults.style.display = 'none';
+                proposalsList.innerHTML = '';
+                
+                // Scroll to results
+                resultCard.scrollIntoView({ behavior: 'smooth' });
+                
+                // Get form values
+                const minRelevanceValue = document.getElementById('minRelevance').value;
+                const limitValue = document.getElementById('limit').value;
+                const autoPostValue = document.getElementById('autoPost').checked;
+                
+                // Call API to generate proposals
+                fetch('/api/generate-proposals', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        min_relevance: parseInt(minRelevanceValue),
+                        limit: parseInt(limitValue),
+                        auto_post: autoPostValue
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Hide status and show results
+                    generationStatus.style.display = 'none';
+                    generationResults.style.display = 'block';
+                    
+                    // Process results
+                    if (data.success) {
+                        if (data.proposals && data.proposals.length > 0) {
+                            data.proposals.forEach(proposal => {
+                                const proposalItem = document.createElement('div');
+                                proposalItem.className = 'proposal-item';
+                                
+                                proposalItem.innerHTML = `
+                                    <h6>${proposal.title}</h6>
+                                    <p><strong>Klient:</strong> ${proposal.username}</p>
+                                    <p><strong>Zgodność:</strong> ${proposal.relevance_score}/10</p>
+                                    <div class="mb-2">
+                                        <a href="/job/${proposal.job_id}" class="btn btn-sm btn-outline-primary me-2">Szczegóły</a>
+                                        <a href="/${proposal.project_slug}" target="_blank" class="btn btn-sm btn-outline-success">Prezentacja</a>
+                                    </div>
+                                `;
+                                
+                                proposalsList.appendChild(proposalItem);
+                            });
+                        } else {
+                            proposalsList.innerHTML = '<div class="alert alert-info">Nie wygenerowano żadnych propozycji. Wszystkie pasujące zlecenia już mają propozycje lub brak zleceń spełniających kryteria.</div>';
+                        }
+                    } else {
+                        // Display the error message from the server
+                        proposalsList.innerHTML = `<div class="alert alert-warning">${data.message || 'Wystąpił nieznany błąd podczas generowania propozycji.'}</div>`;
+                    }
+                })
+                .catch(error => {
+                    generationStatus.style.display = 'none';
+                    generationResults.style.display = 'block';
+                    proposalsList.innerHTML = `<div class="alert alert-danger">Wystąpił błąd: ${error}</div>`;
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

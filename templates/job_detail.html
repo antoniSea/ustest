@@ -1,0 +1,551 @@
+{% extends "base.html" %}
+
+{% block title %}{{ job.title }} - Useme Bot{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Header with Actions -->
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+        <h1 class="text-2xl font-bold text-gray-800">{{ job.title }}</h1>
+        <div class="flex space-x-3">
+            <a href="/jobs" class="inline-flex items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors duration-200 shadow-sm">
+                <i class="fas fa-arrow-left mr-2"></i>Powrót do listy
+            </a>
+            <a href="{{ job.url }}" target="_blank" class="inline-flex items-center px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-200 shadow-sm">
+                <i class="fas fa-external-link-alt mr-2"></i>Otwórz na Useme
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Left Column (2/3) -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Job Meta Card -->
+            <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+                <div class="p-5">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-shrink-0">
+                            {% if job.avatar_filename_for_web %}
+                                <img src="/avatars/{{ job.avatar_filename_for_web }}" class="w-20 h-20 rounded-full object-cover" alt="{{ job.username }}">
+                            {% else %}
+                                <div class="w-20 h-20 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center font-semibold text-2xl">
+                                    {{ job.username[:1] }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="flex-grow">
+                            <h2 class="text-xl font-semibold text-gray-800">{{ job.username }}</h2>
+                            
+                            <div class="flex flex-wrap gap-2 my-2">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-info bg-opacity-10 text-info">
+                                    {{ job.category }}
+                                </span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-700">
+                                    {{ job.budget }}
+                                </span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    <i class="fas fa-users mr-1"></i>{{ job.offers }}
+                                </span>
+                                
+                                {% if job.relevance_score %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ 'success' if job.relevance_score >= 8 else 'warning' if job.relevance_score >= 5 else 'gray-500' }} bg-opacity-10 text-{{ 'success' if job.relevance_score >= 8 else 'warning' if job.relevance_score >= 5 else 'gray-500' }}">
+                                        <i class="fas fa-chart-line mr-1"></i>Zgodność: {{ job.relevance_score }}/10
+                                    </span>
+                                {% endif %}
+                                
+                                {% if job.processed %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success bg-opacity-10 text-success">
+                                        <i class="fas fa-check-circle mr-1"></i>Przetworzone
+                                    </span>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning bg-opacity-10 text-warning">
+                                        <i class="fas fa-clock mr-1"></i>Oczekuje
+                                    </span>
+                                {% endif %}
+                                
+                                {% if job.proposal_generated %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-info bg-opacity-10 text-info">
+                                        <i class="fas fa-file-alt mr-1"></i>Propozycja
+                                    </span>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="text-sm text-gray-600 space-y-1">
+                                <p><span class="font-medium">Data wygaśnięcia:</span> {{ job.expiry_date }}</p>
+                                <p><span class="font-medium">ID zlecenia:</span> {{ job.job_id }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Job Description Card -->
+            <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+                <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                    <h3 class="font-semibold text-lg text-gray-800">
+                        <i class="fas fa-file-alt mr-2 text-primary-500"></i>Opis zlecenia
+                    </h3>
+                </div>
+                <div class="p-5">
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700">{{ job.short_description }}</p>
+                        
+                        {% if job.full_description %}
+                            <h4 class="text-lg font-medium text-gray-800 mt-6 mb-3">Pełny opis:</h4>
+                            <div class="whitespace-pre-line text-gray-700">{{ job.full_description }}</div>
+                        {% endif %}
+                        
+                        {% if job.requirements %}
+                            <h4 class="text-lg font-medium text-gray-800 mt-6 mb-3">Wymagania:</h4>
+                            <div class="whitespace-pre-line text-gray-700">{{ job.requirements }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Attachments Card (if any) -->
+            {% if job.attachments %}
+                <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+                    <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                        <h3 class="font-semibold text-lg text-gray-800">
+                            <i class="fas fa-paperclip mr-2 text-primary-500"></i>Załączniki
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <ul class="divide-y divide-gray-200">
+                            {% for attachment in job.attachments %}
+                                <li class="py-3 flex items-center hover:bg-gray-50 px-3 rounded-md">
+                                    <i class="fas fa-file-alt text-primary-400 mr-3"></i>
+                                    <a href="{{ attachment.url }}" target="_blank" class="text-primary-600 hover:text-primary-800 hover:underline">
+                                        {{ attachment.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-3">
+                {% if not job.processed %}
+                    <button id="markAsProcessedBtn" class="inline-flex items-center px-4 py-2 rounded-md bg-success text-white hover:bg-success/90 transition-colors duration-200 shadow-sm" data-job-id="{{ job.job_id }}">
+                        <i class="fas fa-check-circle mr-2"></i>Oznacz jako przetworzone
+                    </button>
+                {% endif %}
+                
+                {% if not job.proposal_generated %}
+                    <button id="generateProposalBtn" class="inline-flex items-center px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-200 shadow-sm" data-job-id="{{ job.job_id }}">
+                        <i class="fas fa-magic mr-2"></i>Generuj propozycję
+                    </button>
+                {% endif %}
+                
+                {% if job.proposal_generated and not job.proposal_posted %}
+                    <button id="postProposalBtn" class="inline-flex items-center px-4 py-2 rounded-md bg-warning text-white hover:bg-warning/90 transition-colors duration-200 shadow-sm" data-job-id="{{ job.job_id }}">
+                        <i class="fas fa-paper-plane mr-2"></i>Wyślij propozycję na Useme
+                    </button>
+                {% endif %}
+                
+                {% if job.proposal_generated and job.employer_email %}
+                    <button id="sendEmailBtn" class="inline-flex items-center px-4 py-2 rounded-md bg-info text-white hover:bg-info/90 transition-colors duration-200 shadow-sm" data-job-id="{{ job.job_id }}">
+                        <i class="fas fa-envelope mr-2"></i>Wyślij email
+                    </button>
+                {% endif %}
+                
+                {% if job.proposal_generated %}
+                    <button id="sendMessageBtn" class="inline-flex items-center px-4 py-2 rounded-md bg-purple-500 text-white hover:bg-purple-600 transition-colors duration-200 shadow-sm" data-job-id="{{ job.job_id }}">
+                        <i class="fas fa-comment mr-2"></i>Wyślij wiadomość na Useme
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Right Column (1/3) -->
+        <div class="space-y-6">
+            {% if job.proposal_generated and job.proposal_text %}
+                <!-- Proposal Card -->
+                <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+                    <div class="bg-primary-600 px-5 py-4">
+                        <h3 class="font-semibold text-lg text-white flex items-center">
+                            <i class="fas fa-file-alt mr-2"></i>Wygenerowana propozycja
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="mb-5">
+                            <label for="proposalText" class="block text-sm font-medium text-gray-700 mb-1">Treść propozycji</label>
+                            <textarea id="proposalText" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 h-64" rows="10">{{ job.proposal_text }}</textarea>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-md">
+                                <h4 class="text-sm font-semibold text-gray-800 mb-2">Ocena zgodności</h4>
+                                <div class="relative pt-1">
+                                    <div class="overflow-hidden h-2 text-xs flex rounded bg-gray-200">
+                                        <div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center {{ 'bg-danger' if job.relevance_score < 5 else 'bg-warning' if job.relevance_score < 7 else 'bg-success' }}" style="width: {{ job.relevance_score*10 }}%"></div>
+                                    </div>
+                                    <p class="text-center mt-2 text-sm font-medium">{{ job.relevance_score }}/10</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-md">
+                                <h4 class="text-sm font-semibold text-gray-800 mb-2">Dane finansowe</h4>
+                                <div class="space-y-1 text-sm">
+                                    <p><span class="font-medium">Cena:</span> {{ job.price|default('Nie określono', true) }} PLN</p>
+                                    <p><span class="font-medium">Realizacja:</span> {{ job.timeline_days|default('Nie określono', true) }} dni</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% if job.project_slug %}
+                            <div class="mt-4 bg-gray-50 p-4 rounded-md">
+                                <h4 class="text-sm font-semibold text-gray-800 mb-2">Slug projektu</h4>
+                                <p class="text-sm text-gray-600">{{ job.project_slug }}</p>
+                            </div>
+                        {% endif %}
+                        
+                        <!-- Copy Proposal Button -->
+                        <button id="copyProposalBtn" class="w-full mt-4 inline-flex items-center justify-center px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-200 shadow-sm">
+                            <i class="fas fa-copy mr-2"></i>Kopiuj propozycję
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Client Email Info Card (if available) -->
+                {% if job.employer_email %}
+                    <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+                        <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                            <h3 class="font-semibold text-lg text-gray-800">
+                                <i class="fas fa-envelope mr-2 text-primary-500"></i>Dane kontaktowe
+                            </h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-user text-gray-400 mr-3"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500">Klient</p>
+                                    <p class="font-medium">{{ job.username }}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-gray-400 mr-3"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500">Email</p>
+                                    <a href="mailto:{{ job.employer_email }}" class="font-medium text-primary-600 hover:underline">{{ job.employer_email }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Email Content Card (if available) -->
+                {% if job.email_content %}
+                    <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden mt-6">
+                        <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                            <h3 class="font-semibold text-lg text-gray-800">
+                                <i class="fas fa-envelope-open-text mr-2 text-primary-500"></i>Treść emaila
+                            </h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="mb-4">
+                                <textarea id="emailContent" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 h-48" readonly>{{ job.email_content }}</textarea>
+                            </div>
+                            <button id="copyEmailBtn" class="w-full inline-flex items-center justify-center px-4 py-2 rounded-md bg-info text-white hover:bg-info/90 transition-colors duration-200 shadow-sm">
+                                <i class="fas fa-copy mr-2"></i>Kopiuj treść emaila
+                            </button>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <!-- No Proposal Yet Card -->
+                <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <div class="bg-primary-50 p-6 rounded-full inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-magic text-4xl text-primary-400"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Brak wygenerowanej propozycji</h3>
+                            <p class="text-gray-600 mb-4">Kliknij przycisk poniżej, aby wygenerować propozycję dla tego zlecenia przy użyciu AI.</p>
+                            <button id="generateProposalBtnAlt" class="inline-flex items-center px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-200 shadow-sm" data-job-id="{{ job.job_id }}">
+                                <i class="fas fa-magic mr-2"></i>Generuj propozycję
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white p-5 rounded-lg shadow-lg flex flex-col items-center">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600 mb-4"></div>
+        <p class="text-gray-700 font-medium" id="loadingMessage">Trwa przetwarzanie...</p>
+    </div>
+</div>
+
+<!-- Result Modal -->
+<div id="resultModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-md mx-4 overflow-hidden">
+        <div class="bg-primary-500 px-4 py-3 flex justify-between items-center">
+            <h5 class="text-white font-medium" id="resultModalTitle">Wynik operacji</h5>
+            <button type="button" class="text-white hover:text-gray-200" id="closeModalButton">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-5" id="resultModalBody">
+            <!-- wyniki będą dodane tutaj -->
+        </div>
+        <div class="px-5 py-3 bg-gray-50 flex justify-end">
+            <button type="button" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors duration-200" id="closeModalButtonBottom">
+                Zamknij
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Copy proposal to clipboard
+        const copyProposalBtn = document.getElementById('copyProposalBtn');
+        if (copyProposalBtn) {
+            copyProposalBtn.addEventListener('click', function() {
+                const proposalText = document.getElementById('proposalText');
+                proposalText.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = copyProposalBtn.innerHTML;
+                copyProposalBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Skopiowano!';
+                copyProposalBtn.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+                copyProposalBtn.classList.add('bg-success', 'hover:bg-success/90');
+                
+                setTimeout(function() {
+                    copyProposalBtn.innerHTML = originalText;
+                    copyProposalBtn.classList.remove('bg-success', 'hover:bg-success/90');
+                    copyProposalBtn.classList.add('bg-primary-600', 'hover:bg-primary-700');
+                }, 2000);
+            });
+        }
+        
+        // Copy email content to clipboard
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        if (copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', function() {
+                const emailContent = document.getElementById('emailContent');
+                emailContent.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = copyEmailBtn.innerHTML;
+                copyEmailBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Skopiowano!';
+                copyEmailBtn.classList.remove('bg-info', 'hover:bg-info/90');
+                copyEmailBtn.classList.add('bg-success', 'hover:bg-success/90');
+                
+                setTimeout(function() {
+                    copyEmailBtn.innerHTML = originalText;
+                    copyEmailBtn.classList.remove('bg-success', 'hover:bg-success/90');
+                    copyEmailBtn.classList.add('bg-info', 'hover:bg-info/90');
+                }, 2000);
+            });
+        }
+        
+        // Mark as processed functionality
+        const markAsProcessedBtn = document.getElementById('markAsProcessedBtn');
+        if (markAsProcessedBtn) {
+            markAsProcessedBtn.addEventListener('click', function() {
+                const jobId = this.dataset.jobId;
+                showLoading('Oznaczanie zlecenia jako przetworzone...');
+                
+                fetch(`/api/job/${jobId}/process`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({}),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    hideLoading();
+                    if (data.success) {
+                        showResultModal('Sukces', 'Zlecenie zostało oznaczone jako przetworzone.');
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        showResultModal('Błąd', data.error || 'Wystąpił nieznany błąd.');
+                    }
+                })
+                .catch(error => {
+                    hideLoading();
+                    showResultModal('Błąd', `Wystąpił błąd: ${error}`);
+                });
+            });
+        }
+        
+        // Generate proposal functionality
+        const generateProposalBtns = document.querySelectorAll('#generateProposalBtn, #generateProposalBtnAlt');
+        generateProposalBtns.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    const jobId = this.dataset.jobId;
+                    showLoading('Generowanie propozycji dla zlecenia...');
+                    
+                    fetch(`/api/job/${jobId}/generate-proposal`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({}),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        hideLoading();
+                        if (data.success) {
+                            showResultModal('Sukces', 'Propozycja została wygenerowana.');
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1500);
+                        } else {
+                            showResultModal('Błąd', data.error || 'Wystąpił nieznany błąd.');
+                        }
+                    })
+                    .catch(error => {
+                        hideLoading();
+                        showResultModal('Błąd', `Wystąpił błąd: ${error}`);
+                    });
+                });
+            }
+        });
+        
+        // Post proposal to Useme functionality
+        const postProposalBtn = document.getElementById('postProposalBtn');
+        if (postProposalBtn) {
+            postProposalBtn.addEventListener('click', function() {
+                const jobId = this.dataset.jobId;
+                showLoading('Wysyłanie propozycji na Useme...');
+                
+                fetch(`/api/job/${jobId}/post-proposal`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({}),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    hideLoading();
+                    if (data.success) {
+                        showResultModal('Sukces', 'Propozycja została wysłana na Useme.');
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        showResultModal('Błąd', data.error || 'Wystąpił nieznany błąd.');
+                    }
+                })
+                .catch(error => {
+                    hideLoading();
+                    showResultModal('Błąd', `Wystąpił błąd: ${error}`);
+                });
+            });
+        }
+        
+        // Send email functionality
+        const sendEmailBtn = document.getElementById('sendEmailBtn');
+        if (sendEmailBtn) {
+            sendEmailBtn.addEventListener('click', function() {
+                const jobId = this.dataset.jobId;
+                showLoading('Wysyłanie emaila do klienta...');
+                
+                fetch(`/api/job/${jobId}/send-email`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({}),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    hideLoading();
+                    if (data.success) {
+                        showResultModal('Sukces', 'Email został wysłany do klienta.');
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        showResultModal('Błąd', data.error || 'Wystąpił nieznany błąd podczas wysyłania emaila.');
+                    }
+                })
+                .catch(error => {
+                    hideLoading();
+                    showResultModal('Błąd', `Wystąpił błąd podczas wysyłania emaila: ${error}`);
+                });
+            });
+        }
+        
+        // Send message functionality
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        if (sendMessageBtn) {
+            sendMessageBtn.addEventListener('click', function() {
+                const jobId = this.dataset.jobId;
+                showLoading('Wysyłanie wiadomości na Useme...');
+                
+                fetch(`/api/job/${jobId}/send-message`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({}),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    hideLoading();
+                    if (data.success) {
+                        showResultModal('Sukces', 'Wiadomość została wysłana na Useme.');
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        showResultModal('Błąd', data.error || 'Wystąpił nieznany błąd podczas wysyłania wiadomości.');
+                    }
+                })
+                .catch(error => {
+                    hideLoading();
+                    showResultModal('Błąd', `Wystąpił błąd podczas wysyłania wiadomości: ${error}`);
+                });
+            });
+        }
+        
+        // Loading overlay functions
+        function showLoading(message = 'Trwa przetwarzanie...') {
+            document.getElementById('loadingMessage').textContent = message;
+            document.getElementById('loadingOverlay').classList.remove('hidden');
+        }
+        
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.add('hidden');
+        }
+        
+        // Result modal functions
+        function showResultModal(title, message) {
+            const modal = document.getElementById('resultModal');
+            document.getElementById('resultModalTitle').textContent = title;
+            document.getElementById('resultModalBody').textContent = message;
+            modal.classList.remove('hidden');
+        }
+        
+        // Modal close buttons
+        document.getElementById('closeModalButton').addEventListener('click', function() {
+            document.getElementById('resultModal').classList.add('hidden');
+        });
+        
+        document.getElementById('closeModalButtonBottom').addEventListener('click', function() {
+            document.getElementById('resultModal').classList.add('hidden');
+        });
+    });
+</script>
+{% endblock %}

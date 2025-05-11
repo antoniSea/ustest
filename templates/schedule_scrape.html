@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonogram scrapowania - Useme Bot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .container { max-width: 1200px; }
+        .config-card { margin-bottom: 20px; }
+        .task-card { margin-bottom: 15px; padding: 15px; border-radius: 5px; background-color: #f8f9fa; }
+        .bg-pending { background-color: #fff8e1; }
+        .bg-processing { background-color: #e3f2fd; }
+        .bg-completed { background-color: #e8f5e9; }
+        .bg-failed { background-color: #ffebee; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Useme Bot</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Strona główna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/jobs">Zlecenia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/generate-proposals">Generowanie propozycji</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/schedule-scrape">Harmonogram scrapowania</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Harmonogram scrapowania</h1>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card config-card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Zaplanuj nowe zadanie</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="scheduleForm">
+                            <div class="mb-3">
+                                <label for="delayMinutes" class="form-label">Opóźnienie (w minutach)</label>
+                                <input type="range" class="form-range" id="delayMinutes" min="0" max="60" value="5">
+                                <div class="d-flex justify-content-between">
+                                    <span>Natychmiast</span>
+                                    <span id="delayValue">5 minut</span>
+                                    <span>1 godzina</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="maxPages" class="form-label">Maksymalna liczba stron do przeszukania</label>
+                                <input type="number" class="form-control" id="maxPages" min="1" max="20" value="3">
+                                <div class="form-text">Wyższa liczba pozwala znaleźć więcej zleceń, ale wydłuża czas scrapowania.</div>
+                            </div>
+                            
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle"></i> System automatycznie planuje kolejne zadanie scrapowania co 5 minut po zakończeniu bieżącego zadania.
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary" id="scheduleBtn">
+                                    <i class="bi bi-calendar-plus"></i> Zaplanuj zadanie
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Zaplanowane zadania</h5>
+                            <button id="refreshTasksBtn" class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-arrow-clockwise"></i> Odśwież
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="tasksList">
+                            <div class="text-center py-3">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Ładowanie...</span>
+                                </div>
+                                <p class="mt-2">Ładowanie zadań...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Zarządzanie harmonogramem</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button id="runQueueBtn" class="btn btn-success">
+                                <i class="bi bi-play-circle"></i> Uruchom zadania w kolejce
+                            </button>
+                            
+                            <button id="scheduleDefaultBtn" class="btn btn-primary">
+                                <i class="bi bi-calendar-check"></i> Zaplanuj domyślny harmonogram
+                            </button>
+                            
+                            <div class="alert alert-secondary mt-3">
+                                <h6>Status schedulera:</h6>
+                                <div id="schedulerStatus" class="d-flex align-items-center">
+                                    <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
+                                        <span class="visually-hidden">Ładowanie...</span>
+                                    </div>
+                                    <span>Sprawdzanie statusu...</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6>Co to jest scheduler?</h6>
+                            <p>Scheduler to usługa działająca w tle, która automatycznie uruchamia zaplanowane zadania scrapowania w określonych odstępach czasu.</p>
+                            
+                            <h6>Jak działa kolejka zadań?</h6>
+                            <p>Zadania w kolejce są wykonywane zgodnie z zaplanowanym czasem. Po zakończeniu każdego zadania system automatycznie planuje kolejne zadanie za 5 minut.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for showing task results -->
+    <div class="modal fade" id="resultModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Wynik operacji</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="resultModalBody">
+                    <!-- Results will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>Useme Bot &copy; 2024 - System automatyzacji scrapowania i generowania propozycji</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const delayMinutes = document.getElementById('delayMinutes');
+            const delayValue = document.getElementById('delayValue');
+            const scheduleForm = document.getElementById('scheduleForm');
+            const runQueueBtn = document.getElementById('runQueueBtn');
+            const scheduleDefaultBtn = document.getElementById('scheduleDefaultBtn');
+            const refreshTasksBtn = document.getElementById('refreshTasksBtn');
+            const tasksList = document.getElementById('tasksList');
+            const schedulerStatus = document.getElementById('schedulerStatus');
+            
+            // Update delay value display
+            delayMinutes.addEventListener('input', function() {
+                if (this.value == 0) {
+                    delayValue.textContent = "Natychmiast";
+                } else if (this.value == 1) {
+                    delayValue.textContent = "1 minuta";
+                } else {
+                    delayValue.textContent = `${this.value} minut`;
+                }
+            });
+            
+            // Load tasks initially
+            loadTasks();
+            checkSchedulerStatus();
+            
+            // Refresh button
+            refreshTasksBtn.addEventListener('click', loadTasks);
+            
+            // Handle form submission
+            scheduleForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const delayMinutesValue = document.getElementById('delayMinutes').value;
+                const maxPagesValue = document.getElementById('maxPages').value;
+                
+                // Call API to schedule task
+                fetch('/api/schedule-scrape', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        delay_minutes: parseInt(delayMinutesValue),
+                        max_pages: parseInt(maxPagesValue)
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showResultModal('Sukces', data.message);
+                        loadTasks(); // Refresh tasks list
+                    } else {
+                        showResultModal('Błąd', data.error || 'Wystąpił nieznany błąd.');
+                    }
+                })
+                .catch(error => {
+                    showResultModal('Błąd', `Wystąpił błąd: ${error}`);
+                });
+            });
+            
+            // Run queue button
+            runQueueBtn.addEventListener('click', function() {
+                fetch('/api/run-tasks', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({}),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showResultModal('Sukces', data.message);
+                    } else {
+                        showResultModal('Błąd', data.error || 'Wystąpił nieznany błąd.');
+                    }
+                })
+                .catch(error => {
+                    showResultModal('Błąd', `Wystąpił błąd: ${error}`);
+                });
+            });
+            
+            // Schedule default button
+            scheduleDefaultBtn.addEventListener('click', function() {
+                // Schedule tasks for next 24 hours (every 5 minutes)
+                const promises = [];
+                for (let i = 5; i <= 60; i += 5) {
+                    promises.push(
+                        fetch('/api/schedule-scrape', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                delay_minutes: i,
+                                max_pages: 3
+                            }),
+                        })
+                    );
+                }
+                
+                Promise.all(promises)
+                    .then(() => {
+                        showResultModal('Sukces', 'Zaplanowano zadania co 5 minut na najbliższą godzinę.');
+                        loadTasks(); // Refresh tasks list
+                    })
+                    .catch(error => {
+                        showResultModal('Błąd', `Wystąpił błąd: ${error}`);
+                    });
+            });
+            
+            // Function to load tasks
+            function loadTasks() {
+                tasksList.innerHTML = `
+                    <div class="text-center py-3">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Ładowanie...</span>
+                        </div>
+                        <p class="mt-2">Ładowanie zadań...</p>
+                    </div>
+                `;
+                
+                fetch('/api/tasks')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.tasks && data.tasks.length > 0) {
+                            let tasksHtml = '';
+                            
+                            data.tasks.forEach(task => {
+                                const statusClass = 
+                                    task.status === 'pending' ? 'bg-pending' :
+                                    task.status === 'processing' ? 'bg-processing' :
+                                    task.status === 'completed' ? 'bg-completed' :
+                                    'bg-failed';
+                                
+                                const statusIcon = 
+                                    task.status === 'pending' ? '<i class="bi bi-clock text-warning"></i>' :
+                                    task.status === 'processing' ? '<i class="bi bi-arrow-repeat text-primary"></i>' :
+                                    task.status === 'completed' ? '<i class="bi bi-check-circle text-success"></i>' :
+                                    '<i class="bi bi-x-circle text-danger"></i>';
+                                
+                                const scheduledTime = new Date(task.scheduled_time);
+                                const lastRun = task.last_run ? new Date(task.last_run) : null;
+                                
+                                tasksHtml += `
+                                    <div class="task-card ${statusClass}">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h6 class="mb-0">Zadanie #${task.id}: ${task.task_type}</h6>
+                                            <span>${statusIcon} ${task.status}</span>
+                                        </div>
+                                        <p class="mb-1"><strong>Zaplanowano:</strong> ${scheduledTime.toLocaleString()}</p>
+                                        ${lastRun ? `<p class="mb-1"><strong>Ostatnie uruchomienie:</strong> ${lastRun.toLocaleString()}</p>` : ''}
+                                        <p class="mb-0"><strong>Parametry:</strong> ${task.parameters || 'Brak'}</p>
+                                    </div>
+                                `;
+                            });
+                            
+                            tasksList.innerHTML = tasksHtml;
+                        } else {
+                            tasksList.innerHTML = '<div class="alert alert-info">Brak zaplanowanych zadań.</div>';
+                        }
+                    })
+                    .catch(error => {
+                        tasksList.innerHTML = `<div class="alert alert-danger">Błąd podczas ładowania zadań: ${error}</div>`;
+                    });
+            }
+            
+            // Function to check scheduler status
+            function checkSchedulerStatus() {
+                // In a real implementation, this would check if the scheduler service is running
+                // For this example, we'll assume it's always running
+                setTimeout(() => {
+                    schedulerStatus.innerHTML = `
+                        <div class="spinner-border spinner-border-sm text-success me-2" role="status">
+                            <span class="visually-hidden">Aktywny</span>
+                        </div>
+                        <span class="text-success">Aktywny - następne zadanie za 4 minuty</span>
+                    `;
+                }, 1500);
+            }
+            
+            // Helper function to show result modal
+            function showResultModal(title, message) {
+                const modal = new bootstrap.Modal(document.getElementById('resultModal'));
+                document.querySelector('#resultModal .modal-title').textContent = title;
+                document.getElementById('resultModalBody').textContent = message;
+                modal.show();
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,339 @@
+{% extends "base.html" %}
+
+{% block title %}Useme Bot - Panel administracyjny{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Header Section with Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+        <!-- System Status Card -->
+        <div class="bg-card rounded-lg shadow-vuexy p-5 border border-gray-100 flex flex-col md:col-span-4">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 bg-primary-100 p-3 rounded-full">
+                    <i class="fas fa-server text-primary-600 text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h2 class="text-lg font-semibold text-gray-800">Status systemu</h2>
+                    <p class="text-gray-600">System działa poprawnie. Automatyczne scrapowanie co 5 minut jest aktywne.</p>
+                </div>
+                <div class="ml-auto">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-success bg-opacity-10 text-success">
+                        <span class="relative flex h-2 w-2 mr-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+                        </span>
+                        Aktywny
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg shadow-vuexy p-5 text-white">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-xs font-medium uppercase text-primary-200">Zlecenia</p>
+                    <h3 class="text-2xl font-bold mt-1">{{ total_jobs }}</h3>
+                </div>
+                <div class="text-primary-200 bg-white bg-opacity-20 rounded-full p-2">
+                    <i class="fas fa-briefcase text-xl"></i>
+                </div>
+            </div>
+            <div class="mt-4">
+                <p class="text-primary-100 text-sm flex items-center">
+                    <i class="fas fa-arrow-up mr-1"></i>
+                    <span>Ostatnie 24h: +{{ new_jobs }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-card rounded-lg shadow-vuexy p-5 border border-gray-100">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-xs font-medium uppercase text-gray-500">Propozycje</p>
+                    <h3 class="text-2xl font-bold mt-1 text-gray-800">{{ total_proposals }}</h3>
+                </div>
+                <div class="text-success bg-success bg-opacity-10 rounded-full p-2">
+                    <i class="fas fa-file-alt text-xl"></i>
+                </div>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-500 text-sm flex items-center">
+                    <i class="fas fa-check-circle mr-1 text-success"></i>
+                    <span>Wygenerowanych propozycji</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-card rounded-lg shadow-vuexy p-5 border border-gray-100">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-xs font-medium uppercase text-gray-500">Sukces propozycji</p>
+                    <h3 class="text-2xl font-bold mt-1 text-gray-800">{{ success_rate }}%</h3>
+                </div>
+                <div class="text-success bg-success bg-opacity-10 rounded-full p-2">
+                    <i class="fas fa-chart-line text-xl"></i>
+                </div>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-500 text-sm flex items-center">
+                    <i class="fas fa-arrow-up mr-1 text-success"></i>
+                    <span>Wzrost o 5% w tym miesiącu</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-card rounded-lg shadow-vuexy p-5 border border-gray-100">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-xs font-medium uppercase text-gray-500">Prezentacje</p>
+                    <h3 class="text-2xl font-bold mt-1 text-gray-800">{{ total_presentations }}</h3>
+                </div>
+                <div class="text-warning bg-warning bg-opacity-10 rounded-full p-2">
+                    <i class="fas fa-chart-pie text-xl"></i>
+                </div>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-500 text-sm flex items-center">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>Aktywne prezentacje</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Zarządzanie zleceniami -->
+        <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+            <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                <h3 class="font-semibold text-lg text-gray-800">
+                    <i class="fas fa-briefcase mr-2 text-primary-500"></i>Zarządzanie zleceniami
+                </h3>
+                <a href="/jobs" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                    Zobacz więcej <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-600 mb-5">Przeglądaj zlecenia pobrane z Useme.com. Możesz filtrować, wyszukiwać i zarządzać zleceniami.</p>
+                <a href="/jobs" class="inline-flex items-center px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-200 font-medium text-sm">
+                    <i class="fas fa-list-ul mr-2"></i>Przejdź do zleceń
+                </a>
+            </div>
+        </div>
+
+        <!-- Generowanie propozycji -->
+        <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+            <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                <h3 class="font-semibold text-lg text-gray-800">
+                    <i class="fas fa-magic mr-2 text-primary-500"></i>Generowanie propozycji
+                </h3>
+                <a href="/generate-proposals" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                    Zobacz więcej <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-600 mb-5">Automatycznie generuj propozycje ofert dla zleceń za pomocą AI.</p>
+                <a href="/generate-proposals" class="inline-flex items-center px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-200 font-medium text-sm">
+                    <i class="fas fa-bolt mr-2"></i>Generuj propozycje
+                </a>
+            </div>
+        </div>
+
+        <!-- Harmonogram scrapowania -->
+        <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+            <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                <h3 class="font-semibold text-lg text-gray-800">
+                    <i class="fas fa-calendar mr-2 text-primary-500"></i>Harmonogram scrapowania
+                </h3>
+                <a href="/schedule-scrape" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                    Zobacz więcej <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-600 mb-5">Zarządzaj harmonogramem automatycznego scrapowania zleceń z Useme.</p>
+                <a href="/schedule-scrape" class="inline-flex items-center px-4 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-200 font-medium text-sm">
+                    <i class="fas fa-calendar-alt mr-2"></i>Przejdź do harmonogramu
+                </a>
+            </div>
+        </div>
+
+        <!-- Statystyki wyświetleń -->
+        <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden h-full">
+            <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                <h3 class="font-semibold text-lg text-gray-800">
+                    <i class="fas fa-chart-bar mr-2 text-primary-500"></i>Statystyki wyświetleń
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-600 mb-4">Śledź statystyki wyświetleń Twoich prezentacji ofert.</p>
+                <a href="/presentation-stats" class="w-full bg-primary-50 hover:bg-primary-100 flex items-center justify-center py-3 px-4 rounded-md text-primary-600 transition-colors duration-200">
+                    <i class="fas fa-chart-pie mr-2"></i>
+                    <span>Zobacz statystyki wyświetleń</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Prezentacje ofert -->
+        <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+            <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                <h3 class="font-semibold text-lg text-gray-800">
+                    <i class="fas fa-chart-pie mr-2 text-primary-500"></i>Prezentacje ofert
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-600 mb-4">Przeglądaj wygenerowane prezentacje ofert dla klientów.</p>
+                
+                {% if presentations %}
+                    <div class="overflow-hidden mb-4">
+                        <ul class="space-y-2 max-h-48 overflow-y-auto pr-2">
+                            {% for presentation in presentations %}
+                                <li class="bg-gray-50 hover:bg-gray-100 rounded-md px-3 py-2 transition-colors duration-150">
+                                    <a href="/{{ presentation }}" target="_blank" class="flex items-center text-gray-700 hover:text-primary-600">
+                                        <i class="fas fa-file-alt text-primary-400 mr-2"></i>
+                                        <span class="truncate">{{ presentation }}</span>
+                                        <i class="fas fa-external-link-alt ml-auto text-gray-400 text-xs"></i>
+                                    </a>
+                                    <div class="flex mt-2">
+                                        <a href="/api/presentation-to-pdf/{{ presentation }}" class="text-xs flex items-center text-rose-600 hover:text-rose-500 ml-5">
+                                            <i class="fas fa-file-pdf mr-1"></i> Pobierz PDF
+                                        </a>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% if remaining_count > 0 %}
+                        <p class="text-xs text-gray-500 italic">... i {{ remaining_count }} więcej</p>
+                    {% endif %}
+                {% else %}
+                    <div class="flex items-center justify-center h-24 bg-gray-50 rounded-md">
+                        <p class="text-gray-500">Brak dostępnych prezentacji</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions Section -->
+    <div class="bg-card rounded-lg shadow-vuexy border border-gray-100 overflow-hidden">
+        <div class="p-5 border-b border-gray-100">
+            <h3 class="font-semibold text-lg text-gray-800">
+                <i class="fas fa-bolt mr-2 text-primary-500"></i>Szybkie akcje
+            </h3>
+        </div>
+        <div class="p-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-medium text-gray-700 mb-3">Uruchom scrapowanie</h4>
+                    <form id="scrapeForm" class="space-y-4">
+                        <div>
+                            <label for="maxPages" class="block text-sm font-medium text-gray-700 mb-1">Maksymalna liczba stron</label>
+                            <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" id="maxPages" value="3" min="1" max="20">
+                        </div>
+                        <button type="submit" class="px-4 py-2 bg-success text-white rounded-md hover:bg-success/90 transition-colors duration-200 inline-flex items-center">
+                            <i class="fas fa-sync-alt mr-2"></i>Uruchom scrapowanie
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-700 mb-3">Przetwarzanie zadań</h4>
+                    <p class="text-gray-600 mb-4">Ręcznie uruchom przetwarzanie kolejki zadań, które oczekują na wykonanie.</p>
+                    <form id="processQueueForm">
+                        <button type="submit" class="px-4 py-2 bg-info text-white rounded-md hover:bg-info/90 transition-colors duration-200 inline-flex items-center">
+                            <i class="fas fa-tasks mr-2"></i>Przetwórz kolejkę zadań
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal dla wyników operacji -->
+<div id="resultModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-md mx-4 overflow-hidden">
+        <div class="bg-primary-500 px-4 py-3 flex justify-between items-center">
+            <h5 class="text-white font-medium" id="resultModalTitle">Wynik operacji</h5>
+            <button type="button" class="text-white hover:text-gray-200" id="closeModalButton">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-5" id="resultModalBody">
+            <!-- wyniki będą dodane tutaj -->
+        </div>
+        <div class="px-5 py-3 bg-gray-50 flex justify-end">
+            <button type="button" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors duration-200" id="closeModalButtonBottom">
+                Zamknij
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obsługa formularza scrape
+        document.getElementById('scrapeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const maxPages = document.getElementById('maxPages').value;
+            
+            fetch('/api/schedule-scrape', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    delay_minutes: 0, // Uruchom natychmiast
+                    max_pages: parseInt(maxPages)
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                showResultModal('Scrapowanie zaplanowane', `${data.message}`);
+            })
+            .catch(error => {
+                showResultModal('Błąd', `Wystąpił błąd: ${error}`);
+            });
+        });
+        
+        // Obsługa formularza przetwarzania kolejki
+        document.getElementById('processQueueForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            fetch('/api/run-tasks', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                showResultModal('Przetwarzanie kolejki', `${data.message}`);
+            })
+            .catch(error => {
+                showResultModal('Błąd', `Wystąpił błąd: ${error}`);
+            });
+        });
+        
+        // Funkcja pomocnicza do wyświetlania modalu z wynikami
+        function showResultModal(title, message) {
+            const modal = document.getElementById('resultModal');
+            document.getElementById('resultModalTitle').textContent = title;
+            document.getElementById('resultModalBody').textContent = message;
+            modal.classList.remove('hidden');
+        }
+        
+        // Obsługa zamykania modalu
+        document.getElementById('closeModalButton').addEventListener('click', function() {
+            document.getElementById('resultModal').classList.add('hidden');
+        });
+        
+        document.getElementById('closeModalButtonBottom').addEventListener('click', function() {
+            document.getElementById('resultModal').classList.add('hidden');
+        });
+    });
+</script>
+{% endblock %}
