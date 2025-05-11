@@ -696,15 +696,17 @@ def presentation(filename):
     Display a presentation (with an optional .json extension)
     """
     try:
-        # Strip asterisks from the end of the filename
-        filename = filename.rstrip('*')
-        
+        # Check if filename has trailing asterisks and clean it
+        if '**' in filename:
+            clean_filename = filename.split('**')[0]
+            logger.info(f"Cleaning filename with **: {filename} -> {clean_filename}")
+            filename = clean_filename
+            
         # Add .json extension if not provided
         if not filename.endswith('.json'):
             json_filename = f"{filename}.json"
         else:
             json_filename = filename
-            filename = filename[:-5]  # Remove .json extension for template variable
         
         # Check if the JSON file exists
         json_path = os.path.join(PRESENTATIONS_DIR, json_filename)
@@ -746,6 +748,22 @@ def presentation(filename):
     except Exception as e:
         logger.error(f"Error displaying presentation {filename}: {str(e)}")
         return render_template('error.html', error=str(e)), 500
+
+@app.route('/<path:filename>', strict_slashes=False)
+def presentation_wildcard(filename):
+    """
+    Display a presentation with any trailing characters (asterisks, etc.)
+    This allows URLs like: https://prezentacje.soft-synergy.com/kreowanie-tresci-wideo-rolmako**
+    """
+    # Strip any trailing characters like asterisks
+    if '**' in filename:
+        clean_filename = filename.split('**')[0]
+        logger.info(f"Handling URL with trailing **: {filename} -> {clean_filename}")
+        return redirect(url_for('presentation', filename=clean_filename))
+    
+    # If it contains slashes or other characters that shouldn't be in a filename,
+    # we should handle it in the main presentation route
+    return presentation(filename)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

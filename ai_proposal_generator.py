@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
 MODEL = "gemini-2.5-pro-exp-03-25"
 
-genai.configure(api_key=API_KEY)
+genai.configure(api_key=API_KEY, transport="rest", location="us-central1")
 # Set up model with timeout and retry configuration
 generation_config = {
     "max_output_tokens": 2048,
