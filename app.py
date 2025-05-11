@@ -1287,8 +1287,15 @@ def get_presentation_url(slug):
     return f"http://{APP_DOMAIN}/{slug}"
 
 if __name__ == '__main__':
+    # Parse command line arguments
+    import argparse
+    parser = argparse.ArgumentParser(description='Run the Flask application')
+    parser.add_argument('--port', type=int, default=5001, help='Port to run the application on')
+    parser.add_argument('--debug', action='store_true', help='Run in debug mode')
+    args = parser.parse_args()
+    
     # Log important startup information
-    logger.info(f"Starting Flask application on 0.0.0.0:5001")
+    logger.info(f"Starting Flask application on 0.0.0.0:{args.port}")
     logger.info(f"Presentation domain: {APP_DOMAIN}")
     logger.info(f"Local IP addresses:")
     
@@ -1313,6 +1320,26 @@ if __name__ == '__main__':
         except:
             logger.warning("Could not determine IP address")
     
-    # Force binding to all network interfaces with port 5001
-    # This helps bypass firewall restrictions in production
-    app.run(debug=False, host='0.0.0.0', port=5001, threaded=True, ssl_context=None) 
+    # Check if port is available before starting
+    import socket
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    result = sock.connect_ex(('127.0.0.1', args.port))
+    if result == 0:
+        logger.error(f"Port {args.port} is already in use.")
+        logger.error("Please use a different port with --port or stop the program using this port.")
+        import sys
+        sys.exit(1)
+    sock.close()
+    
+    # Force binding to all network interfaces with configured port
+    try:
+        # This helps bypass firewall restrictions in production
+        app.run(debug=args.debug, host='0.0.0.0', port=args.port, threaded=True, ssl_context=None)
+    except OSError as e:
+        if "Address already in use" in str(e):
+            logger.error(f"Port {args.port} is already in use. Please use a different port.")
+            logger.error("Try running with: --port=5002")
+        else:
+            logger.error(f"Error starting server: {str(e)}")
+        import sys
+        sys.exit(1) 
