@@ -35,4 +35,13 @@ Thumbs.db
 
 # Project specific
 presentations/
-avatars/ 
+avatars/
+avatars_standalone/
+output_files/
+cookies.json
+*_debug_*.html
+message_*.html
+proposals_*.json
+useme_jobs.json
+*.pid
+scheduler*.pid 

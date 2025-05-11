@@ -1,0 +1,18 @@
+[Unit]
+Description=Useme Bot Task Scheduler
+After=network.target
+
+[Service]
+Type=simple
+User=<your_username>
+WorkingDirectory=/path/to/useme-bot
+ExecStart=/usr/bin/python3 /path/to/useme-bot/task_scheduler.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=useme-scheduler
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target 
