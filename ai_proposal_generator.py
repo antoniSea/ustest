@@ -31,7 +31,6 @@ logger = logging.getLogger(__name__)
 API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
 MODEL = "gemini-2.5-pro-exp-03-25"
 
-genai.configure(api_key=API_KEY)
 # Set up model with timeout and retry configuration
 generation_config = {
     "max_output_tokens": 2048,
@@ -40,6 +39,8 @@ generation_config = {
     "top_k": 40
 }
 safety_settings = []
+# Use the europe-west4 endpoint for Gemini API
+genai.configure(api_key=API_KEY, transport="rest", client_options={"api_endpoint": "https://europe-west4-aiplatform.googleapis.com"})
 model = genai.GenerativeModel(MODEL, generation_config=generation_config, safety_settings=safety_settings)
 
 # Max number of retries and timeout settings
