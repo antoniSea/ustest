@@ -696,12 +696,17 @@ def presentation(filename):
     Display a presentation (with an optional .json extension)
     """
     try:
+        # Handle URLs with trailing ** (e.g., /kreowanie-tresci-wideo-rolmako**)
+        if '**' in filename:
+            clean_filename = filename.split('**')[0]
+            logger.info(f"Cleaning filename with trailing **: {filename} -> {clean_filename}")
+            filename = clean_filename
+
         # Add .json extension if not provided
         if not filename.endswith('.json'):
             json_filename = f"{filename}.json"
         else:
             json_filename = filename
-            filename = filename[:-5]  # Remove .json extension for template variable
         
         # Check if the JSON file exists
         json_path = os.path.join(PRESENTATIONS_DIR, json_filename)
