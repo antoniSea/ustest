@@ -736,7 +736,7 @@ def presentation(filename):
         # IMPORTANT: Removed the redirection logic to prevent redirect loops
         # We'll let Nginx handle the domain routing instead
         
-        return render_template('presentations/prezentation1.html', 
+        return render_template('templates/prezentation1.html', 
                             presentation=presentation_data, 
                             filename=filename)
         

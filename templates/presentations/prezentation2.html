@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wycena Projektu Premium - [Nazwa Klienta]</title>
+    <!-- TAILWIND CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- HEROICONS CDN -->
+    <link href="https://unpkg.com/heroicons@2.0.18/css/solid.min.css" rel="stylesheet">
+    <style>
+        /* Globalne style i niestandardowe animacje */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a; /* Głęboka czerń dla luksusu */
+            color: #e0e0e0; /* Jasny tekst dla kontrastu */
+            overflow-x: hidden;
+        }
+
+        /* Niestandardowy kursor */
+        .custom-cursor {
+            position: fixed;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00f2ea; /* Akcentujący kolor */
+            border-radius: 50%;
+            transition: transform 0.1s ease-out;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #00f2ea;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease-out, height 0.2s ease-out, border-color 0.2s ease-out, opacity 0.2s ease-out;
+        }
+        body:hover .cursor-outline { opacity: 1; }
+        a:hover ~ .custom-cursor .cursor-outline,
+        button:hover ~ .custom-cursor .cursor-outline,
+        .interactive-hover:hover ~ .custom-cursor .cursor-outline {
+            width: 60px;
+            height: 60px;
+            border-color: #ff007f; /* Zmiana koloru na hover interaktywnych elementów */
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a0a;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .preloader-logo {
+            /* Placeholder - wstaw SVG swojego logo */
+            width: 100px;
+            height: 100px;
+            border: 3px solid #00f2ea;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        .preloader-text {
+            font-size: 1.2rem;
+            color: #00f2ea;
+            letter-spacing: 2px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Animowany gradient dla tła sekcji (przykład) */
+        .animated-gradient-bg {
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #0a0a0a);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efekt "breathing" dla przycisków */
+        .breathing-button {
+            animation: breathing 3s ease-in-out infinite;
+        }
+        @keyframes breathing {
+            0%, 100% { box-shadow: 0 0 10px #00f2ea, 0 0 20px #00f2ea; transform: scale(1); }
+            50% { box-shadow: 0 0 20px #00f2ea, 0 0 40px #00f2ea; transform: scale(1.05); }
+        }
+
+        /* Zaawansowany hover dla przycisków */
+        .premium-button {
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s ease-in-out;
+            z-index: 1;
+        }
+        .premium-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #00f2ea, transparent);
+            transition: left 0.4s ease-in-out;
+            z-index: -1;
+        }
+        .premium-button:hover::before {
+            left: 100%;
+        }
+        .premium-button:hover {
+            color: #0a0a0a; /* Kolor tekstu na hover */
+            box-shadow: 0 0 15px #00f2ea, 0 0 30px #00f2ea;
+        }
+
+        /* Animowane podkreślenie dla linków nawigacji */
+        .nav-link {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #00f2ea;
+            transition: width 0.3s ease-out;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Stylizacja scrollbara (subtelna) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00f2ea;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00c4bf;
+        }
+
+        /* Klasy pomocnicze do animacji GSAP */
+        .reveal-up { opacity: 0; transform: translateY(50px); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); }
+        .reveal-right { opacity: 0; transform: translateX(50px); }
+        .reveal-scale { opacity: 0; transform: scale(0.8); }
+
+        /* Efekt głębi dla kart */
+        .depth-card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .depth-card:hover {
+            transform: translateY(-10px) translateZ(20px); /* Dodanie translateZ dla efektu 3D */
+            box-shadow: 0 20px 40px rgba(0, 242, 234, 0.2);
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .perspective {
+            perspective: 1000px;
+        }
+
+        /* Sticky Header - zmiana wyglądu */
+        header.scrolled {
+            background-color: rgba(10, 10, 10, 0.85); /* Lekko przezroczyste tło po scrollu */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 242, 234, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-logo"></div>
+        <p class="preloader-text">ŁADOWANIE DOŚWIADCZENIA...</p>
+    </div>
+
+    <!-- NIESTANDARDOWY KURSOR -->
+    <div class="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+    </div>
+
+    <!-- NAGŁÓWEK / NAWIGACJA -->
+    <header class="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- LOGO WYKONAWCY -->
+            <div class="text-3xl font-bold text-white reveal-left">
+                YOUR<span class="text-[#00f2ea]">LOGO</span>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <!-- Miejsca na linki nawigacyjne, np. do sekcji -->
+                <a href="#solution" class="nav-link text-lg hover:text-[#00f2ea] transition-colors duration-300 reveal-up" data-section-index="1">Rozwiązanie</a>
+                <a href="#scope" class="nav-link text-lg hover:text-[#00f2ea] transition-colors duration-300 reveal-up" data-section-index="2">Zakres</a>
+                <a href="#pricing" class="nav-link text-lg hover:text-[#00f2ea] transition-colors duration-300 reveal-up" data-section-index="3">Wycena</a>
+                <a href="#timeline" class="nav-link text-lg hover:text-[#00f2ea] transition-colors duration-300 reveal-up" data-section-index="4">Harmonogram</a>
+                <a href="#contact" class="nav-link text-lg hover:text-[#00f2ea] transition-colors duration-300 reveal-up" data-section-index="5">Kontakt</a>
+            </nav>
+            <!-- Przycisk dla mobilnej nawigacji (opcjonalnie) -->
+            <button class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="perspective">
+
+        <!-- 1. SPEKTAKULARNY HERO Z ANIMOWANYM TŁEM -->
+        <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden animated-gradient-bg perspective">
+            <!-- Animowane elementy dekoracyjne w tle (subtelne) -->
+            <div class="absolute inset-0 z-0" id="hero-particles">
+                <!-- JavaScript będzie tu generować cząsteczki lub można użyć SVG/CSS -->
+            </div>
+
+            <div class="container mx-auto px-6 text-center z-10">
+                <!-- LOGO KLIENTA (placeholder) -->
+                <img src="https://via.placeholder.com/150/FFFFFF/0a0a0a?text=LOGO+KLIENTA" alt="Logo Klienta" class="mx-auto mb-8 h-20 reveal-scale interactive-hover">
+                
+                <!-- EFEKTOWNY NAGŁÓWEK Z ANIMACJĄ TYPOGRAFICZNĄ -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6">
+                    <span class="block text-white hero-headline-word">Projekt, Który</span>
+                    <span class="block text-[#00f2ea] hero-headline-word">Zdefiniuje Przyszłość.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto hero-subheadline">
+                    <!-- EDITABLE CONTENT: Krótki, chwytliwy opis projektu lub propozycji wartości -->
+                    Tworzymy rozwiązania cyfrowe, które nie tylko spełniają oczekiwania, ale je przekraczają, wyznaczając nowe standardy w branży.
+                </p>
+                <a href="#understanding"
+                   class="premium-button breathing-button inline-block bg-[#00f2ea] text-gray-900 font-semibold py-4 px-10 rounded-lg text-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 reveal-up interactive-hover">
+                    Odkryj Propozycję
+                </a>
+            </div>
+            <!-- Subtelny wskaźnik scrollowania -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg class="w-8 h-8 text-[#00f2ea]" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 2. ZROZUMIENIE BIZNESU KLIENTA - Z WIZUALIZACJĄ -->
+        <section id="understanding" class="py-20 md:py-32 bg-[#0f0f0f] perspective">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 reveal-up">Rozumiemy Twój <span class="text-[#00f2ea]">Biznes</span></h2>
+                <p class="text-lg text-gray-400 text-center mb-16 max-w-2xl mx-auto reveal-up" data-gsap-delay="0.1">
+                    <!-- EDITABLE CONTENT: Opis zrozumienia potrzeb klienta -->
+                    Dokładnie przeanalizowaliśmy Twoje cele i wyzwania, aby dostarczyć rozwiązanie idealnie dopasowane do Twoich potrzeb.
+                </p>
+                <div class="grid md:grid-cols-2 gap-12 items-center transform-style-3d">
+                    <div class="problem-card p-8 bg-[#1a1a2e] rounded-xl shadow-2xl depth-card reveal-left">
+                        <h3 class="text-3xl font-semibold mb-4 text-[#ff007f]">Obecne Wyzwania</h3>
+                        <!-- EDITABLE CONTENT: Lista problemów/wyzwań klienta -->
+                        <ul class="space-y-3 text-gray-300 list-disc list-inside">
+                            <li>Ograniczona skalowalność obecnej platformy.</li>
+                            <li>Niska konwersja użytkowników mobilnych.</li>
+                            <li>Brak spersonalizowanych doświadczeń dla klientów.</li>
+                            <li>Wysokie koszty utrzymania przestarzałej infrastruktury.</li>
+                        </ul>
+                        <!-- WOW: Animation/Interaction Hint: Elementy listy mogą pojawiać się z opóźnieniem -->
+                    </div>
+                    <div class="solution-card p-8 bg-[#1a1a2e] rounded-xl shadow-2xl depth-card reveal-right">
+                        <h3 class="text-3xl font-semibold mb-4 text-[#00f2ea]">Nasze Proponowane Rozwiązanie</h3>
+                        <!-- EDITABLE CONTENT: Krótki opis proponowanego rozwiązania jako odpowiedź na problemy -->
+                        <p class="text-gray-300 mb-4">
+                            Stworzenie nowoczesnej, skalowalnej platformy webowej zorientowanej na mobile-first, wykorzystującej AI do personalizacji i optymalizacji ścieżki użytkownika.
+                        </p>
+                        <svg class="w-24 h-24 text-[#00f2ea] mx-auto mt-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5.056 14.55A2.25 2.25 0 006.463 18H10.5a2.25 2.25 0 002.25-2.25v-5.714a2.25 2.25 0 00-.659-1.591L7.04 3.45A2.25 2.25 0 018.446 0H13.5a2.25 2.25 0 012.25 2.25v5.714a2.25 2.25 0 01-.659 1.591L10.056 14.55A2.25 2.25 0 0011.463 18H15.75a2.25 2.25 0 002.25-2.25V9.565a2.25 2.25 0 00-1.006-1.928L13.31 5.826A2.25 2.25 0 0114.25 3.75h3.896c.472 0 .897.244 1.134.639l1.43 2.369a1.25 1.25 0 01.166.792V14.5a3 3 0 01-3 3h-1.035a2.25 2.25 0 00-2.03 1.287l-.878 1.932a2.25 2.25 0 01-2.03 1.287H9.344a2.25 2.25 0 01-2.03-1.287l-.878-1.932A2.25 2.25 0 004.406 17.5H3.371a3 3 0 01-3-3V9.25a1.25 1.25 0 01.166-.792l1.43-2.369A1.25 1.25 0 013.096 5.25h3.896c.943 0 1.742.596 2.086 1.447L9.75 8.818V3.104z"></path></svg>
+                        <!-- WOW: Animation/Interaction Hint: Ikona może mieć subtelną animację "breathing" lub pulsowania -->
+                    </div>
+                </div>
+                <!-- WOW: Parallax effect for background elements in this section -->
+                <div class="absolute top-1/4 left-10 w-32 h-32 bg-[#00f2ea] opacity-5 rounded-full filter blur-2xl parallax-element" data-parallax-speed="-2"></div>
+                <div class="absolute bottom-1/4 right-10 w-48 h-48 bg-[#ff007f] opacity-5 rounded-full filter blur-2xl parallax-element" data-parallax-speed="1"></div>
+            </div>
+        </section>
+
+        <!-- 3. ZAAWANSOWANA PREZENTACJA ROZWIĄZANIA -->
+        <section id="solution" class="py-20 md:py-32 bg-[#0a0a0a] perspective">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal-up">Nasze <span class="text-[#00f2ea]">Innowacyjne</span> Rozwiązanie</h2>
+                <!-- Interaktywne mockupy/wizualizacje -->
+                <div class="grid md:grid-cols-3 gap-8 transform-style-3d">
+                    <!-- MODUŁ 1 -->
+                    <div class="p-8 bg-[#141414] rounded-xl shadow-xl depth-card reveal-scale interactive-hover" data-gsap-delay="0">
+                        <img src="https://via.placeholder.com/400x300/00f2ea/0a0a0a?text=Mockup+Modułu+1" alt="Mockup Modułu 1" class="rounded-lg mb-6 w-full">
+                        <h3 class="text-2xl font-semibold mb-3 text-[#00f2ea]">Platforma Administracyjna</h3>
+                        <p class="text-gray-400">
+                            <!-- EDITABLE CONTENT: Opis modułu/funkcji -->
+                            Intuicyjny panel do zarządzania treścią, użytkownikami i analizami, z pełną kontrolą nad każdym aspektem platformy.
+                        </p>
+                    </div>
+                    <!-- MODUŁ 2 -->
+                    <div class="p-8 bg-[#141414] rounded-xl shadow-xl depth-card reveal-scale interactive-hover" data-gsap-delay="0.2">
+                         <img src="https://via.placeholder.com/400x300/ff007f/0a0a0a?text=Mockup+Modułu+2" alt="Mockup Modułu 2" class="rounded-lg mb-6 w-full">
+                        <h3 class="text-2xl font-semibold mb-3 text-[#ff007f]">Aplikacja Mobilna Użytkownika</h3>
+                        <p class="text-gray-400">
+                            <!-- EDITABLE CONTENT: Opis modułu/funkcji -->
+                            Nowoczesna aplikacja mobilna zapewniająca płynne doświadczenia i łatwy dostęp do kluczowych funkcji w dowolnym miejscu.
+                        </p>
+                    </div>
+                    <!-- MODUŁ 3 -->
+                    <div class="p-8 bg-[#141414] rounded-xl shadow-xl depth-card reveal-scale interactive-hover" data-gsap-delay="0.4">
+                         <img src="https://via.placeholder.com/400x300/FFFFFF/0a0a0a?text=Mockup+Modułu+3" alt="Mockup Modułu 3" class="rounded-lg mb-6 w-full">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Silnik Rekomendacji AI</h3>
+                        <p class="text-gray-400">
+                            <!-- EDITABLE CONTENT: Opis modułu/funkcji -->
+                            Zaawansowany system oparty na sztucznej inteligencji, personalizujący treści i oferty dla każdego użytkownika w czasie rzeczywistym.
+                        </p>
+                    </div>
+                </div>
+                <!-- WOW: Animation/Interaction Hint: Mockupy mogą mieć efekt "tilt" na hover myszy, lub animowane przejścia między slajdami funkcji wewnątrz karty -->
+            </div>
+        </section>
+
+        <!-- 4. DOPRACOWANY W DETALACH ZAKRES PRAC -->
+        <section id="scope" class="py-20 md:py-32 bg-[#0f0f0f] perspective">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal-up">Szczegółowy <span class="text-[#00f2ea]">Zakres Prac</span></h2>
+                <div class="space-y-6 max-w-3xl mx-auto">
+                    <!-- Accordion Item 1 -->
+                    <div class="accordion-item bg-[#1a1a2e] rounded-lg shadow-lg overflow-hidden reveal-up">
+                        <button class="accordion-header w-full flex justify-between items-center p-6 text-left text-xl font-semibold text-white hover:bg-[#2a2a3e] transition-colors duration-300 interactive-hover">
+                            <span>Faza 1: Planowanie i Projektowanie UX/UI</span>
+                            <svg class="accordion-icon w-6 h-6 text-[#00f2ea] transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-[#2a2a3e]">
+                                <p class="text-gray-300 mb-4">
+                                    <!-- EDITABLE CONTENT: Opis fazy/funkcjonalności -->
+                                    Szczegółowa analiza wymagań, warsztaty strategiczne, tworzenie mapy strony, user flows, makiet Lo-Fi i Hi-Fi, projektowanie interfejsu graficznego zorientowanego na premium experience.
+                                </p>
+                                <ul class="list-disc list-inside text-gray-400 space-y-2">
+                                    <li>Warsztaty Discovery</li>
+                                    <li>Architektura Informacji</li>
+                                    <li>Projektowanie UX (Wireframes, Prototypy)</li>
+                                    <li>Projektowanie UI (Design System, Mockupy)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 2 -->
+                    <div class="accordion-item bg-[#1a1a2e] rounded-lg shadow-lg overflow-hidden reveal-up" data-gsap-delay="0.1">
+                        <button class="accordion-header w-full flex justify-between items-center p-6 text-left text-xl font-semibold text-white hover:bg-[#2a2a3e] transition-colors duration-300 interactive-hover">
+                            <span>Faza 2: Development Frontend i Backend</span>
+                             <svg class="accordion-icon w-6 h-6 text-[#00f2ea] transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-[#2a2a3e]">
+                                <p class="text-gray-300 mb-4">
+                                    <!-- EDITABLE CONTENT: Opis fazy/funkcjonalności -->
+                                    Implementacja interfejsu użytkownika z wykorzystaniem najnowszych technologii frontendowych, budowa solidnego i skalowalnego backendu, integracja z API i systemami zewnętrznymi.
+                                </p>
+                                 <ul class="list-disc list-inside text-gray-400 space-y-2">
+                                    <li>Kodowanie HTML/CSS/JS (np. React/Vue/Angular)</li>
+                                    <li>Programowanie logiki backendu (np. Node.js/Python/PHP)</li>
+                                    <li>Projektowanie i implementacja bazy danych</li>
+                                    <li>Integracja API</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 3 -->
+                    <div class="accordion-item bg-[#1a1a2e] rounded-lg shadow-lg overflow-hidden reveal-up" data-gsap-delay="0.2">
+                        <button class="accordion-header w-full flex justify-between items-center p-6 text-left text-xl font-semibold text-white hover:bg-[#2a2a3e] transition-colors duration-300 interactive-hover">
+                            <span>Faza 3: Testowanie, Wdrożenie i Wsparcie</span>
+                             <svg class="accordion-icon w-6 h-6 text-[#00f2ea] transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-[#2a2a3e]">
+                                <p class="text-gray-300 mb-4">
+                                    <!-- EDITABLE CONTENT: Opis fazy/funkcjonalności -->
+                                    Kompleksowe testy funkcjonalne, wydajnościowe i bezpieczeństwa. Przygotowanie infrastruktury, wdrożenie produkcyjne oraz wsparcie powdrożeniowe i utrzymanie.
+                                </p>
+                                 <ul class="list-disc list-inside text-gray-400 space-y-2">
+                                    <li>Testy jednostkowe, integracyjne, E2E</li>
+                                    <li>Testy UAT (User Acceptance Testing)</li>
+                                    <li>Konfiguracja serwerów i deployment</li>
+                                    <li>Monitoring i wsparcie techniczne</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. WYCENA JAKO DOŚWIADCZENIE PREMIUM -->
+        <section id="pricing" class="py-20 md:py-32 bg-[#0a0a0a] perspective">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal-up">Inwestycja w <span class="text-[#00f2ea]">Doskonałość</span></h2>
+                <div class="bg-[#141414] rounded-xl shadow-2xl p-8 md:p-12 overflow-x-auto reveal-scale">
+                    <table class="w-full min-w-[700px] text-left">
+                        <thead>
+                            <tr class="border-b-2 border-[#00f2ea]">
+                                <th class="py-4 px-6 text-lg font-semibold text-white">Element/Moduł</th>
+                                <th class="py-4 px-6 text-lg font-semibold text-white text-center">Szacowany Czas (h)</th>
+                                <th class="py-4 px-6 text-lg font-semibold text-white text-right">Koszt Netto (PLN)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- EDITABLE CONTENT: Wiersze tabeli wyceny -->
+                            <tr class="pricing-row border-b border-gray-700 hover:bg-[#1f1f1f] transition-colors duration-200">
+                                <td class="py-5 px-6 text-gray-300">Faza 1: Planowanie i Projektowanie UX/UI</td>
+                                <td class="py-5 px-6 text-gray-300 text-center">120 - 160</td>
+                                <td class="py-5 px-6 text-[#00f2ea] font-semibold text-right">24 000 - 32 000</td>
+                            </tr>
+                            <tr class="pricing-row border-b border-gray-700 hover:bg-[#1f1f1f] transition-colors duration-200">
+                                <td class="py-5 px-6 text-gray-300">Faza 2: Development Frontend</td>
+                                <td class="py-5 px-6 text-gray-300 text-center">200 - 280</td>
+                                <td class="py-5 px-6 text-[#00f2ea] font-semibold text-right">40 000 - 56 000</td>
+                            </tr>
+                            <tr class="pricing-row border-b border-gray-700 hover:bg-[#1f1f1f] transition-colors duration-200">
+                                <td class="py-5 px-6 text-gray-300">Faza 2: Development Backend i Baza Danych</td>
+                                <td class="py-5 px-6 text-gray-300 text-center">240 - 320</td>
+                                <td class="py-5 px-6 text-[#00f2ea] font-semibold text-right">48 000 - 64 000</td>
+                            </tr>
+                             <tr class="pricing-row border-b border-gray-700 hover:bg-[#1f1f1f] transition-colors duration-200">
+                                <td class="py-5 px-6 text-gray-300">Faza 3: Testowanie i Wdrożenie</td>
+                                <td class="py-5 px-6 text-gray-300 text-center">80 - 120</td>
+                                <td class="py-5 px-6 text-[#00f2ea] font-semibold text-right">16 000 - 24 000</td>
+                            </tr>
+                            <tr class="pricing-row border-b-2 border-[#00f2ea] hover:bg-[#1f1f1f] transition-colors duration-200">
+                                <td class="py-5 px-6 text-white font-bold text-lg">Suma Całkowita (szacunkowa)</td>
+                                <td class="py-5 px-6 text-white font-bold text-lg text-center">640 - 880</td>
+                                <td class="py-5 px-6 text-[#00f2ea] font-bold text-xl text-right">128 000 - 176 000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- WOW: Animation/Interaction Hint: Wiersze mogą się podświetlać, wartości mogą animować się przy pojawieniu się tabeli -->
+                    <p class="text-sm text-gray-500 mt-6 text-right">
+                        <!-- EDITABLE CONTENT: Dodatkowe informacje o wycenie -->
+                        Powyższa wycena jest szacunkowa. Ostateczny koszt zostanie ustalony po szczegółowej analizie wymagań. Stawka godzinowa: 200 PLN netto.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PORÓWNANIE PAKIETÓW Z ZAAWANSOWANĄ INTERAKCJĄ (Opcjonalnie, jeśli dotyczy) -->
+        <!-- Jeśli nie ma pakietów, można tę sekcję pominąć lub zaadaptować -->
+        <section id="packages" class="py-20 md:py-32 bg-[#0f0f0f] perspective">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal-up">Wybierz Swój <span class="text-[#00f2ea]">Pakiet</span> (Przykład)</h2>
+                <div class="grid md:grid-cols-3 gap-8 transform-style-3d">
+                    <!-- PAKIET STANDARD -->
+                    <div class="package-card p-8 bg-[#1a1a2e] rounded-xl shadow-xl border-2 border-transparent hover:border-[#00f2ea] transition-all duration-300 depth-card reveal-left interactive-hover">
+                        <h3 class="text-3xl font-semibold text-white mb-2">Standard</h3>
+                        <p class="text-[#00f2ea] text-4xl font-bold mb-6">128 000 <span class="text-lg font-normal">PLN</span></p>
+                        <ul class="space-y-3 mb-8">
+                            <!-- EDITABLE CONTENT: Funkcje pakietu -->
+                            <li class="flex items-center text-gray-300"><svg class="w-5 h-5 text-green-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Podstawowe funkcjonalności</li>
+                            <li class="flex items-center text-gray-300"><svg class="w-5 h-5 text-green-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Projekt UX/UI</li>
+                            <li class="flex items-center text-gray-400"><svg class="w-5 h-5 text-red-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> Moduł AI</li>
+                        </ul>
+                        <button class="w-full premium-button border-2 border-[#00f2ea] text-[#00f2ea] font-semibold py-3 px-6 rounded-lg hover:text-gray-900 transition-colors duration-300">Wybierz Standard</button>
+                    </div>
+                    <!-- PAKIET PREMIUM (REKOMENDOWANY) -->
+                    <div class="package-card p-8 bg-[#00f2ea] text-gray-900 rounded-xl shadow-2xl border-2 border-[#00f2ea] relative depth-card reveal-scale interactive-hover" style="transform: scale(1.05);">
+                        <div class="absolute top-0 right-0 bg-[#ff007f] text-white text-xs font-semibold px-3 py-1 rounded-bl-lg rounded-tr-lg">REKOMENDOWANY</div>
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-2">Premium</h3>
+                        <p class="text-gray-800 text-4xl font-bold mb-6">176 000 <span class="text-lg font-normal">PLN</span></p>
+                         <ul class="space-y-3 mb-8">
+                            <!-- EDITABLE CONTENT: Funkcje pakietu -->
+                            <li class="flex items-center text-gray-800"><svg class="w-5 h-5 text-green-700 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Wszystko ze Standard</li>
+                            <li class="flex items-center text-gray-800"><svg class="w-5 h-5 text-green-700 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Moduł AI</li>
+                            <li class="flex items-center text-gray-800"><svg class="w-5 h-5 text-green-700 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Rozszerzone wsparcie</li>
+                        </ul>
+                        <button class="w-full premium-button bg-gray-900 text-[#00f2ea] font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 hover:text-white transition-colors duration-300">Wybierz Premium</button>
+                    </div>
+                     <!-- PAKIET ENTERPRISE -->
+                    <div class="package-card p-8 bg-[#1a1a2e] rounded-xl shadow-xl border-2 border-transparent hover:border-[#00f2ea] transition-all duration-300 depth-card reveal-right interactive-hover">
+                        <h3 class="text-3xl font-semibold text-white mb-2">Enterprise</h3>
+                        <p class="text-[#00f2ea] text-4xl font-bold mb-6">Kontakt</p>
+                         <ul class="space-y-3 mb-8">
+                            <!-- EDITABLE CONTENT: Funkcje pakietu -->
+                            <li class="flex items-center text-gray-300"><svg class="w-5 h-5 text-green-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Wszystko z Premium</li>
+                            <li class="flex items-center text-gray-300"><svg class="w-5 h-5 text-green-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Dedykowany zespół</li>
+                            <li class="flex items-center text-gray-300"><svg class="w-5 h-5 text-green-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> SLA na najwyższym poziomie</li>
+                        </ul>
+                        <button class="w-full premium-button border-2 border-[#00f2ea] text-[#00f2ea] font-semibold py-3 px-6 rounded-lg hover:text-gray-900 transition-colors duration-300">Skontaktuj się</button>
+                    </div>
+                </div>
+                <!-- WOW: Animation/Interaction Hint: Karty pakietów mogą mieć efekt "flip" lub bardziej zaawansowane animacje przejścia przy wyborze/hover. Rekomendowany pakiet jest domyślnie wyróżniony. -->
+            </div>
+        </section>
+
+        <!-- 7. HARMONOGRAM ZE SPEKTAKULARNĄ OSIĄ CZASU -->
+        <section id="timeline" class="py-20 md:py-32 bg-[#0a0a0a] perspective">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 reveal-up">Przewidywany <span class="text-[#00f2ea]">Harmonogram</span></h2>
+                <div class="relative max-w-3xl mx-auto">
+                    <!-- Linia osi czasu -->
+                    <div class="absolute top-0 h-full w-1 bg-[#00f2ea] left-1/2 transform -translate-x-1/2 timeline-line"></div>
+                    
+                    <!-- Kamienie milowe -->
+                    <!-- EDITABLE CONTENT: Zmień daty, tytuły i opisy kamieni milowych -->
+                    <div class="timeline-item mb-16 flex reveal-up">
+                        <div class="timeline-content w-1/2 pr-8 text-right">
+                            <p class="text-sm text-gray-400">Tydzień 1-2</p>
+                            <h3 class="text-xl font-semibold text-white mb-2">Start Projektu i Warsztaty</h3>
+                            <p class="text-gray-300">Inicjacja projektu, szczegółowe omówienie wymagań, warsztaty strategiczne.</p>
+                        </div>
+                        <div class="timeline-marker w-1/2 pl-8 relative">
+                            <div class="absolute -left-4 top-0 w-8 h-8 bg-[#00f2ea] rounded-full border-4 border-[#0a0a0a] shadow-md"></div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item mb-16 flex reveal-up">
+                         <div class="timeline-marker w-1/2 pr-8 relative text-right">
+                            <div class="absolute -right-4 top-0 w-8 h-8 bg-[#00f2ea] rounded-full border-4 border-[#0a0a0a] shadow-md"></div>
+                        </div>
+                        <div class="timeline-content w-1/2 pl-8 text-left">
+                            <p class="text-sm text-gray-400">Tydzień 3-6</p>
+                            <h3 class="text-xl font-semibold text-white mb-2">Projektowanie UX/UI</h3>
+                            <p class="text-gray-300">Tworzenie makiet, prototypów i finalnego projektu graficznego.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item mb-16 flex reveal-up">
+                        <div class="timeline-content w-1/2 pr-8 text-right">
+                            <p class="text-sm text-gray-400">Tydzień 7-16</p>
+                            <h3 class="text-xl font-semibold text-white mb-2">Development (Sprinty)</h3>
+                            <p class="text-gray-300">Iteracyjna praca nad modułami frontend i backend zgodnie z metodyką Agile.</p>
+                        </div>
+                         <div class="timeline-marker w-1/2 pl-8 relative">
+                            <div class="absolute -left-4 top-0 w-8 h-8 bg-[#00f2ea] rounded-full border-4 border-[#0a0a0a] shadow-md"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item mb-16 flex reveal-up">
+                         <div class="timeline-marker w-1/2 pr-8 relative text-right">
+                            <div class="absolute -right-4 top-0 w-8 h-8 bg-[#00f2ea] rounded-full border-4 border-[#0a0a0a] shadow-md"></div>
+                        </div>
+                        <div class="timeline-content w-1/2 pl-8 text-left">
+                            <p class="text-sm text-gray-400">Tydzień 17-18</p>
+                            <h3 class="text-xl font-semibold text-white mb-2">Testowanie i QA</h3>
+                            <p class="text-gray-300">Kompleksowe testy wewnętrzne i UAT z klientem.</p>
+                        </div>
+                    </div>
+
+                     <div class="timeline-item flex reveal-up">
+                        <div class="timeline-content w-1/2 pr-8 text-right">
+                            <p class="text-sm text-gray-400">Tydzień 19</p>
+                            <h3 class="text-xl font-semibold text-white mb-2">Wdrożenie i Start</h3>
+                            <p class="text-gray-300">Finalne wdrożenie na środowisko produkcyjne i uruchomienie projektu.</p>
+                        </div>
+                         <div class="timeline-marker w-1/2 pl-8 relative">
+                            <div class="absolute -left-4 top-0 w-8 h-8 bg-[#00f2ea] rounded-full border-4 border-[#0a0a0a] shadow-md"></div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- WOW: Animation/Interaction Hint: Linia osi czasu może "rysować" się podczas scrollowania. Kamienie milowe mogą mieć efekt "pop-in" i podświetlać się na hover. -->
+            </div>
+        </section>
+
+        <!-- 8. SEKCJA ZAUFANIA I REFERENCJI -->
+        <section id="testimonials" class="py-20 md:py-32 bg-[#0f0f0f] perspective">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal-up">Zaufali <span class="text-[#00f2ea]">Nam</span></h2>
+                <!-- Karuzela referencji (uproszczona - do rozbudowy) -->
+                <div class="testimonial-carousel relative max-w-3xl mx-auto bg-[#1a1a2e] p-10 rounded-xl shadow-2xl reveal-scale">
+                    <div class="testimonial-slide active">
+                        <img src="https://via.placeholder.com/80/FFFFFF/0a0a0a?text=Foto" alt="Zdjęcie Klienta" class="w-20 h-20 rounded-full mx-auto mb-6 border-2 border-[#00f2ea]">
+                        <p class="text-lg text-gray-300 italic text-center mb-4">
+                            <!-- EDITABLE CONTENT: Cytat od klienta -->
+                            "Współpraca z [Twoja Firma] to czysta przyjemność. Profesjonalizm, terminowość i innowacyjne podejście na każdym etapie projektu. Efekt końcowy przerósł nasze oczekiwania!"
+                        </p>
+                        <p class="text-center text-[#00f2ea] font-semibold">Anna Kowalska</p>
+                        <p class="text-center text-gray-500 text-sm">CEO, Firma Klienta X</p>
+                    </div>
+                    <div class="testimonial-slide hidden">
+                        <img src="https://via.placeholder.com/80/FFFFFF/0a0a0a?text=Foto" alt="Zdjęcie Klienta" class="w-20 h-20 rounded-full mx-auto mb-6 border-2 border-[#00f2ea]">
+                        <p class="text-lg text-gray-300 italic text-center mb-4">
+                            <!-- EDITABLE CONTENT: Cytat od klienta -->
+                            "Niesamowita dbałość o detale i zrozumienie naszych potrzeb biznesowych. Polecam każdemu, kto szuka partnera technologicznego na najwyższym poziomie."
+                        </p>
+                        <p class="text-center text-[#00f2ea] font-semibold">Piotr Nowak</p>
+                        <p class="text-center text-gray-500 text-sm">CTO, Startup Y</p>
+                    </div>
+                    <!-- Przyciski nawigacyjne karuzeli -->
+                    <button class="carousel-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-700 hover:bg-[#00f2ea] text-white p-2 rounded-full transition-colors duration-300 interactive-hover">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                     <button class="carousel-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-700 hover:bg-[#00f2ea] text-white p-2 rounded-full transition-colors duration-300 interactive-hover">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+                <!-- Animowane logotypy klientów -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-10 md:gap-16">
+                    <!-- EDITABLE CONTENT: Dodaj logotypy klientów -->
+                    <img src="https://via.placeholder.com/120x60/FFFFFF/0a0a0a?text=Klient+1" alt="Logo Klienta 1" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity duration-300 reveal-scale interactive-hover" data-gsap-delay="0.1">
+                    <img src="https://via.placeholder.com/120x60/FFFFFF/0a0a0a?text=Klient+2" alt="Logo Klienta 2" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity duration-300 reveal-scale interactive-hover" data-gsap-delay="0.2">
+                    <img src="https://via.placeholder.com/120x60/FFFFFF/0a0a0a?text=Klient+3" alt="Logo Klienta 3" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity duration-300 reveal-scale interactive-hover" data-gsap-delay="0.3">
+                    <img src="https://via.placeholder.com/120x60/FFFFFF/0a0a0a?text=Klient+4" alt="Logo Klienta 4" class="h-10 md:h-12 opacity-70 hover:opacity-100 transition-opacity duration-300 reveal-scale interactive-hover" data-gsap-delay="0.4">
+                </div>
+                <!-- WOW: Animation/Interaction Hint: Karuzela z płynnymi przejściami (np. fade, slide). Logotypy mogą mieć subtelny efekt "float" lub skalowania na hover. -->
+            </div>
+        </section>
+
+        <!-- 9. CALL TO ACTION Z EFEKTEM PREMIUM -->
+        <section id="contact" class="py-20 md:py-32 bg-gradient-to-br from-[#00f2ea] to-[#ff007f] perspective">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 reveal-up">Gotowy na <span class="text-white">Przełom?</span></h2>
+                <p class="text-xl text-gray-800 mb-12 max-w-2xl mx-auto reveal-up" data-gsap-delay="0.1">
+                    <!-- EDITABLE CONTENT: Tekst zachęcający do kontaktu -->
+                    Porozmawiajmy o tym, jak możemy wspólnie zrealizować Twoją wizję i wynieść Twój biznes na nowy poziom.
+                </p>
+                <div class="reveal-up" data-gsap-delay="0.2">
+                    <a href="mailto:kontakt@twojafirma.pl?subject=Zapytanie%20o%20projekt%20dla%20[Nazwa Klienta]"
+                       class="premium-button breathing-button inline-block bg-gray-900 text-[#00f2ea] font-semibold py-4 px-12 rounded-lg text-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 interactive-hover">
+                        Skontaktuj się z Nami
+                    </a>
+                    <p class="mt-6 text-gray-800">lub zadzwoń: <a href="tel:+48123456789" class="font-semibold hover:underline">+48 123 456 789</a></p>
+                </div>
+                <!-- Efektowne zakończenie strony z animacją -->
+                <!-- WOW: Animation/Interaction Hint: Przyciski CTA z zaawansowanymi efektami hover. Sekcja może mieć animowane tło lub elementy dekoracyjne. -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 bg-[#0a0a0a] border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>© <span id="currentYear"></span> [Nazwa Twojej Firmy]. Wszelkie prawa zastrzeżone.</p>
+            <p class="text-sm">Stworzone z pasją dla [Nazwa Klienta]</p>
+            <!-- EDITABLE CONTENT: Możesz dodać linki do polityki prywatności, mediów społecznościowych itp. -->
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- PRELOADER ---
+        const preloader = document.querySelector('.preloader');
+        const body = document.querySelector('body');
+
+        window.addEventListener('load', () => {
+            gsap.to(preloader, {
+                opacity: 0,
+                duration: 0.8,
+                delay: 1, // Minimalny czas wyświetlania preloader'a
+                onComplete: () => {
+                    preloader.style.display = 'none';
+                    body.style.overflowY = 'auto'; // Umożliwienie scrollowania po załadowaniu
+                    
+                    // Inicjalizacja animacji strony po zniknięciu preloader'a
+                    initPageAnimations();
+                }
+            });
+        });
+        body.style.overflowY = 'hidden'; // Zablokowanie scrollowania na początku
+
+        function initPageAnimations() {
+            // --- NIESTANDARDOWY KURSOR ---
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                gsap.to(cursorDot, { duration: 0.1, x: posX, y: posY });
+                gsap.to(cursorOutline, { duration: 0.3, x: posX, y: posY });
+            });
+
+            // --- ANIMACJE WEJŚCIA (REVEAL) ---
+            const revealElements = gsap.utils.toArray('.reveal-up, .reveal-left, .reveal-right, .reveal-scale');
+            revealElements.forEach(el => {
+                let direction = { y: 50, x: 0, scale: 1 }; // Domyślnie dla reveal-up
+                if (el.classList.contains('reveal-left')) direction = { x: -50, y: 0 };
+                if (el.classList.contains('reveal-right')) direction = { x: 50, y: 0 };
+                if (el.classList.contains('reveal-scale')) direction = { scale: 0.8, y:0 };
+
+                gsap.fromTo(el,
+                    { opacity: 0, ...direction },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        x: 0,
+                        scale: 1,
+                        duration: 0.8,
+                        delay: parseFloat(el.dataset.gsapDelay) || 0,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 85%', // Kiedy dół elementu jest 85% od góry viewportu
+                            toggleActions: 'play none none none',
+                            // markers: true, // Do debugowania
+                        }
+                    }
+                );
+            });
+
+            // --- ANIMACJA NAGŁÓWKA HERO ---
+            gsap.from(".hero-headline-word", {
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                ease: "power4.out",
+                stagger: 0.2,
+                delay: 1.5 // Po preloaderze
+            });
+            gsap.from(".hero-subheadline", {
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out",
+                delay: 2 // Po preloaderze i nagłówku
+            });
+
+
+            // --- STICKY HEADER ---
+            const header = document.querySelector('header');
+            ScrollTrigger.create({
+                start: "top -70", // Kiedy scroll przekroczy 70px
+                toggleClass: { className: "scrolled", targets: header },
+                // markers: true
+            });
+
+            // --- PARALLAX EFFECT ---
+            gsap.utils.toArray(".parallax-element").forEach(layer => {
+                const speed = layer.dataset.parallaxSpeed || 1;
+                gsap.to(layer, {
+                    yPercent: speed * 20, // Mnożnik dla efektu
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: layer.closest('section'), // Trigger na całą sekcję
+                        scrub: true
+                    }
+                });
+            });
+            
+            // --- ANIMACJA LINII OSI CZASU ---
+            const timelineLine = document.querySelector('.timeline-line');
+            if (timelineLine) {
+                 gsap.fromTo(timelineLine, 
+                    { scaleY: 0, transformOrigin: "top center" }, 
+                    { 
+                        scaleY: 1, 
+                        duration: 1.5, 
+                        ease: "power2.inOut",
+                        scrollTrigger: {
+                            trigger: "#timeline",
+                            start: "top 50%",
+                            end: "bottom 80%",
+                            scrub: 1, // Płynne rysowanie podczas scrollowania
+                        }
+                    }
+                );
+            }
+            // Kamienie milowe na osi czasu - dostosowanie animacji dla naprzemiennych
+            document.querySelectorAll('.timeline-item').forEach((item, index) => {
+                const content = item.querySelector('.timeline-content');
+                const marker = item.querySelector('.timeline-marker div'); // Celujemy w kropkę
+                let originX = -50;
+                if (index % 2 !== 0) { // Dla elementów po prawej stronie osi
+                    originX = 50;
+                }
+
+                gsap.from([content, marker], {
+                    opacity: 0,
+                    x: originX,
+                    duration: 0.8,
+                    stagger: 0.1, // Lekkie opóźnienie między kropką a treścią
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none',
+                    }
+                });
+            });
+
+
+            // --- ACCORDION (ROZWIJANE SEKCJE) ---
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                const icon = header.querySelector('.accordion-icon');
+
+                gsap.set(content, { maxHeight: 0, opacity: 0 }); // Ustawienie początkowe
+
+                header.addEventListener('click', () => {
+                    const isOpen = content.classList.toggle('open');
+                    
+                    gsap.to(content, {
+                        duration: 0.5,
+                        maxHeight: isOpen ? content.scrollHeight : 0,
+                        opacity: isOpen ? 1 : 0,
+                        ease: 'power2.inOut'
+                    });
+                    gsap.to(icon, {
+                        duration: 0.3,
+                        rotate: isOpen ? 180 : 0,
+                        ease: 'power1.inOut'
+                    });
+
+                    // Zamknij inne otwarte akordeony
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.querySelector('.accordion-content').classList.contains('open')) {
+                            const otherContent = otherItem.querySelector('.accordion-content');
+                            const otherIcon = otherItem.querySelector('.accordion-icon');
+                            otherContent.classList.remove('open');
+                            gsap.to(otherContent, { duration: 0.5, maxHeight: 0, opacity: 0, ease: 'power2.inOut' });
+                            gsap.to(otherIcon, { duration: 0.3, rotate: 0, ease: 'power1.inOut' });
+                        }
+                    });
+                });
+            });
+
+            // --- KARUZELA REFERENCJI (PROSTA) ---
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const prevButton = document.querySelector('.carousel-prev');
+            const nextButton = document.querySelector('.carousel-next');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    gsap.to(slide, { 
+                        opacity: i === index ? 1 : 0, 
+                        display: i === index ? 'block' : 'none',
+                        duration: 0.5,
+                        ease: 'power2.inOut'
+                    });
+                });
+            }
+
+            if (slides.length > 0) {
+                showSlide(currentSlide); // Pokaż pierwszy slajd na starcie
+
+                if (nextButton) {
+                    nextButton.addEventListener('click', () => {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        showSlide(currentSlide);
+                    });
+                }
+                if (prevButton) {
+                    prevButton.addEventListener('click', () => {
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        showSlide(currentSlide);
+                    });
+                }
+            }
+            
+
+            // --- PŁYNNE PRZEWIJANIE DO SEKCJI ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        gsap.to(window, {
+                            duration: 1.2,
+                            scrollTo: { y: targetElement, offsetY: 50 }, // offsetY dla headera
+                            ease: "power3.inOut"
+                        });
+                        // Opcjonalnie: aktywne linki nawigacji
+                        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // --- ANIMACJA TŁA HERO (SUBTELNE CZĄSTECZKI CSS - BARDZO UPROSZCZONE) ---
+            // Bardziej zaawansowane wymagałoby biblioteki jak particles.js
+            // Ta sekcja jest placeholderem dla bardziej złożonego efektu
+            const heroParticlesContainer = document.getElementById('hero-particles');
+            if (heroParticlesContainer) {
+                for (let i = 0; i < 20; i++) { // Stwórz 20 cząsteczek
+                    const particle = document.createElement('div');
+                    particle.style.position = 'absolute';
+                    particle.style.width = `${Math.random() * 3 + 1}px`; // Rozmiar 1-4px
+                    particle.style.height = particle.style.width;
+                    particle.style.backgroundColor = '#00f2ea';
+                    particle.style.borderRadius = '50%';
+                    particle.style.opacity = `${Math.random() * 0.5 + 0.1}`; // Opacity 0.1-0.6
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    
+                    // Prosta animacja ruchu
+                    gsap.to(particle, {
+                        x: (Math.random() - 0.5) * 200, // Ruch w osi X
+                        y: (Math.random() - 0.5) * 200, // Ruch w osi Y
+                        opacity: 0,
+                        duration: Math.random() * 10 + 10, // Czas trwania 10-20s
+                        repeat: -1, // Nieskończona pętla
+                        yoyo: true, // Powrót
+                        ease: "sine.inOut",
+                        delay: Math.random() * 5
+                    });
+                    heroParticlesContainer.appendChild(particle);
+                }
+            }
+
+            // --- AKTUALNY ROK W STOPCE ---
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        } // Koniec funkcji initPageAnimations
+
+    </script>
+</body>
+</html>

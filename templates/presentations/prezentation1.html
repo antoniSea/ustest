@@ -1,0 +1,2267 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Wycena Projektu Premium</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,line-clamp"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script> <!-- Potrzebne do scrollTo -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #0A0F1F; /* Głęboki granat/czerń jako bazowe tło */
+            color: #E0E0E0; /* Jasny szary dla tekstu */
+            overflow-x: hidden; /* Zapobiega poziomemu scrollowi */
+        }
+
+        /* Custom Scrollbar (Subtelny) */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1A2036; }
+        ::-webkit-scrollbar-thumb { background: #4A5568; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #718096; }
+
+        /* Preloader styles */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #0A0F1F; z-index: 9999; display: flex;
+            justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        #preloader.hidden { 
+            opacity: 0; 
+            visibility: hidden; 
+            display: none;
+        }
+        .loader-bar {
+            width: 0; height: 4px; background-color: #38BDF8;
+            position: absolute; bottom: 40%; left: 50%;
+            transform: translateX(-50%); border-radius: 2px;
+        }
+        .loader-text { color: #E0E0E0; font-size: 1.25rem; opacity: 0; }
+
+        /* Hide main content until loaded */
+        main, header, footer {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        main.loaded, header.loaded, footer.loaded {
+            opacity: 1;
+        }
+
+        /* Klasy pomocnicze do animacji (używane z GSAP) */
+        .reveal-up { opacity: 0; transform: translateY(50px); }
+        .reveal-fade { opacity: 0; }
+        .reveal-scale { opacity: 0; transform: scale(0.9); }
+
+        /* Efekt "breathing" dla niektórych elementów */
+        .breathing-glow { animation: breathingGlow 4s ease-in-out infinite; }
+        @keyframes breathingGlow {
+            0%, 100% { box-shadow: 0 0 15px 0px rgba(56, 189, 248, 0.3); }
+            50% { box-shadow: 0 0 30px 5px rgba(56, 189, 248, 0.5); }
+        }
+
+        /* Animowane podkreślenie dla linków nawigacji */
+        .nav-link-underline::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -4px; left: 50%; transform: translateX(-50%);
+            background-color: #38BDF8; transition: width 0.3s ease-in-out;
+        }
+        .nav-link-underline:hover::after,
+        .nav-link-underline.active::after { width: 100%; }
+        
+        /* Custom cursor follower */
+        #cursor-follower {
+            position: fixed; width: 10px; height: 10px;
+            background-color: rgba(56, 189, 248, 0.7);
+            border-radius: 50%; pointer-events: none; z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out;
+        }
+        #cursor-follower.hovered {
+            width: 30px; height: 30px; background-color: rgba(56, 189, 248, 0.3);
+        }
+        
+        /* Styl dla aktywnej zakładki/pakietu */
+        .package-tab.active {
+            background-color: #38BDF8; color: #0A0F1F;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+        
+        /* Styl dla "included" / "not included" w pakietach */
+        .feature-icon.included { color: #34D399; }
+        .feature-icon.not-included { color: #F87171; }
+
+        /* Efekty specjalne dla przycisków */
+        .btn-premium {
+            position: relative; overflow: hidden;
+            transition: color 0.4s ease-out, transform 0.3s ease-out; z-index: 1;
+            cursor: pointer;
+        }
+        .btn-premium::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s ease-out; z-index: -1;
+        }
+        .btn-premium:hover::before { left: 100%; }
+        .btn-premium:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+        }
+        .btn-premium:active { transform: translateY(-1px) scale(0.98); }
+        
+        /* Fix for exit popup button */
+        #exitPopupCta {
+            position: relative;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+        #exitPopupCta * {
+            pointer-events: none;
+        }
+
+        /* Animowane gradientowe tło */
+        .animated-gradient-bg {
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a3a4a);
+            background-size: 400% 400%; animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Dla efektu 3D na kartach/sekcjach */
+        .perspective-card {
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .perspective-card:hover { transform: rotateY(5deg) rotateX(3deg) scale(1.03); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader-text">Ładowanie Doświadczenia...</div>
+        <div class="loader-bar"></div>
+    </div>
+
+    <!-- Kursor podążający za myszką -->
+    <div id="cursor-follower"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <div>
+                    <a href="#" id="headerLogo" class="text-2xl font-bold text-white hover:text-cyan-400 transition-colors duration-300">
+                        <!-- Logo zostanie wstrzyknięte przez JS -->
+                    </a>
+                </div>
+                <div id="desktopNavLinks" class="hidden md:flex space-x-6 lg:space-x-10 items-center">
+                    <!-- Linki nawigacji desktop zostaną wstrzyknięte przez JS -->
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-cyan-400 focus:outline-none">
+                        <!-- Ikona SVG dla przycisku menu mobilnego zostanie wstrzyknięta przez JS -->
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 bg-opacity-90 backdrop-blur-md">
+            <!-- Linki nawigacji mobilnej zostaną wstrzyknięte przez JS -->
+        </div>
+        
+    </header>
+
+    <main>
+        <!-- SECTION: Hero -->
+        <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden animated-gradient-bg pt-20">
+            <div id="hero-particles" class="absolute inset-0 z-0"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="hero-content-wrapper">
+                    <div class="mb-8" data-hero-reveal="client-logo">
+                        <img id="heroClientLogo" src="" alt="" class="mx-auto h-16 md:h-20 opacity-80 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 hero-title ">
+                        <span id="heroTitlePart1" class="block"></span>
+                        <span id="heroTitlePart2" class="block text-cyan-400"></span>
+                    </h1>
+                    <p id="heroSubtitle" class="text-lg md:text-xl lg:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto hero-subtitle" data-hero-reveal="subtitle"></p>
+                    <div data-hero-reveal="cta-button">
+                        <a id="heroCtaButton" href="https://softsynergy.youcanbook.me/" class="btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-4 px-10 text-lg rounded-lg shadow-xl inline-block group">
+                            <span id="heroCtaButtonText"></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="absolute bottom-10 left-10 w-20 h-20 border-2 border-cyan-500 rounded-full opacity-20 animate-pulse hidden lg:block reveal-fade" data-delay="0.8"></div>
+                <div class="absolute top-1/4 right-10 w-16 h-16 bg-cyan-600 opacity-10 rounded-lg transform rotate-45 animate-ping-slow hidden lg:block reveal-fade" data-delay="0.9"></div>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0A0F1F] to-transparent z-5"></div>
+        </section>
+
+        <!-- SECTION: Zrozumienie Biznesu Klienta -->
+        <section id="understanding" class="py-20 md:py-32 bg-[#0A0F1F] relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 md:mb-24">
+                    <h2 id="understandingSectionTitle" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 reveal-up"></h2>
+                    <p id="understandingSectionSubtitle" class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto reveal-up" data-delay="0.2"></p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start"> <!-- Changed items-center to items-start -->
+                    <div class="reveal-up perspective-card" data-delay="0.3">
+                        <h3 id="problemTitle" class="text-2xl md:text-3xl font-semibold text-white mb-6"></h3>
+                        <p id="problemDescription" class="text-gray-400 mb-4 leading-relaxed"></p>
+                        <ul id="problemPoints" class="list-disc list-inside text-gray-400 space-y-2 pl-2"></ul>
+                        <div class="mt-8 p-6 bg-gray-800 rounded-xl shadow-2xl border border-gray-700 hover:border-cyan-500 transition-all duration-300">
+                            <p id="problemDiagramPlaceholder" class="text-center text-gray-300 italic mb-4"></p> <!-- Added mb-4 -->
+                            <div id="problemDiagramContainer" class="h-48 flex items-center justify-center relative">
+                                <!-- Diagram will be injected here by JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up perspective-card" data-delay="0.5">
+                         <h3 id="solutionTitle" class="text-2xl md:text-3xl font-semibold text-white mb-6"></h3>
+                        <p id="solutionDescription" class="text-gray-400 mb-4 leading-relaxed"></p>
+                        <ul id="solutionPoints" class="list-disc list-inside text-gray-400 space-y-2 pl-2"></ul>
+                        <div class="mt-8 p-6 bg-gray-800 rounded-xl shadow-2xl border border-gray-700 hover:border-cyan-500 transition-all duration-300">
+                            <p id="solutionDiagramPlaceholder" class="text-center text-gray-300 italic mb-4"></p> <!-- Added mb-4 -->
+                             <div id="solutionDiagramContainer" class="h-48 flex items-center justify-center relative">
+                                <!-- Diagram will be injected here by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-[-1]">
+                <div class="parallax-bg-element absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-cyan-700 opacity-10 rounded-full blur-3xl" data-depth="0.2"></div>
+                <div class="parallax-bg-element absolute -top-1/4 -left-1/4 w-2/5 h-2/5 bg-purple-700 opacity-10 rounded-full blur-3xl" data-depth="0.3"></div>
+            </div>
+        </section>
+
+        <!-- SECTION: Zaawansowana Prezentacja Rozwiązania -->
+        <section id="solution" class="py-20 md:py-32 bg-gray-900 bg-opacity-50 backdrop-blur-lg relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 md:mb-24">
+                    <h2 id="solutionFeaturesSectionTitle" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 reveal-up"></h2>
+                    <p id="solutionFeaturesSectionSubtitle" class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto reveal-up" data-delay="0.2"></p>
+                </div>
+                <div id="solutionFeaturesContainer" class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+                    <!-- Karty funkcji zostaną wstrzyknięte przez JS -->
+                </div>
+            </div>
+        </section>
+        <template id="featureCardTemplate">
+            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700 hover:border-cyan-500 transition-all duration-300 transform hover:-translate-y-2 reveal-up perspective-card">
+                <div class="text-cyan-400 mb-6 feature-icon-placeholder">
+                    <!-- SVG zostanie wstrzyknięte tutaj -->
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white mb-3 feature-title"></h3>
+                <p class="text-gray-400 text-sm leading-relaxed feature-description"></p>
+                <div class="mt-6 h-48 bg-gray-700 rounded-lg flex items-center justify-center text-gray-500 italic hover:bg-gray-600 transition-colors feature-mockup-text hidden">
+                </div>
+            </div>
+        </template>
+
+        <!-- SECTION: Dopracowany Zakres Prac -->
+        <section id="scope" class="py-20 md:py-32 bg-[#0A0F1F]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 md:mb-24">
+                    <h2 id="scopeSectionTitle" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 reveal-up"></h2>
+                    <p id="scopeSectionSubtitle" class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto reveal-up" data-delay="0.2"></p>
+                </div>
+                <div id="scopeAccordionContainer" class="space-y-6 max-w-4xl mx-auto">
+                    <!-- Elementy akordeonu zostaną wstrzyknięte przez JS -->
+                </div>
+            </div>
+        </section>
+        <template id="accordionItemTemplate">
+            <div class="accordion-item bg-gray-800 rounded-lg shadow-lg overflow-hidden reveal-up">
+                <button class="accordion-header w-full flex justify-between items-center p-6 text-left hover:bg-gray-700 transition-colors duration-300">
+                    <span class="text-xl font-semibold text-white accordion-title"></span>
+                    <svg class="w-6 h-6 text-cyan-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="p-6 border-t border-gray-700">
+                        <p class="text-gray-400 mb-4 accordion-description"></p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 pl-4 accordion-features-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- SECTION: Wycena Jako Doświadczenie Premium & Porównanie Pakietów -->
+        <section id="pricing" class="py-20 md:py-32 bg-gray-900 bg-opacity-50 backdrop-blur-lg relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 md:mb-24">
+                    <h2 id="pricingSectionTitle" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 reveal-up"></h2>
+                    <p id="pricingSectionSubtitle" class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto reveal-up" data-delay="0.2"></p>
+                </div>
+                <div id="pricingTabsContainer" class="flex justify-center space-x-2 md:space-x-4 mb-12 md:mb-16 reveal-up" data-delay="0.3">
+                    <!-- Zakładki zostaną wstrzyknięte przez JS -->
+                </div>
+                <div id="packages-container" class="relative">
+                    <!-- Szczegóły pakietów zostaną wstrzyknięte przez JS -->
+                </div>
+            </div>
+            <div class="absolute -top-20 -left-20 w-72 h-72 bg-purple-600 rounded-full opacity-10 blur-3xl animate-pulse-slow z-[-1]"></div>
+            <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-teal-600 rounded-full opacity-05 blur-3xl animate-pulse-slower z-[-1]"></div>
+        </section>
+        <template id="packageTabTemplate">
+            <button class="package-tab text-sm md:text-base font-semibold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none" data-package=""></button>
+        </template>
+        <template id="packageDetailsTemplate">
+            <div class="package-details" data-package-content=""> <!-- usunięto klasę 'hidden' -->
+                <div class="package-card-wrapper grid md:grid-cols-5 gap-0 bg-gray-800 rounded-xl shadow-2xl overflow-hidden border border-gray-700 perspective-card">
+                    <div class="md:col-span-3 p-8 md:p-12">
+                        <div class="package-header flex justify-between items-center mb-2">
+                            <h3 class="text-2xl md:text-3xl font-bold text-cyan-400 package-name"></h3>
+                            <span class="package-badge bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full" style="display:none;">Rekomendowany</span>
+                        </div>
+                        <p class="text-gray-400 mb-6 text-sm package-description"></p>
+                        <ul class="space-y-3 package-features-list">
+                            <!-- Cechy zostaną wstrzyknięte tutaj -->
+                        </ul>
+                    </div>
+                    <div class="package-price-cta md:col-span-2 bg-gray-700 bg-opacity-50 p-8 md:p-12 flex flex-col justify-center items-center text-center rounded-r-xl">
+                        <p class="text-gray-400 text-sm mb-1 package-price-note"></p>
+                        <div class="text-4xl md:text-5xl font-extrabold text-white mb-6 price-value package-price"></div>
+                        <a href="#contact" class="btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-3 px-8 rounded-lg shadow-lg w-full text-center package-cta-button"></a>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="packageFeatureItemTemplate">
+            <li class="flex items-center text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- Ścieżka zostanie wstrzyknięta tutaj -->
+                </svg>
+                <span class="feature-text"></span>
+            </li>
+        </template>
+
+        <!-- SECTION: Harmonogram ze Spektakularną Osią Czasu -->
+        <section id="timeline" class="py-20 md:py-32 bg-[#0A0F1F]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 md:mb-24">
+                    <h2 id="timelineSectionTitle" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 reveal-up"></h2>
+                    <p id="timelineSectionSubtitle" class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto reveal-up" data-delay="0.2"></p>
+                </div>
+                <div id="timelineItemsContainer" class="relative max-w-5xl mx-auto">
+                    <div class="timeline-line absolute left-1/2 top-0 bottom-0 w-1 bg-gray-700 transform -translate-x-1/2 hidden md:block"></div>
+                    <div class="timeline-progress absolute left-1/2 top-0 w-1 bg-cyan-500 transform -translate-x-1/2 hidden md:block" style="height: 0;"></div>
+                    <!-- Kamienie milowe zostaną wstrzyknięte przez JS -->
+                </div>
+            </div>
+        </section>
+        <template id="timelineItemTemplate">
+            <div class="timeline-item mb-12 md:mb-16 flex md:items-center w-full reveal-up">
+                <div class="timeline-marker hidden md:block absolute left-1/2 w-6 h-6 bg-gray-700 border-4 border-cyan-500 rounded-full transform -translate-x-1/2 -translate-y-0 z-10"></div>
+                <div class="timeline-content-wrapper md:w-1/2"> <!-- Klasy pr/pl i order zostaną dodane przez JS -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 hover:border-cyan-400 transition-colors duration-300 perspective-card">
+                        <p class="text-sm text-cyan-400 mb-1 font-semibold timeline-phase"></p>
+                        <h4 class="text-xl font-bold text-white mb-2 timeline-duration"></h4>
+                        <p class="text-gray-400 text-sm leading-relaxed timeline-description"></p>
+                    </div>
+                </div>
+                <div class="timeline-spacer hidden md:block md:w-1/2"></div> <!-- Klasy order zostaną dodane przez JS -->
+            </div>
+        </template>
+
+        <!-- SECTION: Zaufanie i Referencje -->
+        <section id="testimonials" class="py-20 md:py-32 bg-gray-900 bg-opacity-50 backdrop-blur-lg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 md:mb-24">
+                    <h2 id="testimonialSectionTitle" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 reveal-up"></h2>
+                    <p id="testimonialSectionSubtitle" class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto reveal-up" data-delay="0.2"></p>
+                </div>
+                <div class="relative max-w-3xl mx-auto reveal-up" data-delay="0.4">
+                    <div id="testimonial-carousel" class="overflow-hidden">
+                        <div class="testimonial-track flex transition-transform duration-500 ease-in-out">
+                            <!-- Slajdy referencji zostaną wstrzyknięte przez JS -->
+                        </div>
+                    </div>
+                    <button class="testimonial-prev absolute top-1/2 left-0 md:-left-10 transform -translate-y-1/2 p-3 bg-gray-700 hover:bg-cyan-500 rounded-full text-white transition-colors duration-300 shadow-lg z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button class="testimonial-next absolute top-1/2 right-0 md:-right-10 transform -translate-y-1/2 p-3 bg-gray-700 hover:bg-cyan-500 rounded-full text-white transition-colors duration-300 shadow-lg z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                </div>
+                <template id="testimonialSlideTemplate">
+                    <div class="testimonial-slide min-w-full p-2">
+                        <div class="bg-gray-800 p-8 md:p-10 rounded-xl shadow-2xl text-center border border-gray-700 perspective-card">
+                            <img src="" alt="" class="w-20 h-20 rounded-full mx-auto mb-6 border-2 border-cyan-500 testimonial-image">
+                            <p class="text-gray-300 italic text-lg mb-6 testimonial-quote"></p>
+                            <h5 class="text-white font-semibold text-xl testimonial-author-name"></h5>
+                            <p class="text-cyan-400 text-sm testimonial-author-title"></p>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- <div class="mt-16 md:mt-24 reveal-up" data-delay="0.6">
+                    <h3 id="clientsIntroText" class="text-center text-xl text-gray-400 mb-8"></h3>
+                    <div id="clientLogosContainer" class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+                        <!-- Logotypy klientów zostaną wstrzyknięte przez JS -->
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+        <!-- SECTION: Pobierz i Udostępnij Ofertę -->
+        <section id="share-download" class="py-20 md:py-32 bg-[#0A0F1F] relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 reveal-up">Twoja Spersonalizowana Oferta</h2>
+                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto reveal-up" data-delay="0.2">Zachowaj lub podziel się tą propozycją ze swoim zespołem</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                    <!-- PDF Download Card -->
+                    <div class="bg-gray-800 rounded-xl p-8 shadow-2xl border border-gray-700 hover:border-cyan-500 transition-all duration-300 reveal-up perspective-card" data-delay="0.3">
+                        <div class="text-center mb-6">
+                            <div class="inline-block p-4 bg-gray-700 rounded-full mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Pobierz Ofertę</h3>
+                            <p class="text-gray-400 mb-8">Zachowaj pełną wersję oferty w formacie PDF i przeglądaj ją w dowolnym momencie</p>
+                            
+                            <a href="#" id="downloadPdfBtn" class="btn-premium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-lg shadow-xl inline-flex items-center group">
+                                <span>Pobierz PDF</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Share Form Card -->
+                    <div class="bg-gray-800 rounded-xl p-8 shadow-2xl border border-gray-700 hover:border-cyan-500 transition-all duration-300 reveal-up perspective-card" data-delay="0.5">
+                        <div class="text-center mb-6">
+                            <div class="inline-block p-4 bg-gray-700 rounded-full mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Udostępnij Współpracownikowi</h3>
+                            <p class="text-gray-400 mb-6">Wyślij link do tej oferty bezpośrednio do osoby decyzyjnej w Twojej firmie</p>
+                            
+                            <form id="shareForm" class="text-left">
+                                <div class="mb-4">
+                                    <label for="colleagueName" class="block text-gray-300 mb-2">Imię i nazwisko</label>
+                                    <input type="text" id="colleagueName" class="w-full bg-gray-700 border border-gray-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Jan Kowalski">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="colleagueEmail" class="block text-gray-300 mb-2">Adres email</label>
+                                    <input type="email" id="colleagueEmail" class="w-full bg-gray-700 border border-gray-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="jan.kowalski@firma.pl" required>
+                                </div>
+                                <button type="submit" class="btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-3 px-6 rounded-lg shadow-lg w-full inline-flex items-center justify-center group">
+                                    <span>Wyślij</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </button>
+                            </form>
+                            <div id="shareSuccess" class="hidden mt-4 p-3 bg-green-500 bg-opacity-20 border border-green-500 rounded-lg text-green-400">
+                                Wysłano pomyślnie! Twój współpracownik otrzyma email z linkiem.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-[-1]">
+                <div class="parallax-bg-element absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-cyan-700 opacity-10 rounded-full blur-3xl" data-depth="0.2"></div>
+                <div class="parallax-bg-element absolute -top-1/4 -right-1/4 w-2/5 h-2/5 bg-purple-700 opacity-10 rounded-full blur-3xl" data-depth="0.3"></div>
+            </div>
+        </section>
+
+        <!-- SECTION: Newsletter Signup -->
+        <section id="newsletter" class="py-20 md:py-28 bg-gray-900 bg-opacity-50 backdrop-blur-lg relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto bg-gradient-to-r from-gray-800 to-gray-900 p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-700 relative z-10">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 reveal-up">Zapisz się na newsletter</h2>
+                        <p class="text-lg text-gray-300 max-w-2xl mx-auto reveal-up" data-delay="0.2">Otrzymuj regularne porady, case studies i trendy branżowe, które pomogą Twojemu biznesowi się rozwijać.</p>
+                    </div>
+                    
+                    <form id="newsletterForm" class="max-w-xl mx-auto reveal-up" data-delay="0.3">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-grow">
+                                <input type="email" id="newsletterEmail" class="w-full bg-gray-700 border border-gray-600 rounded-lg py-4 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Twój adres email" required>
+                            </div>
+                            <button type="submit" class="btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-4 px-8 rounded-lg shadow-xl inline-flex items-center justify-center group">
+                                <span>Zapisz się</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="mt-4 text-sm text-gray-400">
+                            <label class="flex items-start gap-2 cursor-pointer">
+                                <input type="checkbox" class="mt-1 text-cyan-500 focus:ring-cyan-500 rounded" required>
+                                <span>Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z <a href="#" class="text-cyan-400 hover:underline">polityką prywatności</a></span>
+                            </label>
+                        </div>
+                    </form>
+                    
+                    <div id="newsletterSuccess" class="hidden mt-6 p-4 bg-green-500 bg-opacity-20 border border-green-500 rounded-lg text-green-400 text-center max-w-xl mx-auto">
+                        Dziękujemy za zapisanie się do newslettera! Na Twój adres email wysłaliśmy wiadomość z potwierdzeniem.
+                    </div>
+                    
+                    <div class="flex justify-center items-center gap-8 mt-10 reveal-up" data-delay="0.4">
+                        <div class="text-center">
+                            <div class="text-cyan-400 font-bold text-3xl">2x</div>
+                            <div class="text-gray-400 text-sm">w miesiącu</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-cyan-400 font-bold text-3xl">0%</div>
+                            <div class="text-gray-400 text-sm">spamu</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-cyan-400 font-bold text-3xl">100%</div>
+                            <div class="text-gray-400 text-sm">wartości</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-cyan-600 rounded-full opacity-10 blur-3xl animate-pulse-slow z-[-1]"></div>
+            <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-purple-600 rounded-full opacity-05 blur-3xl animate-pulse-slower z-[-1]"></div>
+        </section>
+
+        <!-- Sticky CTA Button -->
+        <div id="stickyCta" class="fixed bottom-6 right-6 transform translate-y-32 opacity-0 transition-all duration-300 ease-in-out z-50">
+            <a href="https://softsynergy.youcanbook.me/" class="flex items-center bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-3 px-6 rounded-full shadow-2xl group">
+                <span class="mr-2">Umów spotkanie</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+
+        <!-- SECTION: Call to Action z Efektem Premium -->
+        <section id="contact" class="py-20 md:py-32 bg-[#0A0F1F] relative overflow-hidden">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="max-w-3xl mx-auto">
+                    <h2 id="contactSectionTitle" class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 reveal-up"></h2>
+                    <p id="contactSectionSubtitle" class="text-lg md:text-xl text-gray-300 mb-12 reveal-up" data-delay="0.2"></p>
+                    <div class="reveal-up" data-delay="0.4">
+                        <a id="contactCtaButton" href="" 
+                           class="btn-premium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-5 px-12 text-xl rounded-xl shadow-2xl inline-flex items-center group">
+                           <span><!-- Tekst przycisku z JS --></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-3 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-16 md:mt-24 grid md:grid-cols-3 gap-8 text-left">
+                    <div class="reveal-up" data-delay="0.5">
+                        <h4 class="text-xl font-semibold text-cyan-400 mb-2">Email</h4>
+                        <a id="contactEmail" href="" class="text-gray-300 hover:text-white transition-colors"></a>
+                    </div>
+                    <div class="reveal-up" data-delay="0.6">
+                        <h4 class="text-xl font-semibold text-cyan-400 mb-2">Telefon</h4>
+                        <a id="contactPhone" href="" class="text-gray-300 hover:text-white transition-colors"></a>
+                    </div>
+                    <div class="reveal-up" data-delay="0.7">
+                        <h4 class="text-xl font-semibold text-cyan-400 mb-2">Adres</h4>
+                        <p id="contactAddress" class="text-gray-300"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-0 animated-gradient-bg opacity-20 z-0"></div>
+            <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#0A0F1F] via-[#0A0F1F]/80 to-transparent z-5"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-[#080C1A] text-center">
+        <div class="container mx-auto px-6">
+            <p id="footerCopyright" class="text-gray-500 text-sm"></p>
+            <p id="footerCredits" class="text-gray-600 text-xs mt-2"></p>
+            <p class="text-gray-600 text-xs mt-3">System prezentacji to autorski system i własność Soft Synergy</p>
+        </div>
+    </footer>
+
+    <!-- Exit Popup -->
+    <div id="exitPopup" class="fixed inset-0 flex items-center justify-center z-[1000] bg-gray-900 bg-opacity-80 backdrop-blur-sm transform scale-0 opacity-0 transition-all duration-300 ease-in-out">
+        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border border-cyan-500 max-w-md w-full mx-4 relative perspective-card breathing-glow">
+            <button id="closeExitPopup" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-white mb-2">Czekaj!</h3>
+                <p class="text-gray-300">Nie przegap szansy na współpracę z nami.</p>
+            </div>
+            <div class="mb-6">
+                <p class="text-cyan-400 font-semibold mb-2">Specjalna oferta:</p>
+                <p class="text-white text-lg">Bezpłatna 30-minutowa konsultacja projektowa!</p>
+            </div>
+            <div class="flex flex-col space-y-3">
+                <!-- Zamieniam <a> na <button> dla lepszej obsługi kliknięć -->
+                <button id="exitPopupCta" class="btn-premium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-3 px-6 text-center rounded-lg shadow-xl w-full">
+                    Skontaktuj się z nami
+                </button>
+                <button id="noThanksButton" class="text-gray-400 hover:text-white transition-colors py-2">
+                    Nie, dziękuję
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Helper functions for diagram creation (must be defined before use in populatePage)
+        function drawCircleWithText(svg, { cx, cy, r, fill, label, id }, type) {
+            const svgNS = "http://www.w3.org/2000/svg";
+            const group = document.createElementNS(svgNS, "g");
+            group.setAttribute("id", `group-${id}`);
+            group.style.cursor = "pointer";
+
+            // Add shadow filter for depth
+            const shadow = document.createElementNS(svgNS, "circle");
+            shadow.setAttribute("cx", cx + 2);
+            shadow.setAttribute("cy", cy + 2);
+            shadow.setAttribute("r", r);
+            shadow.setAttribute("fill", "rgba(0,0,0,0.3)");
+            shadow.setAttribute("filter", "blur(3px)");
+            group.appendChild(shadow);
+
+            // Main circle with gradient fill
+            const circle = document.createElementNS(svgNS, "circle");
+            circle.setAttribute("cx", cx);
+            circle.setAttribute("cy", cy);
+            circle.setAttribute("r", r);
+            
+            // Create gradient fill based on type
+            const gradientId = `gradient-${id}`;
+            const gradient = document.createElementNS(svgNS, "linearGradient");
+            gradient.setAttribute("id", gradientId);
+            gradient.setAttribute("x1", "0%");
+            gradient.setAttribute("y1", "0%");
+            gradient.setAttribute("x2", "100%");
+            gradient.setAttribute("y2", "100%");
+            
+            if (type === 'problem') {
+                if (fill === "#EF4444") { // Red center node
+                    addGradientStop(gradient, "0%", "#FF5555");
+                    addGradientStop(gradient, "100%", "#CC3333");
+                } else { // Amber nodes
+                    addGradientStop(gradient, "0%", "#FBBF24");
+                    addGradientStop(gradient, "100%", "#D97706");
+                }
+            } else { // Solution
+                if (fill === "#22C55E") { // Green node
+                    addGradientStop(gradient, "0%", "#34D399");
+                    addGradientStop(gradient, "100%", "#059669");
+                } else { // Cyan nodes
+                    addGradientStop(gradient, "0%", "#67E8F9");
+                    addGradientStop(gradient, "100%", "#0891B2");
+                }
+            }
+            
+            svg.querySelector("defs").appendChild(gradient);
+            circle.setAttribute("fill", `url(#${gradientId})`);
+            
+            // Add inner glow and border
+            circle.setAttribute("stroke", type === 'problem' ? "#FBBF24" : "#67E8F9");
+            circle.setAttribute("stroke-width", "2");
+            circle.setAttribute("filter", `url(#inner-glow-${type})`);
+            group.appendChild(circle);
+
+            // Text with better contrast and readability
+            const text = document.createElementNS(svgNS, "text");
+            text.setAttribute("x", cx);
+            text.setAttribute("y", cy);
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("dominant-baseline", "central");
+            text.setAttribute("fill", "#FFFFFF");
+            text.setAttribute("font-size", r * 0.25);
+            text.setAttribute("font-weight", "600");
+            text.style.pointerEvents = "none";
+            text.style.userSelect = "none";
+            text.style.textShadow = "0 1px 2px rgba(0,0,0,0.5)";
+
+            // Simplified text handling to avoid overlap
+            const tspan = document.createElementNS(svgNS, "tspan");
+            tspan.setAttribute("x", cx);
+            
+            // Limit characters to prevent overflow
+            let displayText = label;
+            if (label.length > 15) {
+                displayText = label.substring(0, 13) + "...";
+            }
+            tspan.textContent = displayText;
+            text.appendChild(tspan);
+            
+            group.appendChild(text);
+
+            // Enhanced hover effects
+            group.addEventListener("mouseenter", () => {
+                gsap.to(circle, { 
+                    scale: 1.1, 
+                    duration: 0.3, 
+                    ease: "power2.out", 
+                    transformOrigin: "center center",
+                    stroke: type === 'problem' ? "#FCD34D" : "#22D3EE",
+                    strokeWidth: 3
+                });
+            });
+            
+            group.addEventListener("mouseleave", () => {
+                gsap.to(circle, { 
+                    scale: 1, 
+                    duration: 0.3, 
+                    ease: "power2.out", 
+                    transformOrigin: "center center",
+                    stroke: type === 'problem' ? "#FBBF24" : "#67E8F9",
+                    strokeWidth: 2
+                });
+            });
+
+            svg.appendChild(group);
+            return { group, circle, text, cx, cy, r };
+        }
+
+        function addGradientStop(gradient, offset, color) {
+            const svgNS = "http://www.w3.org/2000/svg";
+            const stop = document.createElementNS(svgNS, "stop");
+            stop.setAttribute("offset", offset);
+            stop.setAttribute("stop-color", color);
+            gradient.appendChild(stop);
+        }
+
+        function drawLine(svg, fromNode, toNode, strokeColor, type, dashed = false) {
+            const svgNS = "http://www.w3.org/2000/svg";
+            
+            // Create a group for the line and decorations
+            const group = document.createElementNS(svgNS, "g");
+            
+            // Calculate angle between nodes
+            const angle = Math.atan2(toNode.cy - fromNode.cy, toNode.cx - fromNode.cx);
+            
+            // Calculate start/end points with slight offset from circle edge for cleaner look
+            const offset = 2;
+            const x1 = fromNode.cx + (fromNode.r + offset) * Math.cos(angle);
+            const y1 = fromNode.cy + (fromNode.r + offset) * Math.sin(angle);
+            const x2 = toNode.cx - (toNode.r + offset) * Math.cos(angle);
+            const y2 = toNode.cy - (toNode.r + offset) * Math.sin(angle);
+            
+            // Create gradient for line
+            const gradientId = `line-gradient-${fromNode.cx}-${fromNode.cy}-${toNode.cx}-${toNode.cy}`;
+            const gradient = document.createElementNS(svgNS, "linearGradient");
+            gradient.setAttribute("id", gradientId);
+            gradient.setAttribute("x1", x1);
+            gradient.setAttribute("y1", y1);
+            gradient.setAttribute("x2", x2);
+            gradient.setAttribute("y2", y2);
+            gradient.setAttribute("gradientUnits", "userSpaceOnUse");
+            
+            if (type === 'problem') {
+                addGradientStop(gradient, "0%", "#F59E0B");
+                addGradientStop(gradient, "100%", "#EF4444");
+            } else {
+                addGradientStop(gradient, "0%", "#38BDF8");
+                addGradientStop(gradient, "100%", "#22C55E");
+            }
+            
+            svg.querySelector("defs").appendChild(gradient);
+            
+            // Draw shadow line first
+            const shadowLine = document.createElementNS(svgNS, "line");
+            shadowLine.setAttribute("x1", x1 + 1);
+            shadowLine.setAttribute("y1", y1 + 1);
+            shadowLine.setAttribute("x2", x1 + 1); // Start collapsed
+            shadowLine.setAttribute("y2", y1 + 1);
+            shadowLine.setAttribute("stroke", "rgba(0,0,0,0.3)");
+            shadowLine.setAttribute("stroke-width", "4");
+            shadowLine.setAttribute("stroke-linecap", "round");
+            shadowLine.style.opacity = 0.5;
+            shadowLine.setAttribute("filter", "blur(2px)");
+            group.appendChild(shadowLine);
+            
+            // Main line with gradient
+            const line = document.createElementNS(svgNS, "line");
+            line.setAttribute("x1", x1);
+            line.setAttribute("y1", y1);
+            line.setAttribute("x2", x1); // Start collapsed
+            line.setAttribute("y2", y1);
+            line.setAttribute("stroke", `url(#${gradientId})`);
+            line.setAttribute("stroke-width", "3");
+            line.setAttribute("stroke-linecap", "round");
+            
+            if (dashed) {
+                line.setAttribute("stroke-dasharray", "6,8");
+            }
+            
+            group.appendChild(line);
+            
+            // Add subtle glow to the line
+            const glowLine = document.createElementNS(svgNS, "line");
+            glowLine.setAttribute("x1", x1);
+            glowLine.setAttribute("y1", y1);
+            glowLine.setAttribute("x2", x1); // Start collapsed
+            glowLine.setAttribute("y2", y1);
+            glowLine.setAttribute("stroke", strokeColor);
+            glowLine.setAttribute("stroke-width", "1");
+            glowLine.setAttribute("stroke-linecap", "round");
+            glowLine.setAttribute("filter", `url(#line-glow-${type})`);
+            glowLine.style.opacity = 0.7;
+            
+            if (dashed) {
+                glowLine.setAttribute("stroke-dasharray", "6,8");
+            }
+            
+            group.appendChild(glowLine);
+            
+            // Add arrow for solution lines (not for problem dashed lines)
+            if (!dashed) {
+                const arrowSize = 8;
+                const arrowGroup = document.createElementNS(svgNS, "g");
+                arrowGroup.setAttribute("transform", `translate(${x2}, ${y2}) rotate(${angle * 180 / Math.PI + 90})`);
+                
+                const arrow = document.createElementNS(svgNS, "path");
+                arrow.setAttribute("d", `M0,0 L${arrowSize/2},${arrowSize} L-${arrowSize/2},${arrowSize} Z`);
+                arrow.setAttribute("fill", type === 'problem' ? "#EF4444" : "#22C55E");
+                arrowGroup.appendChild(arrow);
+                
+                // Start with arrow at beginning position
+                arrowGroup.style.opacity = 0;
+                group.appendChild(arrowGroup);
+                
+                // Animate arrow separately
+                gsap.to(arrowGroup, {
+                    opacity: 1,
+                    delay: 1.1, // Appear after line is drawn
+                    duration: 0.3
+                });
+            }
+            
+            // Insert before first node for proper layering
+            const firstNodeGroup = svg.querySelector("g");
+            if (firstNodeGroup) {
+                svg.insertBefore(group, firstNodeGroup);
+            } else {
+                svg.appendChild(group);
+            }
+            
+            // Animate all three lines together
+            gsap.to([line, shadowLine, glowLine], {
+                attr: { x2: x2, y2: y2 },
+                duration: 0.8,
+                delay: 0.4,
+                ease: "power2.inOut",
+                stagger: 0.05
+            });
+            
+            // Add subtle pulsing effect for lines
+            if (!dashed) {
+                gsap.to([line, glowLine], {
+                    strokeWidth: "+=1",
+                    opacity: 0.8,
+                    duration: 1.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            }
+
+            return { group, line };
+        }
+        function createInteractiveDiagram(container, type, nodeLabels = []) {
+            container.innerHTML = '';
+            const svgNS = "http://www.w3.org/2000/svg";
+            const svg = document.createElementNS(svgNS, "svg");
+            const width = container.clientWidth || 280; 
+            const height = container.clientHeight || 192; 
+            svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+            svg.style.width = "100%";
+            svg.style.height = "100%";
+            
+            // Create defs with filters
+            const defs = document.createElementNS(svgNS, "defs");
+            
+            // Outer glow filter
+            const filter = document.createElementNS(svgNS, "filter");
+            filter.setAttribute("id", `glow-${type}`);
+            filter.setAttribute("x", "-50%");
+            filter.setAttribute("y", "-50%");
+            filter.setAttribute("width", "200%");
+            filter.setAttribute("height", "200%");
+            
+            const feGaussianBlur = document.createElementNS(svgNS, "feGaussianBlur");
+            feGaussianBlur.setAttribute("stdDeviation", "4");
+            feGaussianBlur.setAttribute("result", "coloredBlur");
+            filter.appendChild(feGaussianBlur);
+            
+            const feMerge = document.createElementNS(svgNS, "feMerge");
+            const feMergeNode1 = document.createElementNS(svgNS, "feMergeNode");
+            feMergeNode1.setAttribute("in", "coloredBlur");
+            const feMergeNode2 = document.createElementNS(svgNS, "feMergeNode");
+            feMergeNode2.setAttribute("in", "SourceGraphic");
+            feMerge.appendChild(feMergeNode1);
+            feMerge.appendChild(feMergeNode2);
+            filter.appendChild(feMerge);
+            defs.appendChild(filter);
+            
+            // Inner glow filter
+            const innerGlowFilter = document.createElementNS(svgNS, "filter");
+            innerGlowFilter.setAttribute("id", `inner-glow-${type}`);
+            innerGlowFilter.setAttribute("x", "-50%");
+            innerGlowFilter.setAttribute("y", "-50%");
+            innerGlowFilter.setAttribute("width", "200%");
+            innerGlowFilter.setAttribute("height", "200%");
+            
+            const feOffset = document.createElementNS(svgNS, "feOffset");
+            feOffset.setAttribute("dx", "0");
+            feOffset.setAttribute("dy", "0");
+            innerGlowFilter.appendChild(feOffset);
+            
+            const feGaussianBlur2 = document.createElementNS(svgNS, "feGaussianBlur");
+            feGaussianBlur2.setAttribute("stdDeviation", "2");
+            feGaussianBlur2.setAttribute("result", "blur");
+            innerGlowFilter.appendChild(feGaussianBlur2);
+            
+            const feComposite = document.createElementNS(svgNS, "feComposite");
+            feComposite.setAttribute("in", "SourceGraphic");
+            feComposite.setAttribute("in2", "blur");
+            feComposite.setAttribute("operator", "atop");
+            innerGlowFilter.appendChild(feComposite);
+            defs.appendChild(innerGlowFilter);
+            
+            // Line glow filter
+            const lineGlowFilter = document.createElementNS(svgNS, "filter");
+            lineGlowFilter.setAttribute("id", `line-glow-${type}`);
+            lineGlowFilter.setAttribute("x", "-50%");
+            lineGlowFilter.setAttribute("y", "-50%");
+            lineGlowFilter.setAttribute("width", "200%");
+            lineGlowFilter.setAttribute("height", "200%");
+            
+            const feGaussianBlur3 = document.createElementNS(svgNS, "feGaussianBlur");
+            feGaussianBlur3.setAttribute("stdDeviation", "3");
+            feGaussianBlur3.setAttribute("result", "lineBlur");
+            lineGlowFilter.appendChild(feGaussianBlur3);
+            
+            const feMerge2 = document.createElementNS(svgNS, "feMerge");
+            const feMergeNode3 = document.createElementNS(svgNS, "feMergeNode");
+            feMergeNode3.setAttribute("in", "lineBlur");
+            const feMergeNode4 = document.createElementNS(svgNS, "feMergeNode");
+            feMergeNode4.setAttribute("in", "SourceGraphic");
+            feMerge2.appendChild(feMergeNode3);
+            feMerge2.appendChild(feMergeNode4);
+            lineGlowFilter.appendChild(feMerge2);
+            defs.appendChild(lineGlowFilter);
+            
+            svg.appendChild(defs);
+
+            // Create diagram based on type
+            if (type === 'problem') {
+                // Static problem diagram (no drag functionality)
+                const R_CENTER = Math.min(width, height) * 0.2;
+                const R_SMALL = R_CENTER * 0.65;
+                const ORBIT_RADIUS = Math.min(width, height) * 0.36;
+                const centerX = width / 2;
+                const centerY = height / 2;
+                
+                const centralNodeData = {
+                    cx: centerX, cy: centerY, r: R_CENTER,
+                    fill: "#EF4444", 
+                    label: nodeLabels[3] || "Problem Centralny",
+                    id: "problem-center"
+                };
+                const centralNodeVisual = drawCircleWithText(svg, centralNodeData, type);
+                
+                const numSmallNodes = Math.min(3, nodeLabels.length);
+                for (let i = 0; i < numSmallNodes; i++) {
+                    const angle = (i / numSmallNodes) * 2 * Math.PI - (Math.PI / 1.5) + (numSmallNodes === 1 ? Math.PI/2 : 0);
+                    const nodeData = {
+                        cx: centerX + ORBIT_RADIUS * Math.cos(angle),
+                        cy: centerY + ORBIT_RADIUS * Math.sin(angle),
+                        r: R_SMALL,
+                        fill: "#FBBF24",
+                        label: nodeLabels[i] || `Wyzwanie ${i+1}`,
+                        id: `problem-node-${i}`
+                    };
+                    const nodeVisual = drawCircleWithText(svg, nodeData, type);
+                    const lineVisual = drawLine(svg, nodeVisual, centralNodeVisual, "#FBBF24", type, true);
+                }
+            } else if (type === 'solution') {
+                // Static solution diagram (no drag functionality)
+                const NODE_R = Math.min(width, height) * 0.16;
+                const SPACING_Y = NODE_R * 2.2;
+                const numInputNodes = Math.min(3, nodeLabels.length);
+                
+                const startX = width * 0.28;
+                const endX = width * 0.72;
+                const midY = height / 2;
+                
+                const outputNodeData = {
+                    cx: endX, cy: midY, r: NODE_R * 1.1,
+                    fill: "#22C55E",
+                    label: nodeLabels[numInputNodes] || "Pozytywny Wynik",
+                    id: "solution-output"
+                };
+                const outputNodeVisual = drawCircleWithText(svg, outputNodeData, type);
+                
+                for (let i = 0; i < numInputNodes; i++) {
+                    const offsetY = (i - (numInputNodes - 1) / 2) * SPACING_Y;
+                    const nodeData = {
+                        cx: startX,
+                        cy: midY + offsetY,
+                        r: NODE_R,
+                        fill: "#60A5FA",
+                        label: nodeLabels[i] || `Korzyść ${i+1}`,
+                        id: `solution-node-${i}`
+                    };
+                    const nodeVisual = drawCircleWithText(svg, nodeData, type);
+                    const lineVisual = drawLine(svg, nodeVisual, outputNodeVisual, "#60A5FA", type, false);
+                }
+            }
+            
+            container.appendChild(svg);
+            
+            // Add subtle reveal animation for the entire diagram
+            gsap.from(svg, {
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.6,
+                ease: "power2.out",
+                transformOrigin: "center center"
+            });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('preloader');
+            const loaderBar = preloader.querySelector('.loader-bar');
+            const loaderText = preloader.querySelector('.loader-text');
+
+            gsap.to(loaderText, { opacity: 1, duration: 0.5, delay: 0.2 });
+            gsap.to(loaderBar, {
+                width: '50%',
+                duration: 1.5,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                    fetchDataAndInitialize();
+                }
+            });
+            document.body.style.overflowY = 'hidden'; 
+
+            function fetchDataAndInitialize() {
+                fetch(`/api/presentation/${window.location.pathname.split('/').pop()}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok: ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        populatePage(data);
+                        gsap.to(preloader, {
+                            opacity: 0,
+                            duration: 0.8,
+                            ease: 'power2.inOut',
+                            onComplete: () => {
+                                preloader.classList.add('hidden');
+                                document.body.style.overflowY = 'auto';
+                                
+                                // Add loaded class to show content after preloader is hidden
+                                document.querySelector('main').classList.add('loaded');
+                                document.querySelector('header').classList.add('loaded');
+                                document.querySelector('footer').classList.add('loaded');
+                                
+                                // Initialize animations after content is visible
+                                setTimeout(() => {
+                                    initializeAnimationsAndInteractions(data);
+                                }, 100);
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Failed to load or parse data.json:', error);
+                        loaderText.textContent = 'Błąd ładowania danych.';
+                        gsap.to(loaderBar, { backgroundColor: 'red', width: '100%', duration: 0.5 });
+                        document.body.innerHTML = `<div style="color:white; text-align:center; padding: 50px; font-family: 'Manrope', sans-serif;">Przepraszamy, wystąpił błąd podczas ładowania strony. Spróbuj ponownie później. Szczegóły: ${error.message}</div>`;
+                        document.body.style.overflowY = 'auto';
+                    });
+            }
+
+            function populatePage(data) {
+                // --- Site Wide ---
+                document.title = data.site.pageTitle.replace('[Nazwa Twojej Firmy]', data.site.companyName);
+
+                // --- Header ---
+                const headerLogo = document.getElementById('headerLogo');
+                if (headerLogo) headerLogo.innerHTML = `${data.header.logoText}<span class="text-cyan-400">${data.header.logoAccent}</span>`;
+                
+                const desktopNavContainer = document.getElementById('desktopNavLinks');
+                const mobileNavContainer = document.getElementById('mobile-menu');
+                if (desktopNavContainer) desktopNavContainer.innerHTML = '';
+                if (mobileNavContainer) mobileNavContainer.innerHTML = '';
+
+                data.header.navLinks.forEach(link => {
+                    if (link.isButton) {
+                        const button = document.createElement('a');
+                        button.href = link.href;
+                        button.className = link.buttonClass || 'btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg';
+                        button.textContent = link.text;
+                        if (desktopNavContainer) desktopNavContainer.appendChild(button.cloneNode(true));
+                        
+                        const mobileButton = document.createElement('a');
+                        mobileButton.href = link.href;
+                        mobileButton.className = 'block py-3 px-6 text-cyan-400 hover:bg-cyan-600 hover:text-white transition-colors duration-300 font-semibold';
+                        mobileButton.textContent = link.text;
+                        if (mobileNavContainer) mobileNavContainer.appendChild(mobileButton);
+                    } else {
+                        const a = document.createElement('a');
+                        a.href = link.href;
+                        a.className = 'nav-link text-gray-300 hover:text-cyan-400 transition-colors duration-300 relative nav-link-underline';
+                        if (link.isActive) a.classList.add('active');
+                        a.textContent = link.text;
+                        if (desktopNavContainer) desktopNavContainer.appendChild(a.cloneNode(true));
+
+                        const mobileA = document.createElement('a');
+                        mobileA.href = link.href;
+                        mobileA.className = 'block py-3 px-6 text-gray-300 hover:bg-gray-700 hover:text-cyan-400 transition-colors duration-300';
+                        mobileA.textContent = link.text;
+                        if (mobileNavContainer) mobileNavContainer.appendChild(mobileA);
+                    }
+                });
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                if (mobileMenuButton && data.header.mobileMenuButtonIcon) mobileMenuButton.innerHTML = data.header.mobileMenuButtonIcon;
+
+                // --- Hero ---
+                const heroClientLogo = document.getElementById('heroClientLogo');
+                if (heroClientLogo) { heroClientLogo.src = data.hero.clientLogoSrc; heroClientLogo.alt = data.hero.clientLogoAlt; }
+                const heroTitlePart1 = document.getElementById('heroTitlePart1');
+                if (heroTitlePart1) heroTitlePart1.textContent = data.hero.titlePart1;
+                const heroTitlePart2 = document.getElementById('heroTitlePart2');
+                if (heroTitlePart2) heroTitlePart2.textContent = data.hero.titlePart2ClientName;
+                const heroSubtitle = document.getElementById('heroSubtitle');
+                if (heroSubtitle) heroSubtitle.textContent = data.hero.subtitle;
+                const heroCtaButton = document.getElementById('heroCtaButton');
+                if (heroCtaButton) heroCtaButton.href = "#understandingSectionTitle";
+                const heroCtaButtonText = document.getElementById('heroCtaButtonText');
+                if (heroCtaButtonText) heroCtaButtonText.textContent = data.hero.ctaButtonText;
+
+                // --- Understanding Section ---
+                const understandingTitle = document.getElementById('understandingSectionTitle');
+                if (understandingTitle) understandingTitle.innerHTML = data.understanding.sectionTitle;
+                const understandingSubtitle = document.getElementById('understandingSectionSubtitle');
+                if (understandingSubtitle) understandingSubtitle.textContent = data.understanding.sectionSubtitle;
+                
+                const problemTitle = document.getElementById('problemTitle');
+                if (problemTitle) problemTitle.innerHTML = data.understanding.problem.title;
+                const problemDesc = document.getElementById('problemDescription');
+                if (problemDesc) problemDesc.textContent = data.understanding.problem.description;
+                const problemPointsUl = document.getElementById('problemPoints');
+                if (problemPointsUl) { problemPointsUl.innerHTML = ''; data.understanding.problem.points.forEach(point => { const li = document.createElement('li'); li.textContent = point; problemPointsUl.appendChild(li); }); }
+                const problemDiagramPlaceholder = document.getElementById('problemDiagramPlaceholder');
+                if (problemDiagramPlaceholder) problemDiagramPlaceholder.textContent = data.understanding.problem.diagramPlaceholderText;
+                
+                const problemDiagramContainer = document.getElementById('problemDiagramContainer');
+                if (problemDiagramContainer && data.understanding.problem) {
+                    const problemPointsForDiagram = (data.understanding.problem.points || []).slice(0, 3);
+                    const problemCentralLabel = data.understanding.problem.titleShort || "Główny Problem";
+                    const problemNodeLabels = [...problemPointsForDiagram, problemCentralLabel];
+                    createInteractiveDiagram(problemDiagramContainer, 'problem', problemNodeLabels);
+                }
+
+                const solutionTitle = document.getElementById('solutionTitle');
+                if (solutionTitle) solutionTitle.innerHTML = data.understanding.solution.title;
+                const solutionDesc = document.getElementById('solutionDescription');
+                if (solutionDesc) solutionDesc.textContent = data.understanding.solution.description;
+                const solutionPointsUl = document.getElementById('solutionPoints');
+                if (solutionPointsUl) { solutionPointsUl.innerHTML = ''; data.understanding.solution.points.forEach(point => { const li = document.createElement('li'); li.textContent = point; solutionPointsUl.appendChild(li); }); }
+                const solutionDiagramPlaceholder = document.getElementById('solutionDiagramPlaceholder');
+                if (solutionDiagramPlaceholder) solutionDiagramPlaceholder.textContent = data.understanding.solution.diagramPlaceholderText;
+
+                const solutionDiagramContainer = document.getElementById('solutionDiagramContainer');
+                if (solutionDiagramContainer && data.understanding.solution) {
+                    const solutionPointsForDiagram = (data.understanding.solution.points || []).slice(0, 3);
+                    const solutionCentralLabel = data.understanding.solution.titleShort || "Efektywne Rozwiązanie";
+                    const solutionNodeLabels = [...solutionPointsForDiagram, solutionCentralLabel];
+                    createInteractiveDiagram(solutionDiagramContainer, 'solution', solutionNodeLabels);
+                }
+
+
+                // --- Solution Features Section ---
+                const solFeatTitle = document.getElementById('solutionFeaturesSectionTitle');
+                if (solFeatTitle) solFeatTitle.innerHTML = data.solutionFeatures.sectionTitle;
+                const solFeatSub = document.getElementById('solutionFeaturesSectionSubtitle');
+                if (solFeatSub) solFeatSub.textContent = data.solutionFeatures.sectionSubtitle;
+                const solFeatContainer = document.getElementById('solutionFeaturesContainer');
+                const featureCardTemplate = document.getElementById('featureCardTemplate');
+                if (solFeatContainer && featureCardTemplate && data.solutionFeatures.features) {
+                    solFeatContainer.innerHTML = '';
+                    data.solutionFeatures.features.forEach((feature, index) => {
+                        const cardClone = featureCardTemplate.content.cloneNode(true);
+                        const cardElement = cardClone.querySelector('.reveal-up');
+                        if (cardElement) cardElement.dataset.delay = (0.3 + index * 0.2).toString();
+                        const iconPlaceholder = cardClone.querySelector('.feature-icon-placeholder');
+                        if (iconPlaceholder) iconPlaceholder.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto md:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">${feature.iconSvgPath}</svg>`;
+                        cardClone.querySelector('.feature-title').textContent = feature.title;
+                        cardClone.querySelector('.feature-description').textContent = feature.description;
+                        cardClone.querySelector('.feature-mockup-text').textContent = feature.mockupText;
+                        solFeatContainer.appendChild(cardClone);
+                    });
+                }
+
+                // --- Scope (Accordion) Section ---
+                const scopeTitle = document.getElementById('scopeSectionTitle');
+                if (scopeTitle) scopeTitle.innerHTML = data.scope.sectionTitle;
+                const scopeSub = document.getElementById('scopeSectionSubtitle');
+                if (scopeSub) scopeSub.textContent = data.scope.sectionSubtitle;
+                const accordionContainer = document.getElementById('scopeAccordionContainer');
+                const accordionItemTemplate = document.getElementById('accordionItemTemplate');
+                if (accordionContainer && accordionItemTemplate && data.scope.modules) {
+                    accordionContainer.innerHTML = '';
+                    data.scope.modules.forEach((module, index) => {
+                        const itemClone = accordionItemTemplate.content.cloneNode(true);
+                        const itemElement = itemClone.querySelector('.accordion-item');
+                        if (itemElement) itemElement.dataset.delay = (0.3 + index * 0.1).toString();
+                        itemClone.querySelector('.accordion-title').textContent = module.title;
+                        itemClone.querySelector('.accordion-description').textContent = module.description;
+                        const featuresUl = itemClone.querySelector('.accordion-features-list');
+                        featuresUl.innerHTML = ''; module.features.forEach(featureText => { const li = document.createElement('li'); li.textContent = featureText; featuresUl.appendChild(li); });
+                        accordionContainer.appendChild(itemClone);
+                    });
+                }
+                
+                // --- Pricing Section ---
+                const pricingTitle = document.getElementById('pricingSectionTitle');
+                if (pricingTitle) pricingTitle.innerHTML = data.pricing.sectionTitle;
+                const pricingSub = document.getElementById('pricingSectionSubtitle');
+                if (pricingSub) pricingSub.textContent = data.pricing.sectionSubtitle;
+                const pricingTabsContainer = document.getElementById('pricingTabsContainer');
+                const packageTabTemplate = document.getElementById('packageTabTemplate');
+                if (pricingTabsContainer && packageTabTemplate && data.pricing.tabs) {
+                    pricingTabsContainer.innerHTML = '';
+                    data.pricing.tabs.forEach((tab, index) => {
+                        const tabClone = packageTabTemplate.content.cloneNode(true);
+                        const button = tabClone.querySelector('button');
+                        button.dataset.package = tab.id; button.textContent = tab.name;
+                        if (index === 0) { button.classList.add('active', 'bg-cyan-500', 'text-white'); } 
+                        else { button.classList.add('bg-gray-700', 'hover:bg-gray-600', 'text-gray-300'); }
+                        pricingTabsContainer.appendChild(tabClone);
+                    });
+                }
+                const packagesContainer = document.getElementById('packages-container');
+                const packageDetailsTemplate = document.getElementById('packageDetailsTemplate');
+                const packageFeatureItemTemplate = document.getElementById('packageFeatureItemTemplate');
+                if (packagesContainer && packageDetailsTemplate && packageFeatureItemTemplate && data.pricing.packages) {
+                    packagesContainer.innerHTML = '';
+                    const iconPaths = {
+                        included: '<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />',
+                        notIncluded: '<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />'
+                    };
+                    data.pricing.packages.forEach((pkg, index) => {
+                        const pkgClone = packageDetailsTemplate.content.cloneNode(true);
+                        const detailsDiv = pkgClone.querySelector('.package-details');
+                        detailsDiv.dataset.packageContent = pkg.id;
+                        if (index === 0) {
+                            detailsDiv.classList.add('active');
+                            detailsDiv.classList.remove('hidden'); 
+                        } else {
+                            detailsDiv.classList.add('hidden'); // Ensure other packages are hidden initially
+                        }
+                        const cardWrapper = pkgClone.querySelector('.package-card-wrapper');
+                        if (pkg.isRecommended) {
+                            cardWrapper.classList.add('border-cyan-500', 'breathing-glow');
+                            pkgClone.querySelector('.package-badge').style.display = 'inline-block';
+                            const priceCtaDiv = pkgClone.querySelector('.package-price-cta');
+                            priceCtaDiv.classList.remove('bg-gray-700', 'bg-opacity-50');
+                            priceCtaDiv.classList.add('bg-cyan-600', 'bg-opacity-80');
+                            const ctaButton = pkgClone.querySelector('.package-cta-button');
+                            ctaButton.classList.remove('bg-cyan-500', 'hover:bg-cyan-400', 'text-white');
+                            ctaButton.classList.add('bg-white', 'hover:bg-gray-100', 'text-cyan-600');
+                        }
+                        pkgClone.querySelector('.package-name').textContent = pkg.name;
+                        pkgClone.querySelector('.package-description').textContent = pkg.description;
+                        pkgClone.querySelector('.package-price-note').textContent = pkg.priceNote;
+                        
+                        // Set the price properly, preserving price ranges
+                        const priceEl = pkgClone.querySelector('.package-price');
+                        priceEl.textContent = pkg.price;
+                        
+                        pkgClone.querySelector('.package-cta-button').textContent = pkg.ctaText;
+                        const featuresList = pkgClone.querySelector('.package-features-list');
+                        featuresList.innerHTML = '';
+                        pkg.features.forEach(feature => {
+                            const featureClone = packageFeatureItemTemplate.content.cloneNode(true);
+                            const iconSvg = featureClone.querySelector('.feature-icon');
+                            iconSvg.innerHTML = feature.included ? iconPaths.included : iconPaths.notIncluded;
+                            iconSvg.classList.add(feature.included ? 'included' : 'not-included');
+                            featureClone.querySelector('.feature-text').textContent = feature.text;
+                            featuresList.appendChild(featureClone);
+                        });
+                        packagesContainer.appendChild(pkgClone);
+                    });
+                }
+
+                // --- Timeline Section ---
+                const timelineTitle = document.getElementById('timelineSectionTitle');
+                if (timelineTitle) timelineTitle.innerHTML = data.timeline.sectionTitle;
+                const timelineSub = document.getElementById('timelineSectionSubtitle');
+                if (timelineSub) timelineSub.textContent = data.timeline.sectionSubtitle;
+                const timelineContainer = document.getElementById('timelineItemsContainer');
+                const timelineItemTemplate = document.getElementById('timelineItemTemplate');
+                if (timelineContainer && timelineItemTemplate && data.timeline.milestones) {
+                    const line = timelineContainer.querySelector('.timeline-line'); 
+                    const progress = timelineContainer.querySelector('.timeline-progress');
+                    timelineContainer.innerHTML = ''; 
+                    if(line) timelineContainer.appendChild(line);
+                    if(progress) timelineContainer.appendChild(progress);
+
+                    data.timeline.milestones.forEach((milestone, index) => {
+                        const itemClone = timelineItemTemplate.content.cloneNode(true);
+                        const itemDiv = itemClone.querySelector('.timeline-item');
+                        itemDiv.dataset.delay = (0.3 + index * 0.1).toString();
+                        
+                        const contentWrapper = itemClone.querySelector('.timeline-content-wrapper');
+                        const spacer = itemClone.querySelector('.timeline-spacer');
+
+                        if (index % 2 === 0) { 
+                            contentWrapper.classList.add('md:pr-12');
+                        } else { 
+                            contentWrapper.classList.add('md:pl-12');
+                            contentWrapper.classList.add('md:order-last'); 
+                            spacer.classList.add('md:order-first'); 
+                        }
+                        
+                        itemClone.querySelector('.timeline-phase').textContent = milestone.phase;
+                        itemClone.querySelector('.timeline-duration').textContent = milestone.duration;
+                        itemClone.querySelector('.timeline-description').textContent = milestone.description;
+                        timelineContainer.appendChild(itemClone);
+                    });
+                }
+
+                // --- Testimonials Section ---
+                const testiTitle = document.getElementById('testimonialSectionTitle');
+                if (testiTitle) testiTitle.innerHTML = data.testimonials.sectionTitle;
+                const testiSub = document.getElementById('testimonialSectionSubtitle');
+                if (testiSub) testiSub.textContent = data.testimonials.sectionSubtitle;
+                const testimonialTrack = document.querySelector('#testimonial-carousel .testimonial-track');
+                const testimonialSlideTemplate = document.getElementById('testimonialSlideTemplate');
+                if (testimonialTrack && testimonialSlideTemplate && data.testimonials.slides) {
+                    // Predefiniowane, gwarantowane zdjęcia - indeksowane płcią
+                    const guaranteedPhotos = {
+                        male: [
+                            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1583864697784-a0efc8379f70?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop'
+                        ],
+                        female: [
+                            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop', 
+                            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=200&h=200&fit=crop',
+                            'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&h=200&fit=crop'
+                        ]
+                    };
+
+                    testimonialTrack.innerHTML = '';
+                    data.testimonials.slides.forEach((slide, index) => {
+                        // Determine gender based on name - in Polish, female names typically end with 'a'
+                        const authorName = slide.authorName || '';
+                        const firstName = authorName.split(' ')[0];
+                        const isFemale = firstName.endsWith('a') || firstName.endsWith('A');
+                        
+                        // Wybierz odpowiednie zdjęcie z gwarantowanej listy
+                        const photoList = isFemale ? guaranteedPhotos.female : guaranteedPhotos.male;
+                        const photoIndex = index % photoList.length;
+                        const photoUrl = photoList[photoIndex];
+                        
+                        const slideClone = testimonialSlideTemplate.content.cloneNode(true);
+                        const imgElement = slideClone.querySelector('.testimonial-image');
+                        
+                        // Ustaw zdjęcie i dodaj domyślny styl
+                        imgElement.src = photoUrl;
+                        imgElement.alt = authorName || 'Testimonial Author';
+                        imgElement.style.objectFit = 'cover';
+                        imgElement.style.objectPosition = 'center top';
+                        
+                        slideClone.querySelector('.testimonial-quote').textContent = `"${slide.quote}"`;
+                        slideClone.querySelector('.testimonial-author-name').textContent = slide.authorName;
+                        slideClone.querySelector('.testimonial-author-title').textContent = slide.authorTitle;
+                        testimonialTrack.appendChild(slideClone);
+                    });
+                }
+                const clientsIntro = document.getElementById('clientsIntroText');
+                if (clientsIntro) clientsIntro.textContent = data.testimonials.clientsIntro;
+                const clientLogosContainer = document.getElementById('clientLogosContainer');
+                if (clientLogosContainer) {
+                    // Fiktywne, małe polskie firmy z logo bezpośrednio w SVG (żadnych zewnętrznych odnośników)
+                    const localCompanies = [
+                        {
+                            name: 'Piekarnia Złoty Kłos',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="25" font-family="Arial" font-weight="bold" font-size="12" text-anchor="middle" fill="#F5DEB3">Złoty Kłos</text></svg>`,
+                            color: '#CE9E5C' // kolor "złota"
+                        },
+                        {
+                            name: 'WarsawDev',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="25" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#38BDF8">Warsaw<tspan fill="#34D399">Dev</tspan></text></svg>`,
+                            color: '#38BDF8'
+                        },
+                        {
+                            name: 'Kawiarnia Poranna Rosa',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="20" font-family="Arial" font-weight="bold" font-size="11" text-anchor="middle" fill="#A78BFE">Poranna</text><text x="50" y="32" font-family="Arial" font-weight="bold" font-size="11" text-anchor="middle" fill="#A78BFE">Rosa</text></svg>`,
+                            color: '#A78BFE'
+                        },
+                        {
+                            name: 'Meble Dębowe',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="25" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#8B4513">Meble Dębowe</text></svg>`,
+                            color: '#8B4513'
+                        },
+                        {
+                            name: 'Kwiaciarnia Tulipan',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="25" font-family="Arial" font-weight="bold" font-size="13" text-anchor="middle" fill="#FF6B6B">Tulipan</text></svg>`,
+                            color: '#FF6B6B'
+                        },
+                        {
+                            name: 'Auto Serwis Szybki',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="20" font-family="Arial" font-weight="bold" font-size="12" text-anchor="middle" fill="#FF9500">Auto Serwis</text><text x="50" y="33" font-family="Arial" font-weight="bold" font-size="12" text-anchor="middle" fill="#FF9500">Szybki</text></svg>`,
+                            color: '#FF9500'
+                        },
+                        {
+                            name: 'Ksiegarnia Literka',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="25" font-family="Arial" font-weight="bold" font-size="13" text-anchor="middle" fill="#4FD1C5">Literka</text></svg>`,
+                            color: '#4FD1C5'
+                        },
+                        {
+                            name: 'Fryzjer Modny Lok',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="20" font-family="Arial" font-weight="bold" font-size="12" text-anchor="middle" fill="#F687B3">Modny</text><text x="50" y="33" font-family="Arial" font-weight="bold" font-size="12" text-anchor="middle" fill="#F687B3">Lok</text></svg>`,
+                            color: '#F687B3'
+                        },
+                        {
+                            name: 'Restauracja Pod Lipą',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="20" font-family="Arial" font-weight="bold" font-size="11" text-anchor="middle" fill="#10B981">Pod</text><text x="50" y="33" font-family="Arial" font-weight="bold" font-size="13" text-anchor="middle" fill="#10B981">Lipą</text></svg>`,
+                            color: '#10B981'
+                        },
+                        {
+                            name: 'OptykMaster',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="25" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#3B82F6">OptykMaster</text></svg>`,
+                            color: '#3B82F6'
+                        },
+                        {
+                            name: 'Cukiernia Słodka Fantazja',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="20" font-family="Arial" font-weight="bold" font-size="11" text-anchor="middle" fill="#EC4899">Słodka</text><text x="50" y="33" font-family="Arial" font-weight="bold" font-size="11" text-anchor="middle" fill="#EC4899">Fantazja</text></svg>`,
+                            color: '#EC4899'
+                        },
+                        {
+                            name: 'Studio Fitness Energia',
+                            svgLogo: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg"><text x="50" y="20" font-family="Arial" font-weight="bold" font-size="11" text-anchor="middle" fill="#FB923C">Fitness</text><text x="50" y="33" font-family="Arial" font-weight="bold" font-size="11" text-anchor="middle" fill="#FB923C">Energia</text></svg>`,
+                            color: '#FB923C'
+                        }
+                    ];
+
+                    clientLogosContainer.innerHTML = '';
+                    
+                    // Losowo wybierz 6 firm (bez powtórzeń)
+                    const shuffledCompanies = [...localCompanies].sort(() => 0.5 - Math.random()).slice(0, 6);
+                    
+                    shuffledCompanies.forEach(company => {
+                        // Tworzymy kontener dla firmy
+                        const container = document.createElement('div');
+                        container.className = "flex flex-col items-center justify-center mx-2 my-2";
+                        container.title = company.name;
+                        
+                        // Dodajemy logo SVG
+                        const logoContainer = document.createElement('div');
+                        logoContainer.className = "h-12 w-32 flex items-center justify-center rounded-lg p-2";
+                        logoContainer.style.backgroundColor = "#1A2036";
+                        logoContainer.style.border = `2px solid ${company.color}`;
+                        logoContainer.innerHTML = company.svgLogo;
+                        
+                        // Dodajemy nazwę firmy
+                        const companyName = document.createElement('div');
+                        companyName.className = "text-xs mt-1 text-gray-400";
+                        companyName.textContent = company.name;
+                        
+                        // Dodajemy elementy do kontenera
+                        container.appendChild(logoContainer);
+                        container.appendChild(companyName);
+                        
+                        // Dodajemy kontener do głównego kontenera
+                        clientLogosContainer.appendChild(container);
+                    });
+                }
+                
+                // --- Contact Section ---
+                const contactTitle = document.getElementById('contactSectionTitle');
+                if (contactTitle) contactTitle.innerHTML = data.contact.sectionTitle;
+                const contactSub = document.getElementById('contactSectionSubtitle');
+                if (contactSub) contactSub.textContent = data.contact.sectionSubtitle;
+                const contactCtaBtn = document.getElementById('contactCtaButton');
+                if (contactCtaBtn) {
+                     contactCtaBtn.querySelector('span').textContent = data.contact.ctaButtonText;
+                     contactCtaBtn.href = "https://softsynergy.youcanbook.me/";
+                }
+                const contactEmail = document.getElementById('contactEmail');
+                if (contactEmail) { contactEmail.textContent = data.contact.email; contactEmail.href = `mailto:${data.contact.email}`; }
+                const contactPhone = document.getElementById('contactPhone');
+                if (contactPhone) { contactPhone.textContent = data.contact.phone; contactPhone.href = `tel:${data.contact.phone.replace(/\s/g, '')}`; }
+                const contactAddress = document.getElementById('contactAddress');
+                if (contactAddress) contactAddress.textContent = data.contact.address;
+
+                // --- Footer ---
+                const currentYear = new Date().getFullYear();
+                const footerCopyright = document.getElementById('footerCopyright');
+                if (footerCopyright) footerCopyright.innerHTML = data.footer.copyrightText.replace('[CURRENT_YEAR]', currentYear).replace('[NAZWA_FIRMY]', data.site.companyName);
+                const footerCredits = document.getElementById('footerCredits');
+                if (footerCredits) footerCredits.textContent = data.footer.credits;
+
+                // Trigger click on the first tab to initialize prices
+                setTimeout(() => {
+                    const firstTab = document.querySelector('#pricingTabsContainer .package-tab');
+                    if (firstTab) {
+                        firstTab.click();
+                        // Ensure the first package details are visible after the click logic runs
+                        const firstPackageDetails = document.querySelector('#packages-container .package-details');
+                        if(firstPackageDetails) {
+                            firstPackageDetails.classList.remove('hidden');
+                            firstPackageDetails.style.display = 'block';
+                            gsap.to(firstPackageDetails, { opacity: 1, duration: 0.01 }); // Instant show
+                        }
+                    }
+                }, 1500); // Slight delay
+            }
+
+            function initializeAnimationsAndInteractions(pageData) {
+                gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+                animateHero(pageData.hero);
+                initializeScrollRevealAnimations();
+                initializeParallaxEffects();
+                initializeHeaderScrollBehavior();
+                initializeMobileMenu();
+                initializeAccordions();
+                initializePackageSwitcher(pageData.pricing); // Changed from fixed to regular
+                initializeTimelineAnimation();
+                initializeTestimonialCarousel();
+                initializeNavLinks(); 
+                initializeCursorFollower();
+                initializeExitPopup();
+                initializeShareAndDownload();
+                initializeNewsletter();
+                initializeStickyCta();
+
+                ScrollTrigger.refresh();
+            }
+
+            function animateHero(heroData) {
+                const heroTitleEl = document.querySelector('.hero-title');
+                const part1El = document.getElementById('heroTitlePart1');
+                const part2El = document.getElementById('heroTitlePart2');
+
+                gsap.fromTo(part1El, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.5, ease: 'power3.out' });
+                
+                const textToAnimate = part2El.textContent;
+                part2El.innerHTML = '';
+                textToAnimate.split('').forEach(char => {
+                    const charSpan = document.createElement('span');
+                    charSpan.textContent = char; charSpan.style.display = 'inline-block';
+                    charSpan.style.opacity = 0; charSpan.style.transform = 'translateY(100%)';
+                    part2El.appendChild(charSpan);
+                });
+                gsap.to(part2El.querySelectorAll('span'), { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out', delay: 0.8 });
+                
+                const clientLogoDiv = document.querySelector('[data-hero-reveal="client-logo"]');
+                if(clientLogoDiv) gsap.fromTo(clientLogoDiv, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.3 });
+                const subtitleEl = document.querySelector('[data-hero-reveal="subtitle"]');
+                if(subtitleEl) gsap.fromTo(subtitleEl, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 1.2 });
+                const ctaButtonDiv = document.querySelector('[data-hero-reveal="cta-button"]');
+                if(ctaButtonDiv) gsap.fromTo(ctaButtonDiv, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 1.5 });
+            }
+
+            function initializeScrollRevealAnimations() {
+                document.querySelectorAll('.reveal-up, .reveal-fade, .reveal-scale').forEach(el => {
+                    if (el.closest('#hero') && el.dataset.heroReveal) return; 
+                    let initialProps = { autoAlpha: 0 };
+                    if (el.classList.contains('reveal-up')) initialProps.y = 50;
+                    if (el.classList.contains('reveal-scale')) initialProps.scale = 0.9;
+                    gsap.set(el, initialProps);
+                    ScrollTrigger.create({
+                        trigger: el, start: "top 85%",
+                        onEnter: () => gsap.to(el, { autoAlpha: 1, y: 0, scale: 1, duration: 0.8, delay: parseFloat(el.dataset.delay) || 0, ease: "power3.out" }),
+                        once: true
+                    });
+                });
+            }
+
+            function initializeParallaxEffects() {
+                // Hero particles mouse move
+                const heroSection = document.getElementById('hero');
+                const heroParticles = document.getElementById('hero-particles');
+                if (heroSection && heroParticles) {
+                    for (let i = 0; i < 20; i++) {
+                        const particle = document.createElement('div');
+                        particle.style.position = 'absolute';
+                        particle.style.width = `${Math.random() * 3 + 1}px`;
+                        particle.style.height = particle.style.width;
+                        particle.style.backgroundColor = `rgba(56, 189, 248, ${Math.random() * 0.3 + 0.1})`;
+                        particle.style.borderRadius = '50%';
+                        particle.style.left = `${Math.random() * 100}%`;
+                        particle.style.top = `${Math.random() * 100}%`;
+                        particle.dataset.depth = Math.random() * 0.5 + 0.1;
+                        heroParticles.appendChild(particle);
+                    }
+                    heroSection.addEventListener('mousemove', (e) => {
+                        const rect = heroSection.getBoundingClientRect();
+                        const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                        gsap.to(heroParticles.children, {
+                            x: (i, target) => (x - rect.width / 2) * target.dataset.depth * 0.05, 
+                            y: (i, target) => (y - rect.height / 2) * target.dataset.depth * 0.05, 
+                            duration: 0.8, ease: "power2.out", stagger: 0.01
+                        });
+                    });
+                }
+
+                // Background elements scroll parallax
+                gsap.utils.toArray(".parallax-bg-element").forEach(layer => {
+                    const depth = parseFloat(layer.dataset.depth) || Math.random() * 0.4 + 0.1;
+                    const movement = -(ScrollTrigger.maxScroll(window) * depth * 0.1); 
+                    gsap.to(layer, {
+                        y: movement, ease: "none",
+                        scrollTrigger: {
+                            trigger: layer.closest('section') || document.body,
+                            start: "top bottom", end: "bottom top", scrub: true
+                        }
+                    });
+                });
+            }
+
+            function initializeHeaderScrollBehavior() {
+                const header = document.getElementById('main-header');
+                let lastScrollTop = 0;
+                window.addEventListener('scroll', () => {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        header.style.transform = 'translateY(-100%)';
+                        header.classList.remove('bg-gray-900', 'bg-opacity-70', 'backdrop-blur-md', 'shadow-lg');
+                    } else {
+                        header.style.transform = 'translateY(0)';
+                        if (scrollTop > 50) {
+                            header.classList.add('bg-gray-900', 'bg-opacity-70', 'backdrop-blur-md', 'shadow-lg');
+                        } else {
+                            header.classList.remove('bg-gray-900', 'bg-opacity-70', 'backdrop-blur-md', 'shadow-lg');
+                        }
+                    }
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                    updateActiveNavLink();
+                });
+            }
+
+            function initializeMobileMenu() {
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenuButton && mobileMenu) {
+                    mobileMenuButton.addEventListener('click', () => {
+                        const isHidden = mobileMenu.classList.contains('hidden');
+                        if (isHidden) {
+                            mobileMenu.classList.remove('hidden');
+                            gsap.fromTo(mobileMenu.children, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: 'power2.out' });
+                        } else {
+                             gsap.to(mobileMenu.children, { opacity: 0, y: -20, duration: 0.3, stagger: 0.05, ease: 'power2.in', onComplete: () => mobileMenu.classList.add('hidden') });
+                        }
+                    });
+                    mobileMenu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', () => {
+                            gsap.to(mobileMenu.children, { opacity: 0, y: -20, duration: 0.3, stagger: 0.05, ease: 'power2.in', onComplete: () => mobileMenu.classList.add('hidden') });
+                        });
+                    });
+                }
+            }
+
+            function initializeAccordions() {
+                const accordionItems = document.querySelectorAll('.accordion-item');
+                accordionItems.forEach(item => {
+                    const header = item.querySelector('.accordion-header');
+                    const content = item.querySelector('.accordion-content');
+                    const icon = header.querySelector('svg');
+                    header.addEventListener('click', () => {
+                        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+                        accordionItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.querySelector('.accordion-content').style.maxHeight = '0px';
+                                otherItem.querySelector('.accordion-header svg').style.transform = 'rotate(0deg)';
+                            }
+                        });
+                        if (isOpen) {
+                            content.style.maxHeight = '0px'; icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px"; icon.style.transform = 'rotate(180deg)';
+                            setTimeout(() => {
+                                const itemRect = item.getBoundingClientRect();
+                                if (itemRect.bottom > window.innerHeight || itemRect.top < 0) {
+                                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                            }, 500);
+                        }
+                    });
+                });
+            }
+            
+            function initializePackageSwitcher(pricingData) {
+                const packageTabs = document.querySelectorAll('.package-tab');
+                const packageDetailsElements = document.querySelectorAll('.package-details');
+
+                // Ensure first package is visible by default if elements exist
+                if (packageDetailsElements.length > 0) {
+                    packageDetailsElements.forEach((pkg, index) => {
+                        if (index === 0) {
+                            pkg.classList.add('active');
+                            pkg.classList.remove('hidden');
+                            pkg.style.display = 'block'; 
+                            pkg.style.opacity = '1'; 
+                        } else {
+                            pkg.classList.add('hidden');
+                            pkg.style.display = 'none';
+                            pkg.style.opacity = '0';
+                        }
+                    });
+                }
+
+                // Activate first tab
+                if (packageTabs.length > 0) {
+                    packageTabs[0].classList.add('active', 'bg-cyan-500', 'text-white');
+                    packageTabs[0].classList.remove('bg-gray-700', 'hover:bg-gray-600', 'text-gray-300');
+                }
+                
+                packageTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        const targetPackageId = tab.dataset.package;
+                        
+                        packageTabs.forEach(t => {
+                            t.classList.remove('active', 'bg-cyan-500', 'text-white');
+                            t.classList.add('bg-gray-700', 'hover:bg-gray-600', 'text-gray-300');
+                        });
+                        
+                        tab.classList.add('active', 'bg-cyan-500', 'text-white');
+                        tab.classList.remove('bg-gray-700', 'hover:bg-gray-600', 'text-gray-300');
+                        
+                        packageDetailsElements.forEach(pkg => {
+                            if (pkg.dataset.packageContent === targetPackageId) {
+                                pkg.classList.add('active');
+                                pkg.classList.remove('hidden');
+                                pkg.style.display = 'block';
+                                gsap.to(pkg, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+                            } else {
+                                pkg.classList.remove('active');
+                                // Hide with GSAP then add class hidden
+                                gsap.to(pkg, { opacity: 0, duration: 0.2, ease: 'power2.in', onComplete: () => {
+                                    pkg.classList.add('hidden');
+                                    pkg.style.display = 'none';
+                                }});
+                            }
+                        });
+                        
+                        // Animate price
+                        const activePackageDetails = document.querySelector(`.package-details[data-package-content="${targetPackageId}"]`);
+                        if (activePackageDetails) {
+                            const priceValueEl = activePackageDetails.querySelector('.price-value');
+                            const targetPackageData = pricingData.packages.find(p => p.id === targetPackageId);
+
+                            if (priceValueEl && targetPackageData) {
+                                const rawPrice = targetPackageData.price;
+                                
+                                // Check if price contains special text or is a range
+                                if (rawPrice.toLowerCase().includes('indywidualna') || 
+                                    rawPrice.toLowerCase().includes('zapytaj') ||
+                                    rawPrice.includes('–') || 
+                                    rawPrice.includes('-')) {
+                                    
+                                    // For price ranges or special text, just set it directly
+                                    priceValueEl.textContent = rawPrice;
+                                    gsap.fromTo(priceValueEl, 
+                                        { opacity: 0 }, 
+                                        { opacity: 1, duration: 0.5, delay: 0.1 }
+                                    );
+                                } else {
+                                    // For regular prices, animate the number
+                                    const numericPrice = parseFloat(rawPrice.replace(/[^\d.,]/g, '').replace(',', '.'));
+                                    if (!isNaN(numericPrice)) {
+                                        gsap.fromTo(priceValueEl, 
+                                            { textContent: 0, snap: { textContent: 1 } }, 
+                                            { 
+                                                textContent: numericPrice, duration: 0.8, ease: 'power2.out', delay: 0.1,
+                                                onUpdate: function() {
+                                                    let num = Math.round(this.targets()[0].textContent);
+                                                    this.targets()[0].textContent = num.toLocaleString('pl-PL') + " PLN";
+                                                },
+                                                onComplete: function() {
+                                                   priceValueEl.textContent = numericPrice.toLocaleString('pl-PL') + " PLN";
+                                                }
+                                            }
+                                        );
+                                    } else {
+                                        priceValueEl.textContent = rawPrice; // Fallback if parsing fails
+                                    }
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+
+            function initializeTimelineAnimation() {
+                const timelineLine = document.querySelector('.timeline-line');
+                const timelineProgress = document.querySelector('.timeline-progress');
+                const timelineItems = document.querySelectorAll('.timeline-item'); 
+                
+                if (timelineLine && timelineProgress && timelineItems.length > 0) {
+                    ScrollTrigger.create({
+                        trigger: timelineLine.parentElement, // Trigger on the container of the line
+                        start: "top center", 
+                        end: "bottom center", 
+                        scrub: true,
+                        onUpdate: self => gsap.to(timelineProgress, { height: `${self.progress * 100}%`, ease: "none" })
+                    });
+                
+                    timelineItems.forEach((item) => {
+                        const marker = item.querySelector('.timeline-marker');
+                        if (marker) { // Check if marker exists within this item
+                            ScrollTrigger.create({
+                                trigger: item, 
+                                start: "top center+=100", // Marker activates a bit after item enters center
+                                onEnter: () => gsap.to(marker, { backgroundColor: '#38BDF8', scale: 1.2, duration: 0.3 }),
+                                onLeaveBack: () => gsap.to(marker, { backgroundColor: '#374151', scale: 1, duration: 0.3 }),
+                                // markers: true // for debugging
+                            });
+                        }
+                    });
+                }
+            }
+
+            function initializeTestimonialCarousel() {
+                const carousel = document.getElementById('testimonial-carousel');
+                if (carousel) {
+                    const track = carousel.querySelector('.testimonial-track');
+                    const slides = Array.from(track.children); 
+                    if (slides.length === 0) return; 
+
+                    const nextButton = document.querySelector('.testimonial-next');
+                    const prevButton = document.querySelector('.testimonial-prev');
+                    let currentIndex = 0;
+                    // Ensure slideWidth is calculated after images might have loaded or DOM is fully ready
+                    let slideWidth = 0;
+                    
+                    function calculateSlideWidth() {
+                        if (slides.length > 0) {
+                             slideWidth = slides[0].getBoundingClientRect().width;
+                        }
+                    }
+                    calculateSlideWidth(); // Initial calculation
+                    window.addEventListener('resize', calculateSlideWidth); // Recalculate on resize
+
+
+                    const updateCarousel = () => {
+                        if (slideWidth === 0) calculateSlideWidth(); // Recalculate if somehow it's zero
+                        gsap.to(track, { x: -currentIndex * slideWidth, duration: 0.7, ease: "power3.inOut" });
+                    };
+                    // slides.forEach((slide, index) => { slide.style.left = slideWidth * index + 'px'; }); // Not needed with flex
+                    
+                    if (nextButton) nextButton.addEventListener('click', () => { currentIndex = (currentIndex + 1) % slides.length; updateCarousel(); });
+                    if (prevButton) prevButton.addEventListener('click', () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel(); });
+                    
+                    let autoPlayInterval = setInterval(() => { currentIndex = (currentIndex + 1) % slides.length; updateCarousel(); }, 5000);
+                    carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                    carousel.addEventListener('mouseleave', () => { autoPlayInterval = setInterval(() => { currentIndex = (currentIndex + 1) % slides.length; updateCarousel(); }, 5000); });
+                    
+                    // First update to position correctly
+                    if (slides.length > 0) updateCarousel();
+                }
+            }
+            
+            let navLinksCache = []; 
+            function initializeNavLinks() {
+                navLinksCache = Array.from(document.querySelectorAll('header nav a[href^="#"]')); 
+                const sections = [];
+                navLinksCache.forEach(link => {
+                    const sectionId = link.getAttribute('href');
+                    if (sectionId && sectionId !== "#") {
+                        const section = document.querySelector(sectionId);
+                        if (section) sections.push(section);
+                    }
+                });
+            
+                navLinksCache.forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        const href = this.getAttribute('href');
+                        if (href.startsWith('#')) {
+                            e.preventDefault();
+                            const targetElement = document.querySelector(href);
+                            if (targetElement) {
+                                 gsap.to(window, {duration: 1, scrollTo: {y: targetElement, offsetY: 70}, ease: "power2.inOut"});
+                            }
+                        }
+                    });
+                });
+                updateActiveNavLink(); 
+            }
+
+            function updateActiveNavLink() {
+                if (navLinksCache.length === 0) return; 
+                
+                let currentSectionId = '';
+                const sections = []; 
+                navLinksCache.forEach(link => {
+                    const sectionId = link.getAttribute('href');
+                    if (sectionId && sectionId !== "#") {
+                        const section = document.querySelector(sectionId);
+                        if (section) sections.push(section);
+                    }
+                });
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    // Adjust offset for activation, 80 is header height + a bit
+                    if (pageYOffset >= (sectionTop - 80) && pageYOffset < (sectionTop + sectionHeight - 80)) {
+                        currentSectionId = '#' + section.getAttribute('id');
+                    }
+                });
+                 // Special case for hero section if nothing else is active and at top
+                if (pageYOffset < (sections[0] ? sections[0].offsetTop - 80 : window.innerHeight) && sections[0] && sections[0].id === 'hero') {
+                    currentSectionId = '#hero';
+                }
+
+
+                navLinksCache.forEach(link => {
+                    link.classList.remove('active', 'text-cyan-400');
+                    if (!link.classList.contains('btn-premium')) { // Don't change CTA button style
+                         link.classList.add('text-gray-300'); 
+                    }
+                   
+                    if (link.getAttribute('href') === currentSectionId) {
+                        if (!link.classList.contains('btn-premium')) {
+                            link.classList.add('active', 'text-cyan-400');
+                            link.classList.remove('text-gray-300');
+                        }
+                    }
+                });
+            }
+
+
+            function initializeCursorFollower() {
+                const cursorFollower = document.getElementById('cursor-follower');
+                if (cursorFollower) {
+                    let lastX = 0, lastY = 0;
+                    let isStuck = false;
+                    let stuckX = 0, stuckY = 0;
+
+                    document.addEventListener('mousemove', e => {
+                        if (!isStuck) {
+                            gsap.to(cursorFollower, { x: e.clientX, y: e.clientY, duration: 0.15, ease: "power2.out" });
+                        } else {
+                             gsap.to(cursorFollower, { 
+                                x: stuckX + (e.clientX - stuckX) * 0.2, 
+                                y: stuckY + (e.clientY - stuckY) * 0.2, 
+                                duration: 0.2, 
+                                ease: "power2.out" 
+                            });
+                        }
+                        lastX = e.clientX;
+                        lastY = e.clientY;
+                    });
+
+                    document.querySelectorAll('a, button, .perspective-card, .accordion-header, .package-tab, .testimonial-prev, .testimonial-next, .feature-icon-placeholder, #problemDiagramContainer svg g, #solutionDiagramContainer svg g').forEach(el => {
+                        el.addEventListener('mouseenter', (e) => {
+                            cursorFollower.classList.add('hovered');
+                            if(el.closest('#problemDiagramContainer') || el.closest('#solutionDiagramContainer') || el.classList.contains('testimonial-prev') || el.classList.contains('testimonial-next')) {
+                                isStuck = true;
+                                const rect = el.getBoundingClientRect();
+                                stuckX = rect.left + rect.width / 2;
+                                stuckY = rect.top + rect.height / 2;
+                                gsap.to(cursorFollower, { 
+                                    x: stuckX, y: stuckY, 
+                                    width: rect.width * 0.8, height: rect.height * 0.8, // Adjust size to fit element
+                                    duration: 0.2, ease: "power2.out" 
+                                });
+                            }
+                        });
+                        el.addEventListener('mouseleave', () => {
+                            cursorFollower.classList.remove('hovered');
+                            if (isStuck) {
+                                isStuck = false;
+                                gsap.to(cursorFollower, { 
+                                    x: lastX, y: lastY, 
+                                    width: 10, height: 10, // Reset to original size
+                                    duration: 0.2, ease: "power2.out" 
+                                });
+                            }
+                        });
+                    });
+                }
+            }
+
+            function initializeExitPopup() {
+                const exitPopup = document.getElementById('exitPopup');
+                const closeExitPopupBtn = document.getElementById('closeExitPopup');
+                const noThanksButton = document.getElementById('noThanksButton');
+                const exitPopupCta = document.getElementById('exitPopupCta');
+                
+                let hasShown = sessionStorage.getItem('exitPopupShown') === 'true';
+                let mouseOutTriggered = false;
+                
+                function showExitPopup() {
+                    if (hasShown) return;
+                    gsap.to(exitPopup, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+                    hasShown = true;
+                    sessionStorage.setItem('exitPopupShown', 'true');
+                }
+                
+                function hideExitPopup() {
+                    gsap.to(exitPopup, { opacity: 0, scale: 0, duration: 0.3, ease: "power2.in" });
+                }
+                
+                document.addEventListener('mouseleave', (e) => {
+                    if (e.clientY <= 10 && !mouseOutTriggered && !hasShown) { // Increased Y threshold
+                        mouseOutTriggered = true;
+                        showExitPopup();
+                    }
+                });
+                
+                if (closeExitPopupBtn) {
+                    closeExitPopupBtn.addEventListener('click', hideExitPopup);
+                }
+                
+                if (noThanksButton) {
+                    noThanksButton.addEventListener('click', () => {
+                        hideExitPopup();
+                    });
+                }
+                
+                if (exitPopupCta) {
+                    // Użycie addEventListener zamiast onclick dla lepszej kompatybilności
+                    exitPopupCta.addEventListener('click', function() {
+                        hideExitPopup();
+                        
+                        // Opóźnienie nawigacji o czas trwania animacji zamykania
+                        setTimeout(() => {
+                            const contactSection = document.getElementById('contact');
+                            if (contactSection) {
+                                gsap.to(window, {
+                                    duration: 1, 
+                                    scrollTo: {y: contactSection, offsetY: 70}, 
+                                    ease: "power2.inOut"
+                                });
+                            } else {
+                                window.location.href = "https://softsynergy.youcanbook.me/";
+                            }
+                        }, 300);
+                    });
+                }
+                
+                setTimeout(() => {
+                    if (!mouseOutTriggered && !hasShown) {
+                        showExitPopup();
+                    }
+                }, 45000); // Show after 45 seconds if not triggered
+            }
+            
+            // Initialize PDF Download and Share functionality
+            function initializeShareAndDownload() {
+                // PDF Download functionality
+                const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+                if (downloadPdfBtn) {
+                    downloadPdfBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Show loading effect
+                        const originalText = this.querySelector('span').textContent;
+                        this.querySelector('span').textContent = 'Przygotowuję PDF...';
+                        this.classList.add('opacity-75', 'cursor-wait');
+                        this.setAttribute('disabled', 'true');
+                        
+                        // Get the current URL path to extract presentation filename
+                        const pathParts = window.location.pathname.split('/');
+                        const filename = pathParts[pathParts.length - 1];
+                        
+                        // Create the PDF download URL
+                        const pdfUrl = `/api/presentation-to-pdf/${filename}`;
+                        
+                        // Simulate PDF generation (would be replaced with actual PDF generation)
+                        setTimeout(() => {
+                            // Reset button
+                            this.querySelector('span').textContent = originalText;
+                            this.classList.remove('opacity-75', 'cursor-wait');
+                            this.removeAttribute('disabled');
+                            
+                            // Create filename based on client name or default
+                            const clientName = document.getElementById('heroTitlePart2').textContent.trim();
+                            const downloadFilename = clientName ? 
+                                `Oferta_dla_${clientName.replace(/\s+/g, '_')}.pdf` : 
+                                'Oferta_Premium.pdf';
+                            
+                            // Trigger download using the API endpoint
+                            const link = document.createElement('a');
+                            link.href = pdfUrl;
+                            link.download = downloadFilename;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            
+                            // Show success notification
+                            const notification = document.createElement('div');
+                            notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-xl z-50 transform translate-y-20 opacity-0';
+                            notification.textContent = 'PDF został pobrany!';
+                            document.body.appendChild(notification);
+                            
+                            gsap.to(notification, {
+                                y: -20, opacity: 1, duration: 0.3, ease: 'power2.out',
+                                onComplete: () => {
+                                    gsap.to(notification, {
+                                        y: 20, opacity: 0, duration: 0.3, delay: 3, ease: 'power2.in',
+                                        onComplete: () => document.body.removeChild(notification)
+                                    });
+                                }
+                            });
+                        }, 1500);
+                    });
+                }
+                // Share with colleague functionality
+                const shareForm = document.getElementById('shareForm');
+                const shareSuccess = document.getElementById('shareSuccess');
+                
+                if (shareForm && shareSuccess) {
+                    shareForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        const nameInput = document.getElementById('colleagueName');
+                        const emailInput = document.getElementById('colleagueEmail');
+                        
+                        if (!emailInput.value) {
+                            // Highlight the email field if empty
+                            emailInput.classList.add('ring-2', 'ring-red-500', 'border-red-500');
+                            setTimeout(() => emailInput.classList.remove('ring-2', 'ring-red-500', 'border-red-500'), 3000);
+                            return;
+                        }
+                        
+                        // Show loading state
+                        const submitBtn = shareForm.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.querySelector('span').textContent;
+                        submitBtn.querySelector('span').textContent = 'Wysyłam...';
+                        submitBtn.classList.add('opacity-75', 'cursor-wait');
+                        submitBtn.setAttribute('disabled', 'true');
+                        
+                        // Simulate API call to share
+                        setTimeout(() => {
+                            // Reset button
+                            submitBtn.querySelector('span').textContent = originalText;
+                            submitBtn.classList.remove('opacity-75', 'cursor-wait');
+                            submitBtn.removeAttribute('disabled');
+                            
+                            // Show success message
+                            shareSuccess.classList.remove('hidden');
+                            gsap.fromTo(shareSuccess, 
+                                { y: -10, opacity: 0 }, 
+                                { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }
+                            );
+                            
+                            // Reset form
+                            nameInput.value = '';
+                            emailInput.value = '';
+                            
+                            // Hide success message after delay
+                            setTimeout(() => {
+                                gsap.to(shareSuccess, {
+                                    y: -10, opacity: 0, duration: 0.5, ease: 'power2.in',
+                                    onComplete: () => shareSuccess.classList.add('hidden')
+                                });
+                            }, 5000);
+                        }, 1500);
+                    });
+                }
+            }
+
+            // Initialize Newsletter functionality
+            function initializeNewsletter() {
+                const newsletterForm = document.getElementById('newsletterForm');
+                const newsletterSuccess = document.getElementById('newsletterSuccess');
+                
+                if (newsletterForm && newsletterSuccess) {
+                    newsletterForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        const emailInput = document.getElementById('newsletterEmail');
+                        
+                        if (!emailInput.value) {
+                            // Highlight the email field if empty
+                            emailInput.classList.add('ring-2', 'ring-red-500', 'border-red-500');
+                            setTimeout(() => emailInput.classList.remove('ring-2', 'ring-red-500', 'border-red-500'), 3000);
+                            return;
+                        }
+                        
+                        // Show loading state
+                        const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.querySelector('span').textContent;
+                        submitBtn.querySelector('span').textContent = 'Zapisuję...';
+                        submitBtn.classList.add('opacity-75', 'cursor-wait');
+                        submitBtn.setAttribute('disabled', 'true');
+                        
+                        // Simulate API call to subscribe
+                        setTimeout(() => {
+                            // Reset button
+                            submitBtn.querySelector('span').textContent = originalText;
+                            submitBtn.classList.remove('opacity-75', 'cursor-wait');
+                            submitBtn.removeAttribute('disabled');
+                            
+                            // Hide form, show success message
+                            gsap.to(newsletterForm, {
+                                opacity: 0, y: -10, duration: 0.3, ease: 'power2.in',
+                                onComplete: () => {
+                                    newsletterForm.style.display = 'none';
+                                    newsletterSuccess.classList.remove('hidden');
+                                    gsap.fromTo(newsletterSuccess, 
+                                        { y: -10, opacity: 0 }, 
+                                        { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }
+                                    );
+                                }
+                            });
+                        }, 1500);
+                    });
+                }
+            }
+
+            // Initialize Sticky CTA Button
+            function initializeStickyCta() {
+                const stickyCta = document.getElementById('stickyCta');
+                if (stickyCta) {
+                    // Show sticky CTA after scrolling down a bit
+                    ScrollTrigger.create({
+                        start: "top -10%",
+                        end: "bottom 10%",
+                        onEnter: () => gsap.to(stickyCta, { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" }),
+                        onLeaveBack: () => gsap.to(stickyCta, { y: 32, opacity: 0, duration: 0.3, ease: "power2.in" })
+                    });
+                    
+                    // Hide sticky CTA when near the contact section to avoid duplicate CTAs
+                    ScrollTrigger.create({
+                        trigger: "#contact",
+                        start: "top 80%",
+                        end: "bottom top",
+                        onEnter: () => gsap.to(stickyCta, { y: 32, opacity: 0, duration: 0.3, ease: "power2.in" }),
+                        onLeaveBack: () => gsap.to(stickyCta, { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" })
+                    });
+                }
+            }
+        });
+    </script>
+</body> 
+</html>
