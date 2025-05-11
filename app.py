@@ -9,7 +9,7 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 
 # Konfiguracja loggera
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,  # Change from INFO to DEBUG for more detailed logs
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler()
@@ -19,7 +19,8 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'development-key-change-in-production')
-CORS(app)  # Enable CORS for all routes
+# Enable unrestricted CORS for development/debugging
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 # Directory where presentation JSON files are stored
 PRESENTATIONS_DIR = os.path.join("presentations")
@@ -1253,6 +1254,31 @@ def server_error(e):
     return render_template('error.html', error=str(e)), 500
 
 if __name__ == '__main__':
+    # Log important startup information
+    logger.info(f"Starting Flask application on 0.0.0.0:5001")
+    logger.info(f"Local IP addresses:")
+    
+    # Attempt to print all available network interfaces for debugging
+    try:
+        import socket
+        hostname = socket.gethostname()
+        logger.info(f"Hostname: {hostname}")
+        
+        # Get all network interface addresses
+        import netifaces
+        for interface in netifaces.interfaces():
+            addresses = netifaces.ifaddresses(interface)
+            if netifaces.AF_INET in addresses:
+                for address in addresses[netifaces.AF_INET]:
+                    logger.info(f"Interface: {interface}, IP: {address['addr']}")
+    except Exception as e:
+        logger.warning(f"Could not get network interfaces: {str(e)}")
+        # Simple fallback if netifaces is not available
+        try:
+            logger.info(f"IP Address: {socket.gethostbyname(socket.gethostname())}")
+        except:
+            logger.warning("Could not determine IP address")
+    
     # Force binding to all network interfaces with port 5001
     # This helps bypass firewall restrictions in production
-    app.run(debug=False, host='0.0.0.0', port=5001, threaded=True) 
+    app.run(debug=False, host='0.0.0.0', port=5001, threaded=True, ssl_context=None) 
