@@ -1,0 +1,275 @@
+{
+  "useme_id": 115486,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Sesji Biznesowej dla Fusion Marketing Sp. z o.o. | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/019/071219_l3wBDIL.png",
+    "clientLogoAlt": "Logo Fusion Marketing Sp. z o.o.",
+    "titlePart1": "Propozycja Sesji Biznesowej dla",
+    "titlePart2ClientName": "Fusion Marketing Sp. z o.o.",
+    "subtitle": "Profesjonalna sesja biznesowa obejmująca zdjęcia 10 członków zespołu oraz ujęcia lifestyle'owe w Państwa biurze w Krakowie.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące sesji biznesowej, aby zaproponować rozwiązanie idealnie dopasowane do wizerunku Fusion Marketing Sp. z o.o.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Profesjonalna Sesja Biznesowa</span>",
+      "description": "Głównym celem jest wykonanie wysokiej jakości sesji biznesowej dla Fusion Marketing Sp. z o.o., obejmującej zdjęcia 10 członków zespołu oraz ujęcia lifestyle'owe w biurze w Krakowie. Fotografie mają wzmocnić profesjonalny wizerunek firmy i być wykorzystane w materiałach marketingowych oraz komunikacji wewnętrznej i zewnętrznej.",
+      "points": [
+        "Zlecenie wykonania sesji biznesowej (zdjęcia zespołu + lifestyle w biurze).",
+        "Liczba osób do sfotografowania: 10.",
+        "Lokalizacja sesji: biuro Klienta w Krakowie.",
+        "Oczekiwanie na portfolio oraz wycenę w odpowiedzi na ogłoszenie.",
+        "Budżet projektu: Do negocjacji."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji sesji dla Fusion Marketing"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Realizacja Sesji Fotograficznej",
+      "description": "Proponujemy kompleksową realizację sesji biznesowej w Państwa biurze w Krakowie. Nasz doświadczony zespół fotografów zadba o profesjonalne zdjęcia członków zespołu oraz dynamiczne ujęcia lifestyle'owe, które oddadzą charakter i kulturę Fusion Marketing Sp. z o.o. Całość w atrakcyjnej cenie 2400 zł netto.",
+      "points": [
+        "Realizacja sesji zdjęciowej dla 10 osób oraz ujęć lifestyle'owych w biurze.",
+        "Dostarczenie starannie wyselekcjonowanych i obrobionych zdjęć w wysokiej rozdzielczości.",
+        "Szacowany termin realizacji: 2-3 tygodnie od akceptacji oferty.",
+        "Cena realizacji: 2400 zł netto.",
+        "Pełne zaangażowanie i profesjonalizm na każdym etapie współpracy."
+      ],
+      "diagramPlaceholderText": "Przykładowy kadr z sesji biznesowej Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Oferty</span> Fotograficznej",
+    "sectionSubtitle": "Przedstawiamy składowe naszej propozycji, które zapewnią wysoką jakość i profesjonalizm Państwa sesji biznesowej dla Fusion Marketing Sp. z o.o.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 6h9.75M10.5 12h9.75M10.5 18h9.75M3.75 6H6v2.25A2.25 2.25 0 013.75 10.5v0A2.25 2.25 0 011.5 8.25V6m3 12H6v2.25A2.25 2.25 0 003.75 20.25v0A2.25 2.25 0 001.5 18V15.75m3-9V6m0 12V15.75\" />",
+        "title": "Profesjonalne Zdjęcia Portretowe Zespołu",
+        "description": "Indywidualne sesje portretowe dla każdego z 10 członków zespołu, realizowane w Państwa biurze. Skupiamy się na naturalnym ukazaniu profesjonalizmu i osobowości każdej osoby, zgodnie z wizerunkiem Fusion Marketing.",
+        "mockupText": "Przykładowy portret biznesowy"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Dynamiczne Ujęcia Lifestyle w Biurze",
+        "description": "Fotografie ukazujące atmosferę pracy, interakcje zespołu, detale biura oraz kulturę organizacyjną Fusion Marketing. Naturalne i autentyczne kadry oddające energię firmy.",
+        "mockupText": "Kadr z sesji lifestyle w biurze"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z\" />",
+        "title": "Pełna Postprodukcja i Gotowe Materiały",
+        "description": "Staranna selekcja najlepszych ujęć, profesjonalna obróbka graficzna (retusz, korekcja barwna, kadrowanie). Dostarczenie zdjęć w wysokiej rozdzielczości, gotowych do publikacji online i w druku.",
+        "mockupText": "Przykładowe finalne zdjęcia po obróbce"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Sesji Fotograficznej",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap realizacji sesji biznesowej dla Fusion Marketing Sp. z o.o., zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Konsultacje, Planowanie i Przygotowanie Logistyczne",
+        "description": "Szczegółowe omówienie Państwa oczekiwań, celów sesji, preferencji stylistycznych oraz logistyki dnia zdjęciowego w biurze Fusion Marketing w Krakowie. Ustalenie harmonogramu i zakresu ujęć.",
+        "features": [
+          "Analiza potrzeb i celów wizerunkowych Fusion Marketing Sp. z o.o.",
+          "Wspólne ustalenie koncepcji, stylu zdjęć oraz harmonogramu dnia zdjęciowego.",
+          "Doradztwo w zakresie przygotowania przestrzeni biurowej i dress code'u uczestników.",
+          "Potwierdzenie szczegółów logistycznych sesji w Krakowie, w tym terminu."
+        ]
+      },
+      {
+        "title": "Etap 2: Realizacja Dnia Zdjęciowego w Państwa Biurze",
+        "description": "Profesjonalna realizacja sesji fotograficznej w biurze Fusion Marketing. Wykonanie zdjęć portretowych 10 członków zespołu oraz ujęć lifestyle'owych zgodnie z ustaleniami.",
+        "features": [
+          "Przeprowadzenie sesji portretowej dla 10 wskazanych osób.",
+          "Realizacja zdjęć grupowych oraz ujęć lifestyle'owych dokumentujących atmosferę pracy i interakcje.",
+          "Efektywne zarządzanie czasem i elastyczność podczas sesji, aby zapewnić komfort uczestnikom.",
+          "Wykorzystanie profesjonalnego sprzętu fotograficznego i oświetleniowego dla najwyższej jakości zdjęć."
+        ]
+      },
+      {
+        "title": "Etap 3: Selekcja, Postprodukcja i Dostarczenie Zdjęć",
+        "description": "Staranna selekcja najlepszych kadrów, profesjonalna obróbka graficzna zdjęć (korekcja kolorów, kontrast, podstawowy retusz). Przygotowanie i dostarczenie finalnego pakietu zdjęć w wersji cyfrowej.",
+        "features": [
+          "Selekcja najlepszych ujęć z całej sesji (minimum 50-80 zdjęć).",
+          "Profesjonalna postprodukcja (korekcja barwna, kontrast, kadrowanie, podstawowy retusz).",
+          "Przygotowanie zdjęć w wysokiej rozdzielczości (do druku) i zoptymalizowanych (do internetu).",
+          "Dostarczenie kompletu finalnych zdjęć poprzez dedykowaną galerię online lub transfer plików w ciągu 2-3 tygodni od dnia sesji."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalny Wizerunek</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę kompleksowej sesji biznesowej dla Fusion Marketing Sp. z o.o. Nasza propozycja to inwestycja w wysokiej jakości materiały wizualne.",
+    "tabs": [
+      {
+        "id": "business_photography_offer",
+        "name": "Sesja Biznesowa"
+      }
+    ],
+    "packages": [
+      {
+        "id": "business_photography_offer",
+        "name": "Sesja Biznesowa dla Fusion Marketing Sp. z o.o.",
+        "description": "Kompleksowa usługa fotografii biznesowej dla Fusion Marketing Sp. z o.o., obejmująca zdjęcia portretowe 10 członków zespołu oraz ujęcia lifestyle'owe w biurze Klienta w Krakowie. Cena obejmuje dojazd na terenie Krakowa.",
+        "features": [
+          {
+            "text": "Sesja zdjęciowa dla 10 osób (portrety indywidualne)",
+            "included": true
+          },
+          {
+            "text": "Zdjęcia lifestyle'owe w przestrzeni biurowej (interakcje, praca, detale)",
+            "included": true
+          },
+          {
+            "text": "Profesjonalna postprodukcja (selekcja, obróbka, retusz podstawowy)",
+            "included": true
+          },
+          {
+            "text": "Minimum 50-80 finalnych zdjęć w wysokiej rozdzielczości",
+            "included": true
+          },
+          {
+            "text": "Prawa do wykorzystania zdjęć na potrzeby firmy (strona WWW, social media, materiały marketingowe)",
+            "included": true
+          },
+          {
+            "text": "Dojazd fotografa na terenie Krakowa",
+            "included": true
+          },
+          {
+            "text": "Konsultacje i wsparcie w przygotowaniach do sesji",
+            "included": true
+          }
+        ],
+        "price": "2400,00 PLN brutto",
+        "priceNote": "Cena netto. Do ceny należy doliczyć podatek VAT (23%). Oferta ważna przez 30 dni.",
+        "ctaText": "Zamów Sesję Biznesową",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Sesji Biznesowej",
+    "sectionSubtitle": "Przejrzysty plan działania dla sesji dla Fusion Marketing Sp. z o.o. Przewidywany czas realizacji projektu: **2-3 tygodnie** od momentu akceptacji oferty i ustalenia terminu sesji. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Akceptacja Oferty, Ustalenia i Przygotowania (do 1 tygodnia przed sesją)",
+        "duration": "1-5 dni roboczych",
+        "description": "Potwierdzenie zlecenia, omówienie szczegółów (stylistyka, lista kluczowych ujęć, harmonogram), ustalenie dogodnej daty sesji, przekazanie wskazówek dotyczących przygotowania (np. stroje, przygotowanie biura)."
+      },
+      {
+        "phase": "Faza 2: Dzień Zdjęciowy w Państwa Biurze (1 dzień)",
+        "duration": "ok. 4-8 godzin (w zależności od zakresu)",
+        "description": "Realizacja sesji fotograficznej w biurze Fusion Marketing w Krakowie. Wykonanie zdjęć indywidualnych, ewentualnych zdjęć grupowych oraz ujęć lifestyle. Dbałość o przyjazną atmosferę i efektywność pracy."
+      },
+      {
+        "phase": "Faza 3: Postprodukcja i Dostarczenie Materiałów (do 2 tygodni po sesji)",
+        "duration": "5-10 dni roboczych",
+        "description": "Staranna selekcja najlepszych kadrów, profesjonalna obróbka graficzna zdjęć (korekcja kolorystyczna, kontrast, podstawowy retusz). Przygotowanie i udostępnienie prywatnej galerii online z gotowymi zdjęciami do pobrania."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wzmocnienie Wizerunku</span> Fusion Marketing?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić szczegóły sesji biznesowej i stworzyć fotografie, które najlepiej oddadzą profesjonalizm i charakter Państwa zespołu. Jesteśmy gotowi odpowiedzieć na wszystkie pytania i dostosować ofertę do Państwa indywidualnych potrzeb.",
+    "ctaButtonText": "Zapytaj o Sesję dla Swojej Firmy",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa (obsługa klientów na terenie całej Polski)"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone. Project Manager: Antoni Seba.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 2400,
+  "timelineDays": 21
+}

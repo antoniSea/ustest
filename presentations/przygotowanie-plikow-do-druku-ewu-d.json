@@ -1,0 +1,277 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Przygotowania Plików do Druku dla ewu_d | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/CCCCCC/0A0F1F?Text=ewu_d",
+    "clientLogoAlt": "Logo Klienta ewu_d",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "ewu_d",
+    "subtitle": "Propozycja dotycząca przeniesienia materiałów z Canvy do InDesign, profesjonalnego przygotowania plików do druku oraz opcjonalnego stworzenia dodatkowych layoutów.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące przygotowania plików do druku, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Profesjonalne Pliki do Druku</span>",
+      "description": "Głównym celem jest przeniesienie materiałów z Canvy do plików produkcyjnych (InDesign), przygotowanie plików do proofu i finalnych plików do druku. Klient oczekuje również możliwości przygotowania dodatkowych layoutów oraz finalnie otrzymania plików otwartych (InDesign) oraz gotowych PDF-ów do druku.",
+      "points": [
+        "Przeniesienie materiałów z Canvy do plików produkcyjnych (InDesign).",
+        "Przygotowanie plików do proofu oraz finalnych plików do druku.",
+        "Ewentualne przygotowanie kilku dodatkowych layoutów w oparciu o dostarczone wzory lub debrief.",
+        "Otrzymanie plików otwartych oraz gotowych PDF-ów do druku.",
+        "Wymagane doświadczenie w pracy nad plikami do druku (Grafika 2D)."
+      ],
+      "diagramPlaceholderText": "Wizualizacja procesu DTP"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowe Przygotowanie DTP",
+      "description": "Proponujemy realizację kluczowych zadań (przeniesienie materiałów z Canvy do InDesign i przygotowanie ich do druku) w cenie **850 PLN netto**. Termin realizacji to do 5 dni roboczych od otrzymania kompletnych materiałów. Koszt przygotowania dodatkowych layoutów ustalimy indywidualnie. Gwarantujemy profesjonalne przygotowanie plików InDesign i PDF, spełniających wszystkie wymogi techniczne.",
+      "points": [
+        "Przeniesienie materiałów z Canvy do profesjonalnego oprogramowania InDesign.",
+        "Przygotowanie plików do proofu i finalnych, produkcyjnych wersji do druku.",
+        "Możliwość opracowania dodatkowych layoutów (koszt ustalany indywidualnie).",
+        "Cena za kluczowe zadania (konwersja i przygotowanie do druku): 850 PLN netto.",
+        "Termin realizacji: do 5 dni roboczych.",
+        "Dostarczenie plików otwartych (InDesign) oraz gotowych PDF-ów do druku."
+      ],
+      "diagramPlaceholderText": "Przykładowe pliki produkcyjne Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Usługi</span> DTP",
+    "sectionSubtitle": "Przedstawiamy składowe naszej propozycji, które zapewnią wysoką jakość i poprawność techniczną Państwa materiałów do druku.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5\" />",
+        "title": "Konwersja Materiałów Canva do InDesign",
+        "description": "Staranne i precyzyjne przeniesienie Państwa projektów z platformy Canva do profesjonalnego środowiska Adobe InDesign, z zachowaniem spójności wizualnej oraz adaptacją do standardów DTP.",
+        "mockupText": "Proces przenoszenia Canva -> InDesign"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z\" />",
+        "title": "Profesjonalne Przygotowanie Plików do Druku",
+        "description": "Kompleksowe przygotowanie plików zgodnie z wymogami drukarskimi: ustawienie spadów, marginesów, odpowiednich profili kolorystycznych (CMYK), przygotowanie wersji do proofingu oraz finalnych plików produkcyjnych.",
+        "mockupText": "Specyfikacja techniczna plików"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z\" />",
+        "title": "Dodatkowe Layouty i Pliki Otwarte",
+        "description": "Możliwość stworzenia dodatkowych, spójnych layoutów na podstawie dostarczonych wzorów z Canvy lub przygotowanego debriefu. Finalnie otrzymają Państwo pliki otwarte InDesign oraz gotowe PDFy do druku.",
+        "mockupText": "Struktura plików finalnych"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap przygotowania Państwa materiałów do druku, zapewniając transparentność procesu i najwyższą jakość.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Materiałów i Ustalenia Wstępne",
+        "description": "Dokładna analiza dostarczonych materiałów z Canvy, omówienie specyfiki projektu, wymagań technicznych drukarni oraz zakresu ewentualnych dodatkowych layoutów.",
+        "features": [
+          "Weryfikacja kompletności i jakości materiałów źródłowych z Canvy.",
+          "Omówienie oczekiwań dotyczących finalnych plików (InDesign, PDF).",
+          "Ustalenia dotyczące ewentualnych dodatkowych layoutów (zakres, wycena).",
+          "Potwierdzenie harmonogramu i warunków współpracy."
+        ]
+      },
+      {
+        "title": "Etap 2: Przeniesienie, Adaptacja w InDesign i Prace Graficzne",
+        "description": "Przeniesienie treści i layoutu z Canvy do Adobe InDesign. Dostosowanie projektu do standardów DTP, w tym praca na warstwach, stylach, odpowiednie zarządzanie kolorami i fontami. Opcjonalne przygotowanie dodatkowych layoutów.",
+        "features": [
+          "Odtworzenie lub adaptacja projektu w InDesign z dbałością o detale.",
+          "Optymalizacja elementów graficznych i tekstowych pod kątem druku.",
+          "Zastosowanie najlepszych praktyk DTP (spady, marginesy, profile kolorów).",
+          "Przygotowanie wstępnej wersji plików do Państwa weryfikacji (proof)."
+        ]
+      },
+      {
+        "title": "Etap 3: Proofing, Finalizacja i Dostarczenie Plików",
+        "description": "Przesłanie plików do proofingu, wprowadzenie ewentualnych korekt. Generowanie finalnych plików PDF gotowych do druku oraz paczki z plikami otwartymi InDesign (wraz z użytymi fontami i linkami).",
+        "features": [
+          "Generowanie plików do proofu cyfrowego dla Państwa akceptacji.",
+          "Wprowadzenie finalnych poprawek na podstawie Państwa feedbacku.",
+          "Przygotowanie kompletnej paczki plików produkcyjnych (PDF drukarski, pliki źródłowe InDesign).",
+          "Bezpieczne dostarczenie kompletu materiałów drogą elektroniczną."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalne Materiały</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę usługi przygotowania plików do druku. Cena za kluczowe zadania jest stała, koszt dodatkowych layoutów do indywidualnej wyceny.",
+    "tabs": [
+      {
+        "id": "dtp_services_offer",
+        "name": "Przygotowanie Plików do Druku"
+      }
+    ],
+    "packages": [
+      {
+        "id": "dtp_services_offer",
+        "name": "Przygotowanie Plików do Druku dla ewu_d",
+        "description": "Kompleksowa usługa przeniesienia materiałów z Canvy do InDesign, przygotowania plików do proofu i finalnych plików do druku. Cena dotyczy zakresu opisanego w zleceniu.",
+        "features": [
+          {
+            "text": "Przeniesienie materiałów Canva -> InDesign",
+            "included": true
+          },
+          {
+            "text": "Przygotowanie plików do proofu",
+            "included": true
+          },
+          {
+            "text": "Przygotowanie finalnych plików do druku (PDF)",
+            "included": true
+          },
+          {
+            "text": "Dostarczenie plików otwartych (InDesign)",
+            "included": true
+          },
+          {
+            "text": "Zapewnienie poprawności technicznej plików (spady, CMYK itp.)",
+            "included": true
+          },
+          {
+            "text": "Konsultacje i zarządzanie projektem",
+            "included": true
+          },
+          {
+            "text": "Realizacja do 5 dni roboczych (dla głównego zakresu)",
+            "included": true
+          }
+        ],
+        "price": "850 PLN netto",
+        "priceNote": "Cena netto za przeniesienie i przygotowanie do druku. Koszt przygotowania dodatkowych layoutów ustalany indywidualnie.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Usługi",
+    "sectionSubtitle": "Przejrzysty plan działania dla przygotowania Państwa plików do druku. Przewidywany czas realizacji kluczowych zadań (przeniesienie i przygotowanie do druku): **do 5 dni roboczych** od otrzymania kompletnych materiałów z Canvy i ustalenia szczegółów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Otrzymanie Materiałów i Analiza (Dzień 1)",
+        "duration": "1 dzień roboczy",
+        "description": "Przesłanie przez Państwa kompletnych materiałów z Canvy, ewentualnych fontów, grafik oraz dodatkowych wytycznych. Nasza analiza i potwierdzenie zakresu prac."
+      },
+      {
+        "phase": "Faza 2: Praca w InDesign i Przygotowanie Wstępnych Plików (Dni 1-3)",
+        "duration": "1-3 dni robocze",
+        "description": "Przenoszenie layoutów do InDesign, adaptacja techniczna (kolory, spady, fonty), przygotowanie pierwszej wersji plików (np. proof PDF) do Państwa wglądu."
+      },
+      {
+        "phase": "Faza 3: Feedback, Korekty i Finalizacja (Dni 3-5)",
+        "duration": "1-2 dni robocze",
+        "description": "Wprowadzenie ewentualnych Państwa uwag i korekt. Przygotowanie finalnych plików gotowych do druku (PDF) oraz paczki z plikami otwartymi InDesign. Opcjonalne omówienie i wycena dodatkowych layoutów."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów potwierdzają wysoką jakość usług DTP świadczonych przez Soft Synergy. Dołącz do grona zadowolonych partnerów.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy perfekcyjnie przeniosło nasze projekty z Canvy do formatów drukarskich. Pełen profesjonalizm i terminowość!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Przygotowanie plików do druku przez Soft Synergy to gwarancja spokoju. Wszystko zawsze zgadza się co do milimetra. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy w zakresie DTP to czysta przyjemność. Szybko, sprawnie i z dbałością o każdy detal. Zdecydowanie polecam!",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Profesjonalne Pliki</span> dla ewu_d?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy pomóc Państwu w przygotowaniu materiałów gotowych do druku. Skontaktuj się z nami, aby omówić szczegóły zlecenia i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Cyfrowa 10, 02-456 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 850,
+  "timelineDays": 7,
+  "useme_id": 115492,
+  "employer_email": "eve.dabrowska@gmail.com"
+}

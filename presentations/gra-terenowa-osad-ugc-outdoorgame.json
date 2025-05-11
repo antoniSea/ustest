@@ -1,0 +1,276 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Pozyskania Twórców UGC dla OutdoorGame | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/050/479750.png",
+    "clientLogoAlt": "Logo OutdoorGame",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "OutdoorGame",
+    "subtitle": "Propozycja kompleksowego zarządzania procesem pozyskania kreatywnych twórców UGC do promocji gry terenowej 'Osąd', mająca na celu dostarczenie wysokiej jakości materiałów wideo.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące pozyskania twórców UGC dla gry 'Osąd', aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów marketingowych.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Pozyskanie Kreatywnych Twórców UGC</span>",
+      "description": "Głównym celem jest znalezienie i skoordynowanie kreatywnych twórców User Generated Content (UGC) do promocji gry terenowej 'Osąd'. Zależy Państwu na wysokiej jakości materiałach wideo do celów marketingowych, bez konieczności publikacji na profilach twórców.",
+      "points": [
+        "Poszukiwanie kreatywnych twórców UGC do promocji gry terenowej 'Osąd'.",
+        "Lokalizacje: Warszawa, Wrocław, Kraków, Poznań, Katowice, Opole, Łódź, Bydgoszcz, Trójmiasto, Częstochowa, Toruń (lub możliwość dojazdu).",
+        "Wymagania dla twórców: Wiek 18+, stworzenie jednego materiału video w dwóch wersjach (zmontowana z efektami i bez efektów).",
+        "Oferowane wynagrodzenie dla twórcy: 300 zł netto.",
+        "Informacje od klienta: Social media, budżet 'Do negocjacji', email: useme@outdoorgame.com."
+      ],
+      "diagramPlaceholderText": "Proces pozyskiwania twórców UGC dla 'Osąd'"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Zarządzanie Procesem Pozyskania Twórców UGC",
+      "description": "Soft Synergy oferuje kompleksowe zarządzanie procesem rekrutacji i koordynacji do 5 twórców UGC. Nasz koszt usługi wynosi 1200 zł netto. Zapewniamy dostarczenie materiałów od pierwszej grupy twórców w ciągu 15 dni roboczych od akceptacji współpracy.",
+      "points": [
+        "Kompleksowe zarządzanie rekrutacją i koordynacją do 5 twórców UGC.",
+        "Koszt usługi Soft Synergy: 1200 zł netto (wynagrodzenie dla twórców jest osobną, transparentną pozycją).",
+        "Dostarczenie materiałów od pierwszej grupy twórców w ciągu 15 dni roboczych.",
+        "Staranna selekcja twórców z naszej bazy oraz aktywne poszukiwania w kanałach social media.",
+        "Weryfikacja portfolio i zapewnienie zgodności materiałów z Państwa oczekiwaniami (OutdoorGame)."
+      ],
+      "diagramPlaceholderText": "Model współpracy z Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Usługi</span> Pozyskania Twórców",
+    "sectionSubtitle": "Przedstawiamy składowe naszej propozycji, które zapewnią Państwu wysokiej jakości treści UGC dla gry 'Osąd'.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Selekcja i Rekrutacja Twórców UGC",
+        "description": "Staranny dobór do 5 kreatywnych twórców UGC z uwzględnieniem lokalizacji i wymagań (wiek 18+). Weryfikacja portfolio, linków do mediów społecznościowych i umiejętności tworzenia angażujących materiałów wideo.",
+        "mockupText": "Baza twórców i kanały social media"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Koordynacja i Zarządzanie Współpracą",
+        "description": "Pełna koordynacja współpracy z wybranymi twórcami, w tym briefing, nadzór nad terminowością i jakością dostarczanych materiałów (dwie wersje wideo od każdego twórcy: z efektami i bez).",
+        "mockupText": "Proces koordynacji z twórcami"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Dostarczenie Wysokiej Jakości Materiałów",
+        "description": "Zapewnienie dostarczenia finalnych materiałów wideo od twórców, gotowych do wykorzystania w Państwa kampaniach marketingowych gry 'Osąd'. Materiały nie wymagają publikacji na profilach twórców.",
+        "mockupText": "Przykładowe materiały UGC"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Usługi Zarządzania UGC",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap naszej współpracy przy pozyskiwaniu twórców UGC dla gry 'Osąd'.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Wymagań i Plan Działania",
+        "description": "Dokładne zrozumienie Państwa celów, specyfiki gry 'Osąd' oraz wymagań dotyczących twórców i materiałów. Opracowanie strategii poszukiwań i kryteriów selekcji.",
+        "features": [
+          "Spotkanie inicjujące i doprecyzowanie oczekiwań OutdoorGame.",
+          "Ustalenie profilu idealnego twórcy UGC dla gry 'Osąd' (wiek, styl, lokalizacja).",
+          "Określenie harmonogramu rekrutacji i dostarczenia materiałów.",
+          "Przygotowanie briefu dla potencjalnych twórców."
+        ]
+      },
+      {
+        "title": "Etap 2: Rekrutacja, Selekcja i Prezentacja Twórców",
+        "description": "Aktywne poszukiwanie i weryfikacja kandydatów z naszej bazy oraz kanałów social media. Wybór do 5 najlepszych twórców i prezentacja ich profili Państwu.",
+        "features": [
+          "Publikacja ogłoszeń (jeśli dotyczy) i direct search w mediach społecznościowych.",
+          "Analiza zgłoszeń, portfolio i linków do mediów społecznościowych kandydatów.",
+          "Weryfikacja dostępności w wybranych lokalizacjach i zgodności z wymaganiami (np. wiek 18+).",
+          "Prezentacja rekomendowanych twórców klientowi (OutdoorGame) i wsparcie w finalnym wyborze."
+        ]
+      },
+      {
+        "title": "Etap 3: Koordynacja Produkcji i Dostarczenie Materiałów",
+        "description": "Nadzór nad procesem tworzenia materiałów przez wybranych twórców, zapewnienie zgodności z briefem i terminowości. Odbiór i przekazanie Państwu gotowych filmów wideo.",
+        "features": [
+          "Przekazanie szczegółowego briefu i wytycznych wybranym twórcom.",
+          "Monitorowanie postępów i stała komunikacja z twórcami w trakcie tworzenia materiałów.",
+          "Kontrola jakości dostarczonych materiałów (dwie wersje wideo od każdego twórcy).",
+          "Przekazanie kompletu materiałów wideo OutdoorGame w ciągu 15 dni roboczych od akceptacji współpracy."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Skuteczne Treści UGC</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę usługi pozyskania i koordynacji twórców UGC dla gry 'Osąd'. Nasza propozycja jest konkurencyjna i stanowi około 60% standardowej ceny rynkowej za tego typu kompleksową usługę.",
+    "tabs": [
+      {
+        "id": "ugc_management_offer",
+        "name": "Zarządzanie Twórcami UGC"
+      }
+    ],
+    "packages": [
+      {
+        "id": "ugc_management_offer",
+        "name": "Pozyskanie i Koordynacja Twórców UGC dla 'Osąd'",
+        "description": "Kompleksowa usługa rekrutacji, selekcji i koordynacji do 5 twórców UGC w celu stworzenia materiałów wideo promujących grę terenową 'Osąd'. Cena obejmuje usługę Soft Synergy.",
+        "features": [
+          {
+            "text": "Rekrutacja i selekcja do 5 twórców UGC",
+            "included": true
+          },
+          {
+            "text": "Koordynacja procesu tworzenia materiałów",
+            "included": true
+          },
+          {
+            "text": "Zapewnienie 2 wersji wideo od każdego twórcy",
+            "included": true
+          },
+          {
+            "text": "Weryfikacja jakości i zgodności z briefem",
+            "included": true
+          },
+          {
+            "text": "Dostarczenie materiałów w 15 dni roboczych",
+            "included": true
+          },
+          {
+            "text": "Wsparcie w komunikacji i formalnościach z twórcami",
+            "included": true
+          },
+          {
+            "text": "Transparentne rozliczenie (koszt twórców osobno)",
+            "included": true
+          }
+        ],
+        "price": "1200 zł netto",
+        "priceNote": "Cena netto za usługę Soft Synergy. Wynagrodzenie dla twórców (300 zł netto/osobę, łącznie 5 x 300 zł = 1500 zł netto) jest osobną, transparentną pozycją. Budżet klienta: Do negocjacji.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Pozyskania Twórców",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu pozyskania twórców UGC dla gry 'Osąd'. Przewidywany czas dostarczenia materiałów od pierwszej grupy twórców: **15 dni roboczych** od akceptacji współpracy i otrzymania niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Akceptacja Oferty i Ustalenie Szczegółów (Dzień 1-2)",
+        "duration": "1-2 dni robocze",
+        "description": "Potwierdzenie współpracy przez OutdoorGame, finalizacja umowy (jeśli dotyczy), przekazanie przez Państwa szczegółowych wytycznych dotyczących gry 'Osąd' i oczekiwanych materiałów UGC, ustalenie kryteriów selekcji twórców."
+      },
+      {
+        "phase": "Faza 2: Rekrutacja, Selekcja Twórców i Prezentacja (Dzień 3-7)",
+        "duration": "5 dni roboczych",
+        "description": "Aktywne poszukiwanie twórców UGC, weryfikacja zgłoszeń, analiza portfolio i mediów społecznościowych. Selekcja kandydatów spełniających kryteria i prezentacja rekomendacji OutdoorGame."
+      },
+      {
+        "phase": "Faza 3: Produkcja Materiałów przez Twórców, Koordynacja i Dostarczenie (Dzień 8-15)",
+        "duration": "8 dni roboczych",
+        "description": "Wybrani twórcy realizują materiały wideo (w dwóch wersjach) zgodnie z przekazanym briefem. Bieżąca koordynacja procesu przez Soft Synergy, weryfikacja jakości, odbiór finalnych materiałów i przekazanie ich do OutdoorGame."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze doświadczenie w kampaniach UGC i marketingu w mediach społecznościowych gwarantuje profesjonalizm. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MN",
+        "imageAlt": "Marek Nowak",
+        "quote": "Soft Synergy pomogło nam dotrzeć do idealnych twórców UGC dla naszej aplikacji. Kampania przerosła nasze oczekiwania, a materiały były najwyższej jakości. Polecam!",
+        "authorName": "Marek Nowak",
+        "authorTitle": "CMO, TechStart Innovations"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EZ",
+        "imageAlt": "Ewa Zalewska",
+        "quote": "Profesjonalne podejście do rekrutacji influencerów i twórców UGC. Dzięki Soft Synergy nasza kampania w social mediach była dużym sukcesem i przyniosła wymierne efekty.",
+        "authorName": "Ewa Zalewska",
+        "authorTitle": "Marketing Director, BrandBoosters Agency"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=TL",
+        "imageAlt": "Tomasz Lis",
+        "quote": "Współpraca z Soft Synergy to czysta przyjemność. Szybko znaleźli dla nas twórców, którzy idealnie wpisali się w strategię promocji naszego produktu gamingowego. Pełen profesjonalizm!",
+        "authorName": "Tomasz Lis",
+        "authorTitle": "Brand Manager, GameVerse Studios"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci z Branży Marketingu i Gier:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechStart",
+        "alt": "Logo Klienta TechStart Innovations"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=BrandBoost",
+        "alt": "Logo Klienta BrandBoosters Agency"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GameVerse",
+        "alt": "Logo Klienta GameVerse Studios"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaPlay",
+        "alt": "Logo Klienta InnovaPlay"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProDigital",
+        "alt": "Logo Klienta ProDigital Marketing"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Skuteczną Kampanię UGC</span> dla 'Osąd'?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić szczegóły współpracy i rozpocząć proces pozyskiwania kreatywnych twórców dla Państwa gry terenowej 'Osąd'. Jesteśmy gotowi dostarczyć materiały, które wzmocnią Państwa działania marketingowe.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie UGC",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": 115502,
+  "employer_email": "useme@outdoorgame.com",
+  "price": 1200,
+  "timelineDays": 21
+}

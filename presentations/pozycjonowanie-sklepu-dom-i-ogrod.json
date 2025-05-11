@@ -1,0 +1,287 @@
+{
+  "useme_id": 115505,
+  "employer_email": "useme@1.20.4",
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Strategii SEO dla Sklepu Dom i Ogród Pana Krzysztofa Mackowiaka | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/035/200935.png",
+    "clientLogoAlt": "Logo KRZYSZTOF. MACKOWIAK",
+    "titlePart1": "Propozycja Strategii SEO dla Sklepu",
+    "titlePart2ClientName": "Pana Krzysztofa Mackowiaka",
+    "subtitle": "Propozycja kompleksowej opieki SEO dla nowo powstającego sklepu internetowego WordPress w branży dom i ogród (hamaki, fotele wiszące), obejmująca opracowanie i wdrożenie skutecznej strategii pozycjonowania.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Celów Biznesowych</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa potrzeby dotyczące opieki SEO nad nowym sklepem internetowym, aby zaproponować strategię idealnie dopasowaną do Państwa celów.",
+    "problem": {
+      "title": "Wyzwanie: <span class=\"text-red-400\">Skuteczne Pozycjonowanie Nowego Sklepu</span>",
+      "description": "Poszukują Państwo specjalisty SEO, który przejmie opiekę nad nowym sklepem internetowym (WordPress, ok. 5 kategorii, ok. 30 produktów z kategorii dom i ogród – hamaki, fotele wiszące), opracuje strategię działania i efektywnie ją wdroży, aby zwiększyć widoczność i sprzedaż.",
+      "points": [
+        "Nowy sklep internetowy na WordPress (ok. 5 kategorii, ok. 30 produktów).",
+        "Branża: dom i ogród (produkty: hamaki, fotele wiszące).",
+        "Poszukiwanie specjalisty SEO do kompleksowej opieki i wdrożenia strategii.",
+        "Oczekiwania: opracowanie strategii SEO i jej efektywne wdrożenie.",
+        "Budżet: do negocjacji."
+      ],
+      "diagramPlaceholderText": "Wizualizacja potencjału wzrostu widoczności sklepu"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Strategia SEO",
+      "description": "Proponujemy kompleksowe przygotowanie strategii SEO oraz rozpoczęcie jej wdrażania. Nasza metodologia obejmuje audyt SEO, analizę konkurencji i słów kluczowych, optymalizację on-site oraz strategiczne budowanie autorytetu strony. Specjalizujemy się we wspieraniu sklepów e-commerce, skutecznie zwiększając ich widoczność i sprzedaż, z udokumentowanymi sukcesami w branży dom i ogród.",
+      "points": [
+        "Opracowanie dedykowanej strategii SEO dla Państwa sklepu.",
+        "Kompleksowy audyt SEO, analiza konkurencji i badanie słów kluczowych.",
+        "Precyzyjna optymalizacja on-site (techniczna i treściowa).",
+        "Rozpoczęcie strategicznego budowania autorytetu strony (link building).",
+        "Cena za pierwszy miesiąc prac (audyt, strategia, kluczowe wdrożenia on-site): 1950 PLN netto.",
+        "Czas realizacji wstępnego etapu: około 3-4 tygodnie."
+      ],
+      "diagramPlaceholderText": "Kluczowe filary skutecznej strategii SEO"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy Naszej <span class=\"text-cyan-400\">Strategii SEO</span>",
+    "sectionSubtitle": "Przedstawiamy składowe naszych działań, które zapewnią wzrost widoczności i sprzedaży Państwa sklepu internetowego z hamakami i fotelami wiszącymi.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z\"></path>",
+        "title": "Audyt SEO i Analiza Konkurencji",
+        "description": "Dogłębna analiza techniczna Państwa sklepu WordPress, identyfikacja barier dla wyszukiwarek oraz szczegółowe badanie działań konkurencji w branży 'dom i ogród' w celu wypracowania unikalnej przewagi.",
+        "mockupText": "Raport z Audytu SEO"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z\"></path>",
+        "title": "Badanie i Dobór Słów Kluczowych",
+        "description": "Identyfikacja najbardziej wartościowych słów kluczowych, które przyciągną docelowych klientów poszukujących hamaków, foteli wiszących i innych produktów z Państwa oferty (ok. 5 kategorii, ok. 30 produktów).",
+        "mockupText": "Lista Rekomendowanych Słów Kluczowych"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93s.844-.026 1.17-.272l.645-.545c.41-.347.99-.347 1.4 0l.773.773c.347.41 0 .99-.347 1.4l-.545.645c-.247.326-.302.74-.272 1.17s.272.78.93.78l.894.149c.542.09.94.56.94 1.11v1.093c0 .55-.398 1.02-.94 1.11l-.894.149c-.424.07-.764.384-.93.78s.026.844.272 1.17l.545.645c.347.41.347.99 0 1.4l-.773-.773c-.41.347-.99.347-1.4 0l-.645-.545c-.326-.247-.74-.302-1.17-.272s-.78.272-.78.93l-.149.894c-.09.542-.56.94-1.11-.94h-1.093c-.55 0-1.02-.398-1.11-.94l-.149-.894c-.07-.424-.384-.764-.78-.93s-.844.026-1.17.272l-.645-.545c-.41-.347-.99.347-1.4 0l-.773-.773c-.347-.41 0-.99.347-1.4l.545.645c.247-.326.302-.74.272-1.17s-.272-.78-.93-.78l-.894-.149c-.542-.09-.94-.56-.94-1.11v-1.093c0-.55.398-1.02.94-1.11l.894.149c.424-.07.764-.384.93-.78s-.026-.844-.272-1.17l-.545-.645c-.347-.41-.347-.99 0-1.4l.773.773c.41.347.99.347 1.4 0l.645.545c.326.247.74.302 1.17.272s.78-.272.78-.93l.149-.894z\"></path><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15 12a3 3 0 11-6 0 3 3 0 016 0z\"></path>",
+        "title": "Optymalizacja On-Site Strony WordPress",
+        "description": "Wdrożenie kluczowych zmian technicznych i treściowych bezpośrednio na stronie sklepu (meta tagi, nagłówki, struktura URL, szybkość ładowania, optymalizacja opisów produktów i kategorii) w celu poprawy jej widoczności dla Google.",
+        "mockupText": "Przykład Zoptymalizowanej Strony Produktowej"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244\" />",
+        "title": "Strategiczne Budowanie Autorytetu (Off-Site)",
+        "description": "Zaplanowanie i rozpoczęcie działań link buildingowych mających na celu zdobycie wartościowych linków zwrotnych, co przekłada się na wzrost autorytetu domeny i wyższe pozycje w wynikach wyszukiwania dla fraz związanych z hamakami i fotelami wiszącymi.",
+        "mockupText": "Wstępny Plan Link Buildingu"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Działań SEO (Pierwszy Miesiąc)",
+    "sectionSubtitle": "Definiujemy kluczowe obszary naszej pracy nad pozycjonowaniem Państwa sklepu w pierwszym miesiącu, zapewniając transparentność i mierzalne podstawy do dalszych działań.",
+    "modules": [
+      {
+        "title": "Faza 1: Audyt, Analiza i Planowanie Strategiczne",
+        "description": "Głęboka analiza sklepu (lub jego planowanej struktury), rynku i konkurencji. Opracowanie kompleksowej strategii SEO i szczegółowego planu wdrożeń na pierwszy miesiąc. Dobór priorytetowych słów kluczowych.",
+        "features": [
+          "Przeprowadzenie audytu technicznego SEO strony WordPress.",
+          "Analiza widoczności i strategii SEO konkurencji w branży 'dom i ogród'.",
+          "Dogłębne badanie słów kluczowych dla kategorii hamaki, fotele wiszące i pokrewnych.",
+          "Stworzenie dokumentu strategii SEO i harmonogramu wdrożeń."
+        ]
+      },
+      {
+        "title": "Faza 2: Kluczowe Wdrożenia On-Site i Optymalizacja",
+        "description": "Implementacja najważniejszych zaleceń z audytu, optymalizacja techniczna strony (szybkość, mobilność, indeksacja), wstępna optymalizacja treści (opisy kategorii, produktów) pod kątem SEO.",
+        "features": [
+          "Optymalizacja meta tagów (title, description) dla kluczowych podstron.",
+          "Poprawa struktury nagłówków (H1-H6) i linkowania wewnętrznego.",
+          "Optymalizacja grafik (ALT tagi, rozmiary plików) dla wybranych produktów.",
+          "Rekomendacje dotyczące tworzenia wartościowych treści przyjaznych SEO."
+        ]
+      },
+      {
+        "title": "Faza 3: Konfiguracja Narzędzi i Przygotowanie do Monitoringu",
+        "description": "Prawidłowa konfiguracja i weryfikacja narzędzi analitycznych (Google Analytics 4, Google Search Console) w celu śledzenia postępów i efektywności działań SEO.",
+        "features": [
+          "Instalacja i konfiguracja Google Analytics 4.",
+          "Weryfikacja i konfiguracja Google Search Console, przesłanie mapy strony.",
+          "Ustawienie podstawowego śledzenia konwersji (jeśli możliwe na tym etapie).",
+          "Przygotowanie do regularnego raportowania wyników."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Skuteczne SEO</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę pierwszego miesiąca prac nad strategią SEO dla Państwa sklepu. Dalsze działania i budżet są do indywidualnego ustalenia.",
+    "tabs": [
+      {
+        "id": "seo_strategy_setup",
+        "name": "Strategia SEO - Pierwszy Miesiąc"
+      }
+    ],
+    "packages": [
+      {
+        "id": "seo_strategy_setup",
+        "name": "Przygotowanie Strategii SEO i Wdrożenia Początkowe",
+        "description": "Kompleksowe przygotowanie strategii SEO dla nowego sklepu internetowego (dom i ogród), audyt, analiza konkurencji, dobór słów kluczowych oraz rozpoczęcie kluczowych wdrożeń on-site. Czas realizacji: ok. 3-4 tygodnie.",
+        "features": [
+          {
+            "text": "Kompleksowy audyt SEO strony WordPress",
+            "included": true
+          },
+          {
+            "text": "Analiza konkurencji i rynku 'dom i ogród'",
+            "included": true
+          },
+          {
+            "text": "Badanie i dobór słów kluczowych (do 5 kategorii, ok. 30 produktów)",
+            "included": true
+          },
+          {
+            "text": "Opracowanie pisemnej strategii SEO",
+            "included": true
+          },
+          {
+            "text": "Kluczowe wdrożenia optymalizacji on-site",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja narzędzi Google Analytics i Search Console",
+            "included": true
+          },
+          {
+            "text": "Raport z wykonanych prac i rekomendacje na dalsze działania",
+            "included": true
+          },
+          {
+            "text": "Realizacja wstępnego etapu w 3-4 tygodnie",
+            "included": true
+          }
+        ],
+        "price": "1950 PLN netto",
+        "priceNote": "Cena netto za pierwszy miesiąc prac (audyt, strategia, kluczowe wdrożenia on-site). Kolejne miesiące i zakres prac do indywidualnego ustalenia.",
+        "ctaText": "Rozpocznij Pozycjonowanie Sklepu",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Wdrożenia Strategii</span> (Pierwszy Miesiąc)",
+    "sectionSubtitle": "Przejrzysty plan działania dla pierwszego etapu współpracy. Przewidywany czas realizacji wstępnego etapu (audyt, strategia, kluczowe wdrożenia on-site): **3-4 tygodnie**. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Tydzień 1: Audyt SEO i Analiza Konkurencji",
+        "duration": "Ok. 5-7 dni roboczych",
+        "description": "Przeprowadzenie szczegółowego audytu technicznego SEO sklepu. Dogłębna analiza konkurencji w branży 'dom i ogród' (hamaki, fotele wiszące) oraz identyfikacja kluczowych czynników rankingowych."
+      },
+      {
+        "phase": "Tydzień 2: Badanie Słów Kluczowych i Tworzenie Dokumentu Strategii",
+        "duration": "Ok. 5-7 dni roboczych",
+        "description": "Identyfikacja i wybór najbardziej trafnych słów kluczowych dla Państwa produktów. Opracowanie szczegółowego dokumentu strategii SEO, zawierającego cele, plan działań i wskaźniki efektywności (KPI)."
+      },
+      {
+        "phase": "Tydzień 3-4: Kluczowe Wdrożenia On-Site i Konfiguracja Narzędzi",
+        "duration": "Ok. 10-14 dni roboczych",
+        "description": "Implementacja priorytetowych zaleceń optymalizacyjnych on-site (m.in. meta tagi, struktura, wstępna optymalizacja treści). Konfiguracja i weryfikacja narzędzi analitycznych (Google Analytics, Google Search Console). Przygotowanie raportu z wykonanych prac."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span> z Branży E-commerce",
+    "sectionSubtitle": "Nasze doświadczenie w SEO dla sklepów internetowych, w tym z branży dom i ogród, przekłada się na realne wyniki. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Joanna Sadowska",
+        "quote": "Dzięki Soft Synergy nasz sklep z artykułami do ogrodu zyskał znacznie lepszą widoczność w Google. Profesjonalne podejście i konkretne efekty. Polecam!",
+        "authorName": "Joanna Sadowska",
+        "authorTitle": "Właścicielka, ZielonyZakatek-Sklep.pl"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Marek Krajewski",
+        "quote": "Strategia SEO przygotowana przez Soft Synergy była strzałem w dziesiątkę. Już po pierwszym miesiącu zauważyliśmy wzrost ruchu organicznego. Świetna komunikacja.",
+        "authorName": "Marek Krajewski",
+        "authorTitle": "Manager E-commerce, HomeComforts.eu"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AW",
+        "imageAlt": "Anna Wójcik",
+        "quote": "Współpraca z Soft Synergy w zakresie SEO to czysta przyjemność. Ich analityczne podejście i regularne raporty pozwoliły nam zrozumieć, jak rośnie nasz biznes.",
+        "authorName": "Anna Wójcik",
+        "authorTitle": "Specjalista ds. Marketingu, OgrodoweInspiracje.com"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci E-commerce:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoDom",
+        "alt": "Logo Klienta EkoDom"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GardenPro",
+        "alt": "Logo Klienta GardenPro"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=StylDomu",
+        "alt": "Logo Klienta StylDomu"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=HomeGoods",
+        "alt": "Logo Klienta HomeGoods"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=eGarden",
+        "alt": "Logo Klienta eGarden"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wzrost Widoczności</span> Państwa Sklepu?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy skutecznie wypozycjonować Państwa sklep z hamakami i fotelami wiszącymi, zwiększając jego sprzedaż. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Strategii SEO",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 1950,
+  "timelineDays": 28
+}

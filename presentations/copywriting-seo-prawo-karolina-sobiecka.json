@@ -1,0 +1,280 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Copywritingu dla Karoliny Sobieckiej (Branża Prawnicza) | Soft Synergy",
+    "currentYear": "2024",
+    "useme_id": 115496,
+    "employer_email": "k.polska@vestigio.pl",
+    "price": 55,
+    "timelineDays": 7
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/070/481770_BgpNzwU.png",
+    "clientLogoAlt": "Logo Karolina Sobiecka",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "Karoliny Sobieckiej",
+    "subtitle": "Propozycja tworzenia angażujących opisów kategorii i artykułów blogowych dla branży prawniczej, z naciskiem na bezpośredni i unikalny styl komunikacji.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące copywritingu dla branży prawniczej, aby zaproponować strategię treści idealnie dopasowaną do Państwa celów.",
+    "problem": {
+      "title": "Cel Zlecenia: <span class=\"text-red-400\">Wyróżniające Treści Prawnicze</span>",
+      "description": "Głównym celem jest tworzenie opisów kategorii i artykułów blogowych, które będą spójne ze stylem Państwa strony, wyróżnią się na tle innych kancelarii i będą miały bardziej bezpośredni wydźwięk. Poszukują Państwo copywritera z wykształceniem prawniczym lub doświadczeniem w tej branży.",
+      "points": [
+        "Poszukiwanie copywritera z wykształceniem/doświadczeniem prawniczym.",
+        "Tworzenie opisów kategorii oraz artykułów na blog.",
+        "Wymóg treści spójnych ze stylem klienta, wyróżniających się i bezpośrednich.",
+        "Potrzeba przesłania próbek prac, linków do artykułów, informacji o preferowanej formie rozliczenia i stawce za 1000 znaków ze spacjami."
+      ],
+      "diagramPlaceholderText": "Wizualizacja strategii treści prawniczych"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Specjalistyczny Copywriting Prawniczy",
+      "description": "Proponujemy kompleksową obsługę copywriterską obejmującą tworzenie tekstów zgodnie z Państwa wytycznymi. Nasz zespół, w tym specjaliści z wiedzą prawniczą, zapewni treści o unikalnym i bezpośrednim charakterze, zoptymalizowane pod kątem SEO. Nasza proponowana stawka to 55 PLN netto za 1000 znaków ze spacjami (zzs).",
+      "points": [
+        "Tworzenie tekstów (opisy kategorii, artykuły blogowe) zgodnych z Państwa wytycznymi.",
+        "Nacisk na styl wyróżniający się na tle innych kancelarii, bardziej bezpośredni.",
+        "Zespół doświadczonych copywriterów, w tym ze specjalizacją prawniczą.",
+        "Optymalizacja SEO dla maksymalnej widoczności Państwa treści.",
+        "Proponowana stawka: 55 PLN netto / 1000 zzs, preferowane rozliczenie fakturą VAT.",
+        "Dostarczenie pierwszych materiałów w ciągu 5-7 dni roboczych od akceptacji oferty."
+      ],
+      "diagramPlaceholderText": "Przykładowy styl artykułu blogowego dla branży prawniczej"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Oferty</span> Copywritingowej",
+    "sectionSubtitle": "Przedstawiamy elementy naszej usługi, które zapewnią wysoką jakość i skuteczność Państwa treści prawniczych.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10\" />",
+        "title": "Specjalistyczne Teksty Prawnicze",
+        "description": "Tworzenie treści przez copywriterów z wykształceniem prawniczym lub bogatym doświadczeniem w branży, gwarantujące merytoryczną poprawność i zrozumienie specyfiki komunikacji prawnej.",
+        "mockupText": "Profil copywritera prawniczego"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Unikalny i Bezpośredni Styl Komunikacji",
+        "description": "Opracowanie tekstów, które wyróżnią Państwa kancelarię, dzięki bezpośredniemu, ale profesjonalnemu językowi, budującemu zaufanie i nowoczesny wizerunek.",
+        "mockupText": "Fragment tekstu w nowym stylu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 6h9.75M10.5 12h9.75M10.5 18h9.75M3.75 6H6M3.75 12H6M3.75 18H6\" />",
+        "title": "Optymalizacja SEO i Spójność Wizerunkowa",
+        "description": "Tworzenie treści zgodnych z wytycznymi SEO oraz spójnych stylistycznie z Państwa stroną, co wzmocni jej widoczność i jednolity odbiór marki.",
+        "mockupText": "Analiza SEO słów kluczowych"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Współpracy",
+    "sectionSubtitle": "Precyzyjnie definiujemy etapy naszej pracy, aby zapewnić transparentność procesu tworzenia treści dla Państwa kancelarii.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Potrzeb i Strategia Treści",
+        "description": "Po otrzymaniu adresu strony i szczegółowych wytycznych, przeprowadzimy analizę Państwa obecnej komunikacji i celów. Zaproponujemy strategię tworzenia treści, która najlepiej odpowie na potrzebę wyróżnienia się.",
+        "features": [
+          "Analiza Państwa strony internetowej i dotychczasowego stylu komunikacji.",
+          "Omówienie szczegółowych wytycznych dotyczących tonu, stylu i tematyki tekstów.",
+          "Ustalenie kluczowych przekazów i grup docelowych dla opisów kategorii i artykułów.",
+          "Weryfikacja Państwa próbek prac i preferencji dotyczących rozliczenia."
+        ]
+      },
+      {
+        "title": "Etap 2: Realizacja Tekstów i Optymalizacja",
+        "description": "Nasi copywriterzy stworzą angażujące opisy kategorii i artykuły blogowe, dbając o ich unikalność, bezpośredni wydźwięk i optymalizację SEO. Pierwsze materiały dostarczymy w ciągu 5-7 dni roboczych.",
+        "features": [
+          "Pisanie tekstów (opisy kategorii, artykuły blogowe) zgodnie z ustaleniami.",
+          "Nacisk na merytorykę, bezpośredni język i wyróżniający styl.",
+          "Optymalizacja treści pod kątem wyszukiwarek (SEO).",
+          "Dostarczenie pierwszej partii materiałów do Państwa weryfikacji."
+        ]
+      },
+      {
+        "title": "Etap 3: Weryfikacja, Fakturowanie i Dalsza Współpraca",
+        "description": "Przekazane teksty będą podlegać Państwa weryfikacji. Po akceptacji, wystawimy fakturę VAT (stawka 55 PLN netto/1000 zzs). Jesteśmy otwarci na długofalową współpracę w zakresie content marketingu.",
+        "features": [
+          "Wprowadzanie ewentualnych korekt na podstawie Państwa opinii.",
+          "Ostateczna akceptacja stworzonych treści.",
+          "Fakturowanie za zrealizowane prace zgodnie z ustaloną stawką.",
+          "Możliwość nawiązania stałej współpracy i regularnego tworzenia treści."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Propozycja <span class=\"text-cyan-400\">Cenowa</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę usług copywriterskich. Nasza propozycja jest konkurencyjna i uwzględnia Państwa oczekiwania.",
+    "tabs": [
+      {
+        "id": "copywriting_legal",
+        "name": "Copywriting Prawniczy"
+      }
+    ],
+    "packages": [
+      {
+        "id": "copywriting_legal",
+        "name": "Copywriting dla Branży Prawniczej",
+        "description": "Profesjonalne tworzenie opisów kategorii i artykułów blogowych dla kancelarii prawniczych, z gwarancją unikalności, bezpośredniego stylu i optymalizacji pod SEO.",
+        "features": [
+          {
+            "text": "Tworzenie opisów kategorii",
+            "included": true
+          },
+          {
+            "text": "Pisanie artykułów blogowych",
+            "included": true
+          },
+          {
+            "text": "Dopasowanie do stylu klienta i wytycznych",
+            "included": true
+          },
+          {
+            "text": "Bezpośredni i wyróżniający się język",
+            "included": true
+          },
+          {
+            "text": "Optymalizacja SEO treści",
+            "included": true
+          },
+          {
+            "text": "Współpraca z copywriterami z wiedzą prawniczą",
+            "included": true
+          },
+          {
+            "text": "Możliwość rundy poprawek",
+            "included": true
+          }
+        ],
+        "price": "55 PLN netto / 1000 zzs",
+        "priceNote": "Stawka za 1000 znaków ze spacjami. Preferowana forma rozliczenia: faktura VAT. Budżet Klienta: Do negocjacji.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Współpracy</span>",
+    "sectionSubtitle": "Przejrzysty plan działania. Przewidywany czas dostarczenia pierwszych materiałów: **5-7 dni roboczych** od momentu akceptacji oferty i przekazania szczegółowych wytycznych oraz adresu strony. Niniejsza oferta jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Ustalenia i Przekazanie Wytycznych (Dzień 1)",
+        "duration": "1 dzień roboczy",
+        "description": "Potwierdzenie współpracy, przekazanie przez Panią Karolinę adresu strony internetowej oraz szczegółowych wytycznych dotyczących treści (styl, tematyka, grupa docelowa, ewentualne słowa kluczowe)."
+      },
+      {
+        "phase": "Faza 2: Tworzenie Pierwszej Partii Tekstów (Dni 2-6)",
+        "duration": "4-5 dni roboczych",
+        "description": "Nasz zespół copywriterów rozpoczyna pracę nad pierwszym pakietem treści (np. wybrane opisy kategorii lub pierwszy artykuł blogowy), zgodnie z ustalonymi priorytetami."
+      },
+      {
+        "phase": "Faza 3: Dostarczenie Tekstów i Feedback (Dni 5-7)",
+        "duration": "1-2 dni robocze",
+        "description": "Dostarczenie Pani Karolinie pierwszych przygotowanych tekstów do weryfikacji. Zbieranie opinii i ewentualnych sugestii do dalszych prac lub kolejnych partii materiału."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Jan Słowik",
+        "quote": "Soft Synergy stworzyło dla naszej kancelarii treści, które doskonale oddają nasz profesjonalizm, a jednocześnie są przystępne dla klientów. Zdecydowanie polecam!",
+        "authorName": "Jan Słowik",
+        "authorTitle": "Partner Zarządzający, Kancelaria Słowik i Wspólnicy"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AK",
+        "imageAlt": "Anna Kruk",
+        "quote": "Artykuły blogowe przygotowane przez Soft Synergy znacząco zwiększyły ruch na naszej stronie. Ich znajomość branży prawniczej jest imponująca.",
+        "authorName": "Anna Kruk",
+        "authorTitle": "Specjalista ds. Marketingu, PrawoDlaBiznesu.pl"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PW",
+        "imageAlt": "Piotr Wilk",
+        "quote": "Współpraca z Soft Synergy to czysta przyjemność. Szybka realizacja, świetna komunikacja i teksty, które naprawdę działają. Polecam!",
+        "authorName": "Piotr Wilk",
+        "authorTitle": "Radca Prawny, Kancelaria Prawna Piotr Wilk"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=SlowikLex",
+        "alt": "Logo Klienta Kancelaria Słowik i Wspólnicy"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=PrawoDB",
+        "alt": "Logo Klienta PrawoDlaBiznesu.pl"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=WilkLegal",
+        "alt": "Logo Klienta Kancelaria Prawna Piotr Wilk"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=LexPro",
+        "alt": "Logo Klienta LexPro"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=AdvoPlus",
+        "alt": "Logo Klienta AdvoPlus"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Treści, Które Wyróżnią</span> Państwa Kancelarię?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić, jak możemy stworzyć dla Pani Karoliny Sobieckiej angażujące opisy kategorii i artykuły blogowe, które przyciągną klientów i zbudują silną markę w branży prawniczej.",
+    "ctaButtonText": "Porozmawiajmy o Copywritingu",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": "115496",
+  "price": 55,
+  "timelineDays": 7,
+  "employer_email": "k.polska@vestigio.pl"
+}

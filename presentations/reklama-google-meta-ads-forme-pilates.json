@@ -1,0 +1,277 @@
+{
+  "useme_id": 115219,
+  "employer_email": "kontakt@formepilates.pl",
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Kampanii Reklamowych dla ForMe Pilates | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/014/479714.png",
+    "clientLogoAlt": "Logo ForMe Pilates",
+    "titlePart1": "Propozycja Kampanii dla",
+    "titlePart2ClientName": "ForMe Pilates",
+    "subtitle": "Propozycja przygotowania i wdrożenia kampanii Google Ads i Meta Ads oraz doradztwa strategicznego dla nowego studia pilatesu w Warszawie - ForMe Pilates, w celu zwiększenia liczby klientów.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące wsparcia marketingowego, aby zaproponować strategię idealnie dopasowaną do celów Państwa studia ForMe Pilates.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Efektywna Reklama i Wzrost Liczby Klientów</span>",
+      "description": "ForMe Pilates, jako nowe studio pilatesu w Warszawie działające od kilku tygodni, poszukuje wsparcia w reklamie (Google Ads, Meta Ads) oraz doradztwa strategicznego. Głównym celem jest zwiększenie liczby klientów oraz uzyskanie porady dotyczącej optymalnych i kosztowo-efektywnych działań marketingowych.",
+      "points": [
+        "Nowe studio pilatesu w Warszawie (ForMe Pilates) na wczesnym etapie działalności.",
+        "Potrzeba profesjonalnej pomocy w reklamie w celu zwiększenia liczby klientów.",
+        "Zainteresowanie przygotowaniem kampanii Google Ads i Meta Ads.",
+        "Poszukiwanie strategicznej porady: jak i za ile najlepiej przeprowadzić działania reklamowe.",
+        "Budżet na działania marketingowe jest elastyczny i otwarty na negocjacje."
+      ],
+      "diagramPlaceholderText": "Analiza potrzeb marketingowych ForMe Pilates"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowe Kampanie i Doradztwo",
+      "description": "W Soft Synergy proponujemy kompleksowe przygotowanie i wdrożenie kampanii reklamowych Google Ads i Meta Ads, połączone z doradztwem strategicznym. Naszym celem jest maksymalizacja zwrotu z inwestycji i dynamiczny rozwój Państwa studia. Pierwsze efekty i działające kampanie będą widoczne w ciągu 7-10 dni roboczych. Cena za pierwszy miesiąc kompleksowej obsługi wynosi 1800 zł netto.",
+      "points": [
+        "Kompleksowe przygotowanie, wdrożenie i zarządzanie kampaniami Google Ads.",
+        "Efektywne tworzenie i optymalizacja kampanii Meta Ads (Facebook & Instagram).",
+        "Doradztwo strategiczne w zakresie marketingu online dla branży fitness/wellness.",
+        "Cena za pierwszy miesiąc współpracy (strategia, konfiguracja, uruchomienie, optymalizacja): 1800 zł netto.",
+        "Pierwsze widoczne efekty i działające kampanie w ciągu 7-10 dni roboczych od startu.",
+        "Doświadczenie w prowadzeniu kampanii dla firm usługowych i znajomość specyfiki rynku warszawskiego."
+      ],
+      "diagramPlaceholderText": "Struktura proponowanej współpracy z ForMe Pilates"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Propozycji</span>",
+    "sectionSubtitle": "Przedstawiamy składowe naszej strategii, które zapewnią skuteczne dotarcie do potencjalnych klientów ForMe Pilates i dynamiczny wzrost Państwa biznesu w Warszawie.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z\" />",
+        "title": "Efektywne Kampanie Google Ads",
+        "description": "Przygotowanie i optymalizacja kampanii w wyszukiwarce Google (Search) oraz w sieci reklamowej (Display), precyzyjnie kierowanych na osoby aktywnie poszukujące zajęć pilates i usług wellness w Warszawie. Skupimy się na słowach kluczowych generujących konwersje i dotarciu do lokalnej społeczności.",
+        "mockupText": "Przykład reklamy Google Ads dla ForMe Pilates"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z\" />",
+        "title": "Angażujące Kampanie Meta Ads",
+        "description": "Tworzenie atrakcyjnych i angażujących kampanii na platformach Meta (Facebook & Instagram). Precyzyjne targetowanie reklam do osób zainteresowanych zdrowym stylem życia, pilatesem, aktywnością fizyczną oraz nowościami na warszawskim rynku usług wellness. Wykorzystanie formatów wizualnych i remarketingu.",
+        "mockupText": "Wizualizacja kampanii Meta Ads ForMe Pilates"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m12.75 0v.75A.75.75 0 0015 6h.75m0 0v-.75a.75.75 0 00-.75-.75h-.75M3 12h18M3 15h18M4.5 3h15a2.25 2.25 0 012.25 2.25v13.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V5.25A2.25 2.25 0 014.5 3z\" />",
+        "title": "Doradztwo Strategiczne i Optymalizacja",
+        "description": "Ciągłe monitorowanie efektywności prowadzonych kampanii, optymalizacja budżetów reklamowych i stawek, analiza wyników i regularne raportowanie. Zapewniamy strategiczne doradztwo w zakresie najlepszego wykorzystania budżetu i dalszych działań marketingowych dla ForMe Pilates.",
+        "mockupText": "Przykładowy raport efektywności kampanii"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Współpracy",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap naszej współpracy marketingowej, zapewniając pełną transparentność działań dla studia ForMe Pilates.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza, Strategia i Konfiguracja Kont (Pierwszy Tydzień)",
+        "description": "Dogłębna analiza Państwa biznesu, grupy docelowej i konkurencji na rynku warszawskim. Opracowanie spersonalizowanej strategii dla kampanii Google Ads i Meta Ads. Pełna konfiguracja kont reklamowych oraz narzędzi analitycznych (np. Google Analytics 4).",
+        "features": [
+          "Analiza rynku i konkurencji w sektorze studiów pilates w Warszawie.",
+          "Definiowanie person i precyzyjnych grup docelowych dla ForMe Pilates.",
+          "Opracowanie strategii słów kluczowych (Google Ads) i targetowania demograficzno-behawioralnego (Meta Ads).",
+          "Konfiguracja lub audyt kont Google Ads, Meta Business Suite, Google Analytics 4, Google Tag Manager."
+        ]
+      },
+      {
+        "title": "Etap 2: Kreacja Reklam i Uruchomienie Kampanii (7-10 dni roboczych)",
+        "description": "Przygotowanie angażujących materiałów reklamowych, w tym tekstów reklam i propozycji wizualnych (we współpracy z Państwem lub na bazie dostarczonych materiałów). Skonfigurowanie i uruchomienie pierwszych kampanii w systemach Google Ads i Meta Ads.",
+        "features": [
+          "Copywriting perswazyjnych tekstów reklamowych dostosowanych do każdej platformy.",
+          "Przygotowanie/adaptacja grafik lub wytycznych do materiałów wideo.",
+          "Implementacja śledzenia konwersji (np. zapisy na zajęcia, kontakt).",
+          "Starannie zaplanowane uruchomienie i testowanie kampanii reklamowych."
+        ]
+      },
+      {
+        "title": "Etap 3: Bieżąca Optymalizacja, Raportowanie i Doradztwo (Ciągłe)",
+        "description": "Stałe monitorowanie wyników uruchomionych kampanii, systematyczna optymalizacja stawek, budżetów, grup docelowych oraz kreacji reklamowych w celu maksymalizacji efektów. Regularne raportowanie postępów i konsultacje dotyczące strategii rozwoju.",
+        "features": [
+          "Codzienna/tygodniowa analiza kluczowych wskaźników efektywności (KPIs).",
+          "Optymalizacja kampanii pod kątem zwiększenia liczby zapytań/klientów i ROI.",
+          "Przejrzyste miesięczne raporty z omówieniem wyników i rekomendacjami.",
+          "Stały kontakt, proaktywne wsparcie i doradztwo strategiczne dla ForMe Pilates."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Skuteczny Marketing</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę pierwszego miesiąca współpracy dla ForMe Pilates. Nasza propozycja jest konkurencyjna i nastawiona na osiągnięcie realnych efektów oraz dynamicznego wzrostu Państwa studia.",
+    "tabs": [
+      {
+        "id": "ads_campaign_package",
+        "name": "Kampanie Google & Meta Ads"
+      }
+    ],
+    "packages": [
+      {
+        "id": "ads_campaign_package",
+        "name": "Pakiet Startowy: Google & Meta Ads dla ForMe Pilates",
+        "description": "Kompleksowe przygotowanie, wdrożenie i optymalizacja kampanii reklamowych Google Ads i Meta Ads, wraz z doradztwem strategicznym. Celem jest dynamiczne zwiększenie liczby klientów i rozpoznawalności nowego studia pilates w Warszawie.",
+        "features": [
+          {
+            "text": "Indywidualna strategia marketingowa i analiza grupy docelowej",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja i zarządzanie kampaniami Google Ads (Search, Display)",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja i zarządzanie kampaniami Meta Ads (Facebook, Instagram)",
+            "included": true
+          },
+          {
+            "text": "Wsparcie w tworzeniu kreacji reklamowych (teksty, wytyczne graficzne)",
+            "included": true
+          },
+          {
+            "text": "Ciągła optymalizacja kampanii i monitoring efektywności",
+            "included": true
+          },
+          {
+            "text": "Miesięczne raportowanie wyników i spotkania statusowe",
+            "included": true
+          },
+          {
+            "text": "Profesjonalne doradztwo strategiczne i wsparcie techniczne",
+            "included": true
+          }
+        ],
+        "price": "1800 zł netto",
+        "priceNote": "Cena za pierwszy miesiąc kompleksowej obsługi. Budżet reklamowy (koszt kliknięć/wyświetleń) na platformach Google i Meta jest ustalany oddzielnie i płatny bezpośrednio do dostawców platform.",
+        "ctaText": "Rozpocznij Współpracę z Soft Synergy",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Pierwszego Miesiąca",
+    "sectionSubtitle": "Przedstawiamy przejrzysty plan działania dla kampanii marketingowych ForMe Pilates. Pierwsze efekty i w pełni działające kampanie reklamowe będą widoczne w ciągu **7-10 dni roboczych** od momentu ustalenia wszystkich szczegółów i dostarczenia niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Kick-off, Strategia i Konfiguracja (Dni 1-3)",
+        "duration": "3 dni robocze",
+        "description": "Spotkanie inauguracyjne (online/telefoniczne) w celu omówienia celów biznesowych, grupy docelowej, USP ForMe Pilates oraz dostępnych materiałów. Przeprowadzenie analizy konkurencji. Opracowanie szczegółowej strategii marketingowej. Konfiguracja kont reklamowych i narzędzi analitycznych."
+      },
+      {
+        "phase": "Faza 2: Tworzenie Kreacji i Uruchomienie Kampanii (Dni 4-7/10)",
+        "duration": "4-7 dni roboczych",
+        "description": "Przygotowanie tekstów reklamowych, propozycji wizualnych (we współpracy z ForMe Pilates lub na podstawie dostarczonych materiałów). Implementacja kodów śledzenia konwersji. Uruchomienie pierwszych kampanii w Google Ads i Meta Ads, poprzedzone testami."
+      },
+      {
+        "phase": "Faza 3: Monitoring, Wstępna Optymalizacja i Pierwsze Raporty (Dni 8/11 - Koniec Miesiąca)",
+        "duration": "Pozostała część miesiąca",
+        "description": "Ciągłe monitorowanie działania uruchomionych kampanii, zbieranie danych analitycznych, dokonywanie pierwszych, kluczowych optymalizacji (stawek, grup docelowych, kreacji). Przygotowanie i omówienie pierwszego raportu z osiągniętych wyników i rekomendacjami na kolejne okresy dla ForMe Pilates."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów potwierdzają skuteczność naszych działań. Dołącz do grona zadowolonych partnerów Soft Synergy, którzy z sukcesem rozwijają swoje biznesy w internecie.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JN",
+        "imageAlt": "Joanna Nowak",
+        "quote": "Soft Synergy pomogło nam dotrzeć do zupełnie nowych klientów dzięki świetnie skonfigurowanym kampaniom reklamowym. Profesjonalizm na każdym kroku i realne wyniki!",
+        "authorName": "Joanna Nowak",
+        "authorTitle": "Właścicielka, Studio Urody BellaVita"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=KZ",
+        "imageAlt": "Krzysztof Zając",
+        "quote": "Dzięki strategiom marketingowym przygotowanym przez Soft Synergy nasza sprzedaż usług wzrosła o ponad 30% w ciągu pierwszego kwartału współpracy. Polecam każdemu, kto chce skutecznie rosnąć!",
+        "authorName": "Krzysztof Zając",
+        "authorTitle": "CEO, FitForma Catering Dietetyczny"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EL",
+        "imageAlt": "Ewa Lewandowska",
+        "quote": "Współpraca z Soft Synergy to czysta przyjemność i konkretne efekty. Doskonale rozumieją potrzeby małych i średnich firm oraz dostarczają wymierne rezultaty. Świetny kontakt i zaangażowanie!",
+        "authorName": "Ewa Lewandowska",
+        "authorTitle": "Manager, Kwiaciarnia Internetowa AzaliaBloom"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci z Sektora Usługowego:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=BellaVita",
+        "alt": "Logo Klienta BellaVita Studio Urody"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=FitForma",
+        "alt": "Logo Klienta FitForma Catering"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=AzaliaBloom",
+        "alt": "Logo Klienta AzaliaBloom Kwiaciarnia"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=LokalniExp",
+        "alt": "Logo Klienta Lokalni Eksperci"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProService",
+        "alt": "Logo Klienta ProService Solutions"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Rozwój</span> Studia ForMe Pilates?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy pomóc Państwa nowemu studiu pilates dynamicznie się rozwijać i skutecznie zdobywać nowych klientów na konkurencyjnym rynku warszawskim. Skontaktuj się z nami, aby omówić szczegóły propozycji i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Kampaniach dla ForMe Pilates",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 1800,
+  "timelineDays": 9
+}

@@ -1,0 +1,276 @@
+{
+  "useme_id": 115489,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Współpracy: Specjalista .NET API | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/022/219122_XggruJQ.png",
+    "clientLogoAlt": "Logo Soft Synergy",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "Państwa Firmy",
+    "subtitle": "Propozycja współpracy w zakresie dostarczenia specjalisty .NET do projektów API, oferująca długofalową współpracę przy ciekawych projektach z wykorzystaniem nowoczesnych technologii.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa ogłoszenie dotyczące poszukiwania specjalisty .NET do projektów API, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Współpracy: <span class=\"text-red-400\">Doświadczony Specjalista .NET API</span>",
+      "description": "Głównym celem jest nawiązanie długofalowej współpracy z doświadczonym specjalistą .NET do realizacji projektów API. Poszukują Państwo partnera zdolnego do pracy przy ciekawych projektach z wykorzystaniem nowoczesnych technologii, przy budżecie 100 zł netto za godzinę.",
+      "points": [
+        "Poszukiwanie specjalisty .NET do współpracy przy projektach API.",
+        "Oferta długofalowej współpracy.",
+        "Wykorzystanie nowoczesnych technologii w ciekawych projektach.",
+        "Ustalony przez Państwa budżet: 100 zł netto za godzinę.",
+        "Dodatkowe wymagania: Projekty IT."
+      ],
+      "diagramPlaceholderText": "Architektura współpracy .NET API"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Dedykowany Specjalista .NET od Soft Synergy",
+      "description": "Soft Synergy proponuje dostarczenie doświadczonego specjalisty .NET do Państwa projektów API. Oferujemy stawkę 98 zł netto za godzinę pracy naszego eksperta, dostępnego do rozpoczęcia współpracy w ciągu 7 dni roboczych. Zapewniamy realizację projektów w metodykach zwinnych i bliską współpracę.",
+      "points": [
+        "Dostarczenie doświadczonego specjalisty .NET.",
+        "Proponowana stawka: 98 zł netto za godzinę.",
+        "Dostępność specjalisty w ciągu 7 dni roboczych.",
+        "Realizacja projektów w metodykach zwinnych (transparentność, regularne aktualizacje).",
+        "Zespół doświadczonych programistów .NET z portfolio w API.",
+        "Wykorzystanie nowoczesnych technologii dla wydajnych i skalowalnych rozwiązań."
+      ],
+      "diagramPlaceholderText": "Profil Specjalisty .NET Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Aspekty Naszej <span class=\"text-cyan-400\">Oferty</span> Współpracy",
+    "sectionSubtitle": "Przedstawiamy elementy naszej propozycji, które gwarantują wysoką jakość usług i owocną współpracę przy Państwa projektach API.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Doświadczony Specjalista .NET",
+        "description": "Dostęp do wysoko wykwalifikowanego programisty .NET z udokumentowanym doświadczeniem w tworzeniu i rozwoju API, gotowego do szybkiego wdrożenia w Państwa projekty.",
+        "mockupText": "Portfolio Specjalisty"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Nowoczesne Technologie i Metodyki Zwinne",
+        "description": "Wykorzystanie najnowszych technologii .NET oraz praca w metodykach zwinnych (Agile), co zapewnia elastyczność, transparentność procesu i regularne dostarczanie wartości.",
+        "mockupText": "Stack Technologiczny i Proces"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Długofalowa i Transparentna Współpraca",
+        "description": "Nastawienie na budowanie długoterminowej relacji partnerskiej, opartej na jasnych zasadach, regularnej komunikacji i wspólnym dążeniu do sukcesu Państwa projektów API.",
+        "mockupText": "Model Współpracy"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Usług .NET API",
+    "sectionSubtitle": "Precyzyjnie definiujemy zakres wsparcia naszego specjalisty .NET w Państwa projektach API, zapewniając kompleksową obsługę.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Wymagań i Planowanie Współpracy",
+        "description": "Dokładne zrozumienie Państwa potrzeb projektowych, celów biznesowych oraz istniejącej infrastruktury. Ustalenie zakresu prac, harmonogramu i modelu komunikacji.",
+        "features": [
+          "Analiza specyfikacji projektów API i wymagań technicznych.",
+          "Definicja kluczowych funkcjonalności i oczekiwanych rezultatów.",
+          "Ustalenie priorytetów i planu wdrożenia specjalisty.",
+          "Dopasowanie procesu pracy do Państwa metodyki (preferowane Agile)."
+        ]
+      },
+      {
+        "title": "Etap 2: Rozwój i Implementacja Rozwiązań API",
+        "description": "Aktywny udział naszego specjalisty .NET w cyklu życia oprogramowania: projektowanie, kodowanie, testowanie i wdrażanie komponentów API zgodnie z najlepszymi praktykami.",
+        "features": [
+          "Tworzenie i rozwój wydajnych i skalowalnych interfejsów API w technologii .NET.",
+          "Integracja z istniejącymi systemami i usługami.",
+          "Dbałość o jakość kodu, bezpieczeństwo i dokumentację techniczną.",
+          "Regularne raportowanie postępów i iteracyjne dostarczanie funkcjonalności."
+        ]
+      },
+      {
+        "title": "Etap 3: Wsparcie, Optymalizacja i Dalszy Rozwój",
+        "description": "Zapewnienie wsparcia po wdrożeniu, monitorowanie wydajności API, optymalizacja oraz gotowość do dalszego rozwoju i rozbudowy systemu w ramach długofalowej współpracy.",
+        "features": [
+          "Bieżące wsparcie techniczne i rozwiązywanie problemów.",
+          "Monitorowanie działania API i proaktywne sugestie optymalizacji.",
+          "Możliwość rozszerzenia zakresu współpracy o nowe projekty i funkcjonalności.",
+          "Transfer wiedzy i budowanie kompetencji w Państwa zespole."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Doświadczenie .NET</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę współpracy z naszym specjalistą .NET. Nasza propozycja jest konkurencyjna i dopasowana do Państwa budżetu.",
+    "tabs": [
+      {
+        "id": "net_specialist_offer",
+        "name": "Współpraca ze Specjalistą .NET"
+      }
+    ],
+    "packages": [
+      {
+        "id": "net_specialist_offer",
+        "name": "Współpraca ze Specjalistą .NET API",
+        "description": "Dedykowany specjalista .NET do długofalowej współpracy przy projektach API, pracujący w metodykach zwinnych i wykorzystujący nowoczesne technologie.",
+        "features": [
+          {
+            "text": "Doświadczony programista .NET",
+            "included": true
+          },
+          {
+            "text": "Specjalizacja w projektach API",
+            "included": true
+          },
+          {
+            "text": "Praca w metodykach zwinnych",
+            "included": true
+          },
+          {
+            "text": "Wykorzystanie nowoczesnych technologii .NET",
+            "included": true
+          },
+          {
+            "text": "Dostępność w ciągu 7 dni roboczych",
+            "included": true
+          },
+          {
+            "text": "Transparentne raportowanie postępów",
+            "included": true
+          },
+          {
+            "text": "Możliwość długofalowej współpracy",
+            "included": true
+          }
+        ],
+        "price": "98 zł netto / godzina",
+        "priceNote": "Stawka godzinowa netto. Budżet Klienta: 100 zł netto / godzina.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Rozpoczęcia</span> Współpracy",
+    "sectionSubtitle": "Przejrzysty plan działania dla szybkiego rozpoczęcia współpracy. Nasz specjalista .NET jest dostępny do rozpoczęcia pracy w ciągu **7 dni roboczych** od momentu potwierdzenia. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Potwierdzenie i Ustalenia Wstępne (Dzień 1-2)",
+        "duration": "1-2 dni robocze",
+        "description": "Finalizacja umowy, omówienie szczegółów pierwszych zadań projektowych, dostępów oraz narzędzi komunikacyjnych. Wprowadzenie specjalisty do zespołu i projektu."
+      },
+      {
+        "phase": "Faza 2: Onboarding i Rozpoczęcie Prac (Dzień 3-7)",
+        "duration": "3-5 dni roboczych",
+        "description": "Pełne wdrożenie specjalisty w projekt. Zapoznanie się z dokumentacją, środowiskiem deweloperskim i rozpoczęcie realizacji pierwszych zadań zgodnie z ustalonym priorytetem."
+      },
+      {
+        "phase": "Faza 3: Pełna Produktywność i Ciągła Współpraca (Od Dnia 8)",
+        "duration": "Ciągła",
+        "description": "Specjalista w pełni zintegrowany z projektem, realizujący zadania w ramach sprintów/iteracji. Regularna komunikacja, raportowanie i dostosowywanie się do dynamicznych potrzeb projektu API."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wzmocnienie Zespołu</span> .NET?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak nasz specjalista .NET może przyczynić się do sukcesu Państwa projektów API. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Współpracy",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 98,
+  "timelineDays": 9
+}

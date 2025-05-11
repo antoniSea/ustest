@@ -1,0 +1,272 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Współpracy Graficznej dla TomBra | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=TO",
+    "clientLogoAlt": "Logo TomBra",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "TomBra",
+    "subtitle": "Oferta stałej współpracy w zakresie projektowania grafiki 2D (pudełka, instrukcje, materiały DTP) dla firmy TomBra.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące stałej współpracy z grafikiem 2D, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów biznesowych.",
+    "problem": {
+      "title": "Cel Zlecenia: <span class=\"text-red-400\">Profesjonalne Materiały Graficzne 2D</span>",
+      "description": "Firma TomBra poszukuje doświadczonego grafika 2D do nawiązania stałej współpracy. Kluczowym zapotrzebowaniem jest regularne projektowanie materiałów takich jak pudełka produktowe, instrukcje obsługi oraz inne elementy graficzne niezbędne w działalności firmy. Celem jest zapewnienie spójnych i profesjonalnych wizualnie materiałów.",
+      "points": [
+        "Zlecenie: Stała współpraca z grafikiem 2D.",
+        "Klient: TomBra.",
+        "Zakres: Projektowanie pudełek, instrukcji, itp.",
+        "Budżet: Do negocjacji (oferujemy stawkę godzinową).",
+        "Dodatkowe wymagania: Grafika 2D, wysoka jakość, terminowość."
+      ],
+      "diagramPlaceholderText": "Wizualizacja zakresu współpracy graficznej TomBra"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Stała Współpraca Graficzna z Soft Synergy",
+      "description": "Soft Synergy pragnie zaoferować Państwu usługi naszego doświadczonego zespołu grafików 2D w ramach stałej współpracy. Proponujemy stawkę **85 zł netto za godzinę pracy**, gwarantując terminowe dostarczanie wysokiej jakości projektów pudełek, instrukcji oraz innych materiałów graficznych. Jesteśmy gotowi rozpocząć realizację pierwszych projektów *niezwłocznie* po ustaleniu szczegółów.",
+      "points": [
+        "Dedykowany zespół grafików 2D specjalizujących się w DTP, opakowaniach i instrukcjach.",
+        "Proponowana stawka: 85 zł netto za godzinę pracy.",
+        "Gotowość do rozpoczęcia pierwszych projektów niezwłocznie.",
+        "Transparentna komunikacja i iteracyjne podejście (analiza potrzeb -> akceptacja).",
+        "Gwarancja wysokiej jakości, terminowości i elastyczności."
+      ],
+      "diagramPlaceholderText": "Przykładowe projekty graficzne Soft Synergy dla branży DTP"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Aspekty <span class=\"text-cyan-400\">Naszej Oferty</span> Współpracy",
+    "sectionSubtitle": "Przedstawiamy elementy naszej propozycji, które zapewnią Państwu profesjonalne i kompleksowe wsparcie graficzne dla firmy TomBra.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10.5 11.25h3M12 17.25h.008v.008H12v-.008zm0 0H12m-2.25-6h4.5m-4.5 0H7.875m0 0L6.375 9.375m1.5 1.875L9.375 9.375m0 0L7.875 7.875m1.5 1.5L6.375 7.875m6 9.375c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm0 0c.828 0 1.5-.672 1.5-1.5S12.828 15 12 15s-1.5.672-1.5 1.5.672 1.5 1.5 1.5z\" />",
+        "title": "Projektowanie Opakowań i Etykiet Produktowych",
+        "description": "Tworzenie atrakcyjnych wizualnie i funkcjonalnych projektów pudełek, etykiet oraz innych opakowań, które wyróżnią produkty TomBra na rynku i będą spójne z identyfikacją wizualną marki.",
+        "mockupText": "Koncepcja projektu pudełka dla TomBra"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z\" />",
+        "title": "Opracowywanie Instrukcji i Materiałów Informacyjnych",
+        "description": "Projektowanie czytelnych i estetycznych instrukcji obsługi, kart katalogowych, broszur oraz innych materiałów DTP, zapewniających klarowne przekazanie informacji użytkownikom produktów TomBra.",
+        "mockupText": "Layout przykładowej instrukcji produktu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 6h9.75M10.5 12h9.75M10.5 18h9.75M3.75 6H7.5m3 12h-.75a2.25 2.25 0 01-2.25-2.25V15m0-3V8.25m0 0V6m0 0H3.75M3.75 9v6m7.5-3H3.75\" />",
+        "title": "Elastyczne Wsparcie Graficzne i DTP",
+        "description": "Bieżące wsparcie w zakresie projektowania różnorodnych materiałów graficznych, w tym przygotowanie plików do druku (DTP), adaptacje projektów oraz szybkie reagowanie na Państwa potrzeby projektowe.",
+        "mockupText": "Proces współpracy i dostarczania plików"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Usług Graficznych",
+    "sectionSubtitle": "Definiujemy kluczowe obszary naszej współpracy w zakresie projektowania graficznego dla TomBra, zapewniając kompleksowe i elastyczne wsparcie.",
+    "modules": [
+      {
+        "title": "Moduł 1: Projektowanie Opakowań i Identyfikacji Produktowej",
+        "description": "Kompleksowe usługi projektowania opakowań dla produktów TomBra, od koncepcji po przygotowanie plików do druku. Obejmuje projektowanie pudełek, etykiet, banderol, z dbałością o spójność z marką.",
+        "features": [
+          "Analiza wymagań i specyfiki produktu TomBra.",
+          "Projektowanie layoutu opakowania z uwzględnieniem brandingu.",
+          "Tworzenie wizualizacji 3D opakowań (opcjonalnie).",
+          "Przygotowanie plików DTP gotowych do produkcji."
+        ]
+      },
+      {
+        "title": "Moduł 2: Tworzenie Instrukcji Obsługi i Dokumentacji",
+        "description": "Opracowywanie przejrzystych i profesjonalnych instrukcji obsługi, manuali, kart gwarancyjnych oraz innych materiałów informacyjnych. Kładziemy nacisk na czytelność i estetykę.",
+        "features": [
+          "Projektowanie layoutu instrukcji zgodnego ze standardami.",
+          "Skład tekstu i opracowanie elementów graficznych (schematy, ikony).",
+          "Przygotowanie wersji językowych (na podstawie dostarczonych tłumaczeń).",
+          "Dostarczenie plików w formacie PDF do druku i dystrybucji cyfrowej."
+        ]
+      },
+      {
+        "title": "Moduł 3: Bieżące Wsparcie Graficzne (Retainer/Na Zlecenie)",
+        "description": "Zapewnienie stałego wsparcia graficznego w ramach ustalonego pakietu godzinowego lub na bieżące zlecenia. Obejmuje drobne prace graficzne, adaptacje, przygotowanie materiałów marketingowych (np. banery, ulotki reklamowe).",
+        "features": [
+          "Dedykowany czas grafika lub zespołu dla TomBra.",
+          "Szybka realizacja mniejszych i większych zadań projektowych.",
+          "Utrzymanie spójności wizualnej we wszystkich materiałach.",
+          "Transparentne rozliczanie przepracowanych godzin i raportowanie."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Wycena <span class=\"text-cyan-400\">Współpracy</span> Graficznej",
+    "sectionSubtitle": "Przedstawiamy transparentną propozycję cenową za godzinę pracy naszego grafika dla TomBra. Podana stawka jest konkurencyjna i odzwierciedla wysoką jakość świadczonych usług.",
+    "tabs": [
+      {
+        "id": "hourly_rate_offer",
+        "name": "Stawka Godzinowa Grafika 2D"
+      }
+    ],
+    "packages": [
+      {
+        "id": "hourly_rate_offer",
+        "name": "Stała Współpraca Graficzna dla TomBra",
+        "description": "Elastyczna współpraca z doświadczonym grafikiem 2D, rozliczana na podstawie przepracowanych godzin. Idealne rozwiązanie dla regularnych potrzeb projektowych w zakresie pudełek, instrukcji i innych materiałów graficznych.",
+        "features": [
+          {
+            "text": "Dostęp do doświadczonego grafika 2D",
+            "included": true
+          },
+          {
+            "text": "Projektowanie opakowań, instrukcji, DTP",
+            "included": true
+          },
+          {
+            "text": "Elastyczne godziny pracy dostosowane do potrzeb",
+            "included": true
+          },
+          {
+            "text": "Transparentne raportowanie czasu pracy",
+            "included": true
+          },
+          {
+            "text": "Wysoka jakość i terminowość realizacji",
+            "included": true
+          },
+          {
+            "text": "Pełne prawa autorskie do zrealizowanych projektów",
+            "included": true
+          }
+        ],
+        "price": "85 PLN netto / godzina",
+        "priceNote": "Stawka netto. Budżet klienta: Do negocjacji. Jesteśmy otwarci na rozmowy dotyczące zakresu i optymalizacji kosztów przy stałej współpracy.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Współpracy</span>",
+    "sectionSubtitle": "Proponujemy model stałej współpracy, gdzie zadania realizowane są na bieżąco. Pierwsze projekty możemy rozpocząć *niezwłocznie* po ustaleniu szczegółów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Kick-off i Ustalenie Procesów (Start Współpracy)",
+        "duration": "1-2 dni robocze",
+        "description": "Potwierdzenie współpracy, omówienie szczegółów (kanały komunikacji, narzędzia), przekazanie materiałów (np. brand book TomBra, wytyczne). Zdefiniowanie pierwszych priorytetowych zadań."
+      },
+      {
+        "phase": "Faza 2: Realizacja Bieżących Zleceń Projektowych (Ciągła)",
+        "duration": "Na bieżąco",
+        "description": "Regularne projektowanie graficzne pudełek, instrukcji, itp. zgodnie z napływającymi zleceniami od TomBra. Utrzymanie stałej komunikacji i raportowanie postępów prac."
+      },
+      {
+        "phase": "Faza 3: Weryfikacja, Akceptacje i Dostarczanie Plików (Iteracyjnie)",
+        "duration": "Na bieżąco",
+        "description": "Prezentacja wykonanych projektów, zbieranie informacji zwrotnej od TomBra, wprowadzanie ewentualnych korekt. Finalna akceptacja i przekazanie plików produkcyjnych w ustalonych formatach."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Współpracę Graficzną</span> z TomBra?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić szczegóły stałej współpracy w zakresie projektowania grafiki 2D dla Państwa firmy. Jesteśmy gotowi wesprzeć TomBra w tworzeniu profesjonalnych materiałów, które wzmocnią Państwa markę. Nasz Project Manager, Antoni Seba, chętnie odpowie na wszystkie pytania.",
+    "ctaButtonText": "Porozmawiajmy o Współpracy",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": 115497,
+  "employer_email": "t.braniewski@gmail.com",
+  "price": 85,
+  "timelineDays": 7
+}

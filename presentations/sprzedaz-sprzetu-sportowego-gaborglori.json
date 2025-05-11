@@ -1,0 +1,277 @@
+{
+  "useme_id": 115238,
+  "employer_email": "gabriel@glorisport.pl",
+  "price": 80,
+  "timelineDays": 7,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Współpracy: Wsparcie Sprzedaży B2B dla Gaborglori | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/063/480163.png",
+    "clientLogoAlt": "Logo Gaborglori",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "Gaborglori",
+    "subtitle": "Propozycja wsparcia sprzedaży sprzętu i odzieży sportowej (piłka nożna, fitness, treningi, akcesoria) na rynku polskim i europejskim.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące wsparcia w rozwoju sprzedaży B2B, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Współpracy: <span class=\"text-red-400\">Rozwój Sprzedaży B2B</span>",
+      "description": "Głównym celem jest aktywne pozyskiwanie nowych klientów B2B (kluby sportowe, akademie, szkoły, hurtownie) dla sprzętu i odzieży sportowej Gaborglori. Działania mają objąć rynek polski oraz wybrane rynki europejskie, w szczególności Czechy, Słowację, Niemcy, Austrię, Węgry i Rumunię.",
+      "points": [
+        "Poszukiwanie handlowców B2B lub zaangażowanych osób do rozwoju sprzedaży.",
+        "Asortyment: sprzęt i odzież sportowa (piłka nożna, fitness, treningi, akcesoria).",
+        "Rynki docelowe: Polska, Czechy, Słowacja, Niemcy, Austria, Węgry, Rumunia.",
+        "Grupa docelowa: kluby sportowe, akademie, szkoły, hurtownie.",
+        "Kluczowe kompetencje: zaangażowanie, komunikatywność, gotowość do aktywnego kontaktu (telefonicznego/mailowego).",
+        "Model wynagrodzenia: ustalona stawka za nawiązanie kontaktu i zainteresowanie klienta przygotowaniem oferty."
+      ],
+      "diagramPlaceholderText": "Mapa rynków docelowych Gaborglori"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Outsourcing Pozyskiwania Kontaktów B2B",
+      "description": "Proponujemy usługę aktywnego docierania do potencjalnych klientów B2B i generowania wartościowych kontaktów zainteresowanych ofertą Gaborglori. Nasza propozycja to stawka **80 PLN netto za każdy skutecznie nawiązany kontakt zakończony zainteresowaniem klienta przygotowaniem oferty**. Wstępny, miesięczny etap współpracy zakłada pozyskanie minimum 50-70 takich kontaktów.",
+      "points": [
+        "Proaktywne docieranie do zdefiniowanych grup docelowych poprzez kontakt telefoniczny i mailowy.",
+        "Efektywne wykorzystanie dostarczonych katalogów produktowych i wsparcia merytorycznego od Gaborglori.",
+        "Specjalizacja Soft Synergy w outsourcingu procesów sprzedażowych B2B i doświadczenie na rynkach międzynarodowych.",
+        "Zespół gotowy do szybkiego wdrożenia i efektywnego działania na rzecz rozwoju sprzedaży Gaborglori.",
+        "Możliwość długoterminowej współpracy przy osiągnięciu satysfakcjonujących wyników."
+      ],
+      "diagramPlaceholderText": "Schemat procesu pozyskiwania klienta"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Usługi</span>",
+    "sectionSubtitle": "Przedstawiamy składowe naszej propozycji, które zapewnią skuteczne wsparcie sprzedaży dla Gaborglori i rozwój Państwa biznesu.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z\" />",
+        "title": "Proaktywne Pozyskiwanie Klientów B2B",
+        "description": "Identyfikacja i docieranie do potencjalnych klientów (kluby sportowe, akademie, szkoły, hurtownie) na terenie Polski i wybranych krajów europejskich poprzez dedykowane kampanie telemarketingowe i e-mailowe.",
+        "mockupText": "Proces identyfikacji leadów"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z\" />",
+        "title": "Efektywna Prezentacja Oferty",
+        "description": "Skuteczne przedstawianie oferty sprzętu i odzieży sportowej Gaborglori, wykorzystując dostarczone katalogi i materiały. Budowanie zainteresowania i doprowadzanie do etapu przygotowania spersonalizowanej oferty przez Gaborglori.",
+        "mockupText": "Przykład komunikacji z klientem"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z\" />",
+        "title": "Wsparcie i Raportowanie",
+        "description": "Zapewniamy wsparcie ze strony Gaborglori, katalogi produktowe i pomoc w tworzeniu ofert. Będziemy regularnie raportować postępy i liczbę pozyskanych kontaktów zainteresowanych ofertą, zapewniając pełną transparentność działań.",
+        "mockupText": "Raport skuteczności działań"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Współpracy",
+    "sectionSubtitle": "Precyzyjnie definiujemy etapy naszych działań, mających na celu efektywne wsparcie sprzedaży dla Gaborglori.",
+    "modules": [
+      {
+        "title": "Etap 1: Przygotowanie i Definicja Kampanii (Pierwszy Tydzień)",
+        "description": "Dokładne omówienie celów, grup docelowych, analiza dostarczonych materiałów (katalogi), ustalenie kluczowych argumentów sprzedażowych oraz przygotowanie skryptów rozmów i szablonów e-maili.",
+        "features": [
+          "Analiza specyfiki oferty Gaborglori i rynków docelowych.",
+          "Opracowanie profili idealnych klientów (kluby, akademie, szkoły, hurtownie).",
+          "Przygotowanie lub weryfikacja baz kontaktowych dla wybranych rynków.",
+          "Wewnętrzne szkolenie zespołu Soft Synergy z oferty produktowej Gaborglori."
+        ]
+      },
+      {
+        "title": "Etap 2: Realizacja Działań Outreach (Miesiąc 1 - Faza Testowa)",
+        "description": "Aktywne prowadzenie działań telemarketingowych i e-mail marketingowych skierowanych do zdefiniowanych grup docelowych. Nawiązywanie kontaktu, profesjonalna prezentacja oferty i generowanie zainteresowania.",
+        "features": [
+          "Systematyczny kontakt telefoniczny i mailowy z potencjalnymi klientami.",
+          "Prezentowanie wartości oferty Gaborglori i korzyści dla klienta.",
+          "Kwalifikacja leadów (kontaktów zainteresowanych przygotowaniem oferty).",
+          "Cotygodniowe raportowanie wyników i postępów kampanii."
+        ]
+      },
+      {
+        "title": "Etap 3: Ocena i Planowanie Dalszej Współpracy (Po Pierwszym Miesiącu)",
+        "description": "Szczegółowa analiza wyników pierwszego miesiąca współpracy, ocena skuteczności działań, identyfikacja obszarów do ewentualnej optymalizacji. Omówienie możliwości i warunków długoterminowej współpracy przy osiągnięciu dobrych wyników.",
+        "features": [
+          "Podsumowanie liczby pozyskanych kwalifikowanych leadów.",
+          "Analiza jakościowa zebranych informacji zwrotnych od potencjalnych klientów.",
+          "Rekomendacje dotyczące dalszych działań strategicznych i operacyjnych.",
+          "Dyskusja na temat warunków ewentualnej stałej, rozszerzonej współpracy."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Rozwój Sprzedaży</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę naszych usług, opartą na modelu prowizyjnym od efektu (success fee).",
+    "tabs": [
+      {
+        "id": "lead_generation_offer",
+        "name": "Pozyskiwanie Kontaktów B2B"
+      }
+    ],
+    "packages": [
+      {
+        "id": "lead_generation_offer",
+        "name": "Wsparcie Sprzedaży dla Gaborglori - Etap Testowy (1 Miesiąc)",
+        "description": "Usługa aktywnego pozyskiwania kontaktów B2B (kluby sportowe, akademie, szkoły, hurtownie) zainteresowanych ofertą sprzętu i odzieży sportowej Gaborglori. Wynagrodzenie za każdy skutecznie nawiązany kontakt zakończony zainteresowaniem klienta przygotowaniem oferty.",
+        "features": [
+          {
+            "text": "Stawka za skuteczny kontakt: 80 PLN netto",
+            "included": true
+          },
+          {
+            "text": "Szacowana liczba kontaktów: 50-70 w pierwszym miesiącu",
+            "included": true
+          },
+          {
+            "text": "Działania na rynku polskim i europejskim (wg ustaleń)",
+            "included": true
+          },
+          {
+            "text": "Kontakt telefoniczny i mailowy",
+            "included": true
+          },
+          {
+            "text": "Wykorzystanie katalogów produktowych Gaborglori",
+            "included": true
+          },
+          {
+            "text": "Regularne raportowanie postępów",
+            "included": true
+          },
+          {
+            "text": "Możliwość dłuższej współpracy po etapie testowym",
+            "included": true
+          }
+        ],
+        "price": "80 PLN netto / kwalifikowany kontakt",
+        "priceNote": "Stawka netto. Szacowany koszt miesięczny (50-70 kontaktów): 4000 - 5600 PLN netto. Budżet Klienta: Do negocjacji.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Wdrożenia</span> i Realizacji",
+    "sectionSubtitle": "Przejrzysty plan działania dla pierwszego miesiąca współpracy. Przewidywany czas wdrożenia i rozpoczęcia aktywnych działań: **do 5 dni roboczych** od momentu akceptacji oferty i otrzymania niezbędnych materiałów. Niniejsza oferta jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Kick-off i Przygotowanie Kampanii (Dni 1-5)",
+        "duration": "do 5 dni roboczych",
+        "description": "Potwierdzenie warunków współpracy, omówienie szczegółów strategicznych, przekazanie materiałów (katalogi, cenniki, wytyczne), precyzyjne zdefiniowanie grup docelowych, przygotowanie skryptów rozmów i szablonów komunikacji e-mail."
+      },
+      {
+        "phase": "Faza 2: Aktywne Pozyskiwanie Kontaktów (Tygodnie 1-4 Pierwszego Miesiąca)",
+        "duration": "4 tygodnie",
+        "description": "Systematyczne i metodyczne działania outreach (kontakt telefoniczny, e-mail) skierowane do wyselekcjonowanych potencjalnych klientów B2B. Bieżące raportowanie wyników i kwalifikacja pozyskanych leadów."
+      },
+      {
+        "phase": "Faza 3: Podsumowanie, Analiza i Rekomendacje (Koniec Pierwszego Miesiąca)",
+        "duration": "2-3 dni robocze",
+        "description": "Szczegółowa analiza wyników osiągniętych w pierwszym miesiącu, prezentacja kompleksowego raportu, omówienie wskaźników efektywności oraz sformułowanie rekomendacji dotyczących ewentualnej długoterminowej współpracy z Gaborglori."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze doświadczenie w projektach B2B i wsparciu sprzedaży przekłada się na sukcesy naszych partnerów. Dołącz do grona zadowolonych klientów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy pomogło nam dotrzeć do nowych klientów B2B. Ich profesjonalne podejście do generowania leadów przyniosło wymierne efekty. Polecam!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Dyrektor Sprzedaży, TechSolutions"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Dzięki współpracy z Soft Synergy nasza baza potencjalnych klientów znacznie się powiększyła. Skuteczność i regularne raporty to ich duży atut.",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, GlobalTrade Sp. z o.o."
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Zespół Soft Synergy wykazał się dużym zaangażowaniem i zrozumieniem naszych potrzeb sprzedażowych. Jesteśmy zadowoleni z wyników.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Kierownik ds. Rozwoju Biznesu, InnovaMarket"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechSol",
+        "alt": "Logo Klienta TechSolutions"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GlobalT",
+        "alt": "Logo Klienta GlobalTrade"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaM",
+        "alt": "Logo Klienta InnovaMarket"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=BizBoost",
+        "alt": "Logo Klienta BizBoosters"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProSales",
+        "alt": "Logo Klienta ProSales Support"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Dynamiczny Rozwój</span> Sprzedaży Gaborglori?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy skutecznie wesprzeć Państwa w dotarciu do nowych klientów B2B i zwiększeniu sprzedaży sprzętu sportowego na rynku polskim i europejskim. Skontaktuj się z nami, aby omówić szczegóły propozycji i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Współpracy",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Wizualizacji 3D Podnośnika Hydraulicznego dla Bartłomieja Kluski | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=BK",
+    "clientLogoAlt": "Logo Bartłomiej Kluska",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Bartłomieja Kluski",
+    "subtitle": "Propozycja wykonania profesjonalnej wizualizacji 3D podnośnika hydraulicznego, bazującej na produkcie referencyjnym, z uwzględnieniem specyficznej kolorystyki i wymaganej liczby ujęć.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące wizualizacji 3D podnośnika hydraulicznego, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Realistyczna Wizualizacja Produktu 3D</span>",
+      "description": "Głównym celem jest stworzenie fotorealistycznej wizualizacji 3D podnośnika hydraulicznego, która będzie wierną kopią produktu (1:1) z podanego linku referencyjnego. Kluczowe jest odwzorowanie czarno-żółtej kolorystyki, zachowanie tej samej jakości i realizmu oraz przedstawienie produktu z 2-3 różnych ujęć, zgodnych z przykładem.",
+      "points": [
+        "Zlecenie wykonania wizualizacji produktu 3D.",
+        "Wierne odwzorowanie (1:1) produktu z linku: https://cargova.de/collections/bestseller/products/wagenheber-hydraulisch-2-5t-tuv-zertifiziert.",
+        "Kolorystyka: czarno-żółta, z zachowaniem tej samej jakości i realizmu co oryginał.",
+        "Prezentacja produktu z 2-3 różnych ujęć, analogicznych do tych z linku referencyjnego.",
+        "Budżet: Do negocjacji (nasza propozycja cenowa: 1250 PLN netto)."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji podnośnika 3D"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Profesjonalna Wizualizacja Produktu 3D",
+      "description": "Proponujemy kompleksowe wykonanie wizualizacji 3D podnośnika hydraulicznego. Gwarantujemy wierne odwzorowanie detali, kolorystyki (czarno-żółtej) i realizmu produktu z linku referencyjnego, oraz przygotowanie 2-3 ujęć prezentacyjnych. Całość w cenie 1250 PLN netto, z przewidywanym czasem realizacji do 10 dni roboczych.",
+      "points": [
+        "Precyzyjne modelowanie 3D produktu na podstawie dostarczonych referencji.",
+        "Teksturowanie i fotorealistyczny rendering w kolorystyce czarno-żółtej, z dbałością o detale i materiały.",
+        "Przygotowanie 2-3 różnych, profesjonalnych ujęć produktu.",
+        "Atrakcyjna cena realizacji: 1250 PLN netto.",
+        "Przewidywany czas wykonania: do 10 dni roboczych od akceptacji i ustalenia szczegółów."
+      ],
+      "diagramPlaceholderText": "Przykład jakości renderu 3D Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Wizualizacji</span> Produktu 3D",
+    "sectionSubtitle": "Przedstawiamy składowe projektu, które zapewnią najwyższą jakość i realizm Państwa wizualizacji 3D podnośnika hydraulicznego.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9\" />",
+        "title": "Precyzyjne Modelowanie 3D Produktu",
+        "description": "Stworzenie dokładnego, trójwymiarowego modelu podnośnika hydraulicznego, odwzorowującego każdy detal i proporcje zgodnie z produktem referencyjnym. Zapewniamy geometryczną zgodność 1:1.",
+        "mockupText": "Model 3D podnośnika (siatka)"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5\" />",
+        "title": "Realistyczne Teksturowanie i Materiały",
+        "description": "Nałożenie wysokiej jakości tekstur i materiałów, w tym charakterystycznej czarno-żółtej kolorystyki. Staranne odwzorowanie właściwości powierzchni metalu, plastiku i innych komponentów dla uzyskania maksymalnego realizmu.",
+        "mockupText": "Podnośnik z nałożonymi teksturami"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.04l-.821 1.316z\" /><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z\" />",
+        "title": "Fotorealistyczny Rendering i Ujęcia",
+        "description": "Przygotowanie 2-3 różnych, dynamicznych ujęć produktu, prezentujących go w najlepszym świetle, zgodnie z przykładami z linku referencyjnego. Zastosowanie profesjonalnego oświetlenia studyjnego i zaawansowanych technik renderingu.",
+        "mockupText": "Finalne rendery produktu"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac nad Wizualizacją 3D",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia Państwa wizualizacji 3D podnośnika hydraulicznego, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Referencji i Modelowanie 3D",
+        "description": "Dokładna analiza dostarczonego linku referencyjnego i zdjęć produktu. Rozpoczęcie precyzyjnego modelowania 3D podnośnika hydraulicznego z dbałością o każdy detal, wymiary i proporcje, aby zapewnić zgodność 1:1 z oryginałem.",
+        "features": [
+          "Weryfikacja wszystkich elementów produktu na podstawie materiałów referencyjnych.",
+          "Stworzenie dokładnego, czystego geometrycznie modelu 3D (high-poly).",
+          "Przygotowanie modelu do etapu teksturowania (tworzenie map UV).",
+          "Wstępna prezentacja modelu 'clay render' do Państwa wglądu i akceptacji kształtu."
+        ]
+      },
+      {
+        "title": "Etap 2: Teksturowanie, Ustawienie Materiałów i Oświetlenia Sceny",
+        "description": "Tworzenie i aplikacja realistycznych tekstur oraz materiałów, ze szczególnym uwzględnieniem czarno-żółtej kolorystyki i charakterystyki powierzchni (np. metal, plastik). Konfiguracja sceny, oświetlenia studyjnego i kamer dla uzyskania pożądanych, fotorealistycznych ujęć.",
+        "features": [
+          "Przygotowanie i nałożenie wysokiej jakości tekstur (kolor, połysk, chropowatość, normal mapy itp.).",
+          "Definiowanie właściwości fizycznych materiałów dla uzyskania realizmu.",
+          "Ustawienie profesjonalnego oświetlenia studyjnego (np. 3-punktowe) podkreślającego kształt i detale produktu.",
+          "Konfiguracja 2-3 kluczowych ujęć kamery, zgodnych z przykładami z linku referencyjnego."
+        ]
+      },
+      {
+        "title": "Etap 3: Rendering, Postprodukcja i Dostarczenie Finalnych Wizualizacji",
+        "description": "Wykonanie fotorealistycznych renderów w wysokiej rozdzielczości dla każdego z ustalonych ujęć. Przeprowadzenie delikatnej postprodukcji (korekcja kolorów, kontrastu, ostrości) i dostarczenie Państwu gotowych plików graficznych w uzgodnionym formacie.",
+        "features": [
+          "Rendering sceny z wykorzystaniem zaawansowanego silnika renderującego.",
+          "Podstawowa postprodukcja graficzna w celu finalnego dopracowania obrazu.",
+          "Dostarczenie 2-3 finalnych wizualizacji produktu w wysokiej rozdzielczości.",
+          "Przekazanie plików w standardowych formatach (np. JPG, PNG) gotowych do użycia."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalną Wizualizację 3D</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę projektu wizualizacji 3D podnośnika hydraulicznego. Nasza propozycja cenowa to 1250 PLN netto.",
+    "tabs": [
+      {
+        "id": "3d_visualization_offer",
+        "name": "Wizualizacja 3D Podnośnika"
+      }
+    ],
+    "packages": [
+      {
+        "id": "3d_visualization_offer",
+        "name": "Wizualizacja 3D Podnośnika Hydraulicznego",
+        "description": "Kompleksowe wykonanie wizualizacji 3D podnośnika hydraulicznego, odwzorowującej produkt 1:1 z linku referencyjnego, w kolorystyce czarno-żółtej, wraz z 2-3 różnymi ujęciami, zgodnie z Państwa wymaganiami.",
+        "features": [
+          {
+            "text": "Modelowanie 3D produktu 1:1 na podstawie referencji",
+            "included": true
+          },
+          {
+            "text": "Realistyczne teksturowanie (kolorystyka czarno-żółta)",
+            "included": true
+          },
+          {
+            "text": "Fotorealistyczny rendering produktu",
+            "included": true
+          },
+          {
+            "text": "Przygotowanie 2-3 różnych ujęć (zgodnych z przykładem)",
+            "included": true
+          },
+          {
+            "text": "Wysoka jakość i realizm wizualizacji",
+            "included": true
+          },
+          {
+            "text": "Konsultacje i zarządzanie projektem",
+            "included": true
+          },
+          {
+            "text": "Przekazanie praw autorskich majątkowych do wizualizacji",
+            "included": true
+          }
+        ],
+        "price": "1250 PLN netto",
+        "priceNote": "Cena netto. Możliwość wystawienia faktury VAT. Pierwotny budżet Klienta: Do negocjacji.",
+        "ctaText": "Zamów Wizualizację 3D",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Wizualizacji 3D",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu wizualizacji 3D podnośnika. Przewidywany czas realizacji projektu: **do 10 dni roboczych** od dnia akceptacji oferty i ustalenia wszystkich niezbędnych szczegółów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Akceptacja Oferty, Finalizacja Ustaleń i Przygotowanie (Dzień 1-2)",
+        "duration": "1-2 dni robocze",
+        "description": "Potwierdzenie zlecenia przez Pana Bartłomieja, omówienie i potwierdzenie wszystkich szczegółów projektu, weryfikacja materiałów referencyjnych. Akceptacja warunków współpracy i rozpoczęcie formalności."
+      },
+      {
+        "phase": "Faza 2: Modelowanie 3D i Teksturowanie (Dzień 2-6)",
+        "duration": "3-5 dni roboczych",
+        "description": "Tworzenie szczegółowego modelu 3D podnośnika hydraulicznego. Równoległe przygotowywanie i nakładanie tekstur oraz materiałów, w tym charakterystycznej czarno-żółtej kolorystyki. Prezentacja Panu wstępnych wyników prac (np. model 'clay render', próbki tekstur) do weryfikacji."
+      },
+      {
+        "phase": "Faza 3: Ustawienie Sceny, Oświetlenie, Rendering i Finalizacja (Dzień 7-10)",
+        "duration": "3-4 dni robocze",
+        "description": "Konfiguracja finalnej sceny 3D, ustawienie profesjonalnego oświetlenia studyjnego. Wybór i przygotowanie 2-3 ujęć produktu zgodnie z referencjami. Wykonanie fotorealistycznych renderów w wysokiej rozdzielczości. Ewentualne drobne korekty i postprodukcja. Przekazanie Panu finalnych wizualizacji."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Specjalizujemy się w tworzeniu angażujących i dokładnych wizualizacji produktowych 3D.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Jan Sobieski",
+        "quote": "Soft Synergy stworzyło dla nas wizualizacje produktowe, które przerosły nasze oczekiwania. Realizm i dbałość o detale są na najwyższym poziomie. Polecam!",
+        "authorName": "Jan Sobieski",
+        "authorTitle": "CEO, TechParts Sp. z o.o."
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AK",
+        "imageAlt": "Anna Kruk",
+        "quote": "Współpraca z Soft Synergy przy projektach 3D to czysta przyjemność. Profesjonalne podejście, terminowość i świetna komunikacja na każdym etapie.",
+        "authorName": "Anna Kruk",
+        "authorTitle": "Marketing Director, Inovatech"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PW",
+        "imageAlt": "Piotr Wiśniewski",
+        "quote": "Potrzebowaliśmy realistycznych renderów naszych nowych produktów i Soft Synergy dostarczyło dokładnie to, czego oczekiwaliśmy. Szybko i w rozsądnej cenie.",
+        "authorName": "Piotr Wiśniewski",
+        "authorTitle": "Właściciel, ModernTools"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechParts",
+        "alt": "Logo Klienta TechParts"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=Inovatech",
+        "alt": "Logo Klienta Inovatech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ModernTools",
+        "alt": "Logo Klienta ModernTools"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GlobalExport",
+        "alt": "Logo Klienta GlobalExport"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=FutureDesign",
+        "alt": "Logo Klienta FutureDesign"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Realizację Wizualizacji 3D</span>?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć fotorealistyczną wizualizację 3D Państwa podnośnika hydraulicznego, która wiernie odda jego wygląd i funkcjonalność. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Prezentacja oferty przygotowana przez Soft Synergy."
+  },
+  "useme_id": 115217,
+  "employer_email": "kluskabartlomiej@gmail.com",
+  "price": 1250,
+  "timelineDays": 14
+}

@@ -1,0 +1,278 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Etykiety i Grafik Produktowych dla KNS INVESTMENT | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/076/480076.png",
+    "clientLogoAlt": "Logo KNS INVESTMENT",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "KNS INVESTMENT",
+    "subtitle": "Propozycja projektu etykiety na produkt spożywczy, wizualizacji 3D oraz grafik produktowych dla KNS INVESTMENT.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące projektu etykiety, rzutów 3D i grafik produktowych, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Profesjonalna Etykieta i Grafiki Produktowe</span>",
+      "description": "Głównym celem jest zaprojektowanie atrakcyjnej etykiety na produkt spożywczy, stworzenie realistycznych rzutów 3D oraz wysokiej jakości grafik produktowych na białym tle, przeznaczonych na aukcje internetowe dla KNS INVESTMENT.",
+      "points": [
+        "Zaprojektowanie etykiety na produkt (żywność).",
+        "Wykonanie rzutów 3D produktu.",
+        "Przygotowanie wysokiej jakości grafik produktowych na białym tle (packshoty).",
+        "Klient posiada wytyczne, wymiary i parametry.",
+        "Budżet: Do negocjacji.",
+        "Dodatkowe wymaganie: Grafika 3D."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji etykiety i produktu KNS INVESTMENT"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowy Projekt Graficzny i 3D",
+      "description": "Proponujemy kompleksową realizację zlecenia obejmującą projekt etykiety, wizualizacje 3D oraz grafiki produktowe (packshoty na białym tle). Całkowity koszt usługi wynosi 2350 PLN netto, z realizacją do 12 dni roboczych.",
+      "points": [
+        "Projekt etykiety produktu spożywczego.",
+        "Wizualizacje 3D produktu.",
+        "Grafiki produktowe (packshoty na białym tle) na aukcje internetowe.",
+        "Koszt realizacji: 2350 PLN netto.",
+        "Termin realizacji: do 12 dni roboczych.",
+        "Praca oparta na Państwa wytycznych i materiałach."
+      ],
+      "diagramPlaceholderText": "Przykładowy styl graficzny etykiety i wizualizacji 3D"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Projektu</span> dla KNS INVESTMENT",
+    "sectionSubtitle": "Przedstawiamy składowe projektu, które zapewnią wysoką jakość i atrakcyjność wizualną Państwa produktu.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Projekt Etykiety Produktu Spożywczego",
+        "description": "Stworzenie unikalnego projektu etykiety, zgodnego z Państwa wytycznymi i wymogami rynkowymi. Projekt będzie estetyczny, czytelny i przyciągający uwagę potencjalnych klientów.",
+        "mockupText": "Koncepcja graficzna etykiety"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9\" />",
+        "title": "Realistyczne Wizualizacje 3D Produktu",
+        "description": "Wykonanie profesjonalnych rzutów 3D produktu z nałożoną etykietą. Wizualizacje pozwolą na atrakcyjne zaprezentowanie produktu przed jego fizycznym wyprodukowaniem.",
+        "mockupText": "Rzuty 3D produktu z etykietą"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z\" /><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z\" />",
+        "title": "Wysokiej Jakości Grafiki Produktowe (Packshoty)",
+        "description": "Przygotowanie serii grafik produktowych (packshotów) na idealnie białym tle, zoptymalizowanych pod kątem aukcji internetowych i sklepów online. Grafiki będą ostre, dobrze oświetlone i gotowe do publikacji.",
+        "mockupText": "Packshoty produktu na białym tle"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Projektowych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia Państwa materiałów graficznych dla produktu spożywczego KNS INVESTMENT.",
+    "modules": [
+      {
+        "title": "Etap 1: Projekt Etykiety Produktu",
+        "description": "Analiza wytycznych, projekt graficzny etykiety, uwzględnienie wymiarów i parametrów, przygotowanie do druku.",
+        "features": [
+          "Analiza dostarczonych wytycznych, wymiarów i parametrów dotyczących etykiety.",
+          "Stworzenie 1-2 propozycji koncepcyjnych projektu etykiety.",
+          "Wprowadzenie poprawek na podstawie Państwa feedbacku (do 2 rund).",
+          "Przygotowanie finalnego projektu etykiety w formatach gotowych do druku."
+        ]
+      },
+      {
+        "title": "Etap 2: Wizualizacje 3D Produktu",
+        "description": "Modelowanie produktu (jeśli konieczne), teksturowanie, nałożenie etykiety na model 3D, rendering rzutów.",
+        "features": [
+          "Stworzenie lub dostosowanie modelu 3D opakowania produktu.",
+          "Nałożenie zaprojektowanej etykiety na model 3D.",
+          "Przygotowanie kilku ujęć (rzutów) produktu w formie wizualizacji 3D.",
+          "Dostarczenie wizualizacji w wysokiej rozdzielczości."
+        ]
+      },
+      {
+        "title": "Etap 3: Grafiki Produktowe na Aukcje Internetowe",
+        "description": "Przygotowanie packshotów produktu na białym tle, retusz, optymalizacja pod kątem sprzedaży online.",
+        "features": [
+          "Wykorzystanie wizualizacji 3D lub stworzenie nowych ujęć do packshotów.",
+          "Staranne wycięcie produktu i umieszczenie go na idealnie białym tle.",
+          "Retusz i korekta kolorystyczna grafik.",
+          "Przygotowanie zestawu grafik produktowych w formatach odpowiednich dla aukcji internetowych (np. JPG, PNG)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalne Materiały</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę kompleksowego projektu graficznego dla KNS INVESTMENT.",
+    "tabs": [
+      {
+        "id": "product_graphics_offer",
+        "name": "Projekt Etykiety i Grafik Produktowych"
+      }
+    ],
+    "packages": [
+      {
+        "id": "product_graphics_offer",
+        "name": "Projekt Etykiety, Wizualizacji 3D i Grafik Produktowych dla KNS INVESTMENT",
+        "description": "Kompleksowa usługa obejmująca projekt etykiety produktu spożywczego, stworzenie wizualizacji 3D oraz przygotowanie wysokiej jakości grafik produktowych na potrzeby aukcji internetowych.",
+        "features": [
+          {
+            "text": "Projekt graficzny etykiety produktu",
+            "included": true
+          },
+          {
+            "text": "Wizualizacje 3D produktu (kilka ujęć)",
+            "included": true
+          },
+          {
+            "text": "Grafiki produktowe (packshoty) na białym tle",
+            "included": true
+          },
+          {
+            "text": "Dopasowanie do dostarczonych wytycznych",
+            "included": true
+          },
+          {
+            "text": "Do 2 rund poprawek projektowych",
+            "included": true
+          },
+          {
+            "text": "Przygotowanie plików gotowych do druku i publikacji online",
+            "included": true
+          },
+          {
+            "text": "Prawa autorskie majątkowe do projektu",
+            "included": true
+          }
+        ],
+        "price": "2350 PLN netto",
+        "priceNote": "Cena netto. Gwarancja realizacji do 12 dni roboczych.",
+        "ctaText": "Zamów Kompleksowy Projekt",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu dla KNS INVESTMENT. Przewidywany czas realizacji projektu: **do 12 dni roboczych** od momentu ustalenia wszystkich szczegółów i otrzymania od Państwa niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Konsultacje, Zebranie Wytycznych i Ustalenie Szczegółów (Dni 1-2)",
+        "duration": "1-2 dni robocze",
+        "description": "Potwierdzenie zlecenia, szczegółowe omówienie projektu, przekazanie przez KNS INVESTMENT wytycznych, wymiarów, parametrów i wszelkich niezbędnych materiałów."
+      },
+      {
+        "phase": "Faza 2: Projektowanie Etykiety i Wstępne Wizualizacje 3D (Dni 2-6)",
+        "duration": "3-4 dni robocze",
+        "description": "Stworzenie projektu graficznego etykiety, przygotowanie pierwszych wizualizacji 3D produktu. Prezentacja Państwu do wglądu i zebranie feedbacku."
+      },
+      {
+        "phase": "Faza 3: Iteracje, Finalizacja Projektów i Przygotowanie Grafik Produktowych (Dni 6-12)",
+        "duration": "4-6 dni roboczych",
+        "description": "Wprowadzenie ewentualnych korekt do etykiety i wizualizacji 3D. Tworzenie finalnych grafik produktowych (packshotów). Przygotowanie wszystkich plików do przekazania."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wyróżniające Materiały</span> dla KNS INVESTMENT?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć profesjonalną etykietę, wizualizacje 3D i grafiki produktowe, które skutecznie wesprą sprzedaż Państwa produktu. Skontaktuj się z nami, aby omówić szczegóły.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": 115226,
+  "employer_email": "biuro.coffeesi@gmail.com",
+  "price": 2350,
+  "timelineDays": 16
+}

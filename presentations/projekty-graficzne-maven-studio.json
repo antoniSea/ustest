@@ -1,0 +1,344 @@
+{
+  "useme_id": 115227,
+  "employer_email": "malgorzata.kaczmarek4@gmail.com",
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Współpracy Graficznej dla Maven Studio | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/069/092069.png",
+    "clientLogoAlt": "Logo Maven Studio",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "Maven Studio",
+    "subtitle": "Oferta odświeżenia estetyki strony internetowej oraz przygotowania grafik promocyjnych i produktowych dla marki Maven Studio, specjalizującej się w szablonach Canva dla projektantów wnętrz.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące wsparcia graficznego dla Maven Studio, aby zaproponować rozwiązania idealnie dopasowane do rozwoju Państwa marki.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Odświeżenie Wizerunku i Rozwój Marki Maven Studio</span>",
+      "description": "Głównym celem jest odświeżenie estetyki strony internetowej Maven Studio oraz regularne tworzenie atrakcyjnych grafik promocyjnych i produktowych. Poszukują Państwo kreatywnego grafika do długoterminowej współpracy zdalnej, który pomoże również w rozwoju szablonów Canva.",
+      "points": [
+        "Odświeżenie estetyki strony internetowej (WordPress, Elementor lub inny page builder).",
+        "Przygotowywanie atrakcyjnych grafik promocyjnych i produktowych.",
+        "Wsparcie w tworzeniu szablonów Canva dla projektantów wnętrz.",
+        "Praca zdalna, elastyczne godziny, możliwa dłuższa współpraca (ok. 10h/miesiąc).",
+        "Wymagania: b. dobra znajomość Canva, projektowanie layoutów stron, wyczucie stylu (wnętrza, lifestyle, beauty, edukacja), dwujęzyczność (PL/EN)."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji dla Maven Studio"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowe Wsparcie Graficzne",
+      "description": "Proponujemy kompleksowe wsparcie graficzne, obejmujące projekt graficzny strony internetowej, jej wdrożenie w WordPress (Divi Builder), oraz bieżące tworzenie materiałów marketingowych i szablonów Canva. Gwarantujemy estetyczne i funkcjonalne rozwiązania, zgodne z Państwa oczekiwaniami.",
+      "points": [
+        "Projekt graficzny strony (layout + podstrony) - realizacja ok. 1-2 tygodnie.",
+        "Projekt + wdrożenie w WordPress (Divi Builder) - realizacja ok. 2-4 tygodnie.",
+        "Możliwość współpracy długoterminowej (ok. 10h miesięcznie) ze stawką godzinową 95 PLN netto/h.",
+        "Doświadczenie w projektowaniu dla branż wnętrzarskiej, lifestyle, beauty i edukacyjnej.",
+        "Realizacja w ścisłej współpracy, z naciskiem na zrozumienie wizji i celów biznesowych Państwa marki Maven Studio."
+      ],
+      "diagramPlaceholderText": "Przykładowy kierunek stylistyczny dla Maven Studio"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Oferty</span> dla Maven Studio",
+    "sectionSubtitle": "Przedstawiamy obszary, w których możemy wesprzeć rozwój Państwa marki, dostarczając wysokiej jakości projekty graficzne i wsparcie w rozwoju produktów Canva.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Nowoczesny Projekt Strony Internetowej",
+        "description": "Zaprojektujemy estetyczny i funkcjonalny layout strony głównej oraz kluczowych podstron, zgodny z najnowszymi trendami i specyfiką branży wnętrzarskiej. Oferujemy również wdrożenie projektu na platformie WordPress z użyciem Divi Builder.",
+        "mockupText": "Koncepcja layoutu strony Maven Studio"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Atrakcyjne Grafiki i Szablony Canva",
+        "description": "Będziemy tworzyć angażujące grafiki promocyjne (social media, reklamy) oraz produktowe, w tym wysokiej jakości szablony Canva dla projektantów wnętrz, wspierające sprzedaż i budowanie wizerunku Maven Studio.",
+        "mockupText": "Przykłady grafik i szablonów Canva"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 6h9.75M10.5 12h9.75M10.5 18h9.75M3.75 6H6m11.25 0H21M3.75 12H6m11.25 0H21M3.75 18H6m11.25 0H21M3.75 6h-.375a1.125 1.125 0 00-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h.375m11.25-13.5h.375a1.125 1.125 0 011.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-.375M10.5 3.75V20.25\"/>",
+        "title": "Długoterminowe Partnerstwo Graficzne",
+        "description": "Zapewniamy elastyczną, zdalną współpracę (ok. 10h/miesiąc) skoncentrowaną na Państwa potrzebach. Gwarantujemy terminowość, komunikatywność i samodzielność w realizacji powierzonych zadań graficznych.",
+        "mockupText": "Model współpracy długoterminowej"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac",
+    "sectionSubtitle": "Precyzyjnie definiujemy poszczególne etapy naszej potencjalnej współpracy z Maven Studio, zapewniając transparentność i efektywność działań.",
+    "modules": [
+      {
+        "title": "Etap 1: Projekt Graficzny Strony Internetowej",
+        "description": "Analiza Państwa obecnej strony, celów biznesowych oraz inspiracji. Stworzenie propozycji layoutu strony głównej i kluczowych podstron, z uwzględnieniem estetyki wnętrzarskiej, lifestyle, beauty i edukacji. Projektowanie 2D.",
+        "features": [
+          "Warsztaty i konsultacje dotyczące wizji i estetyki marki Maven Studio.",
+          "Projektowanie nowoczesnego layoutu strony głównej i wybranych podstron.",
+          "Prezentacja projektu z możliwością iteracji i wprowadzenia poprawek.",
+          "Przygotowanie projektu do wdrożenia lub przekazanie plików graficznych."
+        ]
+      },
+      {
+        "title": "Etap 2: Wdrożenie Strony w WordPress (Divi Builder) - Opcjonalnie",
+        "description": "Jeśli zdecydują się Państwo na tę opcję, zrealizujemy wdrożenie zaakceptowanego projektu graficznego na platformie WordPress, wykorzystując Divi Builder. Zapewnimy responsywność i optymalizację strony.",
+        "features": [
+          "Instalacja i konfiguracja WordPress oraz Divi Builder.",
+          "Implementacja projektu graficznego na stronie.",
+          "Zapewnienie responsywności (RWD) na urządzeniach mobilnych.",
+          "Podstawowa optymalizacja SEO i szybkości ładowania."
+        ]
+      },
+      {
+        "title": "Etap 3: Bieżące Wsparcie Graficzne i Rozwój Szablonów Canva",
+        "description": "W ramach współpracy długoterminowej (ok. 10h miesięcznie) będziemy realizować zadania związane z tworzeniem grafik promocyjnych, produktowych, rozwojem i optymalizacją szablonów Canva oraz wsparciem w zakresie estetyki materiałów marketingowych.",
+        "features": [
+          "Regularne tworzenie grafik na potrzeby mediów społecznościowych, reklam, strony www.",
+          "Projektowanie i optymalizacja szablonów Canva dla projektantów wnętrz.",
+          "Utrzymanie spójności wizualnej marki Maven Studio w materiałach dwujęzycznych (PL/EN).",
+          "Elastyczne godziny pracy i bieżąca komunikacja."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Propozycja <span class=\"text-cyan-400\">Cenowa</span> dla Maven Studio",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę naszych usług, dopasowaną do Państwa potrzeb. Jesteśmy otwarci na negocjacje i dostosowanie oferty. Budżet wskazany przez Państwa jako 'Do negocjacji'.",
+    "tabs": [
+      {
+        "id": "web_design_only",
+        "name": "Projekt Graficzny Strony"
+      },
+      {
+        "id": "web_design_impl",
+        "name": "Projekt + Wdrożenie Strony"
+      },
+      {
+        "id": "ongoing_support",
+        "name": "Współpraca Długoterminowa"
+      }
+    ],
+    "packages": [
+      {
+        "id": "web_design_only",
+        "name": "Projekt Graficzny Strony (Layout + Podstrony)",
+        "description": "Opracowanie nowoczesnego i estetycznego projektu graficznego 2D strony internetowej Maven Studio, obejmującego stronę główną oraz kluczowe podstrony.",
+        "features": [
+          {
+            "text": "Analiza potrzeb i celów biznesowych",
+            "included": true
+          },
+          {
+            "text": "Projekt layoutu strony głównej",
+            "included": true
+          },
+          {
+            "text": "Projekt kluczowych podstron (np. O nas, Oferta, Kontakt)",
+            "included": true
+          },
+          {
+            "text": "Do 2 rund poprawek w cenie",
+            "included": true
+          },
+          {
+            "text": "Przygotowanie plików dla dewelopera",
+            "included": true
+          }
+        ],
+        "price": "od 1900 PLN netto",
+        "priceNumber": 1900,
+        "timelineDaysNumber": 10,
+        "priceNote": "Cena netto 'od'. Realizacja ok. 1-2 tygodnie.",
+        "ctaText": "Wybieram Projekt Graficzny",
+        "isRecommended": false
+      },
+      {
+        "id": "web_design_impl",
+        "name": "Projekt Graficzny + Wdrożenie w WordPress (Divi Builder)",
+        "description": "Kompleksowa usługa obejmująca projekt graficzny 2D strony oraz jej pełne wdrożenie na platformie WordPress z wykorzystaniem Divi Builder.",
+        "features": [
+          {
+            "text": "Wszystkie elementy z 'Projekt Graficzny Strony'",
+            "included": true
+          },
+          {
+            "text": "Wdrożenie projektu w WordPress (Divi Builder)",
+            "included": true
+          },
+          {
+            "text": "Responsywność (RWD) na wszystkich urządzeniach",
+            "included": true
+          },
+          {
+            "text": "Podstawowa konfiguracja i optymalizacja",
+            "included": true
+          },
+          {
+            "text": "Szkolenie z obsługi strony (opcjonalnie)",
+            "included": false
+          }
+        ],
+        "price": "od 4200 PLN netto",
+        "priceNumber": 4200,
+        "timelineDaysNumber": 20,
+        "priceNote": "Cena netto 'od'. Realizacja ok. 2-4 tygodnie.",
+        "ctaText": "Wybieram Projekt z Wdrożeniem",
+        "isRecommended": true
+      },
+      {
+        "id": "ongoing_support",
+        "name": "Współpraca Długoterminowa (Grafika, Canva)",
+        "description": "Elastyczne wsparcie graficzne w wymiarze ok. 10 godzin miesięcznie, obejmujące tworzenie grafik promocyjnych, produktowych i szablonów Canva.",
+        "features": [
+          {
+            "text": "Regularne wsparcie graficzne (ok. 10h/miesiąc)",
+            "included": true
+          },
+          {
+            "text": "Tworzenie grafik promocyjnych i produktowych (2D)",
+            "included": true
+          },
+          {
+            "text": "Projektowanie i optymalizacja szablonów Canva",
+            "included": true
+          },
+          {
+            "text": "Priorytetowa realizacja zadań",
+            "included": true
+          },
+          {
+            "text": "Stała komunikacja i raportowanie",
+            "included": true
+          }
+        ],
+        "price": "95 PLN netto/h",
+        "priceNumber": 95,
+        "timelineDaysNumber": null,
+        "priceNote": "Stawka godzinowa netto. Rekomendowany pakiet min. 10h/miesiąc.",
+        "ctaText": "Rozpocznij Współpracę Długoterminową",
+        "isRecommended": false
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu",
+    "sectionSubtitle": "Przedstawiamy orientacyjny harmonogram prac dla Maven Studio. Przewidywany czas realizacji zależy od wybranego wariantu (projekt graficzny: 1-2 tygodnie, projekt + wdrożenie: 2-4 tygodnie). Start możliwy od zaraz. Zależy nam na sprawnej i estetycznej realizacji oraz dobrej komunikacji.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Planowanie i Koncepcja Projektu (Tydzień 1)",
+        "duration": "ok. 5 dni roboczych",
+        "description": "Spotkanie startowe (online), analiza potrzeb Maven Studio, zebranie materiałów (logo, teksty, brief), ustalenie kierunku stylistycznego. Przygotowanie wstępnych propozycji layoutu strony głównej."
+      },
+      {
+        "phase": "Faza 2: Projektowanie i Iteracje (Tydzień 1-2 dla proj. graf., Tydzień 1-3 dla proj. z wdrożeniem)",
+        "duration": "5-15 dni roboczych (zależnie od zakresu)",
+        "description": "Rozwój projektu graficznego strony głównej i podstron, prezentacja Klientowi, zbieranie feedbacku i wprowadzanie poprawek. W przypadku wdrożenia: rozpoczęcie prac implementacyjnych po akceptacji designu."
+      },
+      {
+        "phase": "Faza 3: Finalizacja, Wdrożenie (jeśli dotyczy) i Start Współpracy (Tydzień 2-4)",
+        "duration": "5-10 dni roboczych (zależnie od zakresu)",
+        "description": "Ostateczne dopracowanie projektu graficznego. Jeśli wybrano wdrożenie: zakończenie prac, testy, przekazanie strony. Ustalenie zasad długoterminowej współpracy graficznej (np. 10h/miesiąc dla grafik i szablonów Canva)."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Nowy Wymiar</span> Marki Maven Studio?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić szczegóły współpracy i rozpocząć projektowanie przyszłości Państwa marki. Jesteśmy gotowi sprostać wyzwaniu odświeżenia strony i tworzenia angażujących grafik. Chętnie dopasujemy ofertę do Państwa oczekiwań.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa (Praca zdalna)"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy dla Maven Studio."
+  },
+  "price": 95,
+  "timelineDays": 14
+}

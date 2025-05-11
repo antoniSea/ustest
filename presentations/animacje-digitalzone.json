@@ -1,0 +1,280 @@
+{
+  "useme_id": 115237,
+  "employer_email": "lukasz.piwowar@digitalzone.pl",
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Wsparcia Projektu Animacji dla digitalzone | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/024/221824.png",
+    "clientLogoAlt": "Logo digitalzone",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "digitalzone",
+    "subtitle": "Propozycja pilnego wsparcia w dokończeniu projektu aplikacji webowej z dużą ilością animacji, z wykorzystaniem bibliotek takich jak GSAP.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące pilnego wsparcia w projekcie animacji, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Pilne Dokończenie Animacji Webowych</span>",
+      "description": "Głównym celem jest szybkie wsparcie w dokończeniu projektu aplikacji webowej, który charakteryzuje się dużą ilością animacji. Kluczowe jest wykorzystanie bibliotek takich jak GSAP oraz szybkie wdrożenie w istniejący kod.",
+      "points": [
+        "Pilna potrzeba dokończenia projektu aplikacji webowej.",
+        "Duża ilość animacji do zaimplementowania/poprawienia.",
+        "Wymagane doświadczenie z biblioteką GSAP lub podobną.",
+        "Ustalony przez Państwa budżet na wsparcie: 7500,00 PLN."
+      ],
+      "diagramPlaceholderText": "Wizualizacja zakresu wsparcia dla digitalzone"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Eksperckie Wsparcie GSAP",
+      "description": "Proponujemy realizację zlecenia w kwocie 7200,00 PLN brutto, obejmującą błyskawiczną integrację z Państwa projektem i iteracyjne dostarczanie animacji w podejściu agile. Przewidywany czas dokończenia prac to 15-20 dni roboczych.",
+      "points": [
+        "Realizacja wsparcia w dokończeniu animacji webowych.",
+        "Wykorzystanie biblioteki GSAP i podobnych technologii.",
+        "Proponowana cena: 7200,00 PLN brutto.",
+        "Metodologia agile i błyskawiczna integracja z projektem.",
+        "Doświadczenie Soft Synergy w szybkim wdrażaniu się w projekty i dostarczaniu wysokiej jakości animacji."
+      ],
+      "diagramPlaceholderText": "Przykładowe animacje GSAP z portfolio Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Aspekty <span class=\"text-cyan-400\">Naszej Oferty</span>",
+    "sectionSubtitle": "Przedstawiamy elementy naszej propozycji, które zapewnią skuteczne i szybkie dokończenie Państwa projektu animacji dla digitalzone.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Ekspertyza w Animacjach GSAP",
+        "description": "Nasz zespół posiada bogate doświadczenie w tworzeniu zaawansowanych animacji webowych z użyciem biblioteki GSAP, co gwarantuje płynność, wydajność i efektowność wizualną.",
+        "mockupText": "Przykłady implementacji GSAP"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Szybka Integracja i Metodyka Agile",
+        "description": "Zapewniamy błyskawiczną integrację z istniejącym projektem i pracujemy w metodyce agile, dostarczając kolejne partie animacji iteracyjnie, co pozwala na stały wgląd w postępy.",
+        "mockupText": "Schemat procesu integracji"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z\" />",
+        "title": "Dokończenie Projektu w Terminie",
+        "description": "Rozumiemy pilność zlecenia. Naszym celem jest dokończenie prac w ciągu 15-20 dni roboczych, dostarczając wysokiej jakości rozwiązanie zgodne z Państwa oczekiwaniami.",
+        "mockupText": "Gwarancja jakości i terminowości"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Wsparcia",
+    "sectionSubtitle": "Precyzyjnie definiujemy etapy naszego wsparcia w projekcie animacji dla digitalzone, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Projektu i Plan Działania (1-2 dni)",
+        "description": "Zapoznanie się z istniejącym kodem, specyfikacją animacji, priorytetyzacją zadań. Ustalenie szczegółowego planu wdrożenia i integracji z zespołem digitalzone.",
+        "features": [
+          "Audyt obecnego stanu projektu animacji.",
+          "Definicja zakresu brakujących/wymagających poprawy animacji.",
+          "Ustalenie harmonogramu prac i kanałów komunikacji.",
+          "Dostęp do repozytorium i środowiska deweloperskiego."
+        ]
+      },
+      {
+        "title": "Etap 2: Implementacja i Iteracyjne Dostarczanie Animacji (10-15 dni)",
+        "description": "Tworzenie i implementacja animacji z wykorzystaniem GSAP. Regularne prezentacje postępów i zbieranie feedbacku w krótkich iteracjach (sprintach).",
+        "features": [
+          "Kodowanie animacji zgodnie ze specyfikacją i najlepszymi praktykami GSAP.",
+          "Testowanie animacji na różnych urządzeniach i przeglądarkach.",
+          "Cykliczne dostarczanie ukończonych modułów animacji.",
+          "Stała komunikacja i reagowanie na uwagi Klienta."
+        ]
+      },
+      {
+        "title": "Etap 3: Finalizacja, Testy i Wdrożenie (3-5 dni)",
+        "description": "Ostateczne testy, optymalizacja wydajności animacji, integracja z całością aplikacji. Wsparcie przy wdrożeniu i przekazanie dokumentacji.",
+        "features": [
+          "Kompleksowe testy jakościowe i wydajnościowe.",
+          "Optymalizacja kodu animacji pod kątem płynności i szybkości ładowania.",
+          "Wsparcie w procesie deploymentu finalnych animacji.",
+          "Przekazanie wiedzy i ewentualnych zaleceń."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalne Animacje</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę wsparcia w dokończeniu projektu animacji dla digitalzone. Nasza propozycja jest konkurencyjna i dopasowana do Państwa potrzeb.",
+    "tabs": [
+      {
+        "id": "animation_support_offer",
+        "name": "Wsparcie w Projekcie Animacji"
+      }
+    ],
+    "packages": [
+      {
+        "id": "animation_support_offer",
+        "name": "Wsparcie w Dokończeniu Projektu Animacji dla digitalzone",
+        "description": "Kompleksowe wsparcie w dokończeniu projektu aplikacji webowej z dużą ilością animacji, z wykorzystaniem biblioteki GSAP. Prace realizowane w trybie pilnym.",
+        "features": [
+          {
+            "text": "Analiza i planowanie prac animacyjnych",
+            "included": true
+          },
+          {
+            "text": "Implementacja animacji z użyciem GSAP",
+            "included": true
+          },
+          {
+            "text": "Iteracyjne dostarczanie i feedback (Agile)",
+            "included": true
+          },
+          {
+            "text": "Testowanie i optymalizacja animacji",
+            "included": true
+          },
+          {
+            "text": "Szybka integracja z istniejącym projektem",
+            "included": true
+          },
+          {
+            "text": "Przewidywany czas realizacji: 15-20 dni roboczych",
+            "included": true
+          },
+          {
+            "text": "Wsparcie projektowe Project Managera",
+            "included": true
+          }
+        ],
+        "price": "7200,00 PLN brutto",
+        "priceNote": "Cena zawiera podatek VAT. Budżet Klienta: 7500,00 PLN.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Wsparcia",
+    "sectionSubtitle": "Przejrzysty plan działania dla wsparcia w projekcie animacji dla digitalzone. Przewidywany czas realizacji: **15-20 dni roboczych** od momentu rozpoczęcia współpracy. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Kick-off i Integracja (Dzień 1-2)",
+        "duration": "1-2 dni robocze",
+        "description": "Spotkanie inauguracyjne, przekazanie dostępów, zapoznanie się z kodem i specyfikacją animacji. Ustalenie priorytetów i harmonogramu pierwszych zadań."
+      },
+      {
+        "phase": "Faza 2: Pierwszy Sprint - Implementacja Kluczowych Animacji (Dzień 3-7)",
+        "duration": "5 dni roboczych",
+        "description": "Realizacja pierwszej partii najważniejszych animacji. Prezentacja wyników, zebranie feedbacku od digitalzone."
+      },
+      {
+        "phase": "Faza 3: Kolejne Sprinty - Rozwój i Uzupełnianie Animacji (Dzień 8-15)",
+        "duration": "8 dni roboczych",
+        "description": "Kontynuacja prac nad pozostałymi animacjami w iteracyjnym podejściu. Regularne demo i dostosowywanie się do ewentualnych zmian."
+      },
+      {
+        "phase": "Faza 4: Finalizacja, Testy i Optymalizacja (Dzień 16-20)",
+        "duration": "3-5 dni roboczych",
+        "description": "Dopracowanie szczegółów, kompleksowe testy wydajności i kompatybilności. Przygotowanie do wdrożenia i przekazanie finalnych materiałów."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów świadczą o naszym profesjonalizmie w realizacji zaawansowanych projektów webowych i animacji. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JK",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy błyskawicznie wdrożyło się w nasz projekt i dostarczyło animacje na najwyższym poziomie. Polecamy ich ekspertyzę w GSAP!",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "CTO, TechSolutions"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AN",
+        "imageAlt": "Anna Nowak",
+        "quote": "Potrzebowaliśmy pilnego wsparcia i Soft Synergy stanęło na wysokości zadania. Szybka komunikacja i profesjonalne podejście.",
+        "authorName": "Anna Nowak",
+        "authorTitle": "Project Lead, WebMasters"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PZ",
+        "imageAlt": "Piotr Zając",
+        "quote": "Animacje stworzone przez Soft Synergy ożywiły naszą aplikację. Współpraca przebiegła bardzo sprawnie i terminowo.",
+        "authorName": "Piotr Zając",
+        "authorTitle": "CEO, DigitalDreams"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechSol",
+        "alt": "Logo Klienta TechSolutions"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=WebMast",
+        "alt": "Logo Klienta WebMasters"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=DigiDreams",
+        "alt": "Logo Klienta DigitalDreams"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=AnimateIT",
+        "alt": "Logo Klienta AnimateIT"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProDev",
+        "alt": "Logo Klienta ProDev"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Dokończenie Projektu Animacji</span> dla digitalzone?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy szybko i efektywnie wesprzeć Państwa zespół w finalizacji projektu animacji. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Innowacyjna 5, 02-200 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 7200,
+  "timelineDays": 21
+}

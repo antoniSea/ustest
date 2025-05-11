@@ -1,0 +1,279 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Wideo dla Rolmako | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/CCCCCC/0A0F1F?Text=Rolmako",
+    "clientLogoAlt": "Logo Klienta Rolmako",
+    "titlePart1": "Propozycja Projektu Wideo dla",
+    "titlePart2ClientName": "Rolmako",
+    "subtitle": "Propozycja kompleksowej realizacji projektu tworzenia dynamicznego contentu wideo na YouTube, w tym rekrutacji i koordynacji twórców, dla marki Rolmako.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące tworzenia dynamicznego contentu na YouTube, aby zaproponować rozwiązanie idealnie dopasowane do celów marki Rolmako.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Dynamiczny Content YouTube dla Rolmako</span>",
+      "description": "Głównym celem jest stworzenie serii angażujących filmów na YouTube (ponad 50 filmów ok. 3 min. oraz seria 'Shorts') dla marki Rolmako. Projekt zakłada zaangażowanie energicznych twórców wideo, którzy będą również promować treści na różnych platformach mediów społecznościowych.",
+      "points": [
+        "Zlecenie na stworzenie dynamicznego contentu na YouTube dla marki Rolmako.",
+        "Potrzeba ponad 50 filmów (ok. 3 minuty każdy) oraz serii krótkich materiałów promocyjnych ('Shorts' ok. 40-60 sekund).",
+        "Poszukiwanie energicznych i kreatywnych twórców (kobiet i mężczyzn, 20-35 lat) gotowych do samodzielnej pracy przed kamerą.",
+        "Wymagana promocja stworzonych treści na różnych platformach mediów społecznościowych.",
+        "Ustalony przez Państwa budżet na projekt: 20 000,00 PLN."
+      ],
+      "diagramPlaceholderText": "Wizualizacja strategii contentu dla Rolmako"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Realizacja i Koordynacja Produkcji Wideo",
+      "description": "Proponujemy kompleksową realizację projektu tworzenia contentu wideo dla Rolmako, obejmującą rekrutację i koordynację pracy twórców wideo. Gwarantujemy dostarczenie ponad 50 filmów i serii 'Shorts' w ciągu 89 dni, w ramach ustalonej kwoty 16 200 PLN netto.",
+      "points": [
+        "Rekrutacja i koordynacja pracy samodzielnych twórców wideo zgodnie z Państwa wymaganiami.",
+        "Produkcja ponad 50 filmów (ok. 3 minuty każdy) oraz serii krótkich materiałów promocyjnych ('Shorts' ok. 40-60 sekund).",
+        "Zapewnienie wsparcia na każdym etapie produkcji oraz koordynacja promocji w mediach społecznościowych.",
+        "Atrakcyjna cena realizacji: 16 200 PLN netto, mieszcząca się w Państwa budżecie.",
+        "Realizacja całości projektu w ciągu 89 dni od momentu rozpoczęcia.",
+        "Doświadczenie Soft Synergy w zarządzaniu projektami wideo i kampaniami w social media, wspierając marki w budowaniu ich obecności online."
+      ],
+      "diagramPlaceholderText": "Proces rekrutacji i produkcji wideo Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Projektu</span> Wideo dla Rolmako",
+    "sectionSubtitle": "Przedstawiamy składowe projektu, które zapewnią wysoką jakość i zaangażowanie tworzonego contentu dla Rolmako.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z\" />",
+        "title": "Rekrutacja i Zarządzanie Twórcami Wideo",
+        "description": "Staranny dobór energicznych i kreatywnych twórców (kobiet i mężczyzn w wieku 20-35 lat) pasujących do wizerunku marki Rolmako. Zapewnienie im wsparcia i koordynacja pracy na każdym etapie produkcji, zgodnie z Państwa oczekiwaniami.",
+        "mockupText": "Profil idealnego twórcy Rolmako"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0013.5 5.25h-9A2.25 2.25 0 002.25 7.5v9A2.25 2.25 0 004.5 18.75z\" />",
+        "title": "Produkcja Dynamicznego Contentu Wideo",
+        "description": "Stworzenie ponad 50 angażujących filmów o długości ok. 3 minut każdy oraz serii krótkich materiałów promocyjnych typu 'Shorts' (ok. 40-60 sekund). Treści będą profesjonalnie przygotowane i dostosowane do platformy YouTube oraz oczekiwań widzów Rolmako.",
+        "mockupText": "Przykładowy format filmu Rolmako"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z\" />",
+        "title": "Promocja na Platformach Mediów Społecznościowych",
+        "description": "Zaangażowani twórcy z entuzjazmem podejmą się prezentowania przygotowanych treści na różnych platformach mediów społecznościowych, co zwiększy zasięg, rozpoznawalność i zaangażowanie wokół marki Rolmako.",
+        "mockupText": "Strategia promocji w social media"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac dla Rolmako",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia i promocji contentu wideo dla Rolmako, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Rekrutacja, Selekcja i Onboarding Twórców (Dni 1-21)",
+        "description": "Przeprowadzenie kompleksowego procesu rekrutacyjnego w celu wyłonienia twórców wideo najlepiej odpowiadających Państwa potrzebom. Zapoznanie wybranych osób z marką Rolmako, celami projektu, wytycznymi dotyczącymi contentu oraz harmonogramem prac.",
+        "features": [
+          "Opracowanie i publikacja atrakcyjnego ogłoszenia o naborze twórców.",
+          "Staranna selekcja nadesłanych zgłoszeń i portfolio.",
+          "Przeprowadzenie rozmów kwalifikacyjnych i wybór finalnej grupy twórców.",
+          "Przygotowanie i przeprowadzenie szkolenia wprowadzającego dla twórców (briefing, cele, marka, wytyczne techniczne i merytoryczne)."
+        ]
+      },
+      {
+        "title": "Etap 2: Planowanie Treści i Produkcja Materiałów Wideo (Dni 15-80)",
+        "description": "Ścisła współpraca z twórcami w zakresie planowania kalendarza publikacji, tematów i scenariuszy filmów. Bieżąca produkcja ponad 50 filmów (ok. 3 minuty) oraz serii 'Shorts' (ok. 40-60 sekund). Nadzór nad jakością, spójnością i terminowością dostarczanych materiałów.",
+        "features": [
+          "Wspólne opracowanie harmonogramu contentowego i tematów wideo.",
+          "Dostarczenie twórcom niezbędnych materiałów i wsparcia merytorycznego.",
+          "Regularny odbiór, weryfikacja i akceptacja tworzonych materiałów wideo.",
+          "Koordynacja ewentualnej postprodukcji i zapewnienie wysokiej jakości finalnych filmów."
+        ]
+      },
+      {
+        "title": "Etap 3: Dystrybucja, Promocja, Monitoring i Finalizacja (Dni 22-89)",
+        "description": "Systematyczna publikacja gotowych materiałów na kanale YouTube Rolmako. Koordynacja działań promocyjnych realizowanych przez twórców na wybranych platformach social media. Monitorowanie kluczowych wskaźników efektywności (KPIs) i przygotowanie raportu końcowego.",
+        "features": [
+          "Zarządzanie harmonogramem publikacji na kanale YouTube Rolmako.",
+          "Koordynacja i wsparcie działań promocyjnych twórców w mediach społecznościowych.",
+          "Bieżące monitorowanie wskaźników takich jak liczba wyświetleń, czas oglądania, zaangażowanie, wzrost liczby subskrybentów.",
+          "Przygotowanie i prezentacja kompleksowego raportu podsumowującego wyniki projektu."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Dynamiczny Content</span> dla Rolmako",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę kompleksowej realizacji projektu wideo dla Rolmako. Nasza propozycja została przygotowana z uwzględnieniem Państwa budżetu.",
+    "tabs": [
+      {
+        "id": "video_production_offer",
+        "name": "Produkcja Wideo dla Rolmako"
+      }
+    ],
+    "packages": [
+      {
+        "id": "video_production_offer",
+        "name": "Kompleksowa Produkcja i Koordynacja Wideo dla Rolmako",
+        "description": "Pełna obsługa projektu tworzenia angażującego contentu na YouTube, obejmująca rekrutację i zarządzanie twórcami, produkcję ponad 50 filmów oraz serii 'Shorts', a także koordynację ich promocji w mediach społecznościowych.",
+        "features": [
+          {
+            "text": "Rekrutacja i koordynacja pracy twórców wideo",
+            "included": true
+          },
+          {
+            "text": "Produkcja ponad 50 filmów (ok. 3 minuty każdy)",
+            "included": true
+          },
+          {
+            "text": "Produkcja serii materiałów promocyjnych 'Shorts' (ok. 40-60 sekund)",
+            "included": true
+          },
+          {
+            "text": "Koordynacja promocji treści w social media przez twórców",
+            "included": true
+          },
+          {
+            "text": "Pełne zarządzanie projektem i wsparcie na każdym etapie",
+            "included": true
+          },
+          {
+            "text": "Gwarantowany czas realizacji: 89 dni",
+            "included": true
+          },
+          {
+            "text": "Elastyczne warunki współpracy z możliwością długoterminowej relacji",
+            "included": true
+          }
+        ],
+        "price": "16 200 PLN netto",
+        "priceNote": "Cena netto. Budżet Klienta: 20 000,00 PLN. Możliwość negocjacji wynagrodzenia dla twórców w ramach projektu.",
+        "ctaText": "Rozpocznij Projekt Wideo",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu Wideo dla Rolmako",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu wideo Rolmako. Przewidywany całkowity czas realizacji projektu: **89 dni** od momentu akceptacji oferty i ustalenia wszystkich szczegółów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Rekrutacja, Selekcja i Onboarding Twórców (Dni 1-21)",
+        "duration": "Ok. 3 tygodnie",
+        "description": "Proces naboru, weryfikacji zgłoszeń, rozmowy kwalifikacyjne, wybór twórców i wprowadzenie ich w szczegóły projektu oraz oczekiwania marki Rolmako."
+      },
+      {
+        "phase": "Faza 2: Planowanie Treści i Produkcja Materiałów Wideo (Dni 15-80)",
+        "duration": "Ok. 9-10 tygodni (częściowo równolegle z F1 i F3)",
+        "description": "Opracowanie szczegółowego harmonogramu contentu i scenariuszy. Regularna produkcja ponad 50 filmów (ok. 3 min) oraz serii 'Shorts' (ok. 40-60 sek) przez wybranych twórców, z bieżącą weryfikacją jakości."
+      },
+      {
+        "phase": "Faza 3: Dystrybucja, Promocja, Monitoring i Finalizacja (Dni 22-89)",
+        "duration": "Ok. 9-10 tygodni (równolegle z produkcją i po jej zakończeniu)",
+        "description": "Systematyczna publikacja filmów na YouTube, koordynacja promocji w mediach społecznościowych, bieżące monitorowanie efektów i przygotowanie kompleksowego raportu podsumowującego projekt dla Rolmako."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Dynamiczny Content</span> dla Rolmako?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć angażujące wideo, które efektywnie zbuduje obecność Rolmako na YouTube i w mediach społecznościowych, przyciągając szeroką publiczność. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie Wideo",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 16200,
+  "timelineDays": 89,
+  "clientName": "Rolmako",
+  "projectBrief": "Tworzenie dynamicznego contentu na YouTube dla Rolmako: ponad 50 filmów (ok. 3 min) i seria 'Shorts'. Rekrutacja i koordynacja twórców wideo (20-35 lat), promocja w social media. Budżet klienta: 20000 PLN.",
+  "useme_id": 115479,
+  "employer_email": "t.kowalski@rolmako.pl"
+}

@@ -1,0 +1,278 @@
+{
+  "useme_id": 115480,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Sesji Zdjęciowych Wnętrz dla Marcina Tyczko | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/035/448835.png",
+    "clientLogoAlt": "Logo Marcin Tyczko",
+    "titlePart1": "Propozycja Realizacji Sesji Zdjęciowych dla",
+    "titlePart2ClientName": "Marcina Tyczko",
+    "subtitle": "Profesjonalne sesje zdjęciowe trzech wnętrz mieszkalnych we Wrocławiu, obejmujące postprodukcję i dostarczenie 10-12 zdjęć z każdego lokalu.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Przeanalizowaliśmy Państwa zapytanie dotyczące sesji zdjęciowych wnętrz, aby dostarczyć ofertę idealnie dopasowaną do Państwa oczekiwań.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Profesjonalne Fotografie Wnętrz</span>",
+      "description": "Głównym celem jest wykonanie trzech sesji zdjęciowych wnętrz mieszkalnych we Wrocławiu. Zdjęcia mają oddać unikalny charakter każdej przestrzeni i być przygotowane z postprodukcją.",
+      "points": [
+        "Zlecenie na trzy sesje zdjęciowe wnętrz mieszkalnych we Wrocławiu.",
+        "Mieszkanie w kamienicy (ok. 70 m²): kuchnia, WC, łazienka, pralnia; styl: marmur, stal, kobalt, ręcznie formowane kafle, kolorowe meble.",
+        "Mieszkanie ok. 55 m²: przedpokój, kuchnia, łazienka, salon, sypialnia; styl minimalistyczny z akcentami kolorystycznymi i geometrią.",
+        "Kawalerka ok. 40 m²: łazienka, część dzienna z aneksem; styl: ciepła, przygaszona kolorystyka (beże, czekolada, oliwka).",
+        "Oczekiwania: ok. 10-12 zdjęć na każde wnętrze, z postprodukcją.",
+        "Preferowany termin: maj/czerwiec, do ustalenia.",
+        "Wymagane portfolio oraz orientacyjna wycena (pakiety/widełki)."
+      ],
+      "diagramPlaceholderText": "Wizualizacja zakresu sesji zdjęciowych"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Realizacja Sesji",
+      "description": "Proponujemy kompleksową realizację trzech sesji zdjęciowych wnętrz wraz z profesjonalną postprodukcją. Nasza oferta obejmuje uchwycenie unikalnego charakteru każdego z mieszkań, z dbałością o detale i estetykę, w łącznej cenie 2450 PLN netto.",
+      "points": [
+        "Wykonanie trzech sesji zdjęciowych wnętrz we Wrocławiu.",
+        "Dostarczenie 10-12 starannie wyselekcjonowanych i obrobionych zdjęć z każdego lokalu.",
+        "Pełna postprodukcja zdjęć (korekcja barwna, retusz, kadrowanie).",
+        "Atrakcyjna cena za całość: 2450 PLN netto.",
+        "Elastyczne terminy realizacji w drugiej połowie maja oraz w czerwcu.",
+        "Doświadczenie w fotografii architektury i wnętrz gwarantujące wysoką jakość."
+      ],
+      "diagramPlaceholderText": "Przykładowe ujęcie z sesji wnętrz"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Oferty</span> Fotograficznej",
+    "sectionSubtitle": "Przedstawiamy elementy, które składają się na profesjonalną realizację sesji zdjęciowych wnętrz dla Pana Marcina Tyczko.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z\" /><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z\" />",
+        "title": "Profesjonalna Sesja Zdjęciowa Wnętrz",
+        "description": "Wykonanie zdjęć każdego z trzech mieszkań, koncentrując się na oddaniu ich unikalnego stylu, detali architektonicznych, gry światła i atmosfery. Użycie profesjonalnego sprzętu i technik fotograficznych.",
+        "mockupText": "Koncepcja kadrów dla wnętrz"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42\" />",
+        "title": "Zaawansowana Postprodukcja Zdjęć",
+        "description": "Staranna obróbka cyfrowa wybranych 10-12 zdjęć z każdego wnętrza. Proces obejmuje korekcję kolorów, balansu bieli, kontrastu, ostrości, usuwanie drobnych niedoskonałości oraz kadrowanie.",
+        "mockupText": "Proces postprodukcji zdjęć"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z\" />",
+        "title": "Kompletny Pakiet Zdjęć Gotowych do Użycia",
+        "description": "Dostarczenie finalnego zestawu zdjęć w wysokiej rozdzielczości, zoptymalizowanych do publikacji online (np. na stronach internetowych, w mediach społecznościowych) oraz do materiałów drukowanych.",
+        "mockupText": "Przykładowe zastosowanie zdjęć"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Fotograficznych",
+    "sectionSubtitle": "Precyzyjnie określamy etapy realizacji sesji zdjęciowych dla trzech wnętrz we Wrocławiu, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Mieszkanie w Kamienicy (ok. 70 m²)",
+        "description": "Sesja zdjęciowa kuchni, WC, łazienki i pralni. Uchwycenie unikalnej stylistyki: marmur, stal, kobalt, ręcznie formowane kafle, kolorowe meble. Dostarczenie 10-12 zdjęć z postprodukcją.",
+        "features": [
+          "Fotografowanie kluczowych pomieszczeń: kuchnia, WC, łazienka, pralnia.",
+          "Skupienie na detalach: marmur, stal, kobalt, kafle, meble.",
+          "Zapewnienie optymalnego oświetlenia i kompozycji.",
+          "Postprodukcja 10-12 finalnych ujęć."
+        ]
+      },
+      {
+        "title": "Mieszkanie Minimalistyczne (ok. 55 m²)",
+        "description": "Sesja zdjęciowa przedpokoju, kuchni, łazienki, salonu i sypialni. Podkreślenie minimalistycznego stylu z akcentami kolorystycznymi i geometrią. Dostarczenie 10-12 zdjęć z postprodukcją.",
+        "features": [
+          "Fotografowanie: przedpokój, kuchnia, łazienka, salon, sypialnia.",
+          "Uwydatnienie minimalistycznego designu, kolorów i geometrii.",
+          "Dbałość o czystość kadrów i harmonijną estetykę.",
+          "Postprodukcja 10-12 finalnych ujęć."
+        ]
+      },
+      {
+        "title": "Kawalerka (ok. 40 m²)",
+        "description": "Sesja zdjęciowa łazienki oraz części dziennej z aneksem. Oddanie ciepłej, przygaszonej kolorystyki: beże, czekolada, oliwka. Dostarczenie 10-12 zdjęć z postprodukcją.",
+        "features": [
+          "Fotografowanie: łazienka, część dzienna z aneksem kuchennym.",
+          "Podkreślenie ciepłej palety barw: beże, czekolada, oliwka.",
+          "Stworzenie przytulnej i zachęcającej atmosfery na zdjęciach.",
+          "Postprodukcja 10-12 finalnych ujęć."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Wycena <span class=\"text-cyan-400\">Kompleksowej Realizacji</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę za realizację trzech sesji zdjęciowych wnętrz we Wrocławiu, zgodnie z Państwa zapytaniem.",
+    "tabs": [
+      {
+        "id": "photo_sessions_package",
+        "name": "Pakiet Sesji Wnętrz"
+      }
+    ],
+    "packages": [
+      {
+        "id": "photo_sessions_package",
+        "name": "Pakiet Trzech Sesji Zdjęciowych Wnętrz (Wrocław)",
+        "description": "Kompleksowa usługa fotograficzna obejmująca trzy mieszkania: w kamienicy (70m²), minimalistyczne (55m²) oraz kawalerkę (40m²). W ramach pakietu 10-12 zdjęć z każdego lokalu wraz z postprodukcją.",
+        "features": [
+          {
+            "text": "Sesja zdjęciowa mieszkania w kamienicy (70m²)",
+            "included": true
+          },
+          {
+            "text": "Sesja zdjęciowa mieszkania minimalistycznego (55m²)",
+            "included": true
+          },
+          {
+            "text": "Sesja zdjęciowa kawalerki (40m²)",
+            "included": true
+          },
+          {
+            "text": "Ok. 10-12 zdjęć z każdego wnętrza",
+            "included": true
+          },
+          {
+            "text": "Profesjonalna postprodukcja wszystkich zdjęć",
+            "included": true
+          },
+          {
+            "text": "Dojazd na terenie Wrocławia",
+            "included": true
+          },
+          {
+            "text": "Przekazanie praw autorskich majątkowych",
+            "included": true
+          }
+        ],
+        "price": "2450,00 PLN brutto",
+        "priceNote": "Cena netto za całość (trzy sesje). Budżet Klienta: Do negocjacji.",
+        "ctaText": "Zamów Sesje Zdjęciowe",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu",
+    "sectionSubtitle": "Przejrzysty plan działania dla sesji zdjęciowych. Przewidywany czas realizacji projektu (od dnia sesji do dostarczenia gotowych zdjęć dla jednego lokalu) to około **5-7 dni roboczych**. Terminy sesji: druga połowa maja / czerwiec, do indywidualnego ustalenia. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Ustalenie Terminu i Przygotowanie (Przed Sesją)",
+        "duration": "1-3 dni robocze (po akceptacji oferty)",
+        "description": "Potwierdzenie zlecenia, ustalenie dogodnych terminów sesji dla każdego z mieszkań, omówienie szczegółów logistycznych i ewentualnych specyficznych ujęć."
+      },
+      {
+        "phase": "Faza 2: Realizacja Sesji Zdjęciowych (Dzień Sesji x3)",
+        "duration": "3 dni (po jednym dniu na każdą lokalizację, w ustalonych terminach)",
+        "description": "Przeprowadzenie sesji zdjęciowych w trzech wskazanych lokalizacjach we Wrocławiu, zgodnie z ustaleniami. Czas trwania każdej sesji zależny od specyfiki wnętrza."
+      },
+      {
+        "phase": "Faza 3: Postprodukcja i Dostarczenie Zdjęć (Po Każdej Sesji)",
+        "duration": "5-7 dni roboczych (na każdą partię zdjęć po sesji)",
+        "description": "Selekcja najlepszych ujęć, profesjonalna postprodukcja (retusz, korekcja kolorów itp.) i dostarczenie Panu gotowego pakietu 10-12 zdjęć z każdego wnętrza drogą elektroniczną."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów potwierdzają wysoką jakość świadczonych usług fotograficznych. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AK",
+        "imageAlt": "Anna Kowalska",
+        "quote": "Fotografie wnętrz od Soft Synergy przerosły nasze oczekiwania. Idealnie oddały klimat naszych realizacji. Profesjonalizm na każdym etapie.",
+        "authorName": "Anna Kowalska",
+        "authorTitle": "Architekt Wnętrz, Studio Forma"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=TB",
+        "imageAlt": "Tomasz Bąk",
+        "quote": "Jako deweloper, potrzebujemy zdjęć, które sprzedają. Soft Synergy dostarcza właśnie takie. Szybko, sprawnie i z doskonałym efektem.",
+        "authorName": "Tomasz Bąk",
+        "authorTitle": "Manager Projektu, Nowe Osiedla Sp. z o.o."
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EW",
+        "imageAlt": "Ewa Wiśniewska",
+        "quote": "Współpraca z Soft Synergy to gwarancja zdjęć na najwyższym poziomie. Ich kreatywne podejście do fotografii wnętrz jest nieocenione.",
+        "authorName": "Ewa Wiśniewska",
+        "authorTitle": "Home Stager, Piękne Wnętrza"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=StudioForma",
+        "alt": "Logo Klienta Studio Forma"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweOsiedla",
+        "alt": "Logo Klienta Nowe Osiedla"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=PiekneWnetrza",
+        "alt": "Logo Klienta Piękne Wnętrza"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ModernHome",
+        "alt": "Logo Klienta Modern Home"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ArchitekciPL",
+        "alt": "Logo Klienta Architekci PL"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Profesjonalne Zdjęcia</span> Wnętrz?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić szczegóły sesji zdjęciowych dla Pana mieszkań we Wrocławiu. Jesteśmy gotowi uchwycić ich piękno i unikalny charakter. Prosimy o kontakt z Antonim Sebą.",
+    "ctaButtonText": "Porozmawiajmy o Sesjach Zdjęciowych",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 2450,
+  "timelineDays": 7
+}

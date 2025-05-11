@@ -1,0 +1,278 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Kampanii Google Ads dla Agaty Bury | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://placehold.co/150/E2E8F0/0A0F1F?text=AB",
+    "clientLogoAlt": "Agata Bury",
+    "titlePart1": "Propozycja Ustawienia Kampanii Google Ads dla",
+    "titlePart2ClientName": "Agaty Bury",
+    "subtitle": "Kompleksowa konfiguracja i uruchomienie kampanii reklamowej w Google Ads, mająca na celu precyzyjne dotarcie do docelowej grupy odbiorców i wsparcie realizacji Pani celów biznesowych.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Pani <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Pani zapytanie dotyczące ustawienia kampanii Google Ads, aby zaproponować rozwiązanie idealnie dopasowane do Pani celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Efektywna Kampania Google Ads</span>",
+      "description": "Głównym celem jest profesjonalne ustawienie i uruchomienie kampanii reklamowej w Google Ads, która efektywnie dotrze do Pani docelowej grupy odbiorców, zwiększy widoczność oferty i wesprze realizację Pani celów biznesowych zgodnie z przekazanym zleceniem.",
+      "points": [
+        "Zlecenie: Ustawienie reklamy w Google Ads.",
+        "Klient: Agata Bury.",
+        "Cel: Precyzyjne dotarcie do grupy docelowej, wsparcie celów biznesowych.",
+        "Budżet na reklamę: Do negocjacji (nie wliczony w cenę usługi konfiguracji)."
+      ],
+      "diagramPlaceholderText": "Wizualizacja strategii kampanii Google Ads"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Konfiguracja Kampanii",
+      "description": "Proponujemy kompleksowe ustawienie kampanii reklamowej w Google Ads w cenie 600 PLN netto. Nasza usługa obejmuje pełen proces od analizy i strategii, przez dobór słów kluczowych i tworzenie reklam, po techniczną konfigurację i uruchomienie kampanii.",
+      "points": [
+        "Pełna konfiguracja i uruchomienie kampanii reklamowej w Google Ads.",
+        "Przewidywany czas realizacji: 3-5 dni roboczych.",
+        "Koszt usługi: 600 PLN netto.",
+        "Metodologia oparta na analizie celów, doborze słów kluczowych, tworzeniu angażujących reklam i optymalnej konfiguracji.",
+        "Doświadczenie w zarządzaniu kampaniami Google Ads (Project Manager: Antoni Seba)."
+      ],
+      "diagramPlaceholderText": "Przykładowa struktura kampanii Google Ads"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Usługi</span> Konfiguracji Google Ads",
+    "sectionSubtitle": "Przedstawiamy składowe naszej propozycji, które zapewnią optymalny start i efektywność Pani kampanii reklamowej w Google Ads.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Analiza Celów i Strategia Kampanii",
+        "description": "Dokładne zrozumienie Pani celów biznesowych, analiza grupy docelowej i otoczenia konkurencyjnego, aby stworzyć spersonalizowaną i skuteczną strategię kampanii Google Ads.",
+        "mockupText": "Schemat strategii reklamowej"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Dobór Słów Kluczowych i Tworzenie Reklam",
+        "description": "Precyzyjny dobór słów kluczowych o wysokim potencjale konwersji oraz stworzenie angażujących, perswazyjnych tekstów reklamowych i nagłówków, zgodnych z najlepszymi praktykami Google.",
+        "mockupText": "Przykłady tekstów reklam"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Pełna Konfiguracja i Uruchomienie Kampanii",
+        "description": "Kompleksowa konfiguracja kampanii w panelu Google Ads, w tym ustawienia targetowania (demograficzne, geograficzne, na urządzenia), budżetu, stawek, harmonogramu reklam oraz implementacja rozszerzeń.",
+        "mockupText": "Panel Google Ads - konfiguracja"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Konfiguracyjnych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap konfiguracji Pani kampanii Google Ads, zapewniając transparentność i najwyższą jakość usługi.",
+    "modules": [
+      {
+        "title": "Etap 1: Konsultacje, Analiza Wstępna i Planowanie",
+        "description": "Rozpoczynamy od szczegółowej konsultacji (online/telefonicznej) w celu omówienia Pani celów biznesowych, grupy docelowej, oferty oraz oczekiwań względem kampanii. Zbieramy niezbędne informacje i dostępy.",
+        "features": [
+          "Omówienie celów biznesowych i KPI kampanii dla Agaty Bury.",
+          "Charakterystyka i segmentacja docelowej grupy odbiorców.",
+          "Analiza oferty/usługi do promowania.",
+          "Ustalenie wstępnego budżetu reklamowego (do Pani decyzji) i ram czasowych."
+        ]
+      },
+      {
+        "title": "Etap 2: Badanie Słów Kluczowych, Strategia i Tworzenie Treści Reklamowych",
+        "description": "Przeprowadzamy dogłębne badanie słów kluczowych, opracowujemy strukturę kampanii i grup reklam. Tworzymy angażujące teksty reklamowe oraz konfigurujemy rozszerzenia.",
+        "features": [
+          "Zaawansowane badanie słów kluczowych (keyword research) i ich potencjału.",
+          "Projektowanie logicznej struktury kampanii (kampanie, grupy reklam).",
+          "Copywriting reklam: tworzenie skutecznych nagłówków i opisów.",
+          "Dobór i konfiguracja odpowiednich rozszerzeń reklam (np. linki do podstron, lokalizacje, telefony)."
+        ]
+      },
+      {
+        "title": "Etap 3: Konfiguracja Techniczna, Uruchomienie i Przekazanie",
+        "description": "Dokonujemy pełnej konfiguracji kampanii w interfejsie Google Ads, weryfikujemy ustawienia, wdrażamy śledzenie konwersji (jeśli możliwe i uzgodnione). Kampania jest uruchamiana, a Pani otrzymuje raport z wykonanych prac i rekomendacje.",
+        "features": [
+          "Techniczna konfiguracja kampanii w panelu Google Ads.",
+          "Precyzyjne ustawienia targetowania (lokalizacja, język, demografia, harmonogram).",
+          "Ustawienie strategii ustalania stawek i budżetu dziennego/miesięcznego.",
+          "Implementacja śledzenia konwersji (jeśli możliwe i uzgodnione z Klientem).",
+          "Uruchomienie kampanii, monitoring początkowy i przekazanie wytycznych."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalną Konfigurację</span> Google Ads",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę usługi konfiguracji kampanii Google Ads dla Pani Agaty Bury. Proponowana cena to 600 PLN netto.",
+    "tabs": [
+      {
+        "id": "google_ads_setup_offer",
+        "name": "Konfiguracja Kampanii Google Ads"
+      }
+    ],
+    "packages": [
+      {
+        "id": "google_ads_setup_offer",
+        "name": "Kompleksowa Konfiguracja Kampanii Google Ads",
+        "description": "Pełne, profesjonalne ustawienie kampanii reklamowej w systemie Google Ads, mające na celu skuteczne dotarcie do Pani grupy docelowej i wsparcie realizacji celów biznesowych.",
+        "features": [
+          {
+            "text": "Analiza celów i opracowanie strategii kampanii",
+            "included": true
+          },
+          {
+            "text": "Badanie i precyzyjny dobór słów kluczowych",
+            "included": true
+          },
+          {
+            "text": "Tworzenie angażujących tekstów reklamowych",
+            "included": true
+          },
+          {
+            "text": "Strukturyzacja kampanii i grup reklam",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja targetowania i wszystkich ustawień kampanii",
+            "included": true
+          },
+          {
+            "text": "Ustawienie odpowiednich rozszerzeń reklamowych",
+            "included": true
+          },
+          {
+            "text": "Pomoc w implementacji podstawowego śledzenia konwersji",
+            "included": true
+          },
+          {
+            "text": "Przewidywany czas realizacji: 3-5 dni roboczych",
+            "included": true
+          }
+        ],
+        "price": "600 PLN netto",
+        "priceNote": "Cena usługi jest jednorazowa i nie obejmuje budżetu na wydatki reklamowe w Google Ads. Budżet reklamowy jest ustalany oddzielnie i opłacany bezpośrednio w Google.",
+        "ctaText": "Zamów Konfigurację Kampanii",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Konfiguracji",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu konfiguracji kampanii Google Ads dla Pani Agaty Bury. Przewidywany całkowity czas realizacji: **3-5 dni roboczych** od momentu akceptacji oferty i dostarczenia niezbędnych materiałów oraz dostępów. Oferta ważna 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Kick-off, Zbieranie Danych i Planowanie (Dzień 1)",
+        "duration": "1 dzień roboczy",
+        "description": "Potwierdzenie zlecenia, szczegółowa konsultacja dotycząca celów biznesowych, grupy docelowej, budżetu reklamowego. Zebranie niezbędnych dostępów (np. do konta Google Ads, jeśli istnieje) i materiałów od Pani Agaty Bury."
+      },
+      {
+        "phase": "Faza 2: Analiza, Strategia, Słowa Kluczowe i Teksty Reklam (Dzień 1-3)",
+        "duration": "1-2 dni robocze",
+        "description": "Głęboka analiza rynku i konkurencji. Opracowanie spersonalizowanej strategii kampanii, dobór efektywnych słów kluczowych, przygotowanie propozycji tekstów reklamowych oraz struktury kampanii do Pani wglądu."
+      },
+      {
+        "phase": "Faza 3: Konfiguracja Techniczna, Uruchomienie i Przekazanie (Dzień 3-5)",
+        "duration": "1-2 dni robocze",
+        "description": "Pełna techniczna konfiguracja kampanii w panelu Google Ads zgodnie z ustaloną strategią. Implementacja rozszerzeń, ustawień targetowania. Uruchomienie kampanii i przekazanie Pani pełnego raportu z wykonanych prac oraz podstawowych rekomendacji dalszych działań."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy w zakresie marketingu cyfrowego.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy profesjonalnie skonfigurowało naszą kampanię Google Ads, co przyniosło wymierne efekty sprzedażowe. Świetna komunikacja i terminowość!",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "CEO, Nowoczesne Rozwiązania"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EN",
+        "imageAlt": "Ewa Nowak",
+        "quote": "Dzięki Soft Synergy nasze reklamy w Google w końcu zaczęły przynosić zyski. Zespół wykazał się dużą wiedzą i zaangażowaniem. Polecam!",
+        "authorName": "Ewa Nowak",
+        "authorTitle": "Marketing Manager, Kreatywny Świat"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PZ",
+        "imageAlt": "Piotr Zając",
+        "quote": "Współpraca z Soft Synergy przy kampaniach PPC to czysta przyjemność. Pełen profesjonalizm, transparentność i skuteczne działania. Gorąco polecam!",
+        "authorName": "Piotr Zając",
+        "authorTitle": "Właściciel, eSklep Lider"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NowoczesneR",
+        "alt": "Logo Klienta Nowoczesne Rozwiązania"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnyS",
+        "alt": "Logo Klienta Kreatywny Świat"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=eSklepL",
+        "alt": "Logo Klienta eSklep Lider"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GlobalT",
+        "alt": "Logo Klienta GlobalTrade"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProMarket",
+        "alt": "Logo Klienta ProMarketing"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowa na <span class=\"text-cyan-400\">Skuteczną Reklamę</span> Google Ads, Pani Agato?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy pomóc Pani w osiągnięciu celów biznesowych dzięki precyzyjnie skonfigurowanej kampanii Google Ads. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Kampanii dla Pani",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Wirtualna 12, 00-001 Warszawa (Siedziba Soft Synergy)"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 600,
+  "timelineDays": 7
+}

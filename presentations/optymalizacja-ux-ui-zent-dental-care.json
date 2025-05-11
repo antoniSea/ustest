@@ -1,0 +1,272 @@
+{
+  "useme_id": 115223,
+  "employer_email": "sklep@zentcare.pl",
+  "price": 5800,
+  "timelineDays": 16,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Optymalizacji UX/UI dla Zent Dental Care | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Zakres",
+        "href": "#scope",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=ZD",
+    "clientLogoAlt": "Logo Zent Dental Care",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Zent Dental Care",
+    "subtitle": "Profesjonalna analiza i optymalizacja UX/UI ścieżki zakupowej w Państwa sklepie internetowym, mająca na celu zwiększenie konwersji i poprawę doświadczenia użytkownika.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące analizy i optymalizacji ścieżki zakupowej, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów biznesowych.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Zwiększenie Konwersji i Poprawa UX</span>",
+      "description": "Głównym celem projektu jest wsparcie Zent Dental Care w analizie i optymalizacji ścieżki zakupowej klientów sklepu internetowego. Kluczowe jest zwiększenie współczynnika konwersji oraz ogólna poprawa doświadczenia użytkownika (UX), wykorzystując do tego narzędzia takie jak heatmapy i nagrania sesji.",
+      "points": [
+        "Poszukiwanie doświadczonego specjalisty UX/UI do analizy i optymalizacji ścieżki zakupowej.",
+        "Cel: zwiększenie konwersji i poprawa doświadczenia użytkownika w sklepie internetowym.",
+        "Wykorzystanie narzędzi analitycznych: heatmapy, nagrania sesji.",
+        "Kluczowe zadania: optymalizacja karty produktu, stworzenie szablonu informacji, a w dalszych krokach analiza danych i proponowanie zmian w interfejsie oraz optymalizacja doświadczeń offline.",
+        "Wymagania: doświadczenie w UX/UI dla e-commerce, umiejętność analizy danych."
+      ],
+      "diagramPlaceholderText": "Wizualizacja obecnej ścieżki zakupowej Zent Dental Care"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Optymalizacja UX/UI Ścieżki Zakupowej",
+      "description": "Proponujemy realizację pierwszego etapu prac, obejmującego optymalizację karty produktu oraz stworzenie uniwersalnego szablonu informacji, w cenie 5800 PLN netto. Nasze działania opieramy na dogłębnej analizie danych oraz najlepszych praktykach e-commerce, projektując iteracyjnie w ścisłej współpracy z Państwa zespołem. Celem jest zwiększenie konwersji oraz poprawa doświadczeń użytkowników.",
+      "points": [
+        "Realizacja pierwszego etapu: optymalizacja karty produktu i stworzenie szablonu informacji.",
+        "Działania oparte na dogłębnej analizie danych i najlepszych praktykach e-commerce.",
+        "Projektowanie iteracyjne w ścisłej współpracy z zespołem Zent Dental Care.",
+        "Specjalizacja Soft Synergy w projektach UX/UI dla e-commerce.",
+        "Udokumentowane sukcesy w optymalizacji konwersji i poprawie użyteczności sklepów internetowych."
+      ],
+      "diagramPlaceholderText": "Przykładowy przeprojektowany element karty produktu"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Pierwszego Etapu</span> Projektu",
+    "sectionSubtitle": "Przedstawiamy składowe pierwszego etapu prac, które zapewnią fundament pod skuteczną optymalizację ścieżki zakupowej w sklepie Zent Dental Care.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Optymalizacja Karty Produktu",
+        "description": "Analiza i przeprojektowanie obecnej karty produktu w sklepie Zent Dental Care w celu maksymalizacji jej efektywności, poprawy czytelności i intuicyjności oraz zwiększenia współczynnika konwersji.",
+        "mockupText": "Przed/Po: Karta produktu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Stworzenie Hierarchii i Szablonu Informacji",
+        "description": "Opracowanie spójnej i uniwersalnej struktury informacji dla kart produktów, która zapewni jednolite doświadczenie użytkownika i ułatwi powielanie na pozostałe produkty w ofercie.",
+        "mockupText": "Uniwersalny szablon karty produktu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Fundament Dalszych Działań",
+        "description": "Zrealizowany etap stworzy solidne podstawy do dalszej, kompleksowej analizy danych (heatmapy, nagrania sesji) i optymalizacji całej ścieżki zakupowej oraz doświadczeń offline.",
+        "mockupText": "Plan rozwoju ścieżki zakupowej"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Współpracy",
+    "sectionSubtitle": "Precyzyjnie definiujemy etapy współpracy, koncentrując się na dostarczeniu mierzalnych wyników dla sklepu Zent Dental Care.",
+    "modules": [
+      {
+        "title": "Etap 1: Optymalizacja Karty Produktu i Stworzenie Szablonu (12 dni roboczych)",
+        "description": "Pierwszy, kluczowy etap prac, skoncentrowany na bezpośredniej poprawie kluczowego elementu ścieżki zakupowej – karty produktu. Celem jest szybkie uzyskanie mierzalnych efektów i stworzenie skalowalnego rozwiązania dla Zent Dental Care.",
+        "features": [
+          "Audyt UX/UI obecnej karty produktu.",
+          "Projektowanie makiet (wireframes) i prototypów nowej karty produktu.",
+          "Opracowanie szablonu informacji (struktura, hierarchia) dla kart produktów.",
+          "Przygotowanie wytycznych do wdrożenia nowego projektu karty produktu.",
+          "Dwie rundy poprawek na podstawie Państwa feedbacku."
+        ]
+      },
+      {
+        "title": "Dalsze Kroki: Kompleksowa Optymalizacja i Analiza (Oferta Indywidualna)",
+        "description": "Po zakończeniu pierwszego etapu, proponujemy kontynuację współpracy w celu pełnej optymalizacji doświadczeń użytkowników Państwa sklepu internetowego oraz wsparcia w obszarze offline.",
+        "features": [
+          "Analiza danych ilościowych i jakościowych (heatmapy, nagrania sesji, ankiety).",
+          "Identyfikacja barier i punktów bólu w całej ścieżce zakupowej.",
+          "Proponowanie i testowanie zmian w interfejsie (np. A/B testy).",
+          "Wsparcie w projektowaniu lub optymalizacji doświadczeń offline (opakowania, instrukcje)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Skuteczny E-commerce</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę pierwszego etapu projektu optymalizacji UX/UI dla Zent Dental Care. Budżet na dalsze etapy będzie ustalany indywidualnie.",
+    "tabs": [
+      {
+        "id": "ux_ui_optimization_stage1",
+        "name": "Optymalizacja Karty Produktu - Etap 1"
+      }
+    ],
+    "packages": [
+      {
+        "id": "ux_ui_optimization_stage1",
+        "name": "Optymalizacja Karty Produktu i Szablon dla Zent Dental Care",
+        "description": "Pierwszy etap prac obejmujący analizę i optymalizację karty produktu oraz stworzenie uniwersalnego szablonu informacji w celu zwiększenia konwersji i poprawy UX.",
+        "features": [
+          {
+            "text": "Optymalizacja karty produktu (na podstawie obecnej)",
+            "included": true
+          },
+          {
+            "text": "Stworzenie hierarchii/szablonu informacji",
+            "included": true
+          },
+          {
+            "text": "Analiza UX/UI obecnej karty",
+            "included": true
+          },
+          {
+            "text": "Projektowanie iteracyjne",
+            "included": true
+          },
+          {
+            "text": "Współpraca z zespołem Klienta",
+            "included": true
+          },
+          {
+            "text": "Dwie rundy poprawek w cenie",
+            "included": true
+          },
+          {
+            "text": "Doświadczenie UX/UI w e-commerce",
+            "included": true
+          }
+        ],
+        "price": "5800 PLN netto",
+        "priceNote": "Cena netto za realizację pierwszego etapu. Budżet Klienta: Do negocjacji.",
+        "ctaText": "Rozpocznij Optymalizację",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Etapu 1",
+    "sectionSubtitle": "Przejrzysty plan działania dla pierwszego etapu projektu optymalizacji dla Zent Dental Care. Przewidywany czas realizacji tego etapu: **12 dni roboczych**. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Analiza i Planowanie (Dni 1-3)",
+        "duration": "3 dni robocze",
+        "description": "Spotkanie inauguracyjne, dogłębna analiza obecnej karty produktu i wymagań Zent Dental Care. Zdefiniowanie celów i kluczowych metryk sukcesu dla optymalizacji."
+      },
+      {
+        "phase": "Faza 2: Projektowanie UX/UI Karty Produktu i Szablonu (Dni 4-8)",
+        "duration": "5 dni roboczych",
+        "description": "Tworzenie makiet (wireframes), projektowanie interfejsu użytkownika (UI) dla zoptymalizowanej karty produktu. Opracowanie uniwersalnego szablonu informacji. Prezentacja koncepcji i pierwsza runda poprawek."
+      },
+      {
+        "phase": "Faza 3: Iteracje i Finalizacja Projektu (Dni 9-12)",
+        "duration": "4 dni robocze",
+        "description": "Wprowadzenie poprawek na podstawie feedbacku (druga runda). Finalizacja projektu graficznego karty produktu i szablonu. Przygotowanie materiałów do przekazania i wdrożenia."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze doświadczenie w projektach UX/UI dla e-commerce przekłada się na realne wyniki. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MN",
+        "imageAlt": "Marta Nowak",
+        "quote": "Współpraca z Soft Synergy przy optymalizacji naszego e-commerce przyniosła wymierne korzyści. Ich zrozumienie potrzeb użytkownika i rynku jest imponujące. Rekomendujemy!",
+        "authorName": "Marta Nowak",
+        "authorTitle": "E-commerce Manager, ZdrowySklep.pl"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PW",
+        "imageAlt": "Piotr Wiśniewski",
+        "quote": "Dzięki Soft Synergy nasza nowa karta produktu jest znacznie bardziej intuicyjna i konwertuje lepiej. Profesjonalizm na każdym etapie projektu.",
+        "authorName": "Piotr Wiśniewski",
+        "authorTitle": "Właściciel, TechGadgets.eu"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EK",
+        "imageAlt": "Ewa Kaczmarek",
+        "quote": "Analityczne podejście Soft Synergy do UX i ich kreatywne rozwiązania pomogły nam znacząco poprawić doświadczenia naszych klientów online.",
+        "authorName": "Ewa Kaczmarek",
+        "authorTitle": "Dyrektor Marketingu, ModaOnline"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci z Sektora E-commerce:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ZdrowySklep",
+        "alt": "Logo Klienta ZdrowySklep.pl"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechGadgets",
+        "alt": "Logo Klienta TechGadgets.eu"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ModaOnline",
+        "alt": "Logo Klienta ModaOnline"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=eOptima",
+        "alt": "Logo Klienta eOptima"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProSale",
+        "alt": "Logo Klienta ProSale"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wzrost Konwersji</span> w Zent Dental Care?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie zoptymalizować ścieżkę zakupową Państwa klientów. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie UX/UI",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Projektowa 12, 02-200 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  }
+}

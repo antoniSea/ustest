@@ -1,0 +1,276 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Rekrutacji Programisty Low-Code dla Internet Stars | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/043/220043_Z4mH2nR.png",
+    "clientLogoAlt": "Logo Internet Stars",
+    "titlePart1": "Propozycja Rekrutacji dla",
+    "titlePart2ClientName": "Internet Stars",
+    "subtitle": "Profesjonalne wsparcie w rekrutacji Programisty Low-Code z doświadczeniem w Wordpress, Notion, n8n oraz make.com, zdolnego do tworzenia innowacyjnych aplikacji webowych i mobilnych.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb Rekrutacyjnych</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa ogłoszenie dotyczące rekrutacji Programisty Low-Code, aby zaproponować usługę idealnie dopasowaną do Państwa celów.",
+    "problem": {
+      "title": "Cel Rekrutacji: <span class=\"text-red-400\">Pozyskanie Programisty Low-Code</span>",
+      "description": "Głównym celem jest znalezienie i zatrudnienie wykwalifikowanego Programisty Low-Code z doświadczeniem w narzędziach takich jak Wordpress, Notion, n8n, make.com. Poszukiwany specjalista będzie odpowiedzialny za projektowanie, rozwijanie oraz dostosowywanie aplikacji webowych, przyczyniając się do realizacji innowacyjnych projektów w Internet Stars.",
+      "points": [
+        "Rekrutacja specjalisty na stanowisko Programisty Low-Code.",
+        "Wymagane doświadczenie w: Wordpress, Notion, n8n, make.com.",
+        "Umiejętność projektowania, rozwijania i dostosowywania aplikacji webowych.",
+        "Zrozumienie zasad programowania.",
+        "Budżet Klienta na usługę rekrutacyjną: 7500,00 PLN."
+      ],
+      "diagramPlaceholderText": "Profil Idealnego Kandydata Low-Code"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Usługa Rekrutacyjna Soft Synergy",
+      "description": "Soft Synergy oferuje kompleksową usługę rekrutacyjną, mającą na celu pozyskanie dla Internet Stars najlepszego kandydata na stanowisko Programisty Low-Code. Gwarantujemy przedstawienie pierwszych, starannie wyselekcjonowanych kandydatów w ciągu 10-14 dni roboczych. Nasza propozycja cenowa to 7000,00 PLN netto, mieszcząca się w Państwa budżecie.",
+      "points": [
+        "Realizacja pełnego procesu rekrutacyjnego na stanowisko Programisty Low-Code.",
+        "Dostarczenie pierwszych wyselekcjonowanych kandydatów w ciągu 10-14 dni roboczych.",
+        "Konkurencyjna cena usługi: 7000 PLN netto.",
+        "Proces oparty na aktywnym sourcingu oraz dokładnej weryfikacji kompetencji technicznych i miękkich.",
+        "Udokumentowane sukcesy Soft Synergy w rekrutacji talentów IT, w tym specjalistów low-code."
+      ],
+      "diagramPlaceholderText": "Etapy Procesu Rekrutacyjnego Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy Naszej <span class=\"text-cyan-400\">Usługi Rekrutacyjnej</span>",
+    "sectionSubtitle": "Przedstawiamy składowe naszej usługi, które zapewnią skuteczne pozyskanie Programisty Low-Code dla zespołu Internet Stars.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z\" />",
+        "title": "Aktywny Sourcing i Precyzyjna Selekcja",
+        "description": "Wykorzystujemy zaawansowane techniki sourcingu, by dotrzeć do szerokiego grona potencjalnych kandydatów, w tym tych pasywnych. Starannie selekcjonujemy aplikacje i portfolia, aby przedstawić Państwu jedynie najlepiej dopasowane profile do wymagań stanowiska Programisty Low-Code.",
+        "mockupText": "Strategia Sourcingu i Selekcji"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z\" />",
+        "title": "Weryfikacja Kompetencji Technicznych i Miękkich",
+        "description": "Nasz proces rekrutacyjny obejmuje dogłębną weryfikację doświadczenia kandydatów w pracy z narzędziami Low-Code (Wordpress, Notion, n8n, make.com) oraz ocenę ich umiejętności programistycznych, projektowych i zdolności adaptacyjnych. Kładziemy również nacisk na dopasowanie kulturowe do Państwa zespołu.",
+        "mockupText": "Metody Weryfikacji Kompetencji"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z\" />",
+        "title": "Szybkie Dostarczenie Kandydatów i Wsparcie",
+        "description": "Zobowiązujemy się do przedstawienia pierwszych, starannie wyselekcjonowanych kandydatów w terminie 10-14 dni roboczych. Zapewniamy pełne wsparcie na każdym etapie procesu rekrutacyjnego, od prezentacji profili po finalizację zatrudnienia w Internet Stars.",
+        "mockupText": "Gwarancja Czasu i Jakości"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Usługi Rekrutacyjnej",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap procesu rekrutacyjnego dla Internet Stars, zapewniając transparentność i maksymalną efektywność naszych działań.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Potrzeb i Definicja Profilu Kandydata (1-2 dni robocze)",
+        "description": "Rozpoczynamy od dokładnego zrozumienia Państwa wymagań dotyczących stanowiska Programisty Low-Code. Wspólnie definiujemy idealny profil kandydata, uwzględniając kluczowe kompetencje (Wordpress, Notion, n8n, make.com), doświadczenie oraz oczekiwania wobec przyszłego pracownika.",
+        "features": [
+          "Spotkanie kick-off z przedstawicielami Internet Stars.",
+          "Ustalenie szczegółowych kryteriów selekcji kandydatów.",
+          "Wsparcie w optymalizacji opisu stanowiska (job description).",
+          "Definicja kluczowych wskaźników sukcesu rekrutacji."
+        ]
+      },
+      {
+        "title": "Etap 2: Aktywny Sourcing, Selekcja i Weryfikacja Kandydatów (5-7 dni roboczych)",
+        "description": "Przechodzimy do aktywnego poszukiwania kandydatów na rynku, wykorzystując naszą bazę danych, sieci kontaktów oraz specjalistyczne platformy. Przeprowadzamy wstępną selekcję CV i portfolio, a następnie weryfikujemy kompetencje techniczne i miękkie wybranych osób.",
+        "features": [
+          "Targetowany sourcing kandydatów na platformach branżowych i w sieciach profesjonalnych.",
+          "Analiza nadesłanych aplikacji i proaktywne docieranie do specjalistów.",
+          "Przeprowadzenie wstępnych rozmów kwalifikacyjnych (screening telefoniczny/video).",
+          "Ocena kompetencji technicznych (doświadczenie z Low-Code) i umiejętności miękkich."
+        ]
+      },
+      {
+        "title": "Etap 3: Prezentacja Kandydatów i Wsparcie w Procesie Decyzyjnym (3-5 dni roboczych)",
+        "description": "Przedstawiamy Państwu starannie przygotowane profile najlepiej dopasowanych kandydatów (shortlista). Koordynujemy organizację spotkań rekrutacyjnych oraz zapewniamy wsparcie w procesie podejmowania decyzji, negocjacji warunków i finalizacji zatrudnienia.",
+        "features": [
+          "Przygotowanie i prezentacja szczegółowych raportów o rekomendowanych kandydatach.",
+          "Organizacja i koordynacja rozmów kwalifikacyjnych (online lub stacjonarnie).",
+          "Zbieranie informacji zwrotnej (feedback) od obu stron procesu.",
+          "Wsparcie w negocjacjach oferty i procesie onboardingu (na życzenie)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Skuteczną Rekrutację</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę usługi rekrutacji Programisty Low-Code dla Internet Stars. Nasza propozycja została przygotowana z myślą o Państwa budżecie i celach biznesowych.",
+    "tabs": [
+      {
+        "id": "recruitment_lowcode_service",
+        "name": "Rekrutacja Programisty Low-Code"
+      }
+    ],
+    "packages": [
+      {
+        "id": "recruitment_lowcode_service",
+        "name": "Usługa Rekrutacji Programisty Low-Code dla Internet Stars",
+        "description": "Kompleksowa usługa rekrutacyjna obejmująca pozyskanie, weryfikację i przedstawienie kandydatów na stanowisko Programisty Low-Code, zgodnie z Państwa wymaganiami (Wordpress, Notion, n8n, make.com).",
+        "features": [
+          {
+            "text": "Analiza potrzeb i stworzenie profilu idealnego kandydata",
+            "included": true
+          },
+          {
+            "text": "Aktywny sourcing na dedykowanych platformach i w naszej bazie",
+            "included": true
+          },
+          {
+            "text": "Selekcja i weryfikacja kompetencji technicznych (Low-Code) i miękkich",
+            "included": true
+          },
+          {
+            "text": "Prezentacja 3-5 starannie wyselekcjonowanych kandydatów",
+            "included": true
+          },
+          {
+            "text": "Koordynacja całego procesu rekrutacyjnego",
+            "included": true
+          },
+          {
+            "text": "Gwarancja przedstawienia pierwszych kandydatów w 10-14 dni roboczych",
+            "included": true
+          },
+          {
+            "text": "Wsparcie w negocjacjach i finalizacji zatrudnienia",
+            "included": true
+          }
+        ],
+        "price": "7000,00 PLN brutto",
+        "priceNote": "PLN netto. Całkowity budżet Klienta: 7500,00 PLN.",
+        "ctaText": "Rozpocznij Rekrutację z Nami",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Usługi Rekrutacyjnej",
+    "sectionSubtitle": "Przedstawiamy przejrzysty plan działania dla procesu rekrutacyjnego Programisty Low-Code dla Internet Stars. Przewidywany czas na przedstawienie pierwszych kandydatów: **10-14 dni roboczych** od momentu akceptacji oferty i finalizacji szczegółów dotyczących profilu. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Kick-off i Definicja Profilu (Dni 1-2)",
+        "duration": "1-2 dni robocze",
+        "description": "Potwierdzenie współpracy, szczegółowe omówienie wymagań stanowiska Programisty Low-Code z Internet Stars, ustalenie kluczowych kryteriów selekcji i uruchomienie wstępnych działań sourcingowych."
+      },
+      {
+        "phase": "Faza 2: Sourcing, Selekcja i Weryfikacja (Dni 3-9)",
+        "duration": "5-7 dni roboczych",
+        "description": "Intensywne działania sourcingowe, analiza napływających aplikacji, przeprowadzanie wstępnych rozmów kwalifikacyjnych oraz weryfikacja kompetencji technicznych (Wordpress, Notion, n8n, make.com) i miękkich kandydatów."
+      },
+      {
+        "phase": "Faza 3: Prezentacja Kandydatów i Dalsze Kroki (Dni 10-14)",
+        "duration": "3-5 dni roboczych",
+        "description": "Przygotowanie i przedstawienie firmie Internet Stars profili pierwszych, najlepiej dopasowanych kandydatów. Rozpoczęcie koordynacji rozmów kwalifikacyjnych i zbieranie informacji zwrotnych."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze doświadczenie i zaangażowanie przekładają się na sukcesy rekrutacyjne naszych partnerów. Dołącz do grona zadowolonych klientów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Jan Słowik",
+        "quote": "Soft Synergy wykazało się pełnym profesjonalizmem i dogłębnym zrozumieniem naszych potrzeb rekrutacyjnych. Dzięki nim szybko znaleźliśmy kluczowego specjalistę do naszego zespołu. Świetna komunikacja!",
+        "authorName": "Jan Słowik",
+        "authorTitle": "HR Manager, TechSolutions Ltd."
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AK",
+        "imageAlt": "Alicja Kruk",
+        "quote": "Proces rekrutacyjny prowadzony przez Soft Synergy był niezwykle sprawny i efektywny. Kandydaci byli doskonale dopasowani do naszych oczekiwań. Polecam ich usługi każdej firmie poszukującej talentów IT.",
+        "authorName": "Alicja Kruk",
+        "authorTitle": "CEO, Innovatech Group"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MP",
+        "imageAlt": "Marek Pawlak",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości i terminowości. Ich zaangażowanie i znajomość rynku IT są nieocenione. Zdecydowanie polecam ich jako partnera w rekrutacji.",
+        "authorName": "Marek Pawlak",
+        "authorTitle": "Dyrektor Operacyjny, DigitalFlow"
+      }
+    ],
+    "clientsIntro": "Wybrani Partnerzy:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechSol",
+        "alt": "Logo Klienta TechSolutions Ltd."
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaG",
+        "alt": "Logo Klienta Innovatech Group"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=DigiFlow",
+        "alt": "Logo Klienta DigitalFlow"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NextGenSys",
+        "alt": "Logo Klienta NextGen Systems"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GlobalDev",
+        "alt": "Logo Klienta GlobalDev Corp"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Pozyskanie Talentu</span> dla Internet Stars?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy skutecznie wesprzeć Państwa zespół w znalezieniu i zatrudnieniu kluczowego Programisty Low-Code. Skontaktuj się z nami, aby omówić szczegóły oferty i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Rekrutacji",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Wirtualna 1, 00-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": 115211,
+  "employer_email": "a.klimek@internetstars.pl",
+  "price": 7000,
+  "timelineDays": 14
+}

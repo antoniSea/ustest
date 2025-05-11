@@ -1,0 +1,297 @@
+{
+  "useme_id": 115221,
+  "employer_email": "ksiegowosc@kliencidlafirm.pl",
+  "price": 1500,
+  "timelineDays": 9,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Optymalizacji Strony kliencidlafirm.pl/leadysprzedazowe dla manix545 | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Problem",
+        "href": "#understanding",
+        "isButton": false
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=MA",
+    "clientLogoAlt": "Logo manix545",
+    "titlePart1": "Propozycja Optymalizacji Strony dla",
+    "titlePart2ClientName": "manix545",
+    "subtitle": "Propozycja optymalizacji landing page'a `kliencidlafirm.pl/leadysprzedazowe` w celu skrócenia czasu First Contentful Paint (FCP) do <u>poniżej 3 sekund</u>, z ambicją osiągnięcia wyniku poniżej 1 sekundy.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące optymalizacji strony `kliencidlafirm.pl/leadysprzedazowe`, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Przyspieszenie Landing Page'a</span>",
+      "description": "Głównym celem jest optymalizacja strony `kliencidlafirm.pl/leadysprzedazowe` w celu znaczącego skrócenia czasu First Contentful Paint (FCP). Państwa celem jest osiągnięcie FCP poniżej 3 sekund, a jeśli to możliwe – poniżej 1 sekundy. Strona oparta jest na OptimizePress, a obecny stan wydajności wymaga interwencji, co potwierdza dostarczony raport PageSpeed.",
+      "points": [
+        "Optymalizacja strony `kliencidlafirm.pl/leadysprzedazowe`.",
+        "Docelowy czas FCP: poniżej 3 sekund (idealnie poniżej 1 sekundy).",
+        "Strona zbudowana na platformie OptimizePress.",
+        "Obecny raport PageSpeed: <a href='https://pagespeed.web.dev/analysis/https-kliencidlafirm-pl-leadysprzedazowe/2i4c76r7ym?form_factor=mobile' target='_blank' class='text-cyan-400 hover:text-cyan-300'>link do analizy</a>.",
+        "Dodatkowe wymagania: Obsługa stron internetowych (potwierdzamy nasze kompetencje w tym zakresie)."
+      ],
+      "diagramPlaceholderText": "Wizualizacja obecnych metryk PageSpeed"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Optymalizacja Wydajności",
+      "description": "Proponujemy przeprowadzenie kompleksowej optymalizacji strony `kliencidlafirm.pl/leadysprzedazowe`. Nasze działania obejmą analizę i optymalizację kodu, zasobów (skrypty, style, obrazy) oraz, w razie potrzeby, sugestie dotyczące konfiguracji serwera. Skupimy się na technikach minimalizujących render-blocking resources i poprawiających kluczowe metryki Core Web Vitals, dążąc do osiągnięcia FCP poniżej 3s, a optymalnie poniżej 1s.",
+      "points": [
+        "Skrócenie czasu FCP do <u>poniżej 3 sekund</u> (z ambicją <1s).",
+        "Realizacja zlecenia w cenie **1500 PLN netto**.",
+        "Termin realizacji: *do 7 dni roboczych* od akceptacji oferty.",
+        "Kompleksowa analiza i optymalizacja kodu oraz zasobów (obrazy, skrypty, style).",
+        "Specjalizacja w przyspieszaniu stron WWW, w tym opartych o OptimizePress."
+      ],
+      "diagramPlaceholderText": "Wizualizacja docelowych metryk PageSpeed"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Optymalizacji</span>",
+    "sectionSubtitle": "Przedstawiamy składowe naszych działań, które zapewnią znaczącą poprawę wydajności Państwa landing page'a `kliencidlafirm.pl/leadysprzedazowe`.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 10.5h.008v.008H21V10.5zm-3.008 0h.008v.008h-.008V10.5zm-3.008 0h.008v.008h-.008V10.5zm-3.008 0h.008v.008h-.008V10.5zM21 15h.008v.008H21V15zm-3.008 0h.008v.008h-.008V15zm-3.008 0h.008v.008h-.008V15zm-3.008 0h.008v.008h-.008V15zM5.25 4.5h13.5a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25H5.25a2.25 2.25 0 01-2.25-2.25v-7.5A2.25 2.25 0 015.25 4.5z\" />",
+        "title": "Optymalizacja Zasobów (Obrazy, Skrypty, Style)",
+        "description": "Kompresja i optymalizacja formatów obrazów (np. WebP), lazy loading. Minifikacja, łączenie i odraczanie ładowania plików CSS i JavaScript w celu zredukowania ich wpływu na czas ładowania i renderowania strony.",
+        "mockupText": "Optymalizacja zasobów"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5\" />",
+        "title": "Optymalizacja Kodu Strony (HTML, OptimizePress)",
+        "description": "Analiza i usprawnienie struktury HTML, eliminacja zbędnego kodu. Identyfikacja i optymalizacja elementów specyficznych dla OptimizePress, które mogą wpływać na wydajność.",
+        "mockupText": "Usprawnienia kodu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z\" />",
+        "title": "Eliminacja Zasobów Blokujących Renderowanie",
+        "description": "Identyfikacja i modyfikacja skryptów JavaScript oraz arkuszy stylów CSS, które blokują lub opóźniają pierwsze wyrenderowanie treści (FCP), poprzez ich odroczenie, asynchroniczne ładowanie lub inline'owanie krytycznego CSS.",
+        "mockupText": "Przyspieszenie renderowania"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 6h9.75M10.5 12h9.75m-9.75 6h9.75M3.75 6H7.5m-3.75 6H7.5m-3.75 6H7.5m6-15l-3.75-3.75L3.75 6H7.5L3.75 9l3.75 3.75m0-11.25L15 3.75M7.5 15l3.75 3.75L15 15m0-11.25l-3.75 3.75M15 9l3.75-3.75M15 15l3.75 3.75M15 21l-3.75-3.75\" />",
+        "title": "Konfiguracja Pamięci Podręcznej i Serwera",
+        "description": "Wdrożenie lub optymalizacja mechanizmów cache (przeglądarki, serwera). Sugestie dotyczące konfiguracji serwera (np. kompresja Gzip/Brotli, HTTP/2) w celu przyspieszenia dostarczania zasobów.",
+        "mockupText": "Ustawienia cache i serwera"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Optymalizacyjnych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap optymalizacji Państwa strony `kliencidlafirm.pl/leadysprzedazowe`, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Wstępna, Diagnostyka i Planowanie",
+        "description": "Szczegółowa analiza obecnej wydajności strony przy użyciu narzędzi PageSpeed Insights, GTmetrix, WebPageTest. Identyfikacja głównych 'wąskich gardeł' i opracowanie strategii optymalizacji.",
+        "features": [
+          "Przeprowadzenie kompleksowych testów wydajnościowych (FCP, LCP, CLS, TBT).",
+          "Analiza dostarczonego raportu PageSpeed oraz wykonanie własnych pomiarów.",
+          "Identyfikacja zasobów blokujących renderowanie i największych plików.",
+          "Ocena obecnej konfiguracji OptimizePress pod kątem wydajności.",
+          "Stworzenie szczegółowego planu działań optymalizacyjnych."
+        ]
+      },
+      {
+        "title": "Etap 2: Implementacja Optymalizacji",
+        "description": "Wdrożenie zaplanowanych zmian: optymalizacja obrazów, minifikacja i refaktoryzacja kodu, konfiguracja cache, optymalizacja ładowania zasobów, modyfikacje w OptimizePress.",
+        "features": [
+          "Optymalizacja obrazów (kompresja, nowoczesne formaty, lazy loading).",
+          "Minifikacja i optymalizacja kodu HTML, CSS, JavaScript.",
+          "Implementacja technik asynchronicznego ładowania i odraczania skryptów.",
+          "Optymalizacja fontów i zasobów zewnętrznych.",
+          "Konfiguracja pamięci podręcznej przeglądarki i serwera (jeśli możliwe i zasadne)."
+        ]
+      },
+      {
+        "title": "Etap 3: Testowanie, Weryfikacja Wyników i Raportowanie",
+        "description": "Ponowne przeprowadzenie testów wydajnościowych w celu weryfikacji osiągniętych rezultatów. Dostarczenie raportu z wynikami 'przed' i 'po' oraz finalnych rekomendacji.",
+        "features": [
+          "Przeprowadzenie testów PageSpeed Insights i innych narzędzi po optymalizacji.",
+          "Weryfikacja osiągnięcia celów FCP (<3s, idealnie <1s) i innych metryk Core Web Vitals.",
+          "Przygotowanie szczegółowego raportu porównawczego.",
+          "Przekazanie zoptymalizowanej strony i ewentualnych zaleceń."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Szybkość i Wydajność</span> Strony",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę optymalizacji Państwa landing page'a `kliencidlafirm.pl/leadysprzedazowe`.",
+    "tabs": [
+      {
+        "id": "optimization_offer",
+        "name": "Optymalizacja Landing Page"
+      }
+    ],
+    "packages": [
+      {
+        "id": "optimization_offer",
+        "name": "Optymalizacja Landing Page kliencidlafirm.pl/leadysprzedazowe",
+        "description": "Kompleksowa usługa optymalizacji wydajności landing page'a zbudowanego na OptimizePress, mająca na celu skrócenie czasu First Contentful Paint (FCP) do <u>poniżej 3 sekund</u>, z ambicją osiągnięcia <1s.",
+        "features": [
+          {
+            "text": "Analiza i diagnostyka wydajności (PageSpeed)",
+            "included": true
+          },
+          {
+            "text": "Optymalizacja obrazów (kompresja, formaty WebP, lazy load)",
+            "included": true
+          },
+          {
+            "text": "Minifikacja kodu (HTML, CSS, JS)",
+            "included": true
+          },
+          {
+            "text": "Optymalizacja ładowania skryptów i styli (defer, async)",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja pamięci podręcznej (browser/server caching)",
+            "included": true
+          },
+          {
+            "text": "Eliminacja zasobów blokujących renderowanie",
+            "included": true
+          },
+          {
+            "text": "Poprawa kluczowych metryk Core Web Vitals",
+            "included": true
+          },
+          {
+            "text": "Raport z wynikami 'przed' i 'po'",
+            "included": true
+          },
+          {
+            "text": "Wsparcie dla strony na OptimizePress",
+            "included": true
+          }
+        ],
+        "price": "1500 PLN netto",
+        "priceNote": "Cena jest kwotą netto. Termin realizacji: do 7 dni roboczych.",
+        "ctaText": "Zamów Optymalizację",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Optymalizacji",
+    "sectionSubtitle": "Przejrzysty plan działania dla optymalizacji Państwa strony. Przewidywany czas realizacji projektu: **do 7 dni roboczych** od momentu akceptacji oferty i dostarczenia niezbędnych dostępów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Analiza, Planowanie i Uzyskanie Dostępów (Dzień 1)",
+        "duration": "1 dzień roboczy",
+        "description": "Potwierdzenie zlecenia, formalności, uzyskanie niezbędnych dostępów do strony i serwera. Szczegółowa analiza obecnego stanu wydajności, finalizacja planu optymalizacji."
+      },
+      {
+        "phase": "Faza 2: Implementacja Działań Optymalizacyjnych (Dni 2-5)",
+        "duration": "4 dni robocze",
+        "description": "Realizacja zaplanowanych prac: optymalizacja obrazów, kodu (CSS, JS, HTML), konfiguracja cache, usprawnienia ładowania zasobów, praca nad elementami OptimizePress."
+      },
+      {
+        "phase": "Faza 3: Testowanie, Weryfikacja i Raport Końcowy (Dni 6-7)",
+        "duration": "2 dni robocze",
+        "description": "Przeprowadzenie kompleksowych testów wydajnościowych po wdrożeniu zmian. Weryfikacja osiągnięcia celów FCP. Przygotowanie i przekazanie raportu 'przed' i 'po' oraz finalnych zaleceń."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów świadczą o skuteczności naszych działań. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy zoptymalizowało naszą stronę sklepową, co przełożyło się na znaczący wzrost konwersji. Szybkość ładowania jest teraz imponująca!",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "CEO, TechGadgets.pl"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EN",
+        "imageAlt": "Ewa Nowak",
+        "quote": "Profesjonalne podejście i szybka realizacja. Dzięki Soft Synergy nasza strona firmowa działa znacznie szybciej, co docenili nasi klienci.",
+        "authorName": "Ewa Nowak",
+        "authorTitle": "Marketing Manager, ProBiz Solutions"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PZ",
+        "imageAlt": "Piotr Zieliński",
+        "quote": "Polecam Soft Synergy każdemu, kto chce realnie przyspieszyć swoją stronę. Wyniki przerosły moje oczekiwania, a FCP spadło poniżej 1 sekundy!",
+        "authorName": "Piotr Zieliński",
+        "authorTitle": "Właściciel, SzybkaStrona.com"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechGadgets",
+        "alt": "Logo Klienta TechGadgets.pl"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiz",
+        "alt": "Logo Klienta ProBiz Solutions"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=SzybkaStrona",
+        "alt": "Logo Klienta SzybkaStrona.com"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=WebOptima",
+        "alt": "Logo Klienta WebOptima"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=LeadGenius",
+        "alt": "Logo Klienta LeadGenius"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Szybszą Stronę</span> dla manix545?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy przyspieszyć Państwa landing page `kliencidlafirm.pl/leadysprzedazowe`, poprawiając doświadczenia użytkowników i wspierając Państwa cele biznesowe. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Optymalizacji",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Wirtualna 10, 00-001 Warszawa (Praca Zdalna)"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Prezentacja przygotowana przez Soft Synergy."
+  }
+}

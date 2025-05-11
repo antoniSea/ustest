@@ -1,0 +1,275 @@
+{
+  "useme_id": 115481,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Ustawienia Kampanii Google Ads dla eBooka Agaty Bury | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=AB",
+    "clientLogoAlt": "Logo Agata Bury",
+    "titlePart1": "Propozycja Ustawienia Kampanii dla",
+    "titlePart2ClientName": "Agaty Bury",
+    "subtitle": "Profesjonalne, jednorazowe ustawienie kampanii Google Ads dla Pani eBooka, mające na celu skuteczne dotarcie do potencjalnych czytelników i wsparcie sprzedaży.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Pani <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Pani zlecenie dotyczące jednorazowego ustawienia kampanii Google Ads dla eBooka, aby zaproponować rozwiązanie idealnie dopasowane do Pani celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Efektywna Kampania Google Ads dla eBooka</span>",
+      "description": "Głównym celem jest jednorazowe, profesjonalne skonfigurowanie kampanii Google Ads, która skutecznie wypromuje Pani eBooka, zwiększy jego widoczność wśród docelowej grupy odbiorców i przełoży się na wzrost sprzedaży.",
+      "points": [
+        "Zlecenie jednorazowego ustawienia kampanii w Google Ads.",
+        "Produkt do promocji: eBook.",
+        "Cel: dotarcie do potencjalnych czytelników i wsparcie sprzedaży.",
+        "Wymagania: Kampanie reklamowe.",
+        "Budżet: Do negocjacji."
+      ],
+      "diagramPlaceholderText": "Wizualizacja strategii kampanii Google Ads dla eBooka"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Konfiguracja Kampanii Google Ads",
+      "description": "Proponujemy kompleksowe, jednorazowe ustawienie kampanii Google Ads w cenie 750 PLN netto. Skupimy się na analizie słów kluczowych, grupy docelowej oraz precyzyjnej konfiguracji kampanii, aby zmaksymalizować jej widoczność i efektywność konwersji dla Pani eBooka.",
+      "points": [
+        "Profesjonalne, jednorazowe ustawienie kampanii Google Ads.",
+        "Analiza słów kluczowych i grupy docelowej specyficznej dla eBooka.",
+        "Precyzyjna konfiguracja kampanii zoptymalizowana pod kątem maksymalizacji widoczności i konwersji.",
+        "Przewidywany termin realizacji: 3-5 dni roboczych.",
+        "Doświadczenie Soft Synergy w promocji produktów cyfrowych, w tym eBooków."
+      ],
+      "diagramPlaceholderText": "Przykładowa struktura kampanii Google Ads"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Konfiguracji Kampanii</span>",
+    "sectionSubtitle": "Przedstawiamy składowe usługi, które zapewnią skuteczne uruchomienie i optymalizację Pani kampanii Google Ads dla eBooka.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.773 4.773zM21 12a9 9 0 11-18 0 9 9 0 0118 0z\" />",
+        "title": "Analiza Słów Kluczowych i Grupy Docelowej",
+        "description": "Dokładne badanie i wybór najefektywniejszych słów kluczowych oraz precyzyjne zdefiniowanie grupy docelowej zainteresowanej tematyką Pani eBooka, aby reklamy trafiały do właściwych osób.",
+        "mockupText": "Badanie słów kluczowych i person"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.738-.527c.43-.307.98-.232 1.33.103l.755.755c.33.33.463.835.293 1.298l-.29.788c-.17.46-.028.99.327 1.348l.645.645c.353.353.504.858.41 1.35l-.095.568c-.076.45-.38.835-.793 1.003l-.823.33c-.44.176-.77.574-.85.99l-.087.523c-.096.576-.632.986-1.23.986h-1.47c-.598 0-1.134-.41-1.23-.986l-.087-.523c-.08-.416-.41-.814-.85-.99l-.823-.33c-.414-.168-.717-.553-.793-1.003l-.095-.568c-.094-.492.057-1 .41-1.35l.645-.645c.355-.357.498-.888.327-1.348l-.29-.788c-.17-.462-.036-.967.293-1.298l.755-.755c.35-.335.9-.407 1.33-.103l.738.527c.35.25.807.272 1.205.108.396-.166.71-.506.78-.93l.149-.894z\" />",
+        "title": "Konfiguracja Struktury Kampanii i Reklam",
+        "description": "Stworzenie optymalnej struktury kampanii, grup reklam oraz przygotowanie angażujących tekstów reklamowych, które zachęcą potencjalnych czytelników do kliknięcia i zakupu eBooka.",
+        "mockupText": "Struktura kampanii i przykładowe reklamy"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 13.125C3 12.504 3.504 12 4.125 12H6.75V8.25A2.25 2.25 0 019 6h6a2.25 2.25 0 012.25 2.25v1.5M3 13.125C3 12.504 3.504 12 4.125 12H6.75V8.25A2.25 2.25 0 019 6h6a2.25 2.25 0 012.25 2.25v1.5m-13.5 0CM3.375 21 9 13.125M15 6.75A2.25 2.25 0 0012.75 9h-3.75a2.25 2.25 0 00-2.25 2.25V21M15 6.75V21m0-13.5C15 12.504 15.504 12 16.125 12h2.25A2.25 2.25 0 0120.625 9.75V6.75\" />",
+        "title": "Ustawienia Zaawansowane i Optymalizacja",
+        "description": "Konfiguracja zaawansowanych opcji kampanii, takich jak strategie ustalania stawek, harmonogramy wyświetlania reklam, kierowanie, a także wstępna optymalizacja pod kątem konwersji.",
+        "mockupText": "Panel ustawień Google Ads"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Ustawienia Kampanii",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap konfiguracji kampanii Google Ads dla Pani eBooka, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Konsultacja, Analiza i Planowanie Strategii",
+        "description": "Omówienie celów kampanii, analiza produktu (eBooka), grupy docelowej oraz konkurencji. Zdefiniowanie kluczowych wskaźników efektywności (KPI) i opracowanie strategii kampanii.",
+        "features": [
+          "Określenie celów marketingowych kampanii.",
+          "Analiza eBooka i jego unikalnych wartości.",
+          "Badanie konkurencji i identyfikacja grupy docelowej.",
+          "Wybór odpowiednich typów kampanii Google Ads (np. Search, Display)."
+        ]
+      },
+      {
+        "title": "Etap 2: Konfiguracja Techniczna Kampanii",
+        "description": "Praktyczne ustawienie kampanii w panelu Google Ads, w tym struktury konta, grup reklam, wybór słów kluczowych, tworzenie tekstów reklamowych oraz konfiguracja ustawień kierowania i budżetu.",
+        "features": [
+          "Tworzenie struktury kampanii i grup reklam.",
+          "Dobór słów kluczowych (w tym wykluczających).",
+          "Pisanie skutecznych tekstów reklamowych i nagłówków.",
+          "Konfiguracja budżetu, stawek oraz harmonogramu reklam."
+        ]
+      },
+      {
+        "title": "Etap 3: Uruchomienie, Wstępna Optymalizacja i Przekazanie",
+        "description": "Uruchomienie kampanii, monitorowanie jej początkowych wyników, dokonanie pierwszych niezbędnych korekt oraz przekazanie Pani dostępu i instrukcji dotyczących podstawowego zarządzania.",
+        "features": [
+          "Aktywacja kampanii i monitorowanie startowe.",
+          "Implementacja śledzenia konwersji (jeśli możliwe i uzgodnione).",
+          "Wstępna optymalizacja na podstawie pierwszych danych.",
+          "Przekazanie wytycznych do dalszego monitorowania i zarządzania kampanią."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Skuteczną Reklamę</span> eBooka",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę jednorazowego ustawienia kampanii Google Ads dla Pani eBooka. Nasza propozycja to konkurencyjna cena za profesjonalną usługę.",
+    "tabs": [
+      {
+        "id": "google_ads_setup",
+        "name": "Ustawienie Kampanii Google Ads"
+      }
+    ],
+    "packages": [
+      {
+        "id": "google_ads_setup",
+        "name": "Jednorazowe Ustawienie Kampanii Google Ads dla eBooka",
+        "description": "Kompleksowe, jednorazowe przygotowanie i konfiguracja kampanii reklamowej w systemie Google Ads, mającej na celu skuteczne promowanie Pani eBooka i zwiększenie jego sprzedaży.",
+        "features": [
+          {
+            "text": "Analiza słów kluczowych i grupy docelowej",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja struktury kampanii i grup reklam",
+            "included": true
+          },
+          {
+            "text": "Tworzenie tekstów reklamowych",
+            "included": true
+          },
+          {
+            "text": "Ustawienia kierowania i budżetu",
+            "included": true
+          },
+          {
+            "text": "Wstępna optymalizacja",
+            "included": true
+          },
+          {
+            "text": "Przekazanie wytycznych do zarządzania",
+            "included": true
+          },
+          {
+            "text": "Realizacja w 3-5 dni roboczych",
+            "included": true
+          }
+        ],
+        "price": "750 PLN netto",
+        "priceNote": "Cena netto. Do ceny należy doliczyć podatek VAT. Budżet reklamowy w Google Ads jest ustalany oddzielnie przez Klienta.",
+        "ctaText": "Zamów Ustawienie Kampanii",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Zlecenia",
+    "sectionSubtitle": "Przejrzysty plan działania dla ustawienia kampanii Google Ads dla Pani eBooka. Przewidywany czas realizacji: **3-5 dni roboczych** od momentu potwierdzenia szczegółów i otrzymania niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Konsultacje i Zbieranie Danych (Dzień 1)",
+        "duration": "1 dzień roboczy",
+        "description": "Potwierdzenie zlecenia, szczegółowe omówienie celów kampanii, specyfiki eBooka, grupy docelowej, dostęp do konta Google Ads (lub pomoc w jego założeniu) oraz zebranie wszelkich niezbędnych materiałów (np. grafiki, linki do strony lądowania)."
+      },
+      {
+        "phase": "Faza 2: Analiza, Planowanie i Konfiguracja Kampanii (Dzień 1-3)",
+        "duration": "1-3 dni robocze",
+        "description": "Przeprowadzenie analizy słów kluczowych, konkurencji, zdefiniowanie strategii. Tworzenie struktury kampanii, grup reklam, pisanie tekstów reklamowych, konfiguracja kierowania, budżetu, stawek i rozszerzeń reklam."
+      },
+      {
+        "phase": "Faza 3: Weryfikacja, Uruchomienie i Przekazanie (Dzień 3-5)",
+        "duration": "1-2 dni robocze",
+        "description": "Weryfikacja wszystkich ustawień, uruchomienie kampanii. Przekazanie Pani dostępu, omówienie skonfigurowanej kampanii oraz przekazanie podstawowych wskazówek dotyczących jej monitorowania i ewentualnych dalszych działań."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JK",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy ustawiło nasze kampanie Google Ads od zera. Efekty przerosły oczekiwania – znaczący wzrost zapytań!",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "CEO, Firma XYZ"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AN",
+        "imageAlt": "Anna Nowak",
+        "quote": "Dzięki profesjonalnej konfiguracji reklam przez Soft Synergy, nasza sprzedaż online wzrosła o 30% w pierwszym miesiącu.",
+        "authorName": "Anna Nowak",
+        "authorTitle": "Marketing Manager, Sklep ABC"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PW",
+        "imageAlt": "Piotr Wiśniewski",
+        "quote": "Szybko, sprawnie i co najważniejsze skutecznie. Kampanie Google Ads dla naszego produktu cyfrowego przynoszą świetne rezultaty.",
+        "authorName": "Piotr Wiśniewski",
+        "authorTitle": "Twórca Produktu Cyfrowego"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=FirmaXYZ",
+        "alt": "Logo Klienta Firma XYZ"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=SklepABC",
+        "alt": "Logo Klienta Sklep ABC"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=DigitalProd",
+        "alt": "Logo Klienta Digital Product"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaMark",
+        "alt": "Logo Klienta InnovaMark"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProSolution",
+        "alt": "Logo Klienta ProSolution"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Skuteczną Reklamę</span> dla Pani eBooka?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy pomóc Pani dotrzeć do nowych czytelników i zwiększyć sprzedaż eBooka dzięki precyzyjnie skonfigurowanej kampanii Google Ads. Skontaktuj się z nami, aby omówić szczegóły.",
+    "ctaButtonText": "Porozmawiajmy o Kampanii Google Ads",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Wirtualna 10, 00-001 Cyfrowice"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 750,
+  "timelineDays": 7
+}

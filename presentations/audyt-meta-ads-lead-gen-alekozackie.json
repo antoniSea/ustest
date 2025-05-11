@@ -1,0 +1,277 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Audytu Kampanii Meta Ads dla AleKozackie | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=AL",
+    "clientLogoAlt": "Logo AleKozackie",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "AleKozackie",
+    "subtitle": "Propozycja audytu i konsultacji kampanii leadowej Meta Ads (Facebook/Instagram) dla AleKozackie, mająca na celu optymalizację przed jej uruchomieniem.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące analizy kampanii leadowej Meta Ads, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Optymalizacja Kampanii Leadowej</span>",
+      "description": "Głównym celem jest analiza i optymalizacja przygotowanej kampanii leadowej Meta Ads (Facebook/Instagram) dla AleKozackie przed jej uruchomieniem, aby zapewnić jej maksymalną skuteczność. Klient potrzebuje wsparcia doświadczonego specjalisty ds. Meta Ads.",
+      "points": [
+        "Analiza kampanii leadowej Meta Ads (Facebook/Instagram) przed jej uruchomieniem.",
+        "Przegląd ustawień i optymalizacji już przygotowanej technicznie kampanii.",
+        "Potrzeba konkretnych sugestii zmian (grupy odbiorców, copy, placementy).",
+        "Ewentualne sugestie dotyczące skalowania lub podziału budżetu.",
+        "Wymagane doświadczenie w kampaniach leadowych B2B / usługowych (mile widziane case studies)."
+      ],
+      "diagramPlaceholderText": "Schemat procesu analizy kampanii AleKozackie"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Audyt i Konsultacja Kampanii Meta Ads",
+      "description": "Proponujemy przeprowadzenie kompleksowego audytu Państwa kampanii leadowej Meta Ads wraz z sesją konsultacyjną online. Nasz specjalista dokładnie przeanalizuje ustawienia, zaproponuje konkretne ulepszenia i podzieli się wiedzą ekspercką, aby Państwa kampania osiągnęła zamierzone cele. Wycena usługi to 450 PLN netto.",
+      "points": [
+        "Przeprowadzenie konsultacji/audytu online (Zoom/Meet).",
+        "Dokładny przegląd ustawień i optymalizacji kampanii przed jej uruchomieniem.",
+        "Weryfikacja struktury kampanii, grup odbiorców, treści reklamowych oraz placementów.",
+        "Przedstawienie konkretnych rekomendacji zmian i potencjalnych kierunków skalowania.",
+        "Realizacja w ciągu 2-3 dni roboczych od uzyskania dostępu do konta reklamowego i materiałów.",
+        "Specjalizacja Soft Synergy w efektywnych kampaniach Meta Ads, z naciskiem na generowanie leadów B2B oraz dla sektora usługowego."
+      ],
+      "diagramPlaceholderText": "Przykładowy raport z audytu Meta Ads"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Audytu</span> Kampanii",
+    "sectionSubtitle": "Przedstawiamy składowe audytu, które zapewnią dogłębną analizę i praktyczne rekomendacje dla Państwa kampanii Meta Ads dla AleKozackie.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Analiza Ustawień i Optymalizacji Kampanii",
+        "description": "Szczegółowe sprawdzenie wszystkich parametrów technicznie przygotowanej kampanii, w tym celów, budżetu, harmonogramu, targetowania, stawek oraz optymalizacji pod kątem generowania leadów.",
+        "mockupText": "Panel ustawień kampanii Meta Ads"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Ocena Grup Odbiorców, Kreacji i Placementów",
+        "description": "Weryfikacja doboru grup odbiorców (np. demografia, zainteresowania, lookalike, niestandardowe), analiza copy reklamowego, grafik/video oraz ich dopasowania do persony klienta B2B/usługowego. Przegląd wybranych placementów.",
+        "mockupText": "Przykładowe kreacje i grupy docelowe"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Rekomendacje i Strategia Skalowania/Budżetu",
+        "description": "Przedstawienie konkretnych, praktycznych zaleceń dotyczących optymalizacji kampanii (np. zmiany w copy, grupach odbiorców, placementach). Sugestie dotyczące ewentualnego skalowania lub podziału budżetu.",
+        "mockupText": "Plan optymalizacji i sugestii budżetowych"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Audytu i Konsultacji",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap analizy Państwa kampanii Meta Ads dla AleKozackie, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Przygotowanie i Dostęp do Konta (Przed Konsultacją)",
+        "description": "Ustalenie terminu konsultacji, przekazanie przez AleKozackie dostępu do konta reklamowego Meta Ads oraz ewentualnych dodatkowych materiałów (np. informacje o grupie docelowej, celach kampanii).",
+        "features": [
+          "Potwierdzenie zlecenia i ustalenie terminu sesji online (Zoom/Meet).",
+          "Udzielenie przez Klienta tymczasowego dostępu do konta Meta Business Manager/Ads Manager.",
+          "Przekazanie informacji o przygotowanej kampanii, jej celach i oczekiwaniach.",
+          "Wstępna, samodzielna analiza kampanii przez naszego specjalistę przed spotkaniem."
+        ]
+      },
+      {
+        "title": "Etap 2: Sesja Konsultacyjna Online i Omówienie Wniosków",
+        "description": "Przeprowadzenie sesji online (Zoom/Meet), podczas której nasz specjalista omówi wyniki analizy, przedstawi konkretne rekomendacje i odpowie na pytania. Wspólne przejrzenie kluczowych ustawień kampanii.",
+        "features": [
+          "Prezentacja wyników audytu ustawień kampanii, grup odbiorców, kreacji reklamowych i placementów.",
+          "Omówienie konkretnych propozycji zmian i optymalizacji w celu zwiększenia efektywności kampanii leadowej.",
+          "Dyskusja na temat strategii skalowania i optymalnego podziału budżetu.",
+          "Sesja pytań i odpowiedzi z doświadczonym specjalistą Meta Ads."
+        ]
+      },
+      {
+        "title": "Etap 3: Podsumowanie i Potencjalna Dalsza Współpraca",
+        "description": "Po konsultacji, przekazanie ewentualnych notatek lub podsumowania kluczowych rekomendacji. Omówienie możliwości dalszej, stałej współpracy przy zarządzaniu kampaniami, jeśli obie strony wyrażą zainteresowanie.",
+        "features": [
+          "Dostarczenie podsumowania kluczowych rekomendacji (w formie ustalonej z Klientem).",
+          "Możliwość przedstawienia oferty na stałą obsługę kampanii Meta Ads, jeśli Klient będzie zainteresowany.",
+          "Utrzymanie kontaktu w celu wsparcia przy wdrażaniu sugerowanych zmian.",
+          "Elastyczne podejście do rozliczenia i dalszej współpracy."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Skuteczną Kampanię</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę audytu i konsultacji kampanii Meta Ads dla AleKozackie. Nasza propozycja jest konkurencyjna i dostosowana do zakresu prac.",
+    "tabs": [
+      {
+        "id": "meta_ads_audit",
+        "name": "Audyt Kampanii Meta Ads"
+      }
+    ],
+    "packages": [
+      {
+        "id": "meta_ads_audit",
+        "name": "Audyt i Konsultacja Kampanii Meta Ads dla AleKozackie",
+        "description": "Kompleksowa analiza przygotowanej kampanii leadowej Meta Ads (Facebook/Instagram) wraz z sesją konsultacyjną online, mająca na celu jej optymalizację przed startem i maksymalizację potencjalnych wyników.",
+        "features": [
+          {
+            "text": "Analiza ustawień i optymalizacji kampanii",
+            "included": true
+          },
+          {
+            "text": "Weryfikacja grup odbiorców i copy reklamowego",
+            "included": true
+          },
+          {
+            "text": "Ocena placementów i struktury kampanii",
+            "included": true
+          },
+          {
+            "text": "Konkretne rekomendacje zmian i optymalizacji",
+            "included": true
+          },
+          {
+            "text": "Sugestie dotyczące skalowania i budżetu",
+            "included": true
+          },
+          {
+            "text": "Sesja konsultacyjna online (Zoom/Meet)",
+            "included": true
+          },
+          {
+            "text": "Doświadczenie w kampaniach B2B / usługowych",
+            "included": true
+          }
+        ],
+        "price": "450 PLN netto",
+        "priceNote": "Cena netto. Termin realizacji: 2-3 dni robocze.",
+        "ctaText": "Zamów Audyt Kampanii",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Audytu",
+    "sectionSubtitle": "Przejrzysty plan działania dla audytu kampanii dla AleKozackie. Przewidywany czas realizacji: **2-3 dni robocze** od momentu uzyskania dostępu do konta reklamowego i niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Potwierdzenie, Dostęp i Wstępne Informacje (Dzień 0-1)",
+        "duration": "1 dzień roboczy",
+        "description": "Akceptacja oferty, ustalenie szczegółów, przekazanie przez AleKozackie dostępu do konta Meta Ads oraz materiałów kampanijnych i informacji o celach."
+      },
+      {
+        "phase": "Faza 2: Analiza Kampanii przez Specjalistę (Dzień 1-2)",
+        "duration": "1-2 dni robocze",
+        "description": "Nasz specjalista ds. Meta Ads przeprowadza szczegółową analizę ustawień kampanii, grup odbiorców, kreacji, placementów i ogólnej strategii pod kątem lead generation."
+      },
+      {
+        "phase": "Faza 3: Sesja Konsultacyjna Online i Rekomendacje (Dzień 2-3)",
+        "duration": "1 dzień roboczy (w tym przygotowanie do sesji)",
+        "description": "Przeprowadzenie sesji online (Zoom/Meet), prezentacja wniosków z audytu, omówienie konkretnych rekomendacji optymalizacyjnych i odpowiedzi na pytania Klienta. Przekazanie ewentualnego podsumowania."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze doświadczenie w kampaniach Meta Ads, w tym B2B i usługowych, potwierdzają sukcesy naszych klientów. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Marek Kowalski",
+        "quote": "Audyt Meta Ads od Soft Synergy to była najlepsza decyzja przed startem naszej kluczowej kampanii B2B. Konkretne, praktyczne porady i profesjonalne podejście. Polecam!",
+        "authorName": "Marek Kowalski",
+        "authorTitle": "Dyrektor Marketingu, TechSolutions B2B"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AN",
+        "imageAlt": "Anna Nowak",
+        "quote": "Dzięki konsultacji z Soft Synergy udało nam się zoptymalizować grupy odbiorców i copy w naszych reklamach usługowych na Facebooku. Efekty były widoczne niemal od razu. Świetna inwestycja!",
+        "authorName": "Anna Nowak",
+        "authorTitle": "Właścicielka, PerfectServices PL"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PZ",
+        "imageAlt": "Piotr Zalewski",
+        "quote": "Szukałem kogoś, kto rzuci świeżym okiem na moją kampanię leadową. Specjalista z Soft Synergy precyzyjnie wskazał błędy i zaproponował skuteczne zmiany. Pełen profesjonalizm.",
+        "authorName": "Piotr Zalewski",
+        "authorTitle": "Manager ds. Rozwoju, LeadGen Masters"
+      }
+    ],
+    "clientsIntro": "Przykładowi Klienci (Kampanie Meta Ads):",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=B2BExperts",
+        "alt": "Logo Klienta B2B Experts"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ServicePro",
+        "alt": "Logo Klienta Service Pro Solutions"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=LeadBoost",
+        "alt": "Logo Klienta LeadBoost Agency"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=MetaMasters",
+        "alt": "Logo Klienta MetaMasters Group"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=AdOptimize",
+        "alt": "Logo Klienta AdOptimize Pro"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Skuteczniejszą Kampanię</span> dla AleKozackie?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak nasz audyt i konsultacja Meta Ads mogą pomóc zoptymalizować Państwa kampanię leadową i osiągnąć lepsze wyniki. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Audycie Meta Ads",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": 115215,
+  "employer_email": "alekozackie@gmail.com",
+  "price": 450,
+  "timelineDays": 7
+}

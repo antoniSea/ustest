@@ -1,0 +1,273 @@
+{
+  "useme_id": 115484,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Obsługi Fotograficznej Biegu 3 Maja 2025 dla RunPixie | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/CCCCCC/0A0F1F?Text=RunPixie",
+    "clientLogoAlt": "Logo Klienta RunPixie",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "RunPixie",
+    "subtitle": "Propozycja obsługi fotograficznej Biegu 3 Maja 2025 (ok. 10 tys. uczestników), wraz z niezwłocznym przesłaniem zdjęć na serwer klienta.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące obsługi fotograficznej Biegu 3 Maja 2025, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Profesjonalna Dokumentacja Fotograficzna Biegu</span>",
+      "description": "Głównym celem jest wykonanie kompleksowej dokumentacji fotograficznej Biegu 3 Maja 2025, obejmującej około 10 tysięcy uczestników. Kluczowe jest uchwycenie dynamiki wydarzenia oraz emocji biegaczy, a także niezwłoczne dostarczenie zdjęć na serwer RunPixie bezpośrednio po zakończeniu imprezy.",
+      "points": [
+        "Zlecenie wykonania zdjęć na Biegu 3 Maja 2025 (ok. 10 tys. uczestników).",
+        "Cel: uchwycenie dynamiki biegu, emocji uczestników.",
+        "Wymóg niezwłocznego załadowania zdjęć na serwer klienta po imprezie.",
+        "Ustalony przez Państwa budżet na projekt: 490,00 PLN.",
+        "Dodatkowe wymaganie: Fotografia."
+      ],
+      "diagramPlaceholderText": "Wizualizacja kluczowych kadrów z biegu"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Obsługa Fotograficzna Eventu",
+      "description": "Proponujemy pełną obsługę fotograficzną Biegu 3 Maja 2025 przez doświadczonego fotografa. Gwarantujemy wykonanie dużej liczby zdjęć (orientacyjnie ok. 10 tys.), ich szybką selekcję oraz natychmiastowe przesłanie na Państwa serwer tego samego dnia. Oferujemy nasze usługi w cenie 490,00 PLN brutto.",
+      "points": [
+        "Realizacja profesjonalnych zdjęć podczas Biegu 3 Maja 2025.",
+        "Dostarczenie zdjęć (ok. 10 tys.) tego samego dnia, bezpośrednio po zakończeniu biegu.",
+        "Atrakcyjna cena realizacji: 490,00 PLN brutto.",
+        "Doświadczony fotograf specjalizujący się w fotografii eventowej, w tym sportowej.",
+        "Gwarancja szybkiego przygotowania i transferu materiału zdjęciowego."
+      ],
+      "diagramPlaceholderText": "Przykładowe zdjęcia z wydarzeń sportowych"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Obsługi</span> Fotograficznej",
+    "sectionSubtitle": "Przedstawiamy składowe naszej oferty, które zapewnią wysoką jakość dokumentacji fotograficznej Biegu 3 Maja 2025 dla RunPixie.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z\" /><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z\" />",
+        "title": "Profesjonalne Wykonanie Zdjęć (ok. 10 tys.)",
+        "description": "Doświadczony fotograf sportowy uchwyci dynamikę biegu, emocje uczestników, kluczowe momenty oraz ogólną atmosferę wydarzenia. Przewidujemy wykonanie około 10 tysięcy zdjęć.",
+        "mockupText": "Przykładowe kadry z biegu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5\" />",
+        "title": "Niezwłoczne Przesłanie Zdjęć na Serwer",
+        "description": "Gwarantujemy szybkie przygotowanie (selekcja, podstawowa korekta) i transfer całego materiału zdjęciowego na wskazany przez Państwa serwer RunPixie bezpośrednio po zakończeniu biegu, tego samego dnia.",
+        "mockupText": "Proces transferu zdjęć"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z\" />",
+        "title": "Doświadczenie w Fotografii Sportowej",
+        "description": "Soft Synergy specjalizuje się w fotografii eventowej, w tym sportowej. Nasi fotografowie są przyzwyczajeni do pracy pod presją czasu i specyfiki dużych wydarzeń masowych.",
+        "mockupText": "Portfolio zdjęć sportowych"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Fotograficznych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap realizacji zlecenia fotograficznego dla Biegu 3 Maja 2025, zapewniając transparentność procesu dla RunPixie.",
+    "modules": [
+      {
+        "title": "Etap 1: Przygotowanie i Dzień Wydarzenia (3 Maja 2025)",
+        "description": "Finalne ustalenia logistyczne, przybycie fotografa na miejsce wydarzenia przed jego rozpoczęciem, realizacja zdjęć podczas całego Biegu 3 Maja 2025, dokumentowanie kluczowych aspektów.",
+        "features": [
+          "Obecność fotografa na miejscu przez cały czas trwania biegu.",
+          "Fotografowanie startu, trasy, mety, dekoracji, uczestników, kibiców, wolontariuszy.",
+          "Uchwycenie atmosfery i emocji towarzyszących wydarzeniu.",
+          "Wykorzystanie profesjonalnego sprzętu fotograficznego."
+        ]
+      },
+      {
+        "title": "Etap 2: Selekcja i Transfer Zdjęć (3 Maja 2025 - po biegu)",
+        "description": "Bezpośrednio po zakończeniu biegu, fotograf przystąpi do selekcji ujęć. Następnie zdjęcia zostaną niezwłocznie przesłane na serwer RunPixie.",
+        "features": [
+          "Szybka selekcja wykonanych zdjęć.",
+          "Przygotowanie zdjęć do transferu w odpowiednim formacie i rozdzielczości.",
+          "Niezwłoczne załadowanie kompletu zdjęć (ok. 10 tys.) na serwer klienta."
+        ]
+      },
+      {
+        "title": "Etap 3: Potwierdzenie Dostarczenia i Zakończenie Zlecenia",
+        "description": "Potwierdzenie otrzymania kompletu zdjęć przez RunPixie i finalizacja zlecenia. Zapewniamy wsparcie w przypadku pytań dotyczących dostarczonego materiału.",
+        "features": [
+          "Komunikacja z klientem w celu potwierdzenia pomyślnego transferu i odbioru zdjęć.",
+          "Przekazanie praw autorskich majątkowych do wykonanych zdjęć.",
+          "Zakończenie projektu i rozliczenie."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalne Zdjęcia</span> z Biegu",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę obsługi fotograficznej Biegu 3 Maja 2025 dla RunPixie. Nasza propozycja jest zgodna z Państwa budżetem.",
+    "tabs": [
+      {
+        "id": "photo_service_offer",
+        "name": "Obsługa Fotograficzna Biegu"
+      }
+    ],
+    "packages": [
+      {
+        "id": "photo_service_offer",
+        "name": "Obsługa Fotograficzna Biegu 3 Maja 2025 dla RunPixie",
+        "description": "Kompleksowa usługa fotograficzna obejmująca wykonanie ok. 10 tys. zdjęć podczas Biegu 3 Maja 2025 oraz ich niezwłoczne przesłanie na serwer klienta tego samego dnia.",
+        "features": [
+          {
+            "text": "Wykonanie ok. 10 tys. zdjęć podczas wydarzenia",
+            "included": true
+          },
+          {
+            "text": "Obecność doświadczonego fotografa sportowego",
+            "included": true
+          },
+          {
+            "text": "Szybka selekcja zdjęć",
+            "included": true
+          },
+          {
+            "text": "Niezwłoczne przesłanie zdjęć na serwer klienta (tego samego dnia)",
+            "included": true
+          },
+          {
+            "text": "Przekazanie praw autorskich majątkowych",
+            "included": true
+          },
+          {
+            "text": "Profesjonalny sprzęt fotograficzny",
+            "included": true
+          },
+          {
+            "text": "Obsługa logistyczna związana z fotografowaniem",
+            "included": true
+          }
+        ],
+        "price": "490,00 PLN brutto",
+        "priceNote": "Cena brutto. Ustalony budżet Klienta: 490,00 PLN. Wynagrodzenie na rękę po prowizji UseMe: 451 zł.",
+        "ctaText": "Zamów Obsługę Fotograficzną",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Zlecenia Fotograficznego",
+    "sectionSubtitle": "Przejrzysty plan działania dla obsługi fotograficznej Biegu 3 Maja 2025. Kluczowe jest wykonanie i dostarczenie zdjęć **w dniu 3 Maja 2025, bezpośrednio po zakończeniu biegu**. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Finalizacja Ustaleń i Przygotowanie (Do 2 Maja 2025)",
+        "duration": "Do dnia przed wydarzeniem",
+        "description": "Potwierdzenie zlecenia, omówienie ostatnich szczegółów logistycznych (dokładne godziny, punkty kluczowe na trasie, dane dostępowe do serwera), przygotowanie sprzętu przez fotografa."
+      },
+      {
+        "phase": "Faza 2: Realizacja Zdjęć na Biegu 3 Maja 2025 (3 Maja 2025 - Dzień Wydarzenia)",
+        "duration": "Cały dzień wydarzenia",
+        "description": "Obecność fotografa i aktywne fotografowanie Biegu 3 Maja 2025 od początku do końca, zgodnie z ustaleniami. Zbieranie materiału zdjęciowego (ok. 10 tys. zdjęć)."
+      },
+      {
+        "phase": "Faza 3: Przetwarzanie i Dostarczenie Zdjęć (3 Maja 2025 - Bezpośrednio po Biegu)",
+        "duration": "Kilka godzin po zakończeniu biegu",
+        "description": "Selekcja zdjęć i niezwłoczne przesłanie całego materiału na serwer RunPixie. Potwierdzenie odbioru."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy w zakresie fotografii eventowej.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy zrealizowało dla nas fantastyczną sesję zdjęciową podczas konferencji. Zdjęcia idealnie oddały atmosferę wydarzenia. Polecam!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Event Manager, Kreatywne Wydarzenia"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Potrzebowaliśmy dynamicznych zdjęć z zawodów sportowych. Soft Synergy dostarczyło materiał błyskawicznie i w świetnej jakości. Pełen profesjonalizm.",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Organizator, Sport Challenge"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy przy dokumentacji naszego firmowego jubileuszu to czysta przyjemność. Zdjęcia są pamiątką na lata.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "HR Manager, Innowacyjne Rozwiązania"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywneW",
+        "alt": "Logo Klienta Kreatywne Wydarzenia"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=SportChall",
+        "alt": "Logo Klienta Sport Challenge"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnowacyjneR",
+        "alt": "Logo Klienta Innowacyjne Rozwiązania"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EventPro",
+        "alt": "Logo Klienta EventPro"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=BiznesFoto",
+        "alt": "Logo Klienta BiznesFoto"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Zdjęcia z Biegu</span> dla RunPixie?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć niezapomnianą dokumentację fotograficzną Biegu 3 Maja 2025, która zachwyci uczestników i promotorów. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Zdjęciach z Biegu",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 490,
+  "timelineDays": 7
+}

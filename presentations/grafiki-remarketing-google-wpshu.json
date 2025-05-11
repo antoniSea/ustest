@@ -1,0 +1,276 @@
+{
+  "useme_id": 115498,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Grafik Remarketingowych Google Ads dla WPSHU s.c. | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=WS",
+    "clientLogoAlt": "Logo WPSHU s.c.",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "WPSHU s.c.",
+    "subtitle": "Propozycja stworzenia zestawu profesjonalnych grafik 2D do kampanii remarketingowych w Google Ads dla firmy WPSHU s.c.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące zestawu grafik do remarketingu w Google Ads, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Efektywne Grafiki Remarketingowe</span>",
+      "description": "Głównym celem jest zaprojektowanie i wykonanie wysokiej jakości zestawu grafik 2D, dostosowanych do specyfikacji Google Ads i potrzeb kampanii remarketingowych firmy WPSHU s.c. Grafiki mają za zadanie zwiększyć widoczność, zaangażowanie oraz konwersje.",
+      "points": [
+        "Zlecenie przygotowania zestawu grafik do remarketingu w Google Ads.",
+        "Klient: WPSHU s.c.",
+        "Wymagana technologia: Grafika 2D.",
+        "Szczegóły zlecenia zawarte w załączonym pliku.",
+        "Budżet: Do negocjacji."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji grafik remarketingowych WPSHU"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Dedykowany Zestaw Grafik 2D",
+      "description": "Soft Synergy proponuje kompleksowe stworzenie zestawu profesjonalnych grafik 2D, zoptymalizowanych pod kątem kampanii remarketingowych Google Ads dla WPSHU s.c. Nasza oferta obejmuje projekt i wykonanie materiałów zgodnych ze specyfikacją, w cenie 950 zł netto, z realizacją do 5 dni roboczych.",
+      "points": [
+        "Projekt i wykonanie zestawu profesjonalnych grafik 2D.",
+        "Zgodność ze specyfikacją Klienta i wytycznymi Google Ads.",
+        "Koszt realizacji: 950 zł netto.",
+        "Przewidywany termin realizacji: do 5 dni roboczych.",
+        "Doświadczenie w projektowaniu skutecznych materiałów reklamowych.",
+        "Dostępna prezentacja wizualna oferty: prezentacje.soft-synergy.com/grafiki-remarketing-google-wpshu"
+      ],
+      "diagramPlaceholderText": "Przykładowy styl grafik remarketingowych"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Cechy <span class=\"text-cyan-400\">Naszych Grafik</span>",
+    "sectionSubtitle": "Prezentujemy elementy, które składają się na wysoką jakość i skuteczność projektowanych przez nas grafik remarketingowych dla WPSHU s.c.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Projektowanie Zgodne z Identyfikacją i Celem",
+        "description": "Tworzymy spersonalizowane projekty graficzne 2D, które są spójne z identyfikacją wizualną WPSHU s.c. i celami kampanii remarketingowej, efektywnie komunikując przekaz marki.",
+        "mockupText": "Wizualizacje banerów WPSHU"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Optymalizacja pod Google Ads",
+        "description": "Przygotowujemy grafiki w wymaganych formatach i rozmiarach, zoptymalizowane pod kątem technicznym (waga, jakość) i marketingowym (CTA, czytelność) dla platformy Google Ads.",
+        "mockupText": "Przykłady formatów Google Ads"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Kompletny Zestaw Materiałów",
+        "description": "Dostarczamy pełen zestaw gotowych plików graficznych (np. JPG, PNG, GIF) przygotowanych do natychmiastowego użycia w kampaniach Google Ads, wraz z ewentualnymi wariantami.",
+        "mockupText": "Struktura dostarczanych plików"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Realizacji",
+    "sectionSubtitle": "Definiujemy etapy tworzenia zestawu grafik remarketingowych dla WPSHU s.c., zapewniając transparentność i wysoką jakość na każdym kroku.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza Zlecenia i Planowanie (Dzień 1)",
+        "description": "Dokładne zapoznanie się ze specyfikacją z załącznika, omówienie celów kampanii, grupy docelowej oraz wytycznych wizualnych dla grafik WPSHU s.c. Ustalenie harmonogramu prac.",
+        "features": [
+          "Analiza briefu i specyfikacji technicznej (załącznik).",
+          "Określenie kluczowych przekazów reklamowych i CTA.",
+          "Ustalenie liczby i formatów grafik w zestawie.",
+          "Przygotowanie planu działania i potwierdzenie terminów."
+        ]
+      },
+      {
+        "title": "Etap 2: Projektowanie Graficzne i Prezentacja (Dni 2-4)",
+        "description": "Stworzenie projektów graficznych 2D zgodnie z ustaleniami. Przygotowanie wstępnych wersji grafik do oceny przez WPSHU s.c. i zebranie informacji zwrotnej.",
+        "features": [
+          "Realizacja projektów graficznych dla wszystkich formatów.",
+          "Dbałość o spójność wizualną i zgodność z brandingiem WPSHU s.c.",
+          "Prezentacja propozycji graficznych Klientowi.",
+          "Nanoszenie poprawek (do 2 rund w cenie)."
+        ]
+      },
+      {
+        "title": "Etap 3: Finalizacja i Dostarczenie Grafik (Dzień 5)",
+        "description": "Ostateczne dopracowanie projektów na podstawie feedbacku Klienta. Przygotowanie finalnego zestawu plików graficznych w formatach gotowych do użycia w Google Ads.",
+        "features": [
+          "Akceptacja finalnych wersji projektów przez WPSHU s.c.",
+          "Przygotowanie plików końcowych (JPG, PNG, GIF etc.) zoptymalizowanych pod Google Ads.",
+          "Dostarczenie kompletu materiałów drogą elektroniczną.",
+          "Wsparcie techniczne przy wdrażaniu grafik."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalne Grafiki</span>",
+    "sectionSubtitle": "Nasza propozycja cenowa za stworzenie zestawu grafik remarketingowych dla WPSHU s.c. jest konkurencyjna i gwarantuje zwrot z inwestycji.",
+    "tabs": [
+      {
+        "id": "google_ads_graphics",
+        "name": "Grafiki Google Ads"
+      }
+    ],
+    "packages": [
+      {
+        "id": "google_ads_graphics",
+        "name": "Zestaw Grafik Remarketingowych Google Ads dla WPSHU s.c.",
+        "description": "Kompleksowe przygotowanie zestawu profesjonalnych grafik 2D, zoptymalizowanych dla kampanii remarketingowych Google Ads, zgodnie ze specyfikacją i potrzebami WPSHU s.c.",
+        "features": [
+          {
+            "text": "Projekt i wykonanie zestawu grafik 2D",
+            "included": true
+          },
+          {
+            "text": "Zgodność ze specyfikacją (załącznik) i wytycznymi Google Ads",
+            "included": true
+          },
+          {
+            "text": "Dopasowanie do identyfikacji wizualnej WPSHU s.c.",
+            "included": true
+          },
+          {
+            "text": "Do 2 rund poprawek wliczonych w cenę",
+            "included": true
+          },
+          {
+            "text": "Pliki gotowe do implementacji w kampaniach",
+            "included": true
+          },
+          {
+            "text": "Przewidywany czas realizacji: do 5 dni roboczych",
+            "included": true
+          },
+          {
+            "text": "Pełne prawa autorskie majątkowe",
+            "included": true
+          }
+        ],
+        "price": "950 zł netto",
+        "priceNote": "Cena netto. Budżet Klienta: Do negocjacji.",
+        "ctaText": "Zamów Grafiki dla WPSHU",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Zlecenia",
+    "sectionSubtitle": "Przedstawiamy przejrzysty plan działania dla projektu grafik remarketingowych dla WPSHU s.c. Przewidywany łączny czas realizacji: **do 5 dni roboczych** od akceptacji oferty i dostarczenia niezbędnych materiałów. Oferta ważna 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Potwierdzenie i Materiały (Dzień 1)",
+        "duration": "1 dzień roboczy",
+        "description": "Akceptacja oferty przez WPSHU s.c., przekazanie szczegółowej specyfikacji (załącznik), logotypów, ewentualnych materiałów źródłowych i wytycznych."
+      },
+      {
+        "phase": "Faza 2: Projektowanie i Feedback (Dni 2-4)",
+        "duration": "2-3 dni robocze",
+        "description": "Tworzenie projektów graficznych. Prezentacja wstępnych propozycji WPSHU s.c. i iteracje na podstawie informacji zwrotnej (do 2 rund poprawek)."
+      },
+      {
+        "phase": "Faza 3: Finalizacja i Dostawa (Dzień 5)",
+        "duration": "1 dzień roboczy",
+        "description": "Wprowadzenie ostatecznych korekt, przygotowanie finalnych plików graficznych w wymaganych formatach i przekazanie ich Klientowi."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Zainteresowani <span class=\"text-cyan-400\">Współpracą</span> przy Grafikach dla WPSHU s.c.?",
+    "sectionSubtitle": "Jesteśmy gotowi stworzyć dla Państwa skuteczne grafiki remarketingowe. Prosimy o kontakt w celu omówienia szczegółów zlecenia i rozpoczęcia współpracy.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie dla WPSHU",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 950,
+  "timelineDays": 7
+}

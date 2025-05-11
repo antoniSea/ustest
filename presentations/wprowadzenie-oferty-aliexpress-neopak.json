@@ -1,0 +1,279 @@
+{
+  "useme_id": 115231,
+  "employer_email": "zdziarski.szymon@gmail.com",
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Wdrożenia Oferty na AliExpress dla Neopak | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/000/096800_1cHmTdO.png",
+    "clientLogoAlt": "Logo neopak",
+    "titlePart1": "Propozycja Wdrożenia na AliExpress dla",
+    "titlePart2ClientName": "Neopak",
+    "subtitle": "Kompleksowe wprowadzenie oferty produktowej firmy Neopak na platformę sprzedażową AliExpress, obejmujące założenie konta, wystawienie produktów, optymalizację SEO oraz wsparcie posprzedażowe.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące wprowadzenia oferty na AliExpress, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów biznesowych.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Skuteczne Wejście na AliExpress</span>",
+      "description": "Głównym celem jest wprowadzenie oferty produktowej Neopak na platformę AliExpress, obejmujące założenie i optymalizację konta, profesjonalne wystawienie produktów, optymalizację SEO oraz wsparcie w sprzedaży i analizie efektywności, a także obsługę sprzedaży.",
+      "points": [
+        "Wprowadzenie oferty Neopak na platformę AliExpress.",
+        "Założenie i optymalizacja konta sprzedażowego.",
+        "Wystawienie produktów zgodnie z wymogami platformy (opisy, zdjęcia, kategorie).",
+        "Optymalizacja ofert pod kątem SEO i zwiększenia widoczności.",
+        "Wsparcie w realizacji sprzedaży i analiza efektywności działań.",
+        "Zapewnienie obsługi sprzedaży.",
+        "Budżet: Do negocjacji."
+      ],
+      "diagramPlaceholderText": "Strategia wejścia Neopak na AliExpress"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowe Wdrożenie na AliExpress",
+      "description": "Soft Synergy zrealizuje dla Państwa pełne wdrożenie na AliExpress, obejmujące wszystkie kluczowe etapy od założenia konta po wsparcie posprzedażowe. Nasza metodologia opiera się na dokładnej analizie Państwa potrzeb oraz specyfiki oferowanych produktów, a następnie efektywnym wdrożeniu i ciągłej optymalizacji. Proponujemy realizację projektu w terminie 3 tygodni za kwotę 4500 zł netto.",
+      "points": [
+        "Założenie i pełna optymalizacja konta sprzedażowego Neopak na AliExpress.",
+        "Profesjonalne przygotowanie i wystawienie produktów (opisy, zdjęcia, kategorie).",
+        "Zaawansowana optymalizacja SEO ofert w celu maksymalizacji widoczności.",
+        "Bieżące wsparcie w realizacji sprzedaży i analiza efektywności działań.",
+        "Realizacja projektu w ciągu 3 tygodni.",
+        "Całkowity koszt usługi: 4500 zł netto."
+      ],
+      "diagramPlaceholderText": "Proces wdrożenia na AliExpress przez Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Usługi</span> Wdrożenia",
+    "sectionSubtitle": "Przedstawiamy składowe naszej propozycji, które zapewnią skuteczne i profesjonalne zaistnienie Państwa oferty na platformie AliExpress.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527c.47-.336 1.06-.176 1.31.316l.788 1.528c.25.492.105 1.098-.316 1.31l-.737.527c-.35.25-.542.686-.542 1.11v1.093c0 .424.192.856.542 1.11l.737.527c.422.212.567.818.316 1.31l-.788 1.528c-.25.492-.84.652-1.31.316l-.737-.527c-.35-.25-.806-.272-1.205-.108-.396.166-.71.506-.78.93l-.149.894c-.09.542-.56.94-1.11.94h-1.093c-.55 0-1.02-.398-1.11-.94l-.149-.894c-.07-.424-.384-.764-.78-.93-.398-.164-.855-.142-1.205-.108l-.737.527c-.47.336-1.06.176-1.31.316l-.788-1.528c-.25-.492-.105-1.098.316-1.31l.737.527c.35-.25.542-.686-.542-1.11v-1.093c0-.424-.192-.856-.542-1.11l-.737-.527c-.422-.212-.567-.818-.316-1.31l.788-1.528c.25-.492.84-.652 1.31.316l.737-.527c.35.25.806-.272 1.205-.108.396-.166.71.506.78.93l.149.894zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z\" />",
+        "title": "Założenie i Optymalizacja Konta Sprzedażowego",
+        "description": "Profesjonalne utworzenie oraz konfiguracja konta sprzedażowego Neopak na AliExpress, zgodnie z najlepszymi praktykami i wymogami platformy. Zapewniamy optymalizację profilu pod kątem wiarygodności i widoczności.",
+        "mockupText": "Panel zarządzania kontem AliExpress"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Wystawienie Produktów i Optymalizacja Ofert",
+        "description": "Przygotowanie atrakcyjnych i zgodnych z wymogami AliExpress opisów produktów, dobór odpowiednich zdjęć i kategorii. Optymalizacja każdej oferty pod kątem SEO platformy w celu zwiększenia jej zasięgu.",
+        "mockupText": "Przykładowa karta produktu na AliExpress"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 13.5l3-3m0 0l3 3m-3-3v10.5m6-7.5l3-3m0 0l3 3m-3-3v7.5m-9-3h1.5m1.5 0H9m3.75 0h1.5m1.5 0H18\" />",
+        "title": "Wsparcie w Realizacji Sprzedaży i Analiza Efektywności",
+        "description": "Bieżące wsparcie w obsłudze zamówień, komunikacji z klientami oraz regularna analiza efektywności prowadzonych działań. Dostarczanie raportów i rekomendacji optymalizacyjnych.",
+        "mockupText": "Raport efektywności sprzedaży AliExpress"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Wdrożeniowych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap wprowadzenia Państwa oferty na AliExpress, zapewniając transparentność procesu dla firmy Neopak.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza, Planowanie i Konfiguracja Konta (Tydzień 1)",
+        "description": "Rejestracja i konfiguracja konta sprzedażowego Neopak na AliExpress. Analiza asortymentu, opracowanie strategii listowania produktów, przygotowanie materiałów (opisy, zdjęcia) zgodnie z wytycznymi platformy i specyfiką produktów Neopak.",
+        "features": [
+          "Rejestracja i weryfikacja konta sprzedażowego na AliExpress.",
+          "Konfiguracja ustawień sklepu, płatności i wysyłki.",
+          "Analiza produktów Neopak pod kątem potencjału na AliExpress i wymagań platformy.",
+          "Opracowanie strategii SEO i przygotowanie szablonów opisów produktów."
+        ]
+      },
+      {
+        "title": "Etap 2: Wystawianie Produktów i Optymalizacja SEO (Tydzień 2)",
+        "description": "Masowe lub indywidualne wystawianie produktów na platformie AliExpress. Optymalizacja tytułów, opisów, słów kluczowych i atrybutów produktów pod kątem algorytmów wyszukiwania AliExpress i najlepszych praktyk SEO.",
+        "features": [
+          "Wystawienie kluczowego asortymentu produktów Neopak.",
+          "Tworzenie angażujących opisów i dobór odpowiednich zdjęć.",
+          "Implementacja strategii SEO dla każdej oferty produktowej (słowa kluczowe, atrybuty).",
+          "Kategoryzacja produktów i konfiguracja struktury sklepu na platformie."
+        ]
+      },
+      {
+        "title": "Etap 3: Finalna Optymalizacja, Testy i Wsparcie Startowe (Tydzień 3)",
+        "description": "Ostateczne sprawdzenie i optymalizacja wszystkich ofert. Przeprowadzenie testów funkcjonalności. Uruchomienie sprzedaży oraz początkowe wsparcie w obsłudze pierwszych zamówień i zapytań. Analiza pierwszych wyników i ewentualne korekty.",
+        "features": [
+          "Weryfikacja poprawności wszystkich listowanych produktów i ustawień konta.",
+          "Testowanie procesu zakupowego z perspektywy klienta.",
+          "Wsparcie w pierwszych dniach po uruchomieniu sprzedaży, w tym obsługa zapytań.",
+          "Przekazanie wytycznych do samodzielnego zarządzania kontem i analizy efektywności."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Ekspansję na AliExpress</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę kompleksowego wdrożenia Państwa oferty na platformę AliExpress. Nasza propozycja jest konkurencyjna i dostosowana do Państwa potrzeb.",
+    "tabs": [
+      {
+        "id": "aliexpress_implementation",
+        "name": "Wdrożenie na AliExpress"
+      }
+    ],
+    "packages": [
+      {
+        "id": "aliexpress_implementation",
+        "name": "Kompleksowe Wdrożenie Oferty Neopak na AliExpress",
+        "description": "Pełne przygotowanie i uruchomienie sprzedaży produktów Neopak na platformie AliExpress, obejmujące założenie konta, wystawienie produktów, optymalizację SEO oraz wsparcie w sprzedaży i jej obsłudze.",
+        "features": [
+          {
+            "text": "Założenie i optymalizacja konta sprzedażowego",
+            "included": true
+          },
+          {
+            "text": "Wystawienie produktów (opisy, zdjęcia, kategorie)",
+            "included": true
+          },
+          {
+            "text": "Optymalizacja ofert pod kątem SEO AliExpress",
+            "included": true
+          },
+          {
+            "text": "Wsparcie w realizacji sprzedaży i analiza efektywności",
+            "included": true
+          },
+          {
+            "text": "Obsługa sprzedaży i komunikacja z klientami",
+            "included": true
+          },
+          {
+            "text": "Dedykowany menedżer projektu",
+            "included": true
+          },
+          {
+            "text": "Realizacja w 3 tygodnie",
+            "included": true
+          }
+        ],
+        "price": "4500 zł netto",
+        "priceNote": "Całkowity koszt usługi. Budżet Klienta: Do negocjacji.",
+        "ctaText": "Rozpocznij Ekspansję z AliExpress",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Wdrożenia",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu wdrożenia oferty Neopak na AliExpress. Przewidywany czas realizacji projektu: **3 tygodnie** od momentu rozpoczęcia współpracy. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Tydzień 1: Analiza, Planowanie i Konfiguracja Konta",
+        "duration": "ok. 5 dni roboczych",
+        "description": "Potwierdzenie zlecenia, szczegółowa analiza potrzeb Neopak, zebranie materiałów produktowych. Rejestracja, weryfikacja i pełna konfiguracja konta sprzedażowego na AliExpress. Opracowanie strategii produktowej i SEO."
+      },
+      {
+        "phase": "Tydzień 2: Wystawianie Produktów i Optymalizacja SEO",
+        "duration": "ok. 5 dni roboczych",
+        "description": "Intensywne wystawianie produktów na platformę. Tworzenie atrakcyjnych, zoptymalizowanych pod SEO ofert (tytuły, opisy, słowa kluczowe, zdjęcia). Kategoryzacja produktów i budowa struktury sklepu."
+      },
+      {
+        "phase": "Tydzień 3: Finalizacja, Testy i Wsparcie Początkowe",
+        "duration": "ok. 5 dni roboczych",
+        "description": "Ostateczna weryfikacja i optymalizacja wszystkich ofert. Przeprowadzenie testów funkcjonalnych. Wsparcie w pierwszych dniach sprzedaży, monitoring, analiza wyników i ewentualne korekty. Przekazanie dostępu i kluczowych informacji."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy we wdrażaniu rozwiązań e-commerce.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy pomogło nam skutecznie wejść na nowy rynek e-commerce. Ich wsparcie w zakresie marketplace'ów było nieocenione. Polecam!",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "Dyrektor Sprzedaży, TechGlobal"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EN",
+        "imageAlt": "Ewa Nowak",
+        "quote": "Dzięki Soft Synergy nasza obecność na platformach sprzedażowych znacząco wzrosła. Profesjonalne podejście i terminowość.",
+        "authorName": "Ewa Nowak",
+        "authorTitle": "Właścicielka, ModaOnline"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PZ",
+        "imageAlt": "Piotr Zając",
+        "quote": "Współpraca z Soft Synergy przy wdrożeniu na marketplace przebiegła bardzo sprawnie. Zespół wykazał się dużą wiedzą i zaangażowaniem.",
+        "authorName": "Piotr Zając",
+        "authorTitle": "Manager E-commerce, DomiZabawki"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci e-Commerce:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechGlobal",
+        "alt": "Logo Klienta TechGlobal"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ModaOnline",
+        "alt": "Logo Klienta ModaOnline"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=DomiZabawki",
+        "alt": "Logo Klienta DomiZabawki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=eMarketPro",
+        "alt": "Logo Klienta eMarketPro"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GlobalSell",
+        "alt": "Logo Klienta GlobalSell"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Sukces na AliExpress</span> z Neopak?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić szczegóły wdrożenia Państwa oferty na AliExpress i rozpocząć efektywną sprzedaż na tym globalnym rynku. Jesteśmy gotowi odpowiedzieć na wszystkie pytania.",
+    "ctaButtonText": "Porozmawiajmy o Wdrożeniu dla Neopak",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 4500,
+  "timelineDays": 21
+}

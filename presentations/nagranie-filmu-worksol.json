@@ -1,0 +1,296 @@
+{
+  "useme_id": 115236,
+  "employer_email": "msolecki@worksol.pl",
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Realizacji Filmu Promocyjnego dla Worksol Group | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/061/097961_6uvWLDe.png",
+    "clientLogoAlt": "Logo WORKSOL",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Worksol Group",
+    "subtitle": "Propozycja kompleksowej produkcji filmu promocyjnego dla Worksol Group. Celem jest ukazanie pozytywnego wkładu pracowników z zagranicy w polską gospodarkę oraz zmiana społecznych nastrojów poprzez refleksyjne przedstawienie ich codziennej pracy i wypowiedzi.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące produkcji filmu promocyjnego, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Film Promocyjny o Pozytywnym Wpływie Cudzoziemców</span>",
+      "description": "Głównym celem jest stworzenie filmu promującego zarówno Worksol Group, jak i ideę zatrudniania cudzoziemców w Polsce. Film ma za zadanie pokazać ich znaczący, pozytywny wpływ na gospodarkę kraju, a przez to zmienić często negatywne nastawienie społeczeństwa. Kluczowe jest wywołanie refleksji u odbiorcy.",
+      "points": [
+        "Nagranie filmu promującego Worksol Group i zatrudnianie cudzoziemców.",
+        "Ukazanie pozytywnego wpływu cudzoziemców na polską gospodarkę.",
+        "Scenariusz: pracownicy z różnych krajów opowiadają o swojej pracy (np. spawanie wagonów, produkcja mebli).",
+        "Ujęcia podczas wykonywania pracy, następnie pracownik odkłada narzędzia i mówi swoją kwestię.",
+        "Nastrój filmu: refleksyjny, zmieniający negatywne nastawienie na pozytywne.",
+        "Podsumowanie na końcu filmu podkreślające wkład pracowników (płacenie składek i podatków).",
+        "Geografia nagrań: Kępno (woj. Wielkopolskie), Poznań, Opole, Jelcz-Laskowice.",
+        "Wsparcie logistyczne ze strony Worksol Group (dostęp do obiektów, osoba do kontaktu).",
+        "Ustalony przez Państwa budżet na projekt: 7000,00 PLN."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji filmu Worksol Group"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Produkcja Filmu Promocyjnego",
+      "description": "Proponujemy pełną realizację filmu – od nagrań w czterech wskazanych lokalizacjach (Kępno (woj. Wielkopolskie), Poznań, Opole, Jelcz-Laskowice) po profesjonalny montaż. Stworzymy poruszający i refleksyjny materiał wideo, zgodny z Państwa wizją i scenariuszem, w kwocie 6800,00 PLN netto. Przewidywany czas realizacji to 15-18 dni roboczych.",
+      "points": [
+        "Pełna realizacja filmu: preprodukcja, nagranie i montaż.",
+        "Szczegółowe planowanie ujęć we współpracy z zespołem Worksol Group.",
+        "Sprawna realizacja nagrań w 4 ustalonych lokalizacjach.",
+        "Profesjonalny montaż materiału w celu stworzenia poruszającego filmu o refleksyjnym charakterze.",
+        "Proponowana cena: 6800,00 PLN netto.",
+        "Przewidywany czas realizacji: 15-18 dni roboczych.",
+        "Specjalizacja Soft Synergy w tworzeniu angażujących treści wideo, które skutecznie komunikują wartości klientów."
+      ],
+      "diagramPlaceholderText": "Przykładowy kadr z filmu"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Produkcji</span> Filmu",
+    "sectionSubtitle": "Przedstawiamy składowe projektu, które zapewnią wysoką jakość i skuteczność Państwa filmu promocyjnego dla Worksol Group.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9A2.25 2.25 0 004.5 18.75z\" />",
+        "title": "Profesjonalne Nagrania w Lokalizacjach Klienta",
+        "description": "Realizacja nagrań wideo w wysokiej jakości w wskazanych przez Państwa lokalizacjach (Kępno (woj. Wielkopolskie), Poznań, Opole, Jelcz-Laskowice). Ujęcia pracowników podczas wykonywania pracy (3-4 sekundy), z dbałością o autentyczność i dynamiczny obraz.",
+        "mockupText": "Kadr z nagrań w fabryce"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-2.138a1.125 1.125 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z\" />",
+        "title": "Realizacja Scenariusza i Reżyseria Wypowiedzi",
+        "description": "Współpraca przy realizacji scenariusza, gdzie każdy cudzoziemiec mówi jedną frazę o swojej pracy. Reżyseria wypowiedzi, aby były naturalne i oddawały zamierzony, refleksyjny przekaz, zmieniający negatywne nastawienie na pozytywne.",
+        "mockupText": "Pracownik podczas wypowiedzi"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.655-1.873m3.86.764c.875.61 1.688 1.284 2.437 1.987a3 3 0 005.78-1.128 2.25 2.25 0 012.4-2.245 4.5 4.5 0 00-8.4 2.245c0 .399.078.78.22 1.128zm0 0l3.242 3.242a3 3 0 004.242 0l1.823-1.823a2.25 2.25 0 000-3.182l-4.455-4.455a3 3 0 00-4.242 0L6.31 15.713a3 3 0 000 4.242h2.121H9.53z\" />",
+        "title": "Dynamiczny Montaż i Profesjonalna Postprodukcja",
+        "description": "Montaż nagranego materiału wideo, dodanie podsumowania, odpowiedniej muzyki budującej nastrój, korekcja kolorów. Przygotowanie finalnego filmu, który skutecznie przekaże Państwa przesłanie i pozytywnie wpłynie na odbiór społeczeństwa.",
+        "mockupText": "Finalna scena filmu z podsumowaniem"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Produkcyjnych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia Państwa filmu promocyjnego dla Worksol Group, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Preprodukcja – Planowanie i Logistyka",
+        "description": "Szczegółowe omówienie scenariusza i koncepcji filmu, ustalenie harmonogramu nagrań w poszczególnych lokalizacjach (Kępno (woj. Wielkopolskie), Poznań, Opole, Jelcz-Laskowice). Koordynacja z osobą kontaktową z Worksol Group w celu zapewnienia dostępu do obiektów i pracowników.",
+        "features": [
+          "Analiza scenariusza i celów komunikacyjnych filmu.",
+          "Ustalenie listy pracowników do nagrania, ich kwestii oraz produktów/usług, które mają być pokazane.",
+          "Planowanie logistyczne dni zdjęciowych w 4 lokalizacjach.",
+          "Przygotowanie sprzętu nagraniowego (kamery, dźwięk, oświetlenie) dostosowanego do warunków."
+        ]
+      },
+      {
+        "title": "Etap 2: Produkcja – Realizacja Nagrań",
+        "description": "Przeprowadzenie dni zdjęciowych we wskazanych lokalizacjach. Nagrywanie ujęć pracowników wykonujących swoje obowiązki przez 3-4 sekundy, a następnie ich wypowiedzi zgodnie ze scenariuszem. Dbałość o wysoką jakość materiału audio-wizualnego i autentyczność przekazu.",
+        "features": [
+          "Realizacja nagrań wideo w Kępnie (woj. Wielkopolskie), Poznaniu, Opolu i Jelczu-Laskowicach.",
+          "Filmowanie pracowników podczas pracy (ujęcia dynamiczne, 'b-roll').",
+          "Nagrywanie wypowiedzi pracowników (ujęcia zsynchronizowane z dźwiękiem).",
+          "Rejestracja dźwięku wysokiej jakości, minimalizująca hałas otoczenia."
+        ]
+      },
+      {
+        "title": "Etap 3: Postprodukcja – Montaż i Finalizacja",
+        "description": "Montaż nagranego materiału, selekcja najlepszych ujęć, synchronizacja audio i wideo. Korekcja kolorów, mastering dźwięku, dodanie odpowiedniej muzyki i ewentualnych grafik/napisów. Stworzenie końcowego podsumowania. Przygotowanie finalnej wersji filmu do Państwa akceptacji i dostarczenie w ustalonym formacie.",
+        "features": [
+          "Montaż materiału wideo i audio zgodnie ze scenariuszem.",
+          "Korekcja barwna (color grading) i dźwiękowa (miks, mastering).",
+          "Dodanie licencjonowanej muzyki tła budującej refleksyjny nastrój.",
+          "Implementacja podsumowania i ewentualnych napisów końcowych.",
+          "Dostarczenie gotowego filmu w formacie cyfrowym (np. MP4, Full HD/4K)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Film Promocyjny</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę produkcji filmu dla Worksol Group. Nasza propozycja jest konkurencyjna i mieści się w Państwa oczekiwaniach.",
+    "tabs": [
+      {
+        "id": "video_production_offer",
+        "name": "Produkcja Filmu Promocyjnego"
+      }
+    ],
+    "packages": [
+      {
+        "id": "video_production_offer",
+        "name": "Film Promocyjny dla Worksol Group",
+        "description": "Kompleksowa produkcja filmu promocyjnego ukazującego pozytywny wkład cudzoziemców w polską gospodarkę, z nagraniami w 4 lokalizacjach (Kępno (woj. Wielkopolskie), Poznań, Opole, Jelcz-Laskowice) i profesjonalnym montażem.",
+        "features": [
+          {
+            "text": "Realizacja nagrań w 4 lokalizacjach (Kępno (woj. Wielkopolskie), Poznań, Opole, Jelcz-Laskowice)",
+            "included": true
+          },
+          {
+            "text": "Scenariusz oparty na wypowiedziach pracowników i podsumowaniu",
+            "included": true
+          },
+          {
+            "text": "Profesjonalny sprzęt nagraniowy (kamera, dźwięk, oświetlenie)",
+            "included": true
+          },
+          {
+            "text": "Montaż filmu z korekcją barwną i dźwiękową",
+            "included": true
+          },
+          {
+            "text": "Dodanie licencjonowanej muzyki i ewentualnych napisów",
+            "included": true
+          },
+          {
+            "text": "Refleksyjny nastrój filmu zgodny z briefem",
+            "included": true
+          },
+          {
+            "text": "Do 2 rund poprawek montażowych w cenie",
+            "included": true
+          },
+          {
+            "text": "Dostarczenie finalnego filmu w formacie cyfrowym HD/4K",
+            "included": true
+          },
+          {
+            "text": "Pełne wsparcie i zarządzanie projektem",
+            "included": true
+          }
+        ],
+        "price": "6800,00 PLN netto",
+        "priceNote": "Cena netto. Budżet Klienta: 7000,00 PLN.",
+        "ctaText": "Zamów Produkcję Filmu",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Filmu",
+    "sectionSubtitle": "Przejrzysty plan działania dla produkcji filmu dla Worksol Group. Przewidywany czas realizacji: **15-18 dni roboczych** od momentu akceptacji oferty i ustalenia szczegółów logistycznych związanych z dostępem do wskazanych lokalizacji. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Akceptacja Oferty, Planowanie Szczegółowe i Logistyka (Dni 1-3)",
+        "duration": "3 dni robocze",
+        "description": "Potwierdzenie zlecenia, finalizacja szczegółów scenariusza, ustalenie dokładnego harmonogramu nagrań w Kępnie (woj. Wielkopolskie), Poznaniu, Opolu i Jelczu-Laskowicach. Koordynacja z przedstawicielem Worksol Group."
+      },
+      {
+        "phase": "Faza 2: Realizacja Nagrań w Terenie (Dni 4-9)",
+        "duration": "4-6 dni roboczych (rozłożone w czasie, w zależności od logistyki i dostępności lokalizacji)",
+        "description": "Przeprowadzenie dni zdjęciowych w ustalonych lokalizacjach. Nagrywanie materiału wideo i audio zgodnie z planem, uwzględniając specyfikę pracy i wypowiedzi pracowników."
+      },
+      {
+        "phase": "Faza 3: Montaż Wstępny i Pierwsza Wersja Filmu (Dni 10-14)",
+        "duration": "4-5 dni roboczych",
+        "description": "Selekcja najlepszego materiału, montaż pierwszej wersji roboczej filmu, dobór muzyki. Przesłanie wersji do wglądu dla Worksol Group i zebranie uwag."
+      },
+      {
+        "phase": "Faza 4: Wprowadzenie Poprawek i Finalizacja (Dni 15-18)",
+        "duration": "2-3 dni robocze",
+        "description": "Wprowadzenie ewentualnych korekt i modyfikacji zgłoszonych przez Worksol Group (w ramach ustalonych rund poprawek). Finalna korekcja barwna, mastering dźwięku. Przygotowanie i dostarczenie ostatecznej wersji filmu."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały wideo, które znacząco podniosły zaangażowanie naszych odbiorców. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Filmy od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy przy produkcji filmowej to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi wideo.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Film</span> dla Worksol Group?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć film, który skutecznie przekaże Państwa wartości, pozytywnie wpłynie na wizerunek i pomoże zmienić społeczne nastawienie. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie Filmu",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 6800,
+  "timelineDays": 21
+}

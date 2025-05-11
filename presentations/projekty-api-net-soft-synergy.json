@@ -1,0 +1,280 @@
+{
+  "useme_id": 115489,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Współpracy .NET API dla Soft Synergy | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/CCCCCC/0A0F1F?Text=Soft+Synergy",
+    "clientLogoAlt": "Logo Klienta Soft Synergy",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "Soft Synergy",
+    "subtitle": "Poszukujemy Specjalisty .NET do długofalowej współpracy przy projektach API, z wykorzystaniem nowoczesnych technologii. Oferujemy stawkę 100 zł netto za godzinę.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span> Rekrutacyjnych",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapotrzebowanie na Specjalistę .NET, aby zaproponować optymalne warunki współpracy.",
+    "problem": {
+      "title": "Cel Główny: <span class=\"text-red-400\">Pozyskanie Specjalisty .NET API</span>",
+      "description": "Głównym celem jest nawiązanie długofalowej współpracy z doświadczonym Specjalistą .NET, który wesprze Państwa zespół Soft Synergy w rozwoju _fascynujących projektów API_, pracując z *nowoczesnymi technologiami*.",
+      "points": [
+        "Poszukiwanie specjalisty .NET do projektów API.",
+        "Oferta długofalowej współpracy przy ciekawych projektach.",
+        "Wykorzystanie nowoczesnych technologii.",
+        "Ustalony budżet: 100 zł netto za godzinę.",
+        "Wymagane portfolio lub krótki opis doświadczenia od kandydatów."
+      ],
+      "diagramPlaceholderText": "Profil Kandydata .NET API"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Warunki Współpracy</span>",
+      "description": "Proponujemy nawiązanie współpracy ze Specjalistą .NET na zasadach umowy B2B, z wynagrodzeniem **100 zł netto za godzinę**. Specjalista będzie zaangażowany w projekty API, pracując w metodykach zwinnych (Agile) i wykorzystując nowoczesne technologie w ramach zespołu Soft Synergy.",
+      "points": [
+        "Długofalowa współpraca B2B ze Specjalistą .NET.",
+        "Stawka: 100 zł netto za godzinę.",
+        "Praca przy fascynujących projektach API z nowoczesnymi technologiami.",
+        "Praca w metodykach zwinnych (Agile) z naciskiem na otwartą komunikację.",
+        "Możliwość rozwoju zawodowego w dynamicznym i wspierającym środowisku Soft Synergy."
+      ],
+      "diagramPlaceholderText": "Model Współpracy B2B"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Aspekty <span class=\"text-cyan-400\">Współpracy</span> z .NET Specjalistą",
+    "sectionSubtitle": "Przedstawiamy główne korzyści i charakterystykę pracy Specjalisty .NET w ramach Państwa projektów API w Soft Synergy.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Rozwój Innowacyjnych Projektów API",
+        "description": "Specjalista .NET będzie kluczową postacią w projektowaniu, implementacji oraz utrzymaniu wydajnych i skalowalnych interfejsów API, wykorzystując najlepsze praktyki i *nowoczesne technologie*.",
+        "mockupText": "Architektura Systemów API"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Praca w Zwinnych Metodykach (Agile)",
+        "description": "W Soft Synergy pracujemy w metodykach zwinnych (Agile), co zapewnia transparentność i elastyczność procesów. Kładziemy duży nacisk na otwartą komunikację i realny wpływ każdego członka zespołu na finalny produkt.",
+        "mockupText": "Procesy Agile w Soft Synergy"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Rozwój Zawodowy i Wsparcie Zespołu",
+        "description": "Dołączając do Soft Synergy, zyskują Państwo szansę na rozwój zawodowy i pracę w zespole prawdziwych pasjonatów. Oferujemy możliwość pracy przy _fascynujących projektach API_ i rozwoju w dynamicznym środowisku.",
+        "mockupText": "Ścieżki Rozwoju w Soft Synergy"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Odpowiedzialności",
+    "sectionSubtitle": "Precyzujemy kluczowe zadania i obszary, w których Specjalista .NET będzie wspierał Państwa ambitne projekty IT.",
+    "modules": [
+      {
+        "title": "Etap 1: Projektowanie i Rozwój Aplikacji API",
+        "description": "Tworzenie, rozwój i utrzymanie skalowalnych, bezpiecznych interfejsów API w technologii .NET. Implementacja nowych funkcjonalności i optymalizacja istniejących rozwiązań.",
+        "features": [
+          "Analiza wymagań biznesowych i technicznych dla projektów API.",
+          "Projektowanie architektury systemów opartych o .NET.",
+          "Implementacja logiki biznesowej oraz endpointów API (np. REST, gRPC).",
+          "Integracja z zewnętrznymi usługami i bazami danych."
+        ]
+      },
+      {
+        "title": "Etap 2: Zapewnienie Jakości i Utrzymanie",
+        "description": "Dbałość o wysoką jakość kodu poprzez testy automatyczne (jednostkowe, integracyjne). Monitorowanie działania aplikacji, diagnozowanie i rozwiązywanie problemów.",
+        "features": [
+          "Tworzenie i utrzymywanie testów jednostkowych i integracyjnych.",
+          "Diagnostyka, profilowanie i optymalizacja wydajności aplikacji.",
+          "Utrzymanie i refaktoryzacja istniejącego kodu zgodnie z najlepszymi praktykami.",
+          "Tworzenie i aktualizacja dokumentacji technicznej."
+        ]
+      },
+      {
+        "title": "Etap 3: Współpraca Zespołowa i Innowacje",
+        "description": "Aktywny udział w pracach zespołu deweloperskiego, praca w metodyce Agile (Scrum/Kanban). Dzielenie się wiedzą, uczestnictwo w code review oraz proponowanie innowacyjnych rozwiązań.",
+        "features": [
+          "Efektywna praca w zespole deweloperskim w metodyce Agile.",
+          "Aktywny udział w spotkaniach projektowych (planning, daily, review, retro).",
+          "Code review, mentoring i transfer wiedzy w zespole.",
+          "Badanie i wdrażanie nowych technologii i narzędzi .NET."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Warunki Finansowe <span class=\"text-cyan-400\">Współpracy</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną propozycję wynagrodzenia dla Specjalisty .NET, zgodną z Państwa oczekiwaniami budżetowymi.",
+    "tabs": [
+      {
+        "id": "dotnet_specialist_b2b",
+        "name": "Specjalista .NET (B2B)"
+      }
+    ],
+    "packages": [
+      {
+        "id": "dotnet_specialist_b2b",
+        "name": "Współpraca ze Specjalistą .NET (Projekty API)",
+        "description": "Długofalowa współpraca ze Specjalistą .NET przy realizacji ambitnych projektów IT, oparta na umowie B2B, z rozliczeniem godzinowym.",
+        "features": [
+          {
+            "text": "Atrakcyjna stawka godzinowa netto",
+            "included": true
+          },
+          {
+            "text": "Preferowana umowa B2B",
+            "included": true
+          },
+          {
+            "text": "Praca przy _fascynujących projektach API_",
+            "included": true
+          },
+          {
+            "text": "Wykorzystanie *nowoczesnych technologii* .NET",
+            "included": true
+          },
+          {
+            "text": "Praca w metodykach zwinnych (Agile)",
+            "included": true
+          },
+          {
+            "text": "Możliwość rozwoju zawodowego",
+            "included": true
+          },
+          {
+            "text": "Długofalowa perspektywa współpracy",
+            "included": true
+          }
+        ],
+        "price": "100 zł netto / godzina",
+        "priceNote": "Stawka zgodna z Państwa budżetem. Preferowana forma współpracy: B2B.",
+        "ctaText": "Zainteresuj Kandydata Ofertą",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Nawiązania Współpracy</span>",
+    "sectionSubtitle": "Przedstawiamy typowy proces rekrutacji i wdrożenia Specjalisty .NET do Państwa zespołu w Soft Synergy. Naszym celem jest jak najszybsze rozpoczęcie efektywnej współpracy.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Publikacja Oferty i Zbieranie Aplikacji (1-2 Tygodnie)",
+        "duration": "1-2 tygodnie",
+        "description": "Przygotowanie i dystrybucja ogłoszenia rekrutacyjnego. Aktywne poszukiwanie kandydatów (sourcing) oraz przyjmowanie aplikacji (CV, portfolio, opisy doświadczenia)."
+      },
+      {
+        "phase": "Faza 2: Selekcja i Rozmowy Kwalifikacyjne (1 Tydzień)",
+        "duration": "1 tydzień",
+        "description": "Weryfikacja nadesłanych dokumentów, selekcja kandydatów spełniających kryteria. Przeprowadzenie rozmów technicznych i spotkań z wybranymi osobami w celu oceny kompetencji i dopasowania."
+      },
+      {
+        "phase": "Faza 3: Wybór Kandydata i Formalności (1 Tydzień)",
+        "duration": "1 tydzień",
+        "description": "Podjęcie decyzji o wyborze najlepszego Specjalisty .NET. Przedstawienie oferty współpracy, omówienie warunków umowy (B2B) i jej podpisanie. Przygotowanie do onboardingu."
+      },
+      {
+        "phase": "Faza 4: Onboarding i Rozpoczęcie Współpracy (Od 4. Tygodnia)",
+        "duration": "Ciągły",
+        "description": "Wdrożenie nowego członka zespołu w struktury Soft Synergy, zapoznanie z projektami, narzędziami i kulturą organizacyjną. Rozpoczęcie długofalowej współpracy przy projektach API."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Partnerzy</span> i <span class=\"text-cyan-400\">Specjaliści</span>",
+    "sectionSubtitle": "Nasze podejście do współpracy i realizowane projekty IT przyciągają najlepszych specjalistów i budują długoterminowe relacje z klientami.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy to partner, który rozumie potrzeby technologiczne i biznesowe. Współpraca przy projektach .NET przebiegała wzorowo, a zespół wykazał się ogromnym profesjonalizmem.",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "IT Manager, TechSolutions Ltd."
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Jako specjalista .NET, cenię sobie pracę w Soft Synergy za ciekawe projekty, nowoczesne technologie i świetną atmosferę. To miejsce, gdzie można się rozwijać.",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Senior .NET Developer"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Realizacja projektów API z Soft Synergy to gwarancja jakości i terminowości. Ich eksperci .NET dostarczyli rozwiązania, które przerosły nasze oczekiwania.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Product Owner, InnovateApp Corp."
+      }
+    ],
+    "clientsIntro": "Wybrani Partnerzy Technologiczni i Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechSol",
+        "alt": "Logo Klienta TechSolutions Ltd."
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovateApp",
+        "alt": "Logo Klienta InnovateApp Corp."
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GlobalSys",
+        "alt": "Logo Klienta Global Systems"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=FinTechX",
+        "alt": "Logo Klienta FinTechX"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProDevInc",
+        "alt": "Logo Klienta ProDev Inc."
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wzmocnienie Zespołu</span> .NET?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić szczegóły współpracy i pozyskać doświadczonego Specjalistę .NET do Państwa projektów API. Antoni Seba, Project Manager, chętnie odpowie na wszelkie pytania.",
+    "ctaButtonText": "Porozmawiajmy o Współpracy .NET",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Wirtualna 10, 02-487 Warszawa, Polska"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 100,
+  "timelineDays": 7
+}

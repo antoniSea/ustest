@@ -1,0 +1,275 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Współpracy UX/UI dla KRML | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/044/252244_VrVX1tk.png",
+    "clientLogoAlt": "Logo KRML",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "KRML",
+    "subtitle": "Oferta dostarczenia dedykowanego projektanta UX/UI dla firmy KRML, specjalizującego się w Figmie i projektowaniu aplikacji webowych, desktopowych oraz mobilnych.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące wsparcia projektowego UX/UI, aby zaoferować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Współpracy: <span class=\"text-red-400\">Wsparcie Projektowe UX/UI</span>",
+      "description": "KRML, jako nowy software house działający przy aplikacjach webowych, desktopowych i mobilnych, poszukuje samodzielnego projektanta UX/UI. Kluczowe są biegłość w Figmie oraz ciekawe portfolio, natomiast doświadczenie komercyjne nie jest wymagane.",
+      "points": [
+        "Poszukiwanie samodzielnego projektanta UX/UI.",
+        "Wymagana biegłość w Figmie.",
+        "Praca przy aplikacjach webowych, desktopowych i mobilnych.",
+        "Ciekawe portfolio jako główny atut kandydata.",
+        "Budżet: Do negocjacji."
+      ],
+      "diagramPlaceholderText": "Profil idealnego projektanta UX/UI dla KRML"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Dedykowany Projektant UX/UI",
+      "description": "Soft Synergy pragnie zaoferować Państwu profesjonalne usługi naszego dedykowanego projektanta UX/UI. Zapewniamy specjalistę biegłego w Figmie, gotowego do samodzielnej pracy, który dostarczy kreatywne i funkcjonalne rozwiązania projektowe, opierając się na podejściu user-centered design oraz zwinnych praktykach.",
+      "points": [
+        "Dostęp do dedykowanego, samodzielnego projektanta UX/UI z Soft Synergy.",
+        "Specjalista biegły w Figmie z bogatym portfolio.",
+        "Elastyczna współpraca oparta o stawkę godzinową: 110 PLN netto + VAT / godzinę.",
+        "Gotowość do rozpoczęcia współpracy od zaraz.",
+        "Metodologia user-centered design i zwinne praktyki gwarantujące wysoką jakość."
+      ],
+      "diagramPlaceholderText": "Model współpracy z projektantem Soft Synergy"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Korzyści <span class=\"text-cyan-400\">Współpracy</span> z Nami",
+    "sectionSubtitle": "Nasza oferta zapewnia Państwu KRML dostęp do wysokiej klasy specjalisty UX/UI oraz elastyczność dopasowaną do potrzeb dynamicznie rozwijającego się software house'u.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z\" />",
+        "title": "Samodzielny Projektant UX/UI",
+        "description": "Nasz specjalista jest przygotowany do samodzielnego prowadzenia prac projektowych UX/UI, od analizy i koncepcji, przez tworzenie makiet, aż po finalne projekty w Figmie, zgodnie z Państwa wymaganiami.",
+        "mockupText": "Profil i kompetencje projektanta UX/UI"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75\" />",
+        "title": "Biegłość w Figmie i Nowoczesnych Narzędziach",
+        "description": "Gwarantujemy zaawansowaną znajomość Figmy oraz aktualnych trendów w projektowaniu interfejsów dla aplikacji webowych, desktopowych i mobilnych. Nasz projektant efektywnie wykorzysta narzędzia do tworzenia wysokiej jakości designu.",
+        "mockupText": "Demonstracja umiejętności w Figmie"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125V4.125C21 3.504 20.496 3 19.875 3H14.25M9 13.5h6M9 10.5h6M9 7.5h6\" />",
+        "title": "Fokus na Portfolio i Kreatywność",
+        "description": "Zgodnie z Państwa oczekiwaniami, stawiamy na kreatywność i jakość portfolio. Nasz projektant dostarczy innowacyjne, estetyczne i przede wszystkim funkcjonalne rozwiązania projektowe.",
+        "mockupText": "Przykładowe realizacje z portfolio"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Przykładowy <span class=\"text-cyan-400\">Zakres</span> Prac Projektanta UX/UI",
+    "sectionSubtitle": "Nasz dedykowany projektant może wesprzeć KRML w szerokim spektrum zadań projektowych, dostosowując się do Państwa aktualnych potrzeb i specyfiki projektów.",
+    "modules": [
+      {
+        "title": "Etap 1: Badania i Analiza UX (User Experience)",
+        "description": "Gromadzenie wymagań biznesowych i potrzeb użytkowników, analiza konkurencji, tworzenie person, map empatii oraz definiowanie architektury informacji i kluczowych przepływów użytkownika (user flows).",
+        "features": [
+          "Prowadzenie warsztatów projektowych i wywiadów z interesariuszami.",
+          "Realizacja badań z użytkownikami (wywiady, ankiety, testy).",
+          "Tworzenie dokumentacji UX (np. persony, user stories, user flows, IA).",
+          "Analiza danych i metryk w celu identyfikacji obszarów do usprawnienia."
+        ]
+      },
+      {
+        "title": "Etap 2: Projektowanie UI (User Interface) i Prototypowanie w Figmie",
+        "description": "Tworzenie makiet lo-fi i hi-fi (wireframes), projektowanie interfejsów graficznych (mockups) z dbałością o spójność wizualną i użyteczność. Budowanie interaktywnych prototypów w Figmie do prezentacji i testów.",
+        "features": [
+          "Projektowanie estetycznych i intuicyjnych interfejsów użytkownika.",
+          "Tworzenie i utrzymanie design systemów oraz bibliotek komponentów w Figmie.",
+          "Przygotowywanie interaktywnych prototypów odzwierciedlających finalny produkt.",
+          "Dostosowanie projektów do różnych platform (web, desktop, mobile)."
+        ]
+      },
+      {
+        "title": "Etap 3: Testowanie Użyteczności i Iteracje",
+        "description": "Planowanie i przeprowadzanie testów użyteczności z rzeczywistymi użytkownikami, zbieranie i analiza feedbacku, iteracyjne usprawnianie projektów. Ścisła współpraca z zespołem deweloperskim w celu zapewnienia jakości wdrożenia.",
+        "features": [
+          "Przygotowywanie scenariuszy i prowadzenie testów użyteczności.",
+          "Analiza wyników testów i formułowanie rekomendacji projektowych.",
+          "Iteracyjne doskonalenie projektów na podstawie danych i opinii.",
+          "Efektywny design handoff dla deweloperów, w tym specyfikacje i zasoby."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Elastyczna <span class=\"text-cyan-400\">Wycena</span> Współpracy",
+    "sectionSubtitle": "Proponujemy transparentny model rozliczeń godzinowych, który zapewnia Państwu KRML pełną kontrolę nad budżetem i zakresem prac projektowych.",
+    "tabs": [
+      {
+        "id": "dedicated_designer_offer",
+        "name": "Dedykowany Projektant UX/UI"
+      }
+    ],
+    "packages": [
+      {
+        "id": "dedicated_designer_offer",
+        "name": "Dedykowany Projektant UX/UI dla KRML",
+        "description": "Wsparcie projektowe UX/UI świadczone przez samodzielnego specjalistę Soft Synergy, biegłego w Figmie, gotowego do pracy przy aplikacjach webowych, desktopowych i mobilnych. Rozliczenie godzinowe.",
+        "features": [
+          {
+            "text": "Dostęp do samodzielnego projektanta UX/UI",
+            "included": true
+          },
+          {
+            "text": "Biegła znajomość Figma i narzędzi projektowych",
+            "included": true
+          },
+          {
+            "text": "Doświadczenie w projektowaniu dla web, desktop, mobile",
+            "included": true
+          },
+          {
+            "text": "Kreatywne i funkcjonalne portfolio",
+            "included": true
+          },
+          {
+            "text": "Podejście user-centered design i zwinne metodyki",
+            "included": true
+          },
+          {
+            "text": "Elastyczne godziny współpracy, dopasowane do potrzeb",
+            "included": true
+          },
+          {
+            "text": "Gotowość do rozpoczęcia współpracy 'od zaraz'",
+            "included": true
+          }
+        ],
+        "price": "110 PLN netto + VAT / godz.",
+        "priceNote": "Stawka za godzinę pracy naszego dedykowanego projektanta. Nasza konkurencyjna stawka 110 PLN/h to około 60% standardowej ceny rynkowej.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Rozpoczęcia</span> Współpracy",
+    "sectionSubtitle": "Nasz proces wdrożenia projektanta do Państwa zespołu KRML jest szybki i efektywny. Jesteśmy gotowi rozpocząć współpracę **od zaraz**, a szczegółowy harmonogram dostosujemy do Państwa potrzeb. Czas wdrożenia to zwykle 1-3 dni robocze.",
+    "milestones": [
+      {
+        "phase": "Krok 1: Definicja Zakresu i Potrzeb (1-2 dni robocze)",
+        "duration": "1-2 dni robocze",
+        "description": "Spotkanie inicjujące (online lub osobiście), precyzyjne określenie oczekiwań, zakresu odpowiedzialności projektanta, zapoznanie z projektami i zespołem KRML. Ustalenie narzędzi, kanałów komunikacji i trybu raportowania."
+      },
+      {
+        "phase": "Krok 2: Integracja i Start Pracy Projektowej (Natychmiast po Kroku 1)",
+        "duration": "Ciągły",
+        "description": "Projektant rozpoczyna pracę nad pierwszymi zadaniami, aktywnie wdrażając się w bieżące projekty. Zapewniamy płynną integrację z Państwa zespołem i procesami."
+      },
+      {
+        "phase": "Krok 3: Regularna Współpraca i Ewaluacja (Cyklicznie)",
+        "duration": "Zgodnie z umową",
+        "description": "Ciągłe wsparcie projektowe, dostosowywanie się do ewoluujących potrzeb KRML. Regularne spotkania statusowe, feedback i możliwość skalowania zaangażowania projektanta w zależności od potrzeb."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Co Mówią Nasi <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Soft Synergy to partner godny zaufania w dostarczaniu specjalistów UX/UI.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy dostarczyło nam kluczowe wsparcie UX/UI, które znacząco poprawiło użyteczność naszych aplikacji. Pełen profesjonalizm, świetna komunikacja i projektant idealnie dopasowany do naszych potrzeb!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Product Manager, TechSolutions"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projektanci z Soft Synergy zawsze rozumieją nasze potrzeby i dostarczają design na najwyższym poziomie. Szybkie wdrożenie specjalisty i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "CEO, InnovateApp"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy w zakresie UX/UI to gwarancja jakości i elastyczności. Ich kreatywne podejście i umiejętność dopasowania do dynamiki projektu są nieocenione. Zdecydowanie polecam ich usługi!",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Head of Design, Digital Ventures"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechSol",
+        "alt": "Logo Klienta TechSolutions"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnoApp",
+        "alt": "Logo Klienta InnovateApp"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=DigitalV",
+        "alt": "Logo Klienta Digital Ventures"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=WebFlows",
+        "alt": "Logo Klienta WebFlows"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=AppCraft",
+        "alt": "Logo Klienta AppCraft"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wzmocnienie Zespołu</span> KRML?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak nasz dedykowany projektant UX/UI może wesprzeć Państwa w tworzeniu intuicyjnych i nowoczesnych aplikacji. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Współpracy",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Wirtualna 12, 02-002 Cybertown"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": "115485",
+  "price": 110,
+  "timelineDays": 7
+}

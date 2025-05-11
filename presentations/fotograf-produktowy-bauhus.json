@@ -1,0 +1,275 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Współpracy Fotograficznej dla Bauhus | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Oferta",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Cennik",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Proces",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/CCCCCC/0A0F1F?Text=Bauhus+Polska",
+    "clientLogoAlt": "Logo Klienta Bauhus Oddział Polska",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "Bauhus Oddział Polska",
+    "subtitle": "Propozycja stałej współpracy w zakresie profesjonalnej fotografii produktowej dla marek Bauhus, wspierającej wizualną stronę w mediach społecznościowych i na platformach marketplace.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Przeanalizowaliśmy Państwa zapotrzebowanie na kreatywnego fotografa produktowego do stałej współpracy, który pomoże w budowaniu wizualnej strony Państwa marek.",
+    "problem": {
+      "title": "Cel Współpracy: <span class=\"text-red-400\">Wysokiej Jakości Fotografia Produktowa</span>",
+      "description": "Głównym celem jest nawiązanie stałej współpracy z fotografem do tworzenia wysokiej jakości zdjęć produktów z branż: chemia budowlana, narzędzia budowlane, akcesoria dla psów, oraz majsterkowanie i wyposażenie warsztatów. Zdjęcia mają efektywnie prezentować produkty w mediach społecznościowych (Facebook, Instagram) oraz na platformach marketplace.",
+      "points": [
+        "Poszukiwany kreatywny i zaangażowany Fotograf z Torunia lub okolic.",
+        "Odpowiedzialność za tworzenie zdjęć dla branż: chemia budowlana, narzędzia budowlane, akcesoria dla psów, majsterkowanie/wyposażenie warsztatów.",
+        "Wymagania: doświadczenie w fotografii produktowej, kreatywność, dbałość o detale, zrozumienie social media i marketplace, terminowość, samodzielność.",
+        "Klient udostępnia w pełni wyposażone studio fotograficzne w swojej siedzibie."
+      ],
+      "diagramPlaceholderText": "Wizualizacja współpracy fotograficznej Bauhus"
+    },
+    "solution": {
+      "title": "Nasza Propozycja: <span class=\"text-green-400\">Stała Współpraca Fotograficzna</span>",
+      "description": "Soft Synergy proponuje Państwu stałą współpracę w zakresie profesjonalnej fotografii produktowej. Nasz zespół doświadczonych fotografów jest gotów tworzyć 'sprzedające zdjęcia' w Państwa studiu, z konkurencyjną stawką 950 PLN netto za dzień zdjęciowy. Rozpoczęcie współpracy możliwe w ciągu 5 dni roboczych.",
+      "points": [
+        "Stała współpraca z doświadczonymi fotografami produktowymi Soft Synergy.",
+        "Atrakcyjna stawka: 950 PLN netto za dzień zdjęciowy w studiu Klienta.",
+        "Gwarancja kreatywnych kadrów, dbałości o szczegóły i odpowiedniego oświetlenia.",
+        "Zrozumienie specyfiki różnych branż i platform docelowych (social media, marketplace).",
+        "Szybkie rozpoczęcie współpracy (do 5 dni roboczych od akceptacji)."
+      ],
+      "diagramPlaceholderText": "Przykładowe realizacje fotografii produktowej"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Aspekty Naszej <span class=\"text-cyan-400\">Usługi</span> Fotograficznej",
+    "sectionSubtitle": "Elementy naszej oferty, które zapewnią Państwu sprzedające zdjęcia produktów dla Bauhus.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z\" /><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z\" />",
+        "title": "Doświadczenie i Kreatywne Podejście",
+        "description": "Nasz zespół składa się z fotografów z pasją i doświadczeniem w fotografii produktowej dla różnorodnych sektorów. Potrafimy kreatywnie komponować kadry i dbać o odpowiednie oświetlenie, aby uchwycić zalety i atuty każdego produktu.",
+        "mockupText": "Portfolio różnorodnych sesji"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3\" />",
+        "title": "Fotografia Skoncentrowana na Sprzedaży Online",
+        "description": "Doskonale rozumiemy, jak prezentować produkty w mediach społecznościowych (Facebook, Instagram) oraz na platformach marketplace, aby przyciągały uwagę i generowały sprzedaż. Tworzymy zdjęcia atrakcyjne wizualnie i zoptymalizowane pod kątem tych kanałów.",
+        "mockupText": "Przykłady zdjęć na platformach"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.528-1.036.926-2.185.926-3.349A7.5 7.5 0 006.08 4.75H4.5L2.25 7.5l2.25 2.25H6.08a7.5 7.5 0 005.34 13.032l2.496-3.031zm-4.56-4.56l1.098 1.098\" />",
+        "title": "Profesjonalizm i Elastyczność Współpracy",
+        "description": "Oferujemy pracę w Państwa w pełni wyposażonym studiu fotograficznym. Jesteśmy samodzielni, dobrze zorganizowani, potrafimy pracować pod presją czasu, dotrzymywać terminów i 'wczuć się w produkt'.",
+        "mockupText": "Organizacja dnia zdjęciowego"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Przebieg</span> Współpracy Fotograficznej",
+    "sectionSubtitle": "Określamy etapy naszej współpracy przy tworzeniu fotografii produktowej dla Bauhus, zapewniając transparentność i efektywność.",
+    "modules": [
+      {
+        "title": "Etap 1: Ustalenie Harmonogramu i Zakresu Sesji",
+        "description": "Regularne konsultacje w celu omówienia Państwa bieżących potrzeb, planowanie dni zdjęciowych, ustalanie listy produktów do sfotografowania oraz specyficznych wymagań dla każdej sesji.",
+        "features": [
+          "Definiowanie celów dla każdej sesji zdjęciowej (np. nowe produkty, kampanie sezonowe).",
+          "Ustalanie priorytetów i 'shotlisty' dla poszczególnych dni zdjęciowych.",
+          "Koordynacja dostępności produktów i przygotowanie ich do sesji.",
+          "Dopasowanie stylistyki zdjęć do aktualnych trendów i Państwa wytycznych."
+        ]
+      },
+      {
+        "title": "Etap 2: Realizacja Dni Zdjęciowych w Studiu Bauhus",
+        "description": "Przeprowadzanie profesjonalnych sesji zdjęciowych w Państwa studiu. Skupienie na jakości, kreatywności i efektywnym wykorzystaniu czasu. Fotografowanie produktów z branż: chemia budowlana, narzędzia, akcesoria dla psów, majsterkowanie.",
+        "features": [
+          "Tworzenie wysokiej jakości zdjęć produktowych: packshoty, aranżacje, zdjęcia kontekstowe.",
+          "Dbałość o detale, estetykę, odpowiednie oświetlenie i kompozycję.",
+          "Efektywna praca zgodnie z ustaloną 'shotlistą'.",
+          "Możliwość bieżącej konsultacji i dostosowywania ujęć podczas sesji."
+        ]
+      },
+      {
+        "title": "Etap 3: Postprodukcja, Weryfikacja i Dostarczenie Materiałów",
+        "description": "Staranna selekcja i profesjonalna obróbka graficzna wykonanych zdjęć. Przekazanie Państwu gotowych materiałów w uzgodnionych formatach, gotowych do publikacji.",
+        "features": [
+          "Selekcja najlepszych ujęć z sesji zdjęciowej.",
+          "Profesjonalna postprodukcja (retusz, korekcja kolorów, kadrowanie, optymalizacja).",
+          "Dostarczenie zdjęć w formatach dostosowanych do mediów społecznościowych i platform marketplace.",
+          "Terminowe przekazanie gotowych materiałów i otwartość na Państwa feedback."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalne Zdjęcia</span>",
+    "sectionSubtitle": "Proponujemy transparentną wycenę stałej współpracy fotograficznej dla Bauhus. Stawka za dzień zdjęciowy jest konkurencyjna i dostosowana do Państwa potrzeb.",
+    "tabs": [
+      {
+        "id": "photography_service_offer",
+        "name": "Stała Współpraca Fotograficzna"
+      }
+    ],
+    "packages": [
+      {
+        "id": "photography_service_offer",
+        "name": "Dzień Zdjęciowy – Stała Współpraca Fotograficzna dla Bauhus",
+        "description": "Kompleksowa usługa fotografii produktowej w ramach stałej współpracy, realizowana w siedzibie Klienta. Każdy dzień zdjęciowy obejmuje fotografowanie produktów z ustalonych branż, z naciskiem na jakość i efektywność.",
+        "features": [
+          {
+            "text": "Pełny dzień pracy fotografa w studiu Klienta (8 godzin)",
+            "included": true
+          },
+          {
+            "text": "Fotografia produktów z branż: chemia budowlana, narzędzia, akcesoria dla psów, majsterkowanie",
+            "included": true
+          },
+          {
+            "text": "Kreatywne kadry, dbałość o szczegóły i oświetlenie",
+            "included": true
+          },
+          {
+            "text": "Dostosowanie zdjęć do specyfiki social media i marketplace",
+            "included": true
+          },
+          {
+            "text": "Podstawowa postprodukcja wykonanych zdjęć (selekcja, korekcja, kadrowanie)",
+            "included": true
+          },
+          {
+            "text": "Doświadczony fotograf produktowy z portfolio",
+            "included": true
+          },
+          {
+            "text": "Możliwość regularnej rezerwacji dni zdjęciowych",
+            "included": true
+          }
+        ],
+        "price": "950 PLN netto",
+        "priceNote": "Cena za jeden dzień zdjęciowy (8 godzin pracy fotografa). Budżet i warunki współpracy do negocjacji.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Współpracy</span> Fotograficznej",
+    "sectionSubtitle": "Proponujemy elastyczny model stałej współpracy, oparty na regularnych dniach zdjęciowych, planowanych zgodnie z Państwa zapotrzebowaniem. Jesteśmy gotowi rozpocząć działania w ciągu **5 dni roboczych** od momentu akceptacji oferty. Niniejsza propozycja cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Kick-off i Planowanie Pierwszych Sesji (Po akceptacji oferty)",
+        "duration": "1-5 dni roboczych",
+        "description": "Formalne rozpoczęcie współpracy, szczegółowe omówienie oczekiwań, harmonogramu pierwszych dni zdjęciowych, logistyki oraz przepływu informacji. Przygotowanie do pierwszej sesji."
+      },
+      {
+        "phase": "Faza 2: Regularne Dni Zdjęciowe (Cyklicznie, wg ustaleń)",
+        "duration": "1 dzień zdjęciowy (8h) per sesja",
+        "description": "Systematyczna realizacja dni zdjęciowych w studiu Bauhus. Fotografowanie produktów zgodnie z bieżącymi potrzebami i ustaloną listą. Efektywna praca nad materiałem wizualnym."
+      },
+      {
+        "phase": "Faza 3: Postprodukcja i Dostarczanie Zdjęć (Po każdym dniu zdjęciowym)",
+        "duration": "2-3 dni robocze po każdej sesji",
+        "description": "Selekcja, profesjonalna obróbka i retusz zdjęć z danego dnia zdjęciowego. Przekazanie gotowych, zoptymalizowanych materiałów do wykorzystania przez Bauhus."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów potwierdzają wysoką jakość świadczonych usług fotograficznych i projektowych. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JK",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Fotografowie z Soft Synergy to prawdziwi profesjonaliści. Zdjęcia produktowe, które dla nas wykonali, znacząco podniosły estetykę naszych ofert online. Świetna komunikacja i terminowość.",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "Kierownik E-commerce, MarketBud"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AN",
+        "imageAlt": "Anna Nowak",
+        "quote": "Współpraca z Soft Synergy w zakresie fotografii produktowej przerosła nasze oczekiwania. Kreatywne podejście i zrozumienie specyfiki naszych produktów przełożyły się na doskonałe zdjęcia.",
+        "authorName": "Anna Nowak",
+        "authorTitle": "Specjalista ds. Marketingu, ZooPrezenty"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PW",
+        "imageAlt": "Piotr Wiśniewski",
+        "quote": "Polecam Soft Synergy każdemu, kto szuka 'sprzedających zdjęć'. Ich dbałość o detal i umiejętność pracy pod presją czasu są imponujące. Jesteśmy bardzo zadowoleni ze stałej współpracy.",
+        "authorName": "Piotr Wiśniewski",
+        "authorTitle": "Właściciel, NarzedziaMajstra.pl"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci Soft Synergy:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=MarketBud",
+        "alt": "Logo Klienta MarketBud"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ZooPrezenty",
+        "alt": "Logo Klienta ZooPrezenty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NarzedziaM",
+        "alt": "Logo Klienta NarzedziaMajstra.pl"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GlobalTrans",
+        "alt": "Logo Klienta GlobalTrans"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EcoFoodPL",
+        "alt": "Logo Klienta EcoFoodPL"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Zainteresowani <span class=\"text-cyan-400\">Współpracą Fotograficzną</span> z Bauhus?",
+    "sectionSubtitle": "Jesteśmy gotowi, by wesprzeć Państwa marki profesjonalnymi zdjęciami produktowymi. Skontaktuj się z nami, aby omówić szczegóły stałej współpracy i stworzyć wizualizacje, które sprzedają. Czekamy na Państwa wiadomość lub telefon.",
+    "ctaButtonText": "Skontaktuj się z Nami",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": "115487",
+  "price": 950,
+  "timelineDays": 7,
+  "employer_email": "mateusz.patalon@bauhus.pl"
+}

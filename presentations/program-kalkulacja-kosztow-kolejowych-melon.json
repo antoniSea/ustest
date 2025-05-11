@@ -1,0 +1,285 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Programu do Kalkulacji Kosztów Przewozu Kolejowego dla Melon | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=ME",
+    "clientLogoAlt": "Logo Melon",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Melon",
+    "subtitle": "Stworzenie dedykowanego programu do kalkulacji kosztów przewozu kolejowego, integrującego dane z Excela oraz systemów PKP PLK.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące stworzenia programu do kalkulacji kosztów przewozu kolejowego, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Automatyzacja Kalkulacji Kosztów</span>",
+      "description": "Głównym celem jest stworzenie programu, który zautomatyzuje proces wyliczania kosztów przewozu kolejowego. System ma pobierać koszty stałe z pliku Excel oraz koszty zmienne (dostęp do infrastruktury, trasy, ograniczenia) poprzez integrację z ogólnodostępnymi źródłami PKP PLK, zastępując obecne manualne kalkulacje w Excelu.",
+      "points": [
+        "Potrzeba programu do wyliczania kosztów przewozu kolejowego.",
+        "Koszty stałe importowane z pliku Excel.",
+        "Koszty zmienne (dostęp do infrastruktury, trasy, ograniczenia) pobierane z systemów PKP PLK (np. skrj.plk-sa.pl).",
+        "Zastąpienie obecnych kalkulacji prowadzonych w pliku Excel.",
+        "Budżet Klienta: Do negocjacji."
+      ],
+      "diagramPlaceholderText": "Schemat przepływu danych w systemie kalkulacji"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Dedykowany Program Kalkulacyjny",
+      "description": "Proponujemy stworzenie dedykowanego oprogramowania, które zautomatyzuje import danych kosztów stałych z plików Excel oraz zintegruje się z systemami PKP PLK w celu pobierania aktualnych kosztów zmiennych. Oferujemy realizację projektu w cenie 19 500 PLN netto w ciągu 25 dni roboczych.",
+      "points": [
+        "Stworzenie dedykowanego programu do kalkulacji kosztów.",
+        "Automatyczny import kosztów stałych z plików Excel.",
+        "Integracja z systemami PKP PLK (m.in. skrj.plk-sa.pl) dla kosztów zmiennych.",
+        "Realizacja w metodyce iteracyjnej z regularnymi spotkaniami statusowymi.",
+        "Dostarczenie pierwszej, w pełni funkcjonalnej wersji w ciągu 25 dni roboczych.",
+        "Doświadczenie Soft Synergy w tworzeniu oprogramowania na zamówienie i integracji systemów."
+      ],
+      "diagramPlaceholderText": "Architektura proponowanego oprogramowania"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Funkcjonalności <span class=\"text-cyan-400\">Programu</span>",
+    "sectionSubtitle": "Przedstawiamy kluczowe moduły i funkcje oprogramowania, które zapewnią efektywną kalkulację kosztów przewozu kolejowego dla firmy Melon.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Import Kosztów Stałych z Excela",
+        "description": "Moduł umożliwiający łatwe i automatyczne zaczytywanie danych o kosztach stałych bezpośrednio z plików Excel, eliminując potrzebę ręcznego wprowadzania danych i minimalizując ryzyko błędów.",
+        "mockupText": "Interfejs importu danych z Excel"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Integracja z Systemami PKP PLK",
+        "description": "Automatyczne pobieranie aktualnych danych o kosztach zmiennych, takich jak opłaty za dostęp do infrastruktury kolejowej, informacje o trasach przejazdu i obowiązujących ograniczeniach, bezpośrednio z publicznych źródeł PKP PLK (np. SKRJ).",
+        "mockupText": "Panel konfiguracji integracji PKP PLK"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Automatyczna Kalkulacja Kosztów",
+        "description": "System będzie dokonywał kompleksowych obliczeń całkowitych kosztów przewozu, łącząc zaimportowane koszty stałe z dynamicznie pobieranymi kosztami zmiennymi, dostarczając precyzyjne wyniki w krótkim czasie.",
+        "mockupText": "Ekran wyników kalkulacji"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Projektowych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia oprogramowania dla Melon, zapewniając transparentność procesu i najwyższą jakość dostarczonego rozwiązania.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza, Projektowanie i Planowanie (5 dni roboczych)",
+        "description": "Dokładne zrozumienie procesów biznesowych Klienta, specyfikacja wymagań funkcjonalnych i technicznych. Projekt architektury systemu, interfejsu użytkownika (UI/UX) oraz bazy danych. Stworzenie szczegółowego harmonogramu prac.",
+        "features": [
+          "Warsztaty analityczne z Klientem (Melon).",
+          "Definicja szczegółowych przypadków użycia.",
+          "Projekt architektury systemu i bazy danych.",
+          "Projekt makiet UI/UX.",
+          "Ustalenie finalnego harmonogramu prac."
+        ]
+      },
+      {
+        "title": "Etap 2: Implementacja i Rozwój Oprogramowania (15 dni roboczych)",
+        "description": "Kodowanie kluczowych modułów oprogramowania: importu danych z Excel, integracji z systemami PKP PLK oraz logiki kalkulacyjnej. Prace realizowane w metodyce iteracyjnej z regularnymi aktualizacjami postępów.",
+        "features": [
+          "Development modułu importu danych z Excel.",
+          "Development modułu integracji z API PKP PLK (SKRJ).",
+          "Implementacja algorytmów kalkulacyjnych.",
+          "Tworzenie interfejsu użytkownika.",
+          "Wewnętrzne testy jednostkowe i integracyjne."
+        ]
+      },
+      {
+        "title": "Etap 3: Testowanie, Wdrożenie i Szkolenie (5 dni roboczych)",
+        "description": "Przeprowadzenie kompleksowych testów akceptacyjnych (UAT) z Klientem. Wdrożenie systemu na środowisku produkcyjnym. Szkolenie użytkowników oraz przekazanie dokumentacji technicznej i użytkowej.",
+        "features": [
+          "Testy akceptacyjne użytkownika (UAT) z Melon.",
+          "Poprawki i optymalizacje na podstawie feedbacku.",
+          "Wdrożenie systemu na serwerze Klienta lub w chmurze.",
+          "Szkolenie dla użytkowników końcowych.",
+          "Przekazanie dokumentacji projektowej i powykonawczej."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Efektywność Operacyjną</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę stworzenia dedykowanego oprogramowania do kalkulacji kosztów przewozu kolejowego dla Melon.",
+    "tabs": [
+      {
+        "id": "software_development_offer",
+        "name": "Program do Kalkulacji Kosztów"
+      }
+    ],
+    "packages": [
+      {
+        "id": "software_development_offer",
+        "name": "Dedykowany Program do Kalkulacji Kosztów Kolejowych dla Melon",
+        "description": "Kompleksowe stworzenie oprogramowania do automatycznej kalkulacji kosztów przewozu kolejowego, z importem danych z Excel i integracją z systemami PKP PLK.",
+        "features": [
+          {
+            "text": "Moduł importu kosztów stałych z Excel",
+            "included": true
+          },
+          {
+            "text": "Integracja z systemami PKP PLK (SKRJ)",
+            "included": true
+          },
+          {
+            "text": "Automatyczna kalkulacja kosztów całkowitych",
+            "included": true
+          },
+          {
+            "text": "Intuicyjny interfejs użytkownika",
+            "included": true
+          },
+          {
+            "text": "Realizacja w metodyce iteracyjnej",
+            "included": true
+          },
+          {
+            "text": "Pełne testowanie i wdrożenie",
+            "included": true
+          },
+          {
+            "text": "Szkolenie użytkowników i dokumentacja",
+            "included": true
+          }
+        ],
+        "price": "19 500 PLN netto",
+        "priceNote": "Przewidywany czas realizacji: 25 dni roboczych.",
+        "ctaText": "Rozpocznij Projekt z Nami",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu oprogramowania dla Melon. Przewidywany całkowity czas realizacji projektu: **25 dni roboczych** od momentu akceptacji oferty. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Analiza i Projektowanie (Dni 1-5)",
+        "duration": "5 dni roboczych",
+        "description": "Spotkanie kickoff, zbieranie szczegółowych wymagań, analiza procesów Melon, projekt architektury systemu, projekt UI/UX, finalizacja specyfikacji."
+      },
+      {
+        "phase": "Faza 2: Rozwój Oprogramowania - Iteracja 1 (Dni 6-15)",
+        "duration": "10 dni roboczych",
+        "description": "Implementacja kluczowych funkcjonalności: import danych z Excel, podstawowa integracja z PKP PLK, rdzeń systemu kalkulacyjnego. Wewnętrzne testy i prezentacja postępów."
+      },
+      {
+        "phase": "Faza 3: Rozwój Oprogramowania - Iteracja 2 i Testy (Dni 16-22)",
+        "duration": "7 dni roboczych",
+        "description": "Dokończenie implementacji pozostałych modułów, integracja komponentów, testy wewnętrzne. Przygotowanie środowiska testowego dla Klienta."
+      },
+      {
+        "phase": "Faza 4: Testy Akceptacyjne (UAT), Wdrożenie i Szkolenie (Dni 23-25)",
+        "duration": "3 dni robocze",
+        "description": "Testy akceptacyjne z udziałem Melon, wprowadzenie ewentualnych poprawek, wdrożenie finalnej wersji oprogramowania, szkolenie użytkowników, przekazanie dokumentacji."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy dostarczyło nam system, który zrewolucjonizował nasze procesy. Profesjonalizm, terminowość i doskonałe zrozumienie potrzeb biznesowych.",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "Dyrektor Operacyjny, LogiMax Sp. z o.o."
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EN",
+        "imageAlt": "Ewa Nowak",
+        "quote": "Współpraca z Soft Synergy to czysta przyjemność. Stworzyli dla nas oprogramowanie idealnie dopasowane do specyfiki naszej branży. Gorąco polecam!",
+        "authorName": "Ewa Nowak",
+        "authorTitle": "CEO, FinPro Solutions"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PZ",
+        "imageAlt": "Piotr Zieliński",
+        "quote": "Zespół Soft Synergy wykazał się nie tylko wysokimi kompetencjami technicznymi, ale także świetnym podejściem do klienta. Projekt zrealizowany wzorowo.",
+        "authorName": "Piotr Zieliński",
+        "authorTitle": "Kierownik IT, TransGlobal"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=LogiMax",
+        "alt": "Logo Klienta LogiMax"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=FinPro",
+        "alt": "Logo Klienta FinPro Solutions"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TransGlob",
+        "alt": "Logo Klienta TransGlobal"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaSys",
+        "alt": "Logo Klienta InnovaSystems"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=BizTech",
+        "alt": "Logo Klienta BizTech"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Nowoczesne Oprogramowanie</span> dla Melon?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć program do kalkulacji kosztów przewozu kolejowego, który zautomatyzuje Państwa procesy i zwiększy efektywność. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 19500,
+  "timelineDays": 35,
+  "useme_id": 115506,
+  "employer_email": "useme@1.20.4"
+}

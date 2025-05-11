@@ -1,0 +1,275 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Portali Informacyjnych dla walerys | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/033/337333.png",
+    "clientLogoAlt": "Logo walerys",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "walerys",
+    "subtitle": "Propozycja stworzenia serii portali informacyjnych dla walerys, z realizacją pierwszego portalu przy użyciu nowoczesnych narzędzi AI no-code/low-code.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące stworzenia serii portali informacyjnych, aby zaproponować rozwiązanie wykorzystujące nowoczesne narzędzia AI no-code/low-code.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Nowoczesne Portale Informacyjne</span>",
+      "description": "Klient poszukuje studenta informatyki lub młodego juniora do stworzenia projektu informatycznego obejmującego kilka portali tematycznych (frontend, backend, panel admina). Projekt ma być zrealizowany przy użyciu platform AI no-code/low-code (np. Bolt Now, Lovable.dev), co wpisuje się w trend vibe codingu.",
+      "points": [
+        "Stworzenie kilku informacyjnych portali tematycznych (frontend, backend, panel admina).",
+        "Wykorzystanie platform no-code/low-code AI (Bolt Now, Lovable.dev lub podobne).",
+        "Zakres prac: promptowanie, kontrola efektów, drobne modyfikacje kodu, wdrożenie.",
+        "Wskazany budżet na pierwszy portal: 1000,00 PLN."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji portalu informacyjnego"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Realizacja Pierwszego Portalu Tematycznego",
+      "description": "Soft Synergy proponuje realizację *pierwszego portalu tematycznego* (obejmującego frontend, backend oraz panel administracyjny) w ramach wskazanego budżetu 1000 PLN brutto. Wykorzystamy zwinne podejście i narzędzia AI no-code/low-code, z szacowanym czasem realizacji tego etapu na 2-3 tygodnie.",
+      "points": [
+        "Realizacja pierwszego portalu tematycznego (frontend, backend, panel admina).",
+        "Wykorzystanie narzędzi AI no-code/low-code (np. Bolt Now, Lovable.dev).",
+        "Metodologia zwinna, iteracyjny rozwój, precyzyjne promptowanie.",
+        "Cena za pierwszy portal: 1000 PLN brutto.",
+        "Szacowany czas realizacji: 2-3 tygodnie."
+      ],
+      "diagramPlaceholderText": "Architektura proponowanego rozwiązania"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Projektu</span> Portalu",
+    "sectionSubtitle": "Opisujemy główne etapy i technologie, które zapewnią sukces Państwa projektu portali informacyjnych.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Rozwój z Użyciem Narzędzi AI No-Code/Low-Code",
+        "description": "Wykorzystanie platform takich jak Bolt Now czy Lovable.dev do szybkiego generowania aplikacji i stron na podstawie komend w języku naturalnym, minimalizując potrzebę tradycyjnego kodowania.",
+        "mockupText": "Interfejs platformy AI No-Code"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Efektywne Promptowanie i Drobne Modyfikacje",
+        "description": "Tworzenie precyzyjnych komend w języku naturalnym (promptowanie) oraz, w razie potrzeby, wprowadzanie drobnych modyfikacji kodu (HTML, CSS, JS, React, Node.js) dla optymalizacji i dostosowania.",
+        "mockupText": "Przykład promptu i fragmentu kodu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5\" />",
+        "title": "Pełne Uruchomienie Projektu (Frontend, Backend, Panel Admina)",
+        "description": "Stworzenie kompletnego portalu tematycznego, obejmującego frontend dla użytkowników, backend do zarządzania danymi oraz intuicyjny panel administracyjny. Konfiguracja i wdrożenie na serwerze.",
+        "mockupText": "Struktura portalu: Frontend, Backend, Admin"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac dla Pierwszego Portalu",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia Państwa pierwszego portalu tematycznego, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Definicja Wymagań, Projektowanie Promptów i Generowanie Wstępne",
+        "description": "Szczegółowe omówienie wymagań dla portalu tematycznego. Przygotowanie komend (promptów) w języku naturalnym dla narzędzia AI. Wygenerowanie pierwszej wersji portalu.",
+        "features": [
+          "Analiza specyfiki tematycznej portalu i grupy docelowej.",
+          "Stworzenie zestawu precyzyjnych promptów opisujących funkcjonalności, wygląd (UX/UI) i strukturę portalu.",
+          "Wygenerowanie strony (frontend, backend, panel admina) za pomocą wybranej platformy AI.",
+          "Wstępna ocena wyników i identyfikacja obszarów do dopracowania."
+        ]
+      },
+      {
+        "title": "Etap 2: Kontrola Efektów, Testowanie i Drobne Modyfikacje (Low-Code)",
+        "description": "Dokładne testowanie wygenerowanych funkcji portalu. Wprowadzanie poprawek poprzez modyfikację promptów lub bezpośrednią edycję kodu (HTML, CSS, JS) w ramach low-code.",
+        "features": [
+          "Testowanie funkcjonalności frontendu, backendu i panelu administracyjnego.",
+          "Iteracyjne poprawianie i dostosowywanie portalu na podstawie testów.",
+          "W razie potrzeby, wprowadzanie drobnych modyfikacji w kodzie źródłowym (HTML, CSS, JavaScript, React, Node.js, TS, Vite).",
+          "Zapewnienie zgodności z zasadami UX/UI i kreatywne rozwiązywanie problemów."
+        ]
+      },
+      {
+        "title": "Etap 3: Finalizacja Projektu, Konfiguracja i Wdrożenie",
+        "description": "Ostateczne dopracowanie portalu, konfiguracja serwerowa i wdrożenie gotowego rozwiązania. Przekazanie dostępu i podstawowe szkolenie z panelu admina.",
+        "features": [
+          "Finalne testy akceptacyjne portalu.",
+          "Konfiguracja środowiska serwerowego (zgodnie z możliwościami platformy no-code).",
+          "Wdrożenie portalu na serwerze produkcyjnym.",
+          "Przekazanie Państwu danych dostępowych i dokumentacji (jeśli dotyczy)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Pierwszy Portal Tematyczny</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę realizacji pierwszego portalu informacyjnego. Nasza propozycja jest zgodna z Państwa budżetem.",
+    "tabs": [
+      {
+        "id": "portal_dev_offer",
+        "name": "Realizacja Pierwszego Portalu"
+      }
+    ],
+    "packages": [
+      {
+        "id": "portal_dev_offer",
+        "name": "Pierwszy Portal Tematyczny (No-Code/Low-Code AI)",
+        "description": "Kompleksowe stworzenie jednego portalu informacyjnego (frontend, backend, panel admina) z wykorzystaniem narzędzi AI, zgodnie z Państwa zleceniem.",
+        "features": [
+          {
+            "text": "Projekt i generowanie portalu przez AI (np. Bolt Now, Lovable.dev)",
+            "included": true
+          },
+          {
+            "text": "Promptowanie i dostosowywanie wyników",
+            "included": true
+          },
+          {
+            "text": "Drobne modyfikacje kodu (HTML, CSS, JS, React, Node.js, TS, Vite)",
+            "included": true
+          },
+          {
+            "text": "Stworzenie frontendu, backendu i panelu admina",
+            "included": true
+          },
+          {
+            "text": "Testowanie funkcjonalności i wprowadzanie poprawek",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja i wdrożenie na serwerze",
+            "included": true
+          },
+          {
+            "text": "Kreatywne podejście i dbałość o UX/UI",
+            "included": true
+          }
+        ],
+        "price": "1000,00 PLN brutto",
+        "priceNote": "Cena za realizację pierwszego portalu. Budżet Klienta: 1000,00 PLN.",
+        "ctaText": "Zamów Realizację Portalu",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Pierwszego Portalu",
+    "sectionSubtitle": "Przejrzysty plan działania dla pierwszego portalu. Przewidywany czas realizacji: **2-3 tygodnie** (10-15 dni roboczych) od ustalenia szczegółów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Ustalenie Szczegółów, Wybór Narzędzia i Przygotowanie Promptów (Tydzień 1)",
+        "duration": "ok. 5 dni roboczych",
+        "description": "Potwierdzenie zlecenia, szczegółowe omówienie wymagań dla pierwszego portalu. Wybór docelowej platformy AI (Bolt Now, Lovable.dev lub inna). Przygotowanie zestawu szczegółowych promptów."
+      },
+      {
+        "phase": "Faza 2: Generowanie, Testowanie i Pierwsze Modyfikacje (Tydzień 1-2)",
+        "duration": "ok. 5 dni roboczych",
+        "description": "Generowanie portalu za pomocą narzędzia AI. Wstępne testy funkcjonalne i wizualne. Wprowadzanie pierwszych poprawek (przez promptowanie lub drobne zmiany w kodzie)."
+      },
+      {
+        "phase": "Faza 3: Iteracje, Finalizacja i Wdrożenie (Tydzień 2-3)",
+        "duration": "ok. 5 dni roboczych",
+        "description": "Dalsze iteracje, dopracowywanie szczegółów UX/UI. Finalne testy. Konfiguracja i wdrożenie portalu na serwerze. Przekazanie projektu."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Nowoczesne Portale</span> dla walerys?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć serię portali informacyjnych, które spełnią Państwa oczekiwania. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie Portali",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 1000,
+  "timelineDays": 21,
+  "useme_id": 115225,
+  "employer_email": "walerys@protonmail.com"
+}

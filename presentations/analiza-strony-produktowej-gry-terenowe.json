@@ -1,0 +1,317 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Optymalizacji Stron Produktowych dla Ekspedycja | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Wyzwanie",
+        "href": "#understanding",
+        "isButton": false
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Zakres",
+        "href": "#scope",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Portfolio",
+        "href": "https://soft-synergy.com/portfolio",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/081/452081.png",
+    "clientLogoAlt": "Logo Tomasz Pietruszka",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Ekspedycja",
+    "subtitle": "Kompleksowa analiza i optymalizacja stron produktowych gier terenowych (jeden layout dla wszystkich) w celu zwiększenia sprzedaży i konwersji. Szukamy specjalistycznego, kompleksowego rozwiązania.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Celów</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące optymalizacji stron produktowych, aby zaproponować kompleksowe rozwiązanie maksymalizujące konwersję.",
+    "problem": {
+      "title": "Wyzwanie: <span class=\"text-red-400\">Wzrost Sprzedaży i Konwersji Stron Produktowych</span>",
+      "description": "Firma Ekspedycja, twórca gier terenowych, poszukuje specjalisty do analizy i wdrożenia zmian na swoich stronach produktowych (jeden layout dla wszystkich, np. https://outdoorgame.com/osad/wroclaw/). Głównym celem jest znaczące zwiększenie sprzedaży i wzrost konwersji. Klient oczekuje kompleksowego rozwiązania od ekspertów, a nie ogólnych porad typu 'dodać video, więcej ocen'.",
+      "points": [
+        "Potrzeba specjalistycznej analizy i zmian na stronach produktowych gier terenowych.",
+        "Kluczowy cel: zwiększenie sprzedaży i wzrost współczynnika konwersji.",
+        "Oczekiwanie kompleksowego, dedykowanego rozwiązania, a nie powierzchownych sugestii.",
+        "Wymóg podania stawki za pełen zakres prac: analiza, prezentacja zmian, wdrożenie, a następnie kolejne analizy i drobne poprawki/zmiany na podstawie danych.",
+        "Konieczność przedstawienia portfolio potwierdzającego specjalizację.",
+        "Dodatkowe wymaganie: biegłość w analityce internetowej."
+      ],
+      "diagramPlaceholderText": "Przykładowa strona produktowa Klienta"
+    },
+    "solution": {
+      "title": "Nasza Propozycja: <span class=\"text-green-400\">Strategia Optymalizacji Konwersji (CRO)</span>",
+      "description": "Proponujemy pełen zakres prac: dogłębną analizę obecnych stron produktowych, przygotowanie i prezentację rekomendowanych zmian, ich wdrożenie, a następnie ciągłą analizę danych i iteracyjne poprawki. Nasza metodologia opiera się na *dogłębnej analizie danych* i zachowań użytkowników, co pozwala projektować zmiany maksymalizujące konwersję. W Soft Synergy specjalizujemy się w budowaniu *skutecznych stron produktowych*, dostarczając mierzalne rezultaty. Szczegółowa prezentacja naszej metodyki oraz przykłady realizacji są dostępne pod adresem: prezentacje.soft-synergy.com/analiza-strony-produktowej-gry-terenowe",
+      "points": [
+        "Kompleksowa realizacja: analiza, prezentacja zmian, wdrożenie, iteracyjne poprawki.",
+        "Metodologia oparta na analizie danych, zachowań użytkowników i specjalistycznej wiedzy.",
+        "Specjalizacja w optymalizacji stron produktowych pod kątem konwersji i sprzedaży.",
+        "Kluczowe etapy projektu zrealizowane w ciągu 4-6 tygodni.",
+        "Proponowana cena za pełen zakres prac: 11 900 PLN netto.",
+        "Silny nacisk na analitykę internetową jako fundament podejmowanych decyzji."
+      ],
+      "diagramPlaceholderText": "Proces optymalizacji stron produktowych"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Strategii</span> Optymalizacji",
+    "sectionSubtitle": "Nasze podejście do optymalizacji stron produktowych gier terenowych dla Ekspedycja obejmuje następujące kluczowe działania:",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z\" />",
+        "title": "Dogłębna Analiza Stron Produktowych i Użytkowników",
+        "description": "Przeprowadzimy kompleksowy audyt UX/UI, analizę ścieżek konwersji, map ciepła, nagrań sesji oraz danych analitycznych (np. Google Analytics). Zidentyfikujemy kluczowe bariery konwersji i obszary do natychmiastowej poprawy na Państwa layoucie strony produktowej.",
+        "mockupText": "Raport z analizy strony"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 6h9.75M10.5 12h9.75m-9.75 6h9.75M3.75 6H7.5m-3.75 6h3.75m-3.75 6h3.75M5.25 4.5h13.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25H5.25a2.25 2.25 0 01-2.25-2.25V6.75a2.25 2.25 0 012.25-2.25z\" />",
+        "title": "Projektowanie Zmian Zorientowanych na Konwersję",
+        "description": "Na bazie wyników analizy, przygotujemy konkretne, specjalistyczne propozycje modyfikacji layoutu strony produktowej. Zmiany będą obejmować m.in. strukturę informacji, wezwania do działania (CTA), elementy wizualne, copywriting, nawigację i ogólne doświadczenie użytkownika (UX), wszystko z myślą o maksymalizacji zaangażowania i konwersji.",
+        "mockupText": "Wizualizacja proponowanych zmian"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z\" />",
+        "title": "Wdrożenie, Testowanie A/B i Iteracyjne Ulepszenia",
+        "description": "Zaimplementujemy zatwierdzone zmiany, a następnie będziemy skrupulatnie monitorować ich wpływ na kluczowe wskaźniki efektywności (KPIs). Na podstawie zebranych danych, w tym wyników testów A/B, będziemy wprowadzać dalsze, iteracyjne optymalizacje, dążąc do ciągłego wzrostu konwersji i sprzedaży.",
+        "mockupText": "Dashboard z wynikami po wdrożeniu"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac",
+    "sectionSubtitle": "Definiujemy etapy projektu optymalizacji stron produktowych dla Ekspedycja, zapewniając pełną transparentność i mierzalne efekty.",
+    "modules": [
+      {
+        "title": "Etap 1: Dogłębna Analiza i Opracowanie Strategii (1-2 tygodnie)",
+        "description": "Przeprowadzenie wszechstronnej analizy obecnych stron produktowych, zachowań użytkowników, analizy konkurencji oraz danych analitycznych. Opracowanie spersonalizowanej strategii optymalizacji i zdefiniowanie kluczowych metryk sukcesu (KPIs).",
+        "features": [
+          "Audyt UX/UI i identyfikacja barier konwersji na istniejącym layoucie.",
+          "Analiza danych z Google Analytics, map ciepła, nagrań sesji.",
+          "Badanie rozwiązań stosowanych przez konkurencję w branży gier terenowych.",
+          "Zdefiniowanie person użytkowników i optymalizacja ich ścieżek zakupowych.",
+          "Przygotowanie szczegółowego raportu z audytu wraz z rekomendacjami i planem działania."
+        ]
+      },
+      {
+        "title": "Etap 2: Projektowanie Zmian i Prezentacja Rekomendacji (1 tydzień)",
+        "description": "Opracowanie konkretnych propozycji zmian w layoucie (jeden wspólny layout) i funkcjonalnościach stron produktowych. Stworzenie makiet/prototypów (jeśli zasadne) oraz szczegółowa prezentacja rekomendowanych zmian i ich uzasadnienia dla Klienta.",
+        "features": [
+          "Projektowanie zmian w strukturze strony, treściach, CTA, elementach graficznych, formularzach.",
+          "Przygotowanie wizualizacji proponowanych rozwiązań (mockupy/wireframes).",
+          "Prezentacja dla Klienta omawiająca proponowane zmiany i ich przewidywany wpływ na konwersję.",
+          "Sesja konsultacyjna w celu omówienia propozycji i zebrania feedbacku."
+        ]
+      },
+      {
+        "title": "Etap 3: Wdrożenie Zmian i Testy (1-2 tygodnie)",
+        "description": "Techniczna implementacja zaakceptowanych przez Klienta zmian na stronach produktowych. Przeprowadzenie rygorystycznych testów funkcjonalnych, jakościowych i wydajnościowych. Uruchomienie i konfiguracja testów A/B (jeśli dotyczy) dla kluczowych modyfikacji.",
+        "features": [
+          "Implementacja zmian w kodzie strony i systemie CMS.",
+          "Zapewnienie pełnej responsywności (RWD) i kompatybilności z różnymi przeglądarkami i urządzeniami.",
+          "Testowanie wdrożonych rozwiązań pod kątem funkcjonalności i UX.",
+          "Konfiguracja narzędzi do śledzenia konwersji, analityki i testów A/B."
+        ]
+      },
+      {
+        "title": "Etap 4: Analiza Wyników, Iteracyjne Poprawki i Raportowanie (Ciągłe, w ramach budżetu)",
+        "description": "Monitorowanie kluczowych wskaźników efektywności (KPIs) po wdrożeniu zmian. Regularna, wnikliwa analiza zebranych danych i wprowadzanie drobnych poprawek/zmian (w ramach ustalonego zakresu) w celu dalszej optymalizacji współczynnika konwersji i maksymalizacji ROI.",
+        "features": [
+          "Ciągłe monitorowanie wskaźników konwersji, sprzedaży, średniej wartości zamówienia, zachowań użytkowników.",
+          "Analiza wyników testów A/B i podejmowanie decyzji optymalizacyjnych na podstawie twardych danych.",
+          "Regularne raportowanie postępów projektu i efektywności wdrożonych zmian.",
+          "Wprowadzanie iteracyjnych ulepszeń i rekomendowanie dalszych działań optymalizacyjnych."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Wzrost Sprzedaży</span>",
+    "sectionSubtitle": "Nasza propozycja cenowa obejmuje kompleksową realizację projektu optymalizacji stron produktowych dla Ekspedycja, ukierunkowaną na mierzalne rezultaty i znaczący zwrot z inwestycji.",
+    "tabs": [
+      {
+        "id": "cro_product_page_optimization",
+        "name": "Optymalizacja Stron Produktowych Gier Terenowych"
+      }
+    ],
+    "packages": [
+      {
+        "id": "cro_product_page_optimization",
+        "name": "Kompleksowa Optymalizacja Stron Produktowych",
+        "description": "Pełen zakres prac: od dogłębnej analizy, przez specjalistyczne projektowanie i wdrożenie zmian w layoucie, po pierwszą fazę analizy post-implementacyjnej i iteracyjne poprawki, mające na celu znaczący wzrost sprzedaży i konwersji na stronach produktowych Ekspedycji.",
+        "features": [
+          {
+            "text": "Audyt UX/UI i analiza danych analitycznych",
+            "included": true
+          },
+          {
+            "text": "Opracowanie strategii optymalizacji konwersji (CRO)",
+            "included": true
+          },
+          {
+            "text": "Projektowanie zmian w layoucie (jeden wspólny layout)",
+            "included": true
+          },
+          {
+            "text": "Prezentacja proponowanych zmian i rekomendacji",
+            "included": true
+          },
+          {
+            "text": "Wdrożenie zaakceptowanych zmian",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja analityki internetowej i śledzenia konwersji",
+            "included": true
+          },
+          {
+            "text": "Pierwszy cykl analizy po wdrożeniu i drobnych poprawek (w ramach budżetu)",
+            "included": true
+          },
+          {
+            "text": "Dedykowane zarządzanie projektem i regularne raportowanie",
+            "included": true
+          },
+          {
+            "text": "Dostęp do portfolio i case studies",
+            "included": true
+          }
+        ],
+        "price": "11 900 PLN netto",
+        "priceNote": "Cena netto. Budżet: Do negocjacji. Możliwość ustalenia stałej współpracy w zakresie dalszych analiz i optymalizacji.",
+        "ctaText": "Rozpocznij Optymalizację z Nami",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu",
+    "sectionSubtitle": "Przewidywany czas realizacji kluczowych etapów projektu optymalizacji stron produktowych dla Ekspedycja: **4-6 tygodni**. Niniejsza oferta cenowa jest ważna przez 30 dni od daty jej przedstawienia.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Analiza, Audyt i Strategia (Tydzień 1-2)",
+        "duration": "1-2 tygodnie",
+        "description": "Kick-off projektu. Dogłębna analiza obecnych stron, danych analitycznych, konkurencji. Audyt UX/UI. Opracowanie szczegółowej strategii optymalizacji i planu działania. Prezentacja wstępnych wniosków i kierunków."
+      },
+      {
+        "phase": "Faza 2: Projektowanie Zmian i Prezentacja (Tydzień 3)",
+        "duration": "1 tydzień",
+        "description": "Opracowanie konkretnych propozycji zmian w layoucie (jeden wspólny dla wszystkich stron produktowych). Przygotowanie makiet/wizualizacji oraz szczegółowej prezentacji rekomendacji dla Ekspedycja. Sesja feedbackowa i ustalenie finalnego zakresu zmian."
+      },
+      {
+        "phase": "Faza 3: Wdrożenie Techniczne i Testy (Tydzień 4-5)",
+        "duration": "1-2 tygodnie",
+        "description": "Techniczna implementacja zatwierdzonych zmian na stronach produktowych. Konfiguracja narzędzi analitycznych, śledzenia zdarzeń oraz testów A/B (jeśli dotyczy). Przeprowadzenie testów jakościowych, funkcjonalnych i wydajnościowych."
+      },
+      {
+        "phase": "Faza 4: Uruchomienie, Wstępna Analiza i Drobne Poprawki (Tydzień 6)",
+        "duration": "1 tydzień",
+        "description": "Oficjalne uruchomienie zoptymalizowanych stron produktowych. Intensywne monitorowanie pierwszych wyników i zachowań użytkowników. Analiza zebranych danych, identyfikacja potencjalnych szybkich usprawnień i wdrożenie pierwszej tury drobnych poprawek (w ramach budżetu)."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Nasze <span class=\"text-cyan-400\">Doświadczenie</span> w Optymalizacji Konwersji",
+    "sectionSubtitle": "Nasze portfolio i historie sukcesu klientów potwierdzają naszą specjalizację w projektowaniu rozwiązań, które realnie zwiększają konwersję i sprzedaż online.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Joanna Szymańska",
+        "quote": "Soft Synergy przeprowadziło dla nas kompleksową optymalizację kluczowych stron produktowych, co przełożyło się na mierzalny wzrost konwersji i przychodów. Pełen profesjonalizm i świetne wyniki!",
+        "authorName": "Joanna Szymańska",
+        "authorTitle": "E-commerce Manager, SklepOnline Lider"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=KN",
+        "imageAlt": "Krzysztof Nowak",
+        "quote": "Dzięki wnikliwej analizie i strategicznym zmianom wdrożonym przez Soft Synergy, nasza główna strona produktowa zaczęła generować znacznie więcej wartościowych leadów. Polecam ich ekspertyzę w dziedzinie CRO.",
+        "authorName": "Krzysztof Nowak",
+        "authorTitle": "CEO, Innowacyjne Rozwiązania B2B"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AW",
+        "imageAlt": "Anna Wiśniewska",
+        "quote": "Współpraca z Soft Synergy to czysta przyjemność i konkretne efekty. Ich analityczne podejście do optymalizacji stron, połączone z kreatywnością i dbałością o detale, jest imponujące. Efekty przerosły nasze oczekiwania.",
+        "authorName": "Anna Wiśniewska",
+        "authorTitle": "Marketing Director, Usługi Premium XYZ"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci i Studia Przypadków:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=LiderShop",
+        "alt": "Logo Klienta SklepOnline Lider"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnoB2B",
+        "alt": "Logo Klienta Innowacyjne Rozwiązania B2B"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=PremiumXYZ",
+        "alt": "Logo Klienta Usługi Premium XYZ"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EduPlatform",
+        "alt": "Logo Klienta EduPlatform"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TravelExperts",
+        "alt": "Logo Klienta TravelExperts"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wzrost Konwersji</span> Stron Ekspedycji?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić szczegóły projektu optymalizacji stron produktowych Państwa gier terenowych. Chętnie odpowiemy na wszystkie pytania i przedstawimy, jak możemy wspólnie osiągnąć Państwa cele biznesowe. Rozpocznijmy współpracę, która przyniesie wymierne korzyści!",
+    "ctaButtonText": "Porozmawiajmy o Optymalizacji Stron Produktowych",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Wirtualna 7, 01-001 Warszawa, Polska"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Prezentacja przygotowana przez Soft Synergy dla Ekspedycja."
+  },
+  "useme_id": 115495,
+  "employer_email": "useme@1.20.4",
+  "price": 11900,
+  "timelineDays": 42
+}

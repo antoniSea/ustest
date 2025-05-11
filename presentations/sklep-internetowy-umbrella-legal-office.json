@@ -1,0 +1,290 @@
+{
+  "useme_id": 115220,
+  "employer_email": "ddcccd@pm.me",
+  "price": 5500,
+  "timelineDays": 42,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Stworzenia Sklepu Internetowego dla Umbrella Legal Office | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=UL",
+    "clientLogoAlt": "Logo Umbrella Legal Office",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Umbrella Legal Office",
+    "subtitle": "Propozycja stworzenia i prowadzenia nowoczesnego sklepu internetowego dla Umbrella Legal Office, specjalizującego się w sprzedaży obrazów i biżuterii, z naciskiem na estetykę i stałą współpracę.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące stałej współpracy przy tworzeniu i prowadzeniu sklepu internetowego z obrazami i biżuterią dla firmy Umbrella Legal Office.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Efektywny i Estetyczny Sklep Internetowy</span>",
+      "description": "Głównym celem jest stworzenie i prowadzenie profesjonalnego, dobrze wyglądającego sklepu internetowego dla Umbrella Legal Office. Sklep będzie platformą sprzedaży obrazów i biżuterii, początkowo z niewielkim asortymentem, ale z potencjałem rozwoju w ramach stałej współpracy. Klient posiada domenę, a reszta szczegółów technicznych i wizualnych zostanie omówiona wspólnie.",
+      "points": [
+        "Potrzeba stałej współpracy w stworzeniu i prowadzeniu sklepu internetowego.",
+        "Asortyment: obrazy i biżuteria; początkowo niewielki.",
+        "Wymagania: estetyczny, dobrze wyglądający design.",
+        "Klient posiada domenę; pozostałe aspekty do wspólnego ustalenia.",
+        "Projekt do realizacji 'od zaraz'."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji sklepu Umbrella Legal Office"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowe Stworzenie i Prowadzenie Sklepu E-commerce",
+      "description": "Proponujemy realizację projektu stworzenia sklepu internetowego w budżecie od 5 500 zł netto. Przewidywany czas wdrożenia to 4-6 tygodni. Naszą pracę opieramy na metodyce zwinnej, co zapewnia elastyczność, regularne konsultacje i pełną transparentność procesu, idealnie wpisując się w potrzebę stałej współpracy.",
+      "points": [
+        "Stworzenie sklepu internetowego w budżecie od 5 500 zł netto.",
+        "Przewidywany czas wdrożenia: 4-6 tygodni od ustalenia szczegółów.",
+        "Praca w metodyce zwinnej, gwarantująca elastyczność i dostosowanie do oczekiwań.",
+        "Regularne konsultacje i transparentność na każdym etapie projektu.",
+        "Specjalizacja Soft Synergy w budowie skutecznych platform e-commerce.",
+        "Możliwość stałej współpracy w prowadzeniu i rozwoju sklepu."
+      ],
+      "diagramPlaceholderText": "Przykładowy design i funkcjonalności sklepu internetowego"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Projektu</span> Sklepu",
+    "sectionSubtitle": "Przedstawiamy składowe projektu, które zapewnią sukces Państwa sklepu internetowego z obrazami i biżuterią, prowadzonego przez Umbrella Legal Office.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Nowoczesny i Estetyczny Design Sklepu",
+        "description": "Zaprojektujemy unikalny, responsywny wygląd sklepu, który podkreśli artystyczny charakter sprzedawanych obrazów i elegancję biżuterii. Skupimy się na intuicyjnej nawigacji i atrakcyjnej prezentacji produktów, tworząc pozytywne doświadczenia zakupowe.",
+        "mockupText": "Koncepcja wizualna sklepu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21M9 17.25v-10.5a2.25 2.25 0 012.25-2.25h3.75a2.25 2.25 0 012.25 2.25v10.5m0 0v1.007a3 3 0 00.879 2.122L16.5 21m-4.5-4.5h4.5\" />",
+        "title": "Funkcjonalna Platforma E-commerce",
+        "description": "Wdrożymy sprawdzony system e-commerce (np. WooCommerce, PrestaShop lub inne dopasowane rozwiązanie) umożliwiający łatwe zarządzanie asortymentem, zamówieniami, płatnościami i wysyłką. Sklep będzie zoptymalizowany pod kątem SEO i przygotowany do integracji z niezbędnymi narzędziami.",
+        "mockupText": "Panel zarządzania sklepem"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z\" />",
+        "title": "Stała Współpraca i Rozwój",
+        "description": "Zgodnie z Państwa oczekiwaniami, oferujemy nie tylko stworzenie sklepu, ale także stałe wsparcie techniczne, pomoc w prowadzeniu (np. marketing, aktualizacje) oraz możliwość dalszego rozwoju platformy zgodnie z rosnącymi potrzebami Państwa biznesu.",
+        "mockupText": "Model współpracy i wsparcia"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Projektowych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia Państwa sklepu internetowego dla Umbrella Legal Office, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza, Planowanie i Projektowanie UX/UI",
+        "description": "Dogłębna analiza potrzeb biznesowych i specyfiki asortymentu. Określenie grupy docelowej, stworzenie architektury informacji, projektowanie makiet (UX) oraz interfejsu graficznego (UI) sklepu, który będzie estetyczny i intuicyjny.",
+        "features": [
+          "Warsztaty strategiczne i konsultacje w celu zdefiniowania celów i wymagań sklepu.",
+          "Analiza konkurencji i trendów w branży e-commerce dla dzieł sztuki i biżuterii.",
+          "Projektowanie responsywnych makiet UX dla kluczowych ścieżek użytkownika.",
+          "Opracowanie unikalnego designu UI, spójnego z wizerunkiem Umbrella Legal Office i charakterem produktów."
+        ]
+      },
+      {
+        "title": "Etap 2: Wdrożenie Techniczne i Programowanie",
+        "description": "Implementacja sklepu na wybranej, stabilnej platformie e-commerce. Konfiguracja niezbędnych modułów, integracja z systemami płatności online i opcjami dostawy. Kodowanie front-endu i back-endu zgodnie z zaakceptowanym projektem.",
+        "features": [
+          "Wybór i konfiguracja optymalnej platformy e-commerce (np. WooCommerce, Shopify, PrestaShop).",
+          "Programowanie indywidualnego szablonu graficznego i niestandardowych funkcjonalności.",
+          "Integracja z polskimi bramkami płatności i systemami kurierskimi.",
+          "Wprowadzenie początkowego asortymentu i treści statycznych."
+        ]
+      },
+      {
+        "title": "Etap 3: Testowanie, Uruchomienie i Wsparcie Powdrożeniowe",
+        "description": "Rygorystyczne testy funkcjonalne, wydajnościowe i bezpieczeństwa na różnych urządzeniach i przeglądarkach. Migracja sklepu na serwer docelowy i oficjalne uruchomienie. Zapewnienie szkolenia z obsługi panelu administracyjnego oraz wsparcia technicznego po uruchomieniu.",
+        "features": [
+          "Kompleksowe testy UAT (User Acceptance Testing) z Państwa udziałem.",
+          "Optymalizacja sklepu pod kątem szybkości ładowania (Core Web Vitals) i podstaw SEO.",
+          "Uruchomienie sklepu pod Państwa domeną i konfiguracja certyfikatu SSL.",
+          "Szkolenie z zarządzania produktami, zamówieniami i treścią w sklepie oraz pakiet wsparcia technicznego na start."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalny Sklep</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę projektu sklepu internetowego dla Umbrella Legal Office. Nasza propozycja jest elastyczna i gotowa do negocjacji, aby idealnie dopasować się do Państwa potrzeb i budżetu.",
+    "tabs": [
+      {
+        "id": "ecommerce_package",
+        "name": "Pakiet Sklep Internetowy dla Umbrella Legal Office"
+      }
+    ],
+    "packages": [
+      {
+        "id": "ecommerce_package",
+        "name": "Stworzenie i Wdrożenie Sklepu Internetowego z Obrazami i Biżuterią",
+        "description": "Kompleksowe stworzenie nowoczesnego, estetycznego i funkcjonalnego sklepu internetowego dla Umbrella Legal Office, dedykowanego sprzedaży obrazów i biżuterii, z możliwością stałej współpracy i rozwoju.",
+        "features": [
+          {
+            "text": "Indywidualny projekt graficzny (UI/UX)",
+            "included": true
+          },
+          {
+            "text": "Responsywność (RWD) - pełne dostosowanie do urządzeń mobilnych",
+            "included": true
+          },
+          {
+            "text": "Wdrożenie na stabilnej platformie e-commerce",
+            "included": true
+          },
+          {
+            "text": "Integracja z systemami płatności online",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja metod dostawy",
+            "included": true
+          },
+          {
+            "text": "Podstawowa optymalizacja SEO on-site",
+            "included": true
+          },
+          {
+            "text": "Szkolenie z obsługi panelu administracyjnego sklepu",
+            "included": true
+          },
+          {
+            "text": "Wsparcie techniczne po wdrożeniu (30 dni w cenie)",
+            "included": true
+          },
+          {
+            "text": "Gotowość do stałej współpracy w prowadzeniu i rozwoju sklepu",
+            "included": true
+          }
+        ],
+        "price": "od 5 500 zł netto",
+        "priceNote": "Budżet: Do negocjacji. Cena nie zawiera kosztów hostingu (Klient posiada domenę). Ostateczna cena zależy od finalnego zakresu funkcjonalności.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu Sklepu",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu sklepu dla Umbrella Legal Office. Przewidywany czas realizacji projektu: **4-6 tygodni** od momentu ustalenia szczegółów, podpisania umowy i otrzymania niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Analiza, Planowanie i Projekt UX/UI (Tydzień 1-2)",
+        "duration": "1-2 tygodnie",
+        "description": "Spotkanie inauguracyjne (kick-off), zebranie szczegółowych wymagań, analiza rynku, stworzenie architektury informacji, projektowanie makiet UX oraz propozycji graficznej UI sklepu. Iteracje i akceptacja projektu graficznego."
+      },
+      {
+        "phase": "Faza 2: Development i Wdrożenie (Tydzień 2-4)",
+        "duration": "2-3 tygodnie",
+        "description": "Kodowanie front-endu (HTML, CSS, JS) i back-endu sklepu, implementacja funkcjonalności, konfiguracja wybranej platformy e-commerce, integracja systemów płatności i opcji dostaw, wprowadzenie przykładowych produktów i treści."
+      },
+      {
+        "phase": "Faza 3: Testy, Optymalizacja i Szkolenie (Tydzień 4-5)",
+        "duration": "1 tydzień",
+        "description": "Wewnętrzne testy funkcjonalne i jakościowe, testy UAT (User Acceptance Testing) z Państwa udziałem na środowisku testowym, optymalizacja wydajności (szybkość ładowania) i podstawowa optymalizacja SEO, przygotowanie materiałów szkoleniowych i przeprowadzenie szkolenia z obsługi sklepu."
+      },
+      {
+        "phase": "Faza 4: Uruchomienie i Wsparcie Początkowe (Tydzień 5-6)",
+        "duration": "1 tydzień",
+        "description": "Finalne przygotowania, migracja na serwer produkcyjny (jeśli dotyczy), konfiguracja domeny, uruchomienie sklepu internetowego. Monitorowanie działania i wsparcie techniczne w pierwszych dniach po starcie, rozwiązywanie ewentualnych problemów."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy stworzyło dla naszej firmy nowoczesną platformę e-commerce, która znacząco zwiększyła naszą sprzedaż online. Profesjonalizm na każdym etapie!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "CEO, Artystyczne Wnętrza"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Współpraca z Soft Synergy przy budowie naszego sklepu internetowego przebiegła wzorowo. Świetna komunikacja, terminowość i elastyczne podejście do naszych potrzeb.",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, Galeria Prezentów"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Dzięki Soft Synergy nasz sklep internetowy nie tylko pięknie wygląda, ale jest też niezwykle funkcjonalny. Polecam każdemu, kto szuka solidnego partnera w e-commerce.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Marketing Manager, Design & Style"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ArtWnetrza",
+        "alt": "Logo Klienta Artystyczne Wnętrza"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GaleriaPrez",
+        "alt": "Logo Klienta Galeria Prezentów"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=DesignStyle",
+        "alt": "Logo Klienta Design & Style"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaBiz",
+        "alt": "Logo Klienta InnovaBiz"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoMarket",
+        "alt": "Logo Klienta EkoMarket"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Nowy Sklep</span> dla Umbrella Legal Office?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć sklep internetowy, który efektywnie zaprezentuje Państwa unikalne obrazy i biżuterię, przyciągając klientów i generując sprzedaż. Skontaktuj się z nami, aby omówić szczegóły projektu i rozpocząć owocną, stałą współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie Sklepu",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Wirtualna 10, 00-001 Cybertown (Siedziba Projektowa)"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  }
+}

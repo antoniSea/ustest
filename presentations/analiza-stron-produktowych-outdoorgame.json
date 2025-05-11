@@ -1,0 +1,278 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Optymalizacji Stron Produktowych dla Ekspedycja (OutdoorGame) | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/0A0F1F/FFFFFF?Text=Ekspedycja",
+    "clientLogoAlt": "Logo Klienta Ekspedycja (OutdoorGame)",
+    "titlePart1": "Propozycja Optymalizacji Stron Produktowych dla",
+    "titlePart2ClientName": "Ekspedycja (OutdoorGame)",
+    "subtitle": "Kompleksowa analiza i wdrożenie zmian na stronach produktowych gier terenowych w celu zwiększenia sprzedaży i konwersji, zgodnie z Państwa oczekiwaniem specjalistycznego podejścia.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące optymalizacji stron produktowych gier terenowych, aby zaproponować kompleksowe i specjalistyczne rozwiązanie.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Wzrost Sprzedaży i Konwersji Stron Produktowych</span>",
+      "description": "Głównym celem jest dokonanie kompleksowej analizy i wdrożenie zmian na Państwa stronach produktowych gier terenowych (jeden layout dla wszystkich), które bezpośrednio przełożą się na wzrost sprzedaży i współczynnika konwersji. Poszukują Państwo specjalistycznego, kompleksowego rozwiązania, a nie ogólnych porad.",
+      "points": [
+        "Poszukiwanie specjalisty od optymalizacji stron produktowych z udokumentowanym portfolio.",
+        "Cel: zwiększenie sprzedaży i wzrost konwersji na stronach gier terenowych (np. https://outdoorgame.com/osad/wroclaw/).",
+        "Oczekiwanie kompleksowego rozwiązania (analiza, prezentacja zmian, wdrożenie, dalsze analizy i poprawki).",
+        "Niezainteresowanie ogólnymi sugestiami typu 'dodać video, więcej ocen'.",
+        "Wymóg przedstawienia stawki za realizację wraz z portfolio."
+      ],
+      "diagramPlaceholderText": "Schemat obecnej strony produktowej OutdoorGame"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Optymalizacja Konwersji (CRO) - Faza I",
+      "description": "Proponujemy realizację pierwszej fazy projektu obejmującej dogłębną analizę Państwa stron produktowych, prezentację rekomendowanych zmian oraz wsparcie we wdrożeniu. Nasza metodologia opiera się na szczegółowej analizie danych analitycznych i zachowań użytkowników, co pozwala na tworzenie dedykowanych strategii realnie wpływających na wskaźniki konwersji.",
+      "points": [
+        "Dogłębna analiza obecnych stron produktowych (UX/UI, analityka, ścieżki użytkownika, treść).",
+        "Przygotowanie i prezentacja szczegółowych rekomendacji zmian, ukierunkowanych na wzrost konwersji.",
+        "Wsparcie techniczne i merytoryczne w procesie wdrażania zmian.",
+        "Propozycja pierwszej fazy projektu w kwocie 9 500 PLN netto, realizacja w 4-5 tygodni.",
+        "Możliwość dalszych, iteracyjnych analiz i optymalizacji na podstawie zebranych danych (przedmiot osobnych ustaleń).",
+        "Koncentracja na dostarczaniu dedykowanych strategii, a nie generycznych porad."
+      ],
+      "diagramPlaceholderText": "Koncepcja procesu optymalizacji CRO"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy Naszej <span class=\"text-cyan-400\">Strategii</span> Optymalizacji",
+    "sectionSubtitle": "Przedstawiamy kluczowe obszary, na których skoncentrujemy nasze działania, aby zmaksymalizować efektywność Państwa stron produktowych OutdoorGame.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\"></path>",
+        "title": "Audyt UX/UI i Analiza Danych Analitycznych",
+        "description": "Przeprowadzimy szczegółowy audyt użyteczności (UX) i interfejsu użytkownika (UI) Państwa stron produktowych. Zgłębimy dane analityczne (np. Google Analytics), aby zidentyfikować punkty krytyczne, bariery konwersji i obszary do poprawy w ścieżce zakupowej.",
+        "mockupText": "Raport z audytu UX i analityki"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 13.122C3 12.014 3.802 11.21 4.908 11.082C5.599 10.997 6.278 11 7 11C8.657 11 10.163 10.428 11.28 9.438M19.5 12C19.5 13.381 18.381 14.5 17 14.5C15.619 14.5 14.5 13.381 14.5 12C14.5 10.619 15.619 9.5 17 9.5C18.381 9.5 19.5 10.619 19.5 12ZM17 6.5C17 7.881 15.881 9 14.5 9C13.119 9 12 7.881 12 6.5C12 5.119 13.119 4 14.5 4C15.881 4 17 5.119 17 6.5Z M9 18C9 19.381 7.881 20.5 6.5 20.5C5.119 20.5 4 19.381 4 18C4 16.619 5.119 15.5 6.5 15.5C7.881 15.5 9 16.619 9 18Z\"></path>",
+        "title": "Projektowanie Rozwiązań i Propozycje Testów",
+        "description": "Na podstawie analizy opracujemy konkretne, mierzalne propozycje zmian (np. w layoucie, CTA, treściach, formularzach, nawigacji). Zaproponujemy strategię testowania (np. testy A/B) dla kluczowych elementów, aby wybrać najskuteczniejsze rozwiązania oparte na twardych danych.",
+        "mockupText": "Propozycje zmian i scenariusze testów"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826 3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z\"></path><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15 12a3 3 0 11-6 0 3 3 0 016 0z\"></path>",
+        "title": "Wsparcie Wdrożeniowe i Ciągła Optymalizacja",
+        "description": "Zapewnimy wsparcie na etapie wdrażania zaakceptowanych zmian. Po wdrożeniu będziemy monitorować wyniki i, w ramach dalszej współpracy, proponować iteracyjne ulepszenia, aby stale podnosić konwersję i sprzedaż na stronach OutdoorGame.",
+        "mockupText": "Monitoring wyników i plan optymalizacji"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Pierwszej Fazy",
+    "sectionSubtitle": "Precyzyjnie definiujemy etapy pierwszej fazy projektu optymalizacji stron produktowych OutdoorGame, zapewniając transparentność i mierzalne rezultaty.",
+    "modules": [
+      {
+        "title": "Etap 1: Dogłębna Analiza i Diagnostyka (Ok. 1-2 tygodnie)",
+        "description": "Zbierzemy i przeanalizujemy dane ilościowe (analityka internetowa) oraz jakościowe (np. mapy ciepła, nagrania sesji, jeśli dostępne). Zidentyfikujemy bariery konwersji i obszary o największym potencjale wzrostu. Przeprowadzimy analizę heurystyczną obecnych stron.",
+        "features": [
+          "Kick-off projektu, ustalenie celów i KPI.",
+          "Konfiguracja i weryfikacja narzędzi analitycznych (np. GA4, Hotjar).",
+          "Analiza ścieżek użytkowników, lejka konwersji, współczynników odrzuceń.",
+          "Analiza użyteczności (UX) i interfejsu użytkownika (UI) kluczowych stron produktowych.",
+          "Identyfikacja problemów technicznych wpływających na konwersję (np. szybkość ładowania)."
+        ]
+      },
+      {
+        "title": "Etap 2: Prezentacja Rekomendacji i Plan Działania (Ok. 1 tydzień)",
+        "description": "Na podstawie przeprowadzonej analizy przygotujemy szczegółowy raport wraz z konkretnymi, priorytetyzowanymi rekomendacjami zmian. Rekomendacje będą obejmować m.in. layout, treści, CTA, nawigację, formularze oraz propozycje testów A/B.",
+        "features": [
+          "Opracowanie kompleksowego raportu z wynikami analizy i zidentyfikowanymi problemami.",
+          "Prezentacja proponowanych rozwiązań i zmian (np. w formie makiet, wireframe'ów).",
+          "Ustalenie priorytetów wdrożeniowych i strategii testowania.",
+          "Wspólne omówienie i doprecyzowanie rekomendacji z zespołem Ekspedycja (OutdoorGame)."
+        ]
+      },
+      {
+        "title": "Etap 3: Wsparcie we Wdrożeniu Zmian (Ok. 2 tygodnie)",
+        "description": "Będziemy aktywnie wspierać Państwa zespół techniczny w procesie wdrażania zaakceptowanych zmian. Zapewnimy konsultacje, nadzór nad poprawnością implementacji oraz pomoc w konfiguracji testów A/B.",
+        "features": [
+          "Dostarczenie specyfikacji technicznej dla deweloperów (jeśli potrzebne).",
+          "Bieżące konsultacje i odpowiedzi na pytania dotyczące wdrożenia.",
+          "Weryfikacja poprawności wdrożonych zmian na środowisku testowym/produkcyjnym.",
+          "Wsparcie przy konfiguracji i uruchomieniu pierwszych testów A/B (jeśli dotyczy tego etapu)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Wzrost Konwersji</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę pierwszej fazy projektu optymalizacji stron produktowych dla Ekspedycja (OutdoorGame). Dalsze, iteracyjne analizy i optymalizacje będą przedmiotem osobnych ustaleń.",
+    "tabs": [
+      {
+        "id": "cro_phase1_offer",
+        "name": "Optymalizacja Stron Produktowych - Faza 1"
+      }
+    ],
+    "packages": [
+      {
+        "id": "cro_phase1_offer",
+        "name": "Faza 1: Analiza, Rekomendacje i Wsparcie Wdrożeniowe",
+        "description": "Kompleksowa usługa obejmująca dogłębną analizę stron produktowych, opracowanie strategii optymalizacji konwersji, prezentację konkretnych rekomendacji oraz wsparcie na etapie wdrażania zmian.",
+        "features": [
+          {
+            "text": "Audyt UX/UI stron produktowych",
+            "included": true
+          },
+          {
+            "text": "Zaawansowana analiza danych analitycznych",
+            "included": true
+          },
+          {
+            "text": "Identyfikacja barier konwersji i potencjału wzrostu",
+            "included": true
+          },
+          {
+            "text": "Przygotowanie raportu z priorytetyzowanymi rekomendacjami",
+            "included": true
+          },
+          {
+            "text": "Opracowanie propozycji testów A/B dla kluczowych zmian",
+            "included": true
+          },
+          {
+            "text": "Wsparcie merytoryczne przy wdrażaniu zmian",
+            "included": true
+          },
+          {
+            "text": "Dedykowany Project Manager i regularne raportowanie",
+            "included": true
+          }
+        ],
+        "price": "9 500 PLN netto",
+        "priceNote": "Cena netto za pierwszą fazę projektu. Budżet Klienta: Do negocjacji.",
+        "ctaText": "Rozpocznij Projekt Optymalizacji",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Pierwszej Fazy",
+    "sectionSubtitle": "Przejrzysty plan działania dla pierwszej fazy projektu optymalizacji stron produktowych OutdoorGame. Przewidywany czas realizacji: **4-5 tygodni** od momentu rozpoczęcia współpracy i dostarczenia niezbędnych dostępów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Dogłębna Analiza i Diagnostyka (Tydzień 1-2)",
+        "duration": "Ok. 10 dni roboczych",
+        "description": "Rozpoczęcie projektu (kick-off), zebranie dostępów i wymagań. Intensywna analiza danych ilościowych i jakościowych, audyt heurystyczny stron produktowych. Identyfikacja głównych problemów i możliwości optymalizacyjnych."
+      },
+      {
+        "phase": "Faza 2: Opracowanie i Prezentacja Rekomendacji (Tydzień 3)",
+        "duration": "Ok. 5 dni roboczych",
+        "description": "Synteza wyników analizy. Przygotowanie szczegółowego raportu z konkretnymi, priorytetyzowanymi rekomendacjami (w tym propozycje zmian w UX/UI, treści, CTA). Prezentacja wyników i propozycji Klientowi, dyskusja i ustalenie planu wdrożenia."
+      },
+      {
+        "phase": "Faza 3: Wsparcie we Wdrożeniu Zmian (Tydzień 4-5)",
+        "duration": "Ok. 10 dni roboczych (zależnie od złożoności zmian)",
+        "description": "Ścisła współpraca z zespołem deweloperskim Klienta (lub naszym, zgodnie z ustaleniami) w celu implementacji zatwierdzonych zmian. Nadzór nad poprawnością wdrożenia. Przygotowanie do monitorowania efektów i ewentualnych testów A/B."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów potwierdzają skuteczność naszych działań w zakresie optymalizacji konwersji. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Joanna Sikora",
+        "quote": "Dzięki Soft Synergy nasze strony produktowe zaczęły generować znacznie lepsze wyniki. Ich analityczne podejście i konkretne rekomendacje przyniosły realny wzrost konwersji.",
+        "authorName": "Joanna Sikora",
+        "authorTitle": "E-commerce Manager, ModaOnline"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=KB",
+        "imageAlt": "Krzysztof Borkowski",
+        "quote": "Profesjonalizm i dogłębna wiedza na temat optymalizacji to cechy Soft Synergy. Współpraca przebiegała sprawnie, a efekty w postaci wyższej sprzedaży mówią same za siebie.",
+        "authorName": "Krzysztof Borkowski",
+        "authorTitle": "CEO, TechGadgets.pl"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EW",
+        "imageAlt": "Ewa Wiśniewska",
+        "quote": "Szukaliśmy partnera, który pomoże nam zrozumieć naszych użytkowników i poprawić UX strony. Soft Synergy dostarczyło kompleksową analizę i skuteczne rozwiązania. Polecam!",
+        "authorName": "Ewa Wiśniewska",
+        "authorTitle": "Marketing Director, DomiBiuro"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ModaOnline",
+        "alt": "Logo Klienta ModaOnline"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=TechGadgets",
+        "alt": "Logo Klienta TechGadgets"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=DomiBiuro",
+        "alt": "Logo Klienta DomiBiuro"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=eSklepPro",
+        "alt": "Logo Klienta eSklepPro"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=MarketBoost",
+        "alt": "Logo Klienta MarketBoost"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Wzrost Sprzedaży</span> z OutdoorGame?",
+    "sectionSubtitle": "Skontaktuj się z nami, aby omówić, jak możemy zoptymalizować Państwa strony produktowe i znacząco zwiększyć konwersję. Chętnie odpowiemy na wszystkie pytania i przedstawimy szczegółowy plan działania. Zapraszamy do rozmowy, Panie Tomaszu.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Innowacyjna 5, 02-002 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": "115495",
+  "price": 9500,
+  "timelineDays": 35,
+  "employer_email": "tomek@ekspedycja.pl"
+}

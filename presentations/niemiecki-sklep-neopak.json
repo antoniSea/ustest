@@ -1,0 +1,311 @@
+{
+  "useme_id": 115232,
+  "employer_email": "zdziarski.szymon@gmail.com",
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Stworzenia Niemieckojęzycznej Wersji Sklepu neopak.pl | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false,
+        "isActive": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false,
+        "isActive": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false,
+        "isActive": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg",
+        "isActive": false
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/000/096800_1cHmTdO.png",
+    "clientLogoAlt": "Logo neopak",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "neopak",
+    "subtitle": "Propozycja stworzenia niemieckojęzycznej wersji sklepu internetowego neopak.pl, obejmująca migrację na nowy silnik, pełną lokalizację treści i funkcjonalności pod rynek niemiecki.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące stworzenia niemieckojęzycznej wersji sklepu neopak.pl, aby zaproponować kompleksowe rozwiązanie idealnie dopasowane do Państwa celów biznesowych.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Ekspansja na Rynek Niemiecki</span>",
+      "description": "Głównym celem projektu jest stworzenie w pełni funkcjonalnej, niemieckojęzycznej wersji sklepu internetowego neopak.pl na nowym silniku. Kluczowe jest zapewnienie, aby sklep sprawiał wrażenie autentycznego niemieckiego serwisu, co obejmuje migrację danych, profesjonalne tłumaczenie, adaptację graficzną oraz integrację lokalnych systemów płatności i dostaw, w celu skutecznego dotarcia do niemieckich klientów.",
+      "points": [
+        "Stworzenie niemieckojęzycznej wersji sklepu neopak.pl na nowym silniku.",
+        "Migracja wszystkich produktów i kategorii ze sklepu neopak.pl na nową platformę.",
+        "Pełne tłumaczenie stron, opisów produktów, regulaminów oraz innych treści na język niemiecki, zapewniające naturalne brzmienie.",
+        "Projekt graficzny zbliżony do obecnego lub całkowicie nowy (do uzgodnienia).",
+        "Konfiguracja metod płatności typowych dla rynku niemieckiego (np. PayPal, Sofort, karta kredytowa).",
+        "Integracja niemieckich sposobów dostawy (np. DHL, DPD, Hermes).",
+        "Pełne dopasowanie sklepu do specyfiki rynku niemieckiego, zarówno pod względem treści, jak i funkcjonalności."
+      ],
+      "diagramPlaceholderText": "Wizualizacja strategii wejścia na rynek niemiecki dla neopak"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowe Wdrożenie Sklepu DE",
+      "description": "Proponujemy kompleksowe stworzenie niemieckojęzycznej wersji Państwa sklepu neopak.pl, włączając migrację na nowy silnik, pełną lokalizację oraz wdrożenie funkcjonalności dostosowanych do rynku niemieckiego. Realizacja projektu w metodyce Agile zajmie orientacyjnie 6-8 tygodni, a wstępna wycena wynosi 28 500 PLN netto. Nasz zespół ekspertów zapewni płynne przejście i wysoką jakość końcowego produktu.",
+      "points": [
+        "Realizacja projektu w orientacyjnym terminie 6-8 tygodni.",
+        "Wstępna wycena kompleksowego wdrożenia wynosi 28 500 PLN netto.",
+        "Podejście oparte na metodyce Agile, gwarantujące elastyczność i stały kontakt.",
+        "Wykorzystanie iteracyjnych cykli pracy dla zapewnienia najwyższej jakości i zgodności z oczekiwaniami.",
+        "Doświadczony zespół specjalizujący się w budowie i wdrażaniu sklepów internetowych na rynkach międzynarodowych.",
+        "Gwarancja pełnego dopasowania sklepu do specyfiki niemieckiego e-commerce."
+      ],
+      "diagramPlaceholderText": "Architektura proponowanego rozwiązania dla neopak.de"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Projektu</span> Sklepu Niemieckiego",
+    "sectionSubtitle": "Przedstawiamy kluczowe komponenty naszego rozwiązania, które zagwarantują sukces niemieckiej wersji sklepu neopak.pl.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Migracja Danych i Nowy Silnik Sklepu",
+        "description": "Bezpieczna migracja wszystkich produktów, kategorii, klientów i zamówień (zgodnie z ustaleniami) z obecnego sklepu neopak.pl na nową, wydajną platformę e-commerce. Zapewniamy ciągłość danych oraz optymalizację pod kątem szybkości i SEO.",
+        "mockupText": "Schemat migracji danych"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Pełna Lokalizacja i Tłumaczenie na Język Niemiecki",
+        "description": "Profesjonalne tłumaczenie wszystkich treści sklepu (opisy produktów, kategorie, strony CMS, regulaminy, polityka prywatności, e-maile transakcyjne) przez tłumaczy z uwzględnieniem specyfiki branży i kultury niemieckiej. Celem jest stworzenie sklepu, który jest w 100% autentyczny dla niemieckiego odbiorcy.",
+        "mockupText": "Przykład zlokalizowanej strony produktu"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Projekt Graficzny i UX Dostosowany do Rynku DE",
+        "description": "Adaptacja istniejącego projektu graficznego lub stworzenie całkowicie nowego, zgodnie z Państwa preferencjami i budżetem. Projekt będzie zoptymalizowany pod kątem użyteczności (UX) dla niemieckich klientów, uwzględniając ich oczekiwania, standardy rynkowe i najlepsze praktyki e-commerce.",
+        "mockupText": "Propozycja layoutu dla neopak.de"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z\" /><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15 12a3 3 0 11-6 0 3 3 0 016 0z\" />",
+        "title": "Integracja Niemieckich Płatności i Dostaw",
+        "description": "Konfiguracja i integracja popularnych w Niemczech metod płatności (np. PayPal, Sofortüberweisung, karty kredytowe, Giropay, Klarna) oraz systemów dostaw (np. DHL, DPD, Hermes), w tym opcje śledzenia przesyłek, zarządzania zwrotami i dostosowanie do niemieckich wymogów prawnych (Impressum, AGB, DSGVO).",
+        "mockupText": "Dostępne metody płatności i dostawy"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Wdrożeniowych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia niemieckiej wersji Państwa sklepu, zapewniając transparentność i kontrolę nad procesem.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza, Planowanie i Konfiguracja Platformy",
+        "description": "Szczegółowa analiza obecnego sklepu neopak.pl, specyfiki rynku niemieckiego, wybór i konfiguracja nowego silnika e-commerce. Ustalenie architektury informacji, planu migracji oraz zakresu prac graficznych i funkcjonalnych.",
+        "features": [
+          "Warsztaty analityczne z Klientem (kick-off projektu).",
+          "Definicja wymagań funkcjonalnych i technicznych dla neopak.de.",
+          "Wybór i konfiguracja docelowej platformy e-commerce.",
+          "Przygotowanie środowiska deweloperskiego, testowego i produkcyjnego.",
+          "Opracowanie szczegółowego planu migracji danych."
+        ]
+      },
+      {
+        "title": "Etap 2: Migracja Danych, Tłumaczenia i Development Rdzenia Sklepu",
+        "description": "Przeprowadzenie migracji danych z obecnego systemu. Równolegle realizacja profesjonalnych tłumaczeń i lokalizacji wszystkich treści na język niemiecki. Rozpoczęcie prac deweloperskich nad kluczowymi funkcjonalnościami nowego sklepu.",
+        "features": [
+          "Migracja bazy danych produktów, kategorii, klientów i historii zamówień.",
+          "Proces tłumaczenia i weryfikacji językowej wszystkich treści sklepu.",
+          "Lokalizacja elementów interfejsu, komunikatów systemowych, walut, jednostek miar.",
+          "Development podstawowych funkcjonalności sklepu na nowej platformie."
+        ]
+      },
+      {
+        "title": "Etap 3: Implementacja Projektu Graficznego, Funkcjonalności i Integracje Zewnętrzne",
+        "description": "Wdrożenie projektu graficznego (adaptacja istniejącego lub stworzenie nowego). Implementacja zaawansowanych funkcjonalności sklepu oraz integracja z niemieckimi systemami płatności, dostaw i innymi narzędziami (np. marketing automation, analityka).",
+        "features": [
+          "Projektowanie UI/UX zorientowane na niemieckiego użytkownika (jeśli dotyczy nowego projektu).",
+          "Kodowanie szablonu graficznego i implementacja na nowej platformie.",
+          "Konfiguracja modułów płatności (PayPal, Sofort, karty, Giropay, Klarna itp.).",
+          "Integracja z systemami kurierskimi (DHL, DPD, Hermes) oraz opcjami dostawy.",
+          "Dostosowanie sklepu do niemieckich wymogów prawnych (Impressum, AGB, Widerrufsrecht, DSGVO)."
+        ]
+      },
+      {
+        "title": "Etap 4: Testy Kompleksowe, Uruchomienie Wersji Niemieckiej i Wsparcie Powdrożeniowe",
+        "description": "Gruntowne testy funkcjonalne, wydajnościowe, bezpieczeństwa i UX. Uruchomienie niemieckiej wersji sklepu na środowisku produkcyjnym oraz zapewnienie wsparcia technicznego i merytorycznego po wdrożeniu.",
+        "features": [
+          "Testy wewnętrzne (QA) i zewnętrzne (UAT - User Acceptance Testing) z udziałem Klienta.",
+          "Optymalizacja wydajności (Core Web Vitals) i podstawowe SEO techniczne.",
+          "Finalne przygotowanie do uruchomienia (go-live checklist).",
+          "Uruchomienie sklepu neopak.de.",
+          "Szkolenie z obsługi nowego systemu oraz wsparcie powdrożeniowe (okres gwarancyjny)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Ekspansję Międzynarodową</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę kompleksowego stworzenia niemieckojęzycznej wersji sklepu neopak.pl, dostosowaną do Państwa potrzeb.",
+    "tabs": [
+      {
+        "id": "german_store_package",
+        "name": "Wdrożenie Sklepu Niemieckiego dla neopak.pl"
+      }
+    ],
+    "packages": [
+      {
+        "id": "german_store_package",
+        "name": "Niemieckojęzyczna Wersja Sklepu neopak.pl",
+        "description": "Kompleksowe stworzenie niemieckojęzycznej wersji sklepu neopak.pl na nowym silniku, obejmujące migrację danych, pełne tłumaczenie i lokalizację, projekt graficzny (do uzgodnienia) oraz integrację z niemieckimi systemami płatności i dostaw.",
+        "features": [
+          {
+            "text": "Migracja produktów i kategorii na nową platformę",
+            "included": true
+          },
+          {
+            "text": "Pełne tłumaczenie i lokalizacja treści na język niemiecki",
+            "included": true
+          },
+          {
+            "text": "Projekt graficzny (zbliżony lub nowy - do uzgodnienia)",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja niemieckich metod płatności (PayPal, Sofort, itp.)",
+            "included": true
+          },
+          {
+            "text": "Integracja niemieckich sposobów dostawy (DHL, DPD, Hermes)",
+            "included": true
+          },
+          {
+            "text": "Dopasowanie do specyfiki i wymogów rynku niemieckiego",
+            "included": true
+          },
+          {
+            "text": "Realizacja w metodyce Agile ze stałym kontaktem",
+            "included": true
+          },
+          {
+            "text": "Podstawowe wsparcie powdrożeniowe i szkolenie",
+            "included": true
+          }
+        ],
+        "price": "28 500 PLN netto",
+        "priceNote": "Cena netto. Budżet Klienta: Do negocjacji. Oferta ważna 30 dni.",
+        "ctaText": "Rozpocznij Ekspansję z Nami",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu",
+    "sectionSubtitle": "Przejrzysty plan działania dla stworzenia niemieckiej wersji sklepu neopak.pl. Przewidywany czas realizacji projektu: **6-8 tygodni** (ok. 42-56 dni roboczych) od momentu akceptacji oferty i dostarczenia niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Analiza i Planowanie (Tydzień 1-2)",
+        "duration": "2 tygodnie",
+        "description": "Potwierdzenie zlecenia, szczegółowa analiza wymagań, wybór platformy (jeśli nowa), plan migracji, ustalenie zakresu prac graficznych i funkcjonalności. Kick-off projektu."
+      },
+      {
+        "phase": "Faza 2: Development, Migracja i Tłumaczenia (Tydzień 2-5)",
+        "duration": "3-4 tygodnie",
+        "description": "Rozpoczęcie prac deweloperskich nad nowym sklepem, implementacja rdzenia systemu, migracja danych. Równolegle realizacja procesu tłumaczenia i lokalizacji treści."
+      },
+      {
+        "phase": "Faza 3: Integracje, Projekt Graficzny i Testy (Tydzień 5-7)",
+        "duration": "2-3 tygodnie",
+        "description": "Wdrożenie projektu graficznego. Integracja systemów płatności i dostaw. Przeprowadzenie kompleksowych testów (funkcjonalnych, UX, wydajnościowych). Wprowadzanie poprawek i optymalizacji."
+      },
+      {
+        "phase": "Faza 4: Uruchomienie, Szkolenie i Wsparcie (Tydzień 7-8)",
+        "duration": "1 tydzień",
+        "description": "Finalne przygotowania i uruchomienie niemieckiej wersji sklepu (go-live). Szkolenie dla personelu Klienta z obsługi nowej platformy. Przekazanie dokumentacji i rozpoczęcie okresu wsparcia powdrożeniowego."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze doświadczenie w e-commerce i sukcesy na rynkach międzynarodowych mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JK",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy wykazało się ogromnym profesjonalizmem przy tworzeniu naszego sklepu dla rynku zagranicznego. Ich zrozumienie specyfiki e-commerce i zaangażowanie przerosły nasze oczekiwania. Polecamy!",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "CEO, ExportNow Sp. z o.o."
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AN",
+        "imageAlt": "Anna Nowak",
+        "quote": "Dzięki Soft Synergy udało nam się sprawnie przeprowadzić migrację danych i uruchomić nową wersję sklepu. Komunikacja była świetna na każdym etapie projektu. Jesteśmy bardzo zadowoleni z wyników.",
+        "authorName": "Anna Nowak",
+        "authorTitle": "E-commerce Manager, GlobalMarket"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PW",
+        "imageAlt": "Piotr Wiśniewski",
+        "quote": "Zespół Soft Synergy to prawdziwi eksperci. Dostarczyli nam rozwiązanie idealnie dopasowane do naszych potrzeb, a cały proces wdrożenia przebiegł gładko i terminowo. Rekomendujemy!",
+        "authorName": "Piotr Wiśniewski",
+        "authorTitle": "Właściciel, InterShop Pro"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci E-commerce:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ExportNow",
+        "alt": "Logo Klienta ExportNow"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GlobalMrkt",
+        "alt": "Logo Klienta GlobalMarket"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InterShop",
+        "alt": "Logo Klienta InterShop Pro"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=eSklepPlus",
+        "alt": "Logo Klienta eSklepPlus"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=MarketX",
+        "alt": "Logo Klienta MarketX"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Ekspansję</span> Sklepu neopak.pl na Rynek Niemiecki?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak Soft Synergy może pomóc Państwu skutecznie wejść na rynek niemiecki i osiągnąć sukces. Skontaktuj się z nami, aby omówić szczegóły projektu, dopasować ofertę i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Twoim Sklepie DE",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Cybernetyki 7, 02-677 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 28500,
+  "timelineDays": 56
+}

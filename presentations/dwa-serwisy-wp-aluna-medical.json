@@ -1,0 +1,296 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Stworzenia Dwóch Serwisów WWW dla Aluna Medical | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=AM",
+    "clientLogoAlt": "Logo Aluna Medical",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Aluna Medical",
+    "subtitle": "Propozycja stworzenia dwóch serwisów internetowych: onepage dla jednego produktu oraz serwisu dla kilkunastu produktów, oba w technologii WordPress, dla branży kosmetyczno-medycznej.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące stworzenia dwóch serwisów WWW, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów w branży kosmetyczno-medycznej.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Nowoczesne Serwisy WWW</span>",
+      "description": "Głównym celem jest stworzenie dwóch profesjonalnych serwisów internetowych dla Aluna Medical: mniejszego serwisu onepage dedykowanego jednemu produktowi oraz większego serwisu dla kilkunastu produktów. Oba serwisy mają być oparte na WordPress z wszechstronnym motywem, działać w branży kosmetyczno-medycznej i przekierowywać na istniejący sklep PrestaShop. Istniejące serwisy mogą być stworzone od nowa.",
+      "points": [
+        "Zlecenie stworzenia dwóch serwisów www (onepage i wieloproduktowy).",
+        "Branża: kosmetyczno-medyczna.",
+        "Technologia: WordPress, wszechstronny motyw.",
+        "Funkcjonalność: Bez sklepów, przekierowanie na PrestaShop.",
+        "Istniejące serwisy mogą być przebudowane lub stworzone od nowa.",
+        "Ustalony przez Państwa budżet na projekt: 5000,00 PLN."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji serwisów Aluna Medical"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowe Stworzenie Stron WordPress",
+      "description": "Proponujemy realizację obu serwisów internetowych w technologii WordPress z wykorzystaniem wszechstronnego motywu. Zapewnimy nowoczesny design, responsywność oraz intuicyjną nawigację. Nasza propozycja zakłada realizację obu serwisów w łącznej cenie 4800,00 PLN brutto, z przewidywanym czasem realizacji 20 dni roboczych. Stawiamy na ścisłą współpracę i transparentność procesu.",
+      "points": [
+        "Realizacja serwisu onepage (jeden produkt) oraz serwisu wieloproduktowego (kilkanaście produktów) na WordPress.",
+        "Wykorzystanie wszechstronnego, elastycznego motywu WordPress.",
+        "Atrakcyjna cena realizacji obu serwisów: 4800,00 PLN brutto.",
+        "Przewidywany czas realizacji: 20 dni roboczych.",
+        "Ścisła współpraca i regularne konsultacje na każdym etapie projektu.",
+        "Gwarancja responsywności, estetyki i intuicyjnej nawigacji."
+      ],
+      "diagramPlaceholderText": "Przykładowy design stron WordPress dla branży kosmetyczno-medycznej"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Projektu</span> Serwisów WWW",
+    "sectionSubtitle": "Przedstawiamy składowe projektu, które zapewnią wysoką jakość, funkcjonalność i estetykę Państwa nowych serwisów internetowych dla Aluna Medical.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Nowoczesny Serwis OnePage (Jeden Produkt)",
+        "description": "Stworzenie dedykowanego serwisu typu onepage, skupionego na prezentacji jednego kluczowego produktu. Projekt będzie charakteryzował się nowoczesnym designem, intuicyjną nawigacją i pełną responsywnością, zoptymalizowany pod kątem przekierowania na sklep PrestaShop.",
+        "mockupText": "Koncepcja serwisu OnePage"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Rozbudowany Serwis Produktowy (Kilkanaście Produktów)",
+        "description": "Budowa serwisu prezentującego kilkanaście produktów z oferty Aluna Medical. Serwis będzie posiadał klarowną strukturę, estetyczne karty produktów, łatwą nawigację oraz funkcję przekierowania do sklepu PrestaShop. Całość oparta na WordPress i wszechstronnym motywie.",
+        "mockupText": "Struktura serwisu produktowego"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3\" />",
+        "title": "Platforma WordPress i Elastyczny Motyw",
+        "description": "Oba serwisy zostaną zbudowane na popularnym i łatwym w zarządzaniu systemie CMS WordPress. Wykorzystamy wszechstronny, responsywny motyw premium, który zapewni estetykę, szybkość działania oraz możliwość łatwej rozbudowy w przyszłości.",
+        "mockupText": "Panel administracyjny WordPress"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244\" />",
+        "title": "Integracja i Przekierowania na Sklep PrestaShop",
+        "description": "Zapewnimy płynne przekierowania z obu nowych serwisów WordPress bezpośrednio na odpowiednie strony produktów lub kategorie w Państwa istniejącym sklepie PrestaShop, ułatwiając klientom proces zakupowy.",
+        "mockupText": "Schemat przekierowań"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Projektowych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia Państwa serwisów WWW dla Aluna Medical, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Analiza, Planowanie i Projektowanie UX/UI",
+        "description": "Dokładne omówienie Państwa oczekiwań, celów biznesowych, analiza grupy docelowej. Stworzenie makiet funkcjonalnych (wireframes) oraz projektu graficznego (UI) dla obu serwisów, z uwzględnieniem identyfikacji wizualnej Aluna Medical.",
+        "features": [
+          "Warsztaty i konsultacje w celu zdefiniowania wymagań.",
+          "Analiza istniejących serwisów i materiałów marketingowych.",
+          "Projektowanie architektury informacji i nawigacji (UX).",
+          "Przygotowanie projektu graficznego interfejsu użytkownika (UI) dla obu serwisów.",
+          "Prezentacja koncepcji i zbieranie feedbacku."
+        ]
+      },
+      {
+        "title": "Etap 2: Wdrożenie Stron na WordPress i Konfiguracja",
+        "description": "Kodowanie i wdrożenie obu serwisów na systemie WordPress z wykorzystaniem wybranego wszechstronnego motywu. Konfiguracja niezbędnych wtyczek, optymalizacja pod kątem szybkości i SEO (podstawowa). Implementacja przekierowań.",
+        "features": [
+          "Instalacja i konfiguracja WordPress oraz wszechstronnego motywu.",
+          "Kodowanie szablonów (HTML, CSS, JS) zgodnie z zaakceptowanym projektem graficznym.",
+          "Implementacja responsywności (RWD) dla poprawnego wyświetlania na różnych urządzeniach.",
+          "Konfiguracja przekierowań na sklep PrestaShop.",
+          "Wprowadzenie treści dostarczonych przez Klienta (w ustalonym zakresie)."
+        ]
+      },
+      {
+        "title": "Etap 3: Testy, Optymalizacja i Uruchomienie Serwisów",
+        "description": "Przeprowadzenie kompleksowych testów funkcjonalnych, wydajnościowych i kompatybilności. Wprowadzenie ostatnich poprawek, optymalizacja oraz finalne uruchomienie serwisów na serwerze docelowym. Krótkie szkolenie z obsługi.",
+        "features": [
+          "Testowanie funkcjonalności, linków i formularzy.",
+          "Testy responsywności na różnych urządzeniach i przeglądarkach.",
+          "Podstawowa optymalizacja SEO (meta tagi, struktura URL).",
+          "Optymalizacja prędkości ładowania stron.",
+          "Migracja na serwer docelowy i uruchomienie.",
+          "Krótkie szkolenie z obsługi panelu WordPress."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalne Serwisy WWW</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę projektu dwóch serwisów internetowych dla Aluna Medical. Nasza propozycja jest konkurencyjna i mieści się w Państwa budżecie.",
+    "tabs": [
+      {
+        "id": "website_package",
+        "name": "Pakiet Dwóch Serwisów WWW"
+      }
+    ],
+    "packages": [
+      {
+        "id": "website_package",
+        "name": "Stworzenie Dwóch Serwisów WWW dla Aluna Medical",
+        "description": "Kompleksowe stworzenie serwisu onepage (1 produkt) oraz serwisu wieloproduktowego (kilkanaście produktów) w technologii WordPress, z przekierowaniami na sklep PrestaShop, dla branży kosmetyczno-medycznej.",
+        "features": [
+          {
+            "text": "Serwis OnePage WordPress (1 produkt)",
+            "included": true
+          },
+          {
+            "text": "Serwis Wieloproduktowy WordPress (kilkanaście produktów)",
+            "included": true
+          },
+          {
+            "text": "Wykorzystanie wszechstronnego motywu premium",
+            "included": true
+          },
+          {
+            "text": "Projekt graficzny UI/UX dopasowany do marki",
+            "included": true
+          },
+          {
+            "text": "Pełna responsywność (RWD)",
+            "included": true
+          },
+          {
+            "text": "Konfiguracja przekierowań na sklep PrestaShop",
+            "included": true
+          },
+          {
+            "text": "Podstawowa optymalizacja SEO",
+            "included": true
+          },
+          {
+            "text": "Konsultacje i zarządzanie projektem",
+            "included": true
+          },
+          {
+            "text": "Szkolenie z obsługi panelu WordPress",
+            "included": true
+          }
+        ],
+        "price": "4800,00 PLN brutto",
+        "priceNote": "Cena zawiera podatek VAT. Pierwotny budżet Klienta: 5000,00 PLN.",
+        "ctaText": "Rozpocznij Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu stworzenia dwóch serwisów WWW dla Aluna Medical. Przewidywany czas realizacji projektu: **20 dni roboczych** od momentu ustalenia wszystkich szczegółów i otrzymania niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Analiza, Planowanie i Projekt UX/UI (Dni 1-5)",
+        "duration": "5 dni roboczych",
+        "description": "Spotkanie inauguracyjne, zebranie szczegółowych wymagań, analiza konkurencji, przygotowanie architektury informacji, stworzenie makiet funkcjonalnych (wireframes) oraz propozycji projektu graficznego (UI mockups) dla obu serwisów. Prezentacja Klientowi i zbieranie feedbacku."
+      },
+      {
+        "phase": "Faza 2: Wdrożenie WordPress i Kodowanie (Dni 6-15)",
+        "duration": "10 dni roboczych",
+        "description": "Instalacja i konfiguracja WordPress oraz motywu. Kodowanie front-endu (HTML, CSS, JavaScript) i back-endu (PHP) zgodnie z zaakceptowanym projektem. Implementacja responsywności, konfiguracja przekierowań, integracja treści (jeśli dostarczone)."
+      },
+      {
+        "phase": "Faza 3: Testowanie, Optymalizacja i Wdrożenie (Dni 16-20)",
+        "duration": "5 dni roboczych",
+        "description": "Kompleksowe testy funkcjonalne, wydajnościowe, bezpieczeństwa i kompatybilności. Optymalizacja SEO (podstawowa) i szybkości ładowania. Wprowadzenie finalnych poprawek, szkolenie z obsługi CMS i uruchomienie serwisów na serwerze docelowym."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Specjalizujemy się w projektach dla branży beauty & medical.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JB",
+        "imageAlt": "Joanna B.",
+        "quote": "Współpraca z Soft Synergy przy tworzeniu naszej nowej strony produktowej dla sektora beauty była czystą przyjemnością. Zrozumieli nasze potrzeby i dostarczyli estetyczne, funkcjonalne rozwiązanie.",
+        "authorName": "Joanna B.",
+        "authorTitle": "Dyrektor Marketingu, NaturaPure Cosmetics"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MW",
+        "imageAlt": "dr Michał Wiśniewski",
+        "quote": "Potrzebowaliśmy nowoczesnej strony dla naszej kliniki. Soft Synergy zaproponowało i wdrożyło serwis WordPress, który idealnie odpowiada naszym wymaganiom. Polecamy!",
+        "authorName": "dr Michał Wiśniewski",
+        "authorTitle": "VitaMedica Clinic"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EK",
+        "imageAlt": "Ewa Krawczyk",
+        "quote": "Dzięki Soft Synergy nasze produkty medyczne zyskały profesjonalną oprawę online. Szybka realizacja i świetna komunikacja na każdym etapie projektu.",
+        "authorName": "Ewa Krawczyk",
+        "authorTitle": "Kierownik Produktu, MedTech Solutions"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci z Sektora Beauty & Medical:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NaturaPure",
+        "alt": "Logo Klienta NaturaPure Cosmetics"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=VitaMedica",
+        "alt": "Logo Klienta VitaMedica Clinic"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=MedTechSol",
+        "alt": "Logo Klienta MedTech Solutions"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=BeautyCorp",
+        "alt": "Logo Klienta BeautyCorp"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=HealthPlus",
+        "alt": "Logo Klienta HealthPlus"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Nowe Serwisy WWW</span> dla Aluna Medical?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć serwisy internetowe, które efektywnie wesprą Państwa działania w branży kosmetyczno-medycznej. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie Stron WWW",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": 115224,
+  "employer_email": "seda@seda.pl",
+  "price": 4800,
+  "timelineDays": 28
+}

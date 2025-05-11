@@ -1,0 +1,277 @@
+{
+  "useme_id": 115230,
+  "employer_email": "zdziarski.szymon@gmail.com",
+  "price": 5400,
+  "timelineDays": 28,
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Wdrożenia na Amazon.com dla neopak | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/000/096800_1cHmTdO.png",
+    "clientLogoAlt": "Logo neopak",
+    "titlePart1": "Propozycja Wdrożenia na Amazon.com dla",
+    "titlePart2ClientName": "neopak",
+    "subtitle": "Kompleksowe wprowadzenie i optymalizacja oferty firmy neopak na platformie Amazon.com, w tym założenie konta, wystawienie produktów, SEO i wsparcie sprzedaży.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące wprowadzenia oferty na Amazon.com, aby zaproponować kompleksowe i efektywne rozwiązanie.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Skuteczne Wejście na Amazon.com</span>",
+      "description": "Głównym celem jest wprowadzenie oferty firmy neopak na platformę Amazon.com, obejmujące założenie konta, optymalizację, wystawienie produktów oraz wsparcie w sprzedaży, aby maksymalizować widoczność i rentowność Państwa marki na tym kluczowym rynku.",
+      "points": [
+        "Wprowadzenie oferty firmy neopak na platformę Amazon.com.",
+        "Założenie i optymalizacja konta sprzedażowego.",
+        "Wystawienie produktów (opisy, zdjęcia, kategorie) i optymalizacja SEO.",
+        "Wsparcie w realizacji sprzedaży oraz ewentualne korekty strategii.",
+        "Budżet na realizację projektu: Do negocjacji."
+      ],
+      "diagramPlaceholderText": "Schemat procesu wdrożenia oferty neopak na Amazon"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowe Wdrożenie na Amazon.com",
+      "description": "Soft Synergy proponuje kompleksowe wsparcie w efektywnym uruchomieniu i optymalizacji Państwa obecności sprzedażowej na Amazon.com. Nasza oferta obejmuje wszystkie kluczowe etapy, od założenia konta po strategię sprzedaży i jej obsługę, w cenie 5400 PLN netto.",
+      "points": [
+        "Realizacja kluczowych etapów projektu w terminie do 4 tygodni.",
+        "Założenie i pełna optymalizacja konta sprzedażowego na Amazon.com.",
+        "Profesjonalne wystawienie produktów zgodnie z wymogami platformy.",
+        "Optymalizacja ofert pod kątem SEO Amazon (algorytm A9) dla maksymalnej widoczności.",
+        "Wsparcie w początkowej fazie sprzedaży oraz doradztwo strategiczne.",
+        "Atrakcyjna wycena: 5400 PLN netto za kompleksowe wdrożenie."
+      ],
+      "diagramPlaceholderText": "Kluczowe etapy współpracy z Soft Synergy przy wdrożeniu na Amazon"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Wdrożenia</span> na Amazon",
+    "sectionSubtitle": "Przedstawiamy składowe naszego kompleksowego wsparcia, które zapewnią sukces Państwa firmy neopak na platformie Amazon.com.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4\" />",
+        "title": "Założenie i Optymalizacja Konta Amazon",
+        "description": "Profesjonalne założenie konta sprzedażowego Amazon.com, konfiguracja ustawień, weryfikacja oraz optymalizacja profilu sprzedawcy neopak w celu budowania zaufania i wiarygodności od pierwszego dnia.",
+        "mockupText": "Panel konta Amazon neopak"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\" />",
+        "title": "Wystawienie i Optymalizacja Produktów (Listing)",
+        "description": "Przygotowanie i wdrożenie wysokiej jakości listingów produktowych (tytuły, opisy, bullet pointy, zdjęcia, słowa kluczowe) dla oferty neopak, zgodnie z wymogami Amazon i najlepszymi praktykami SEO dla maksymalnej konwersji.",
+        "mockupText": "Przykładowy listing produktu neopak"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M13 7h8m0 0v8m0-8l-8 8-4-4-6 6\" />",
+        "title": "Strategia Sprzedaży i Wsparcie",
+        "description": "Opracowanie wstępnej strategii sprzedaży dla produktów neopak, monitorowanie wyników oraz wsparcie w obsłudze pierwszych zamówień. Doradztwo w zakresie ewentualnych korekt strategii w celu optymalizacji sprzedaży i obsługi klienta.",
+        "mockupText": "Schemat strategii sprzedaży na Amazon"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Wdrożeniowych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap wprowadzenia firmy neopak na Amazon.com, zapewniając transparentność i efektywność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Audyt, Planowanie i Założenie Konta",
+        "description": "Analiza oferty neopak, konkurencji na Amazon.com, przygotowanie indywidualnej strategii wejścia. Rejestracja i pełna konfiguracja profesjonalnego konta sprzedawcy.",
+        "features": [
+          "Analiza Państwa oferty produktowej i potencjału na platformie Amazon.com.",
+          "Wybór odpowiedniego planu sprzedażowego i przeprowadzenie procesu rejestracji konta.",
+          "Konfiguracja wszystkich niezbędnych ustawień konta, w tym informacji podatkowych, wysyłkowych i bankowych.",
+          "Ustalenie szczegółowego harmonogramu prac oraz kluczowych wskaźników sukcesu (KPI)."
+        ]
+      },
+      {
+        "title": "Etap 2: Przygotowanie i Wystawienie Produktów",
+        "description": "Stworzenie zoptymalizowanych listingów produktowych, w tym kompleksowy research słów kluczowych, przygotowanie angażujących treści oraz przygotowanie/adaptacja materiałów graficznych.",
+        "features": [
+          "Dogłębne badanie słów kluczowych (keyword research) specyficznych dla produktów neopak i rynku Amazon.",
+          "Tworzenie perswazyjnych i zoptymalizowanych pod kątem SEO tytułów, opisów (description), punktów kluczowych (bullet points) oraz tagów.",
+          "Dobór najtrafniejszych kategorii produktowych i precyzyjne uzupełnienie atrybutów.",
+          "Systematyczne wystawianie produktów na platformie Amazon.com z uwzględnieniem najlepszych praktyk i standardów."
+        ]
+      },
+      {
+        "title": "Etap 3: Optymalizacja, Uruchomienie Sprzedaży i Wsparcie",
+        "description": "Finalna optymalizacja listingów, uruchomienie sprzedaży oraz bieżące wsparcie techniczne i merytoryczne w początkowym, kluczowym okresie działalności Państwa firmy na Amazon.com.",
+        "features": [
+          "Optymalizacja słów kluczowych w backendzie (search terms) i innych zaawansowanych elementów listingów.",
+          "Wsparcie w zarządzaniu pierwszymi zamówieniami, zapytaniami od klientów oraz w obsłudze ewentualnych zwrotów.",
+          "Monitoring widoczności produktów, pozycji w wynikach wyszukiwania oraz wstępnych wyników sprzedaży.",
+          "Rekomendacje dotyczące dalszych działań prorozwojowych (np. uruchomienie kampanii Amazon PPC, programy promocyjne, rozszerzenie oferty)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Ekspansję na Amazon.com</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę kompleksowego wdrożenia oferty neopak na platformę Amazon.com. Nasza propozycja jest konkurencyjna i nastawiona na osiągnięcie Państwa celów biznesowych.",
+    "tabs": [
+      {
+        "id": "amazon_implementation",
+        "name": "Wdrożenie na Amazon.com"
+      }
+    ],
+    "packages": [
+      {
+        "id": "amazon_implementation",
+        "name": "Kompleksowe Wdrożenie neopak na Amazon.com",
+        "description": "Pełne wsparcie w uruchomieniu i rozwoju sprzedaży na Amazon.com: od założenia i konfiguracji konta, przez profesjonalne przygotowanie i optymalizację produktową, po opracowanie strategii sprzedaży i wsparcie w jej obsłudze.",
+        "features": [
+          {
+            "text": "Założenie i pełna optymalizacja konta sprzedażowego Amazon.com",
+            "included": true
+          },
+          {
+            "text": "Wystawienie produktów (zgodnie z zakresem oferty)",
+            "included": true
+          },
+          {
+            "text": "Optymalizacja SEO listingów produktowych (tytuły, opisy, słowa kluczowe)",
+            "included": true
+          },
+          {
+            "text": "Opracowanie wstępnej strategii sprzedaży i obsługi klienta",
+            "included": true
+          },
+          {
+            "text": "Wsparcie w początkowej fazie realizacji sprzedaży",
+            "included": true
+          },
+          {
+            "text": "Realizacja projektu w terminie do 4 tygodni",
+            "included": true
+          },
+          {
+            "text": "Profesjonalne doradztwo i zarządzanie projektem",
+            "included": true
+          }
+        ],
+        "price": "5400 PLN netto",
+        "priceNote": "Cena netto. Budżet Klienta określony jako: Do negocjacji.",
+        "ctaText": "Rozpocznij Sprzedaż na Amazon",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Wdrożenia",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu wprowadzenia oferty neopak na Amazon.com. Przewidywany czas realizacji projektu: **do 4 tygodni** od momentu rozpoczęcia współpracy i otrzymania niezbędnych materiałów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Analiza, Strategia i Konfiguracja Konta (Tydzień 1)",
+        "duration": "ok. 1 tydzień",
+        "description": "Dogłębna analiza Państwa oferty i celów biznesowych, opracowanie strategii wejścia na Amazon.com, założenie i pełna konfiguracja profesjonalnego konta sprzedażowego dla firmy neopak."
+      },
+      {
+        "phase": "Faza 2: Przygotowanie i Wystawienie Produktów (Tydzień 2-3)",
+        "duration": "ok. 2 tygodnie",
+        "description": "Tworzenie zoptymalizowanych pod kątem SEO i konwersji listingów produktowych (opisy, zdjęcia, słowa kluczowe) oraz ich systematyczne wdrażanie na platformie Amazon.com."
+      },
+      {
+        "phase": "Faza 3: Optymalizacja, Uruchomienie i Wsparcie (Tydzień 4)",
+        "duration": "ok. 1 tydzień",
+        "description": "Finalna optymalizacja wprowadzonych ofert, uruchomienie sprzedaży, intensywny monitoring oraz wsparcie w zakresie obsługi pierwszych zamówień i komunikacji na platformie Amazon dla neopak."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze doświadczenie w e-commerce i wprowadzaniu firm na marketplace'y, takie jak Amazon, potwierdzają sukcesy naszych klientów. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JK",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy pomogło nam skutecznie wystartować ze sprzedażą na Amazon. Profesjonalne podejście i widoczne rezultaty w krótkim czasie. Polecam ich usługi każdemu, kto myśli o ekspansji na marketplace.",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "CEO, Firma Produkcyjna Alfa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AN",
+        "imageAlt": "Anna Nowak",
+        "quote": "Dzięki wsparciu Soft Synergy nasza sprzedaż na marketplace'ach znacząco wzrosła. Zespół doskonale zna specyfikę Amazon i potrafi doradzić najlepsze rozwiązania. Pełen profesjonalizm!",
+        "authorName": "Anna Nowak",
+        "authorTitle": "Manager E-commerce, Sklep Internetowy Beta"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PW",
+        "imageAlt": "Piotr Wiśniewski",
+        "quote": "Współpraca z Soft Synergy to czysta przyjemność. Wdrożenie naszej oferty na Amazon przebiegło sprawnie, a efekty przerosły nasze oczekiwania. Eksperci godni zaufania.",
+        "authorName": "Piotr Wiśniewski",
+        "authorTitle": "Właściciel, Marka Odzieżowa Gamma"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci E-commerce:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=AlfaProd",
+        "alt": "Logo Klienta Alfa Produkcyjna"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=BetaSklep",
+        "alt": "Logo Klienta Beta Sklep Internetowy"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=GammaModa",
+        "alt": "Logo Klienta Gamma Marka Odzieżowa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=DeltaTech",
+        "alt": "Logo Klienta DeltaTech Solutions"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=OmegaBiz",
+        "alt": "Logo Klienta OmegaBiznes Global"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Sukces z Amazon</span> dla neopak?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie wprowadzić Państwa ofertę na Amazon.com i osiągnąć założone cele sprzedażowe. Skontaktuj się z nami, aby omówić szczegóły projektu dla neopak i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Wdrożeniu na Amazon",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy dla neopak."
+  }
+}

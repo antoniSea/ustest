@@ -1,0 +1,275 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Współpracy: Montaż Rolek TikTok/Reels dla Agencji Karola | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/CCCCCC/0A0F1F?Text=Agencja+Karola",
+    "clientLogoAlt": "Logo Klienta Agencja Karola",
+    "titlePart1": "Propozycja Współpracy dla",
+    "titlePart2ClientName": "Karola",
+    "subtitle": "Propozycja stałej współpracy w zakresie montażu krótkich form wideo (TikTok/Reels) dla Pańskiej agencji marketingowej, obejmującej 2-4 rolki tygodniowo.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Pańskich <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie zapoznaliśmy się z Pańskim zleceniem dotyczącym stałej współpracy przy montażu rolek, aby zaproponować rozwiązanie idealnie dopasowane do celów Pańskiej agencji.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Dynamiczne Rolki Angażujące Widzów</span>",
+      "description": "Głównym celem jest zapewnienie Pańskiej agencji marketingowej stałego dopływu profesjonalnie zmontowanych, krótkich form wideo (TikTok/Reels), które przyciągną uwagę i zaangażują docelową publiczność. Współpraca ma charakter stały, z elastycznym zakresem od 2 do 4 rolek tygodniowo.",
+      "points": [
+        "Poszukiwanie montażysty do stałej współpracy.",
+        "Tworzenie krótkich form wideo: TikTok / Reels.",
+        "Zakres: 2 do 4 rolek tygodniowo, każda ~1 minuta.",
+        "Wsparcie dla 3 powtarzalnych formatów/serii.",
+        "Budżet: Do negocjacji (elastyczne podejście do wyceny)."
+      ],
+      "diagramPlaceholderText": "Wizualizacja procesu tworzenia rolki"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Stała Obsługa Montażowa",
+      "description": "Proponujemy stałą współpracę w zakresie montażu krótkich form wideo. Nasza oferta to 75 PLN netto za każdą przygotowaną rolkę (~1 min), z realizacją w ciągu 2-3 dni roboczych. Gwarantujemy dynamiczny montaż, dopasowanie do trendów i sprawną komunikację na każdym etapie.",
+      "points": [
+        "Stała współpraca przy montażu 2-4 rolek tygodniowo.",
+        "Atrakcyjna stawka: 75 PLN netto za rolkę (~1 min).",
+        "Szybki czas realizacji: 2-3 dni robocze na rolkę.",
+        "Metodologia: analiza potrzeb, dynamiczny montaż, runda uwag, finalizacja.",
+        "Specjalizacja Soft Synergy w angażujących treściach wideo wspierających marketing."
+      ],
+      "diagramPlaceholderText": "Przykładowy styl montażu rolki"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Naszej Oferty</span> Montażu",
+    "sectionSubtitle": "Przedstawiamy składowe naszej usługi montażu, które zapewnią wysoką jakość i skuteczność Państwa materiałów wideo dla agencji Karola.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M5.25 5.653c0-1.426 1.529-2.33 2.779-1.643l7.527 4.327a1.5 1.5 0 010 2.654l-7.527 4.327a1.5 1.5 0 01-2.779-1.643V5.653z\" />",
+        "title": "Dynamiczny Montaż i Angażujący Storytelling",
+        "description": "Tworzenie dynamicznych, przyciągających uwagę montaży, które opowiadają historię i utrzymują zaangażowanie widzów. Wykorzystanie cięć, przejść i efektów dopasowanych do platform TikTok/Reels.",
+        "mockupText": "Przykładowa sekwencja z rolki"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V7.5A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v1.5M12 12.751v6M7.5 15H6a2.25 2.25 0 00-2.25 2.25v.001A2.25 2.25 0 006 19.5h1.5M19.5 15h1.5a2.25 2.25 0 012.25 2.25v.001a2.25 2.25 0 01-2.25 2.25h-1.5\" />",
+        "title": "Dopasowanie do Trendów i Muzyki",
+        "description": "Śledzenie aktualnych trendów na TikTok i Reels, w tym popularnej muzyki i formatów, aby Państwa materiały były zawsze na czasie i miały większy zasięg. Dobór odpowiednich ścieżek dźwiękowych.",
+        "mockupText": "Rolka z popularnym dźwiękiem"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H3.75A2.25 2.25 0 011.5 18.75V8.25A2.25 2.25 0 013.75 6H10\" />",
+        "title": "Optymalizacja Techniczna i Napisy",
+        "description": "Dostarczenie materiałów w optymalnym formacie, proporcjach i jakości dla każdej z platform. Dodawanie czytelnych napisów, zwiększających dostępność i oglądalność.",
+        "mockupText": "Rolka z napisami"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Stałej Współpracy",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy element naszej stałej obsługi montażowej dla agencji Karola, zapewniając transparentność procesu i wysoką jakość.",
+    "modules": [
+      {
+        "title": "Etap 1: Odbiór Materiałów i Briefing (Dla każdej rolki)",
+        "description": "Przekazanie przez Państwa agencję surowych materiałów wideo, wytycznych dotyczących konkretnej rolki (cel, kluczowe punkty, preferencje muzyczne, ewentualne inspiracje). Krótkie omówienie koncepcji.",
+        "features": [
+          "Regularne przesyłanie materiałów źródłowych.",
+          "Określenie celów i kluczowych przekazów dla każdej rolki.",
+          "Wskazanie ewentualnych trendów lub dźwięków do wykorzystania.",
+          "Potwierdzenie harmonogramu dla danej partii rolek."
+        ]
+      },
+      {
+        "title": "Etap 2: Proces Montażu i Dostarczenie Wersji Roboczej",
+        "description": "Realizacja montażu zgodnie z ustaleniami: cięcie, dobór ujęć, dodawanie muzyki, podstawowa korekcja kolorów, efekty, przejścia, napisy. Dostarczenie pierwszej wersji rolki do Państwa wglądu.",
+        "features": [
+          "Dynamiczne cięcie i selekcja najlepszych ujęć.",
+          "Synchronizacja z muzyką i dodawanie efektów dźwiękowych.",
+          "Integracja napisów i elementów graficznych (np. logo).",
+          "Dostarczenie wersji roboczej w ciągu 1-2 dni roboczych."
+        ]
+      },
+      {
+        "title": "Etap 3: Runda Poprawek i Finalna Wersja Rolki",
+        "description": "Zebranie Państwa uwag do wersji roboczej. Wprowadzenie niezbędnych korekt (jedna runda poprawek wliczona w cenę). Przygotowanie i dostarczenie finalnej, zoptymalizowanej wersji rolki.",
+        "features": [
+          "Sprawny proces zbierania i wdrażania Państwa feedbacku.",
+          "Wprowadzenie poprawek (np. zmiany w ujęciach, tekstach, muzyce).",
+          "Finalna optymalizacja i rendering materiału.",
+          "Dostarczenie gotowej rolki w formacie .mp4 lub innym uzgodnionym."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Wycena <span class=\"text-cyan-400\">Współpracy</span> Montażowej",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę stałej obsługi montażu rolek dla agencji Karola. Nasza propozycja jest konkurencyjna i dopasowana do potrzeb stałej współpracy.",
+    "tabs": [
+      {
+        "id": "reels_editing_offer",
+        "name": "Montaż Rolek TikTok/Reels"
+      }
+    ],
+    "packages": [
+      {
+        "id": "reels_editing_offer",
+        "name": "Stały Montaż Rolek dla Agencji Karola",
+        "description": "Kompleksowa usługa montażu krótkich form wideo (TikTok/Reels), obejmująca 2-4 rolki tygodniowo, dynamiczne cięcie, dopasowanie do trendów, dodawanie muzyki i napisów.",
+        "features": [
+          {
+            "text": "Montaż 1 rolki (~1 minuta)",
+            "included": true
+          },
+          {
+            "text": "Dynamiczne cięcie i storytelling",
+            "included": true
+          },
+          {
+            "text": "Dobór muzyki i efektów dźwiękowych",
+            "included": true
+          },
+          {
+            "text": "Dodawanie napisów",
+            "included": true
+          },
+          {
+            "text": "Podstawowa korekcja kolorów",
+            "included": true
+          },
+          {
+            "text": "1 runda poprawek w cenie",
+            "included": true
+          },
+          {
+            "text": "Realizacja: 2-3 dni robocze / rolka",
+            "included": true
+          }
+        ],
+        "price": "75 PLN netto / rolka",
+        "priceNote": "Cena netto za jedną zmontowaną rolkę. Przy stałej współpracy fakturowanie zbiorcze (np. miesięczne).",
+        "ctaText": "Rozpocznijmy Współpracę",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Pojedynczej Rolki",
+    "sectionSubtitle": "Przejrzysty plan działania dla montażu każdej rolki. Przewidywany czas realizacji jednej rolki: **2-3 dni robocze** od otrzymania kompletnych materiałów i briefu. Oferta współpracy jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Dzień 1: Odbiór Materiałów i Briefing",
+        "duration": "<1 dzień roboczy",
+        "description": "Przekazanie surowych materiałów, omówienie koncepcji i celów rolki. Potwierdzenie kluczowych elementów (muzyka, napisy, styl)."
+      },
+      {
+        "phase": "Dzień 1-2: Montaż Wstępny i Wersja Robocza",
+        "duration": "1-2 dni robocze",
+        "description": "Realizacja montażu, dobór muzyki, stworzenie pierwszej wersji roboczej rolki i przesłanie do Państwa wglądu."
+      },
+      {
+        "phase": "Dzień 2-3: Feedback i Finalizacja",
+        "duration": "1 dzień roboczy",
+        "description": "Wprowadzenie ewentualnych korekt na podstawie Państwa uwag. Przygotowanie i dostarczenie finalnej, zoptymalizowanej wersji rolki."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Co Mówią Nasi <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Opinie klientów, dla których realizujemy projekty wideo i graficzne, potwierdzają naszą skuteczność i profesjonalizm.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JK",
+        "imageAlt": "Jan Kowalski",
+        "quote": "Soft Synergy przygotowało dla nas serię rewelacyjnych rolek na Instagrama. Ich kreatywność i zrozumienie naszych potrzeb przerosły oczekiwania!",
+        "authorName": "Jan Kowalski",
+        "authorTitle": "Marketing Director, VideoBoosters"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EN",
+        "imageAlt": "Ewa Nowak",
+        "quote": "Profesjonalny montaż i szybka realizacja filmów promocyjnych. Dzięki Soft Synergy nasze kampanie w social mediach zyskały na dynamice.",
+        "authorName": "Ewa Nowak",
+        "authorTitle": "Właścicielka, SocialSpark"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PZ",
+        "imageAlt": "Piotr Zając",
+        "quote": "Współpraca z Soft Synergy przy tworzeniu contentu wideo to czysta przyjemność. Zawsze na czas, zawsze zgodnie z briefem. Polecam!",
+        "authorName": "Piotr Zając",
+        "authorTitle": "Specjalista ds. Mediów Społecznościowych, ContentMasters"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=VideoBoost",
+        "alt": "Logo Klienta VideoBoosters"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=SocialSpark",
+        "alt": "Logo Klienta SocialSpark"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ContentM",
+        "alt": "Logo Klienta ContentMasters"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaVid",
+        "alt": "Logo Klienta InnovaVideo"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ReelPro",
+        "alt": "Logo Klienta ReelProducers"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Angażujące Rolki</span> dla Agencji Karola?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wesprzeć Pańską agencję w tworzeniu dynamicznych i skutecznych materiałów wideo na TikTok i Reels. Skontaktuj się z nami, aby omówić szczegóły stałej współpracy.",
+    "ctaButtonText": "Porozmawiajmy o Współpracy",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 75,
+  "timelineDays": 7,
+  "useme_id": 115490
+}

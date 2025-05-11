@@ -1,0 +1,275 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Sortowania Ujęć Wideo dla WPSHU s.c. | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=WS",
+    "clientLogoAlt": "Logo WPSHU s.c.",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "WPSHU s.c.",
+    "subtitle": "Propozycja profesjonalnego sortowania i kategoryzacji setek ujęć wideo z green screenu, przeznaczonych do kampanii reklamowych firmy WPSHU s.c., specjalizującej się w organizacji obozów i półkolonii dla dzieci.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące sortowania materiałów wideo, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Sprawna Organizacja Ujęć Wideo</span>",
+      "description": "Głównym celem jest profesjonalne posortowanie dziesiątek/setek pojedynczych ujęć wideo nagranych na green screenie. Ujęcia te są kluczowym materiałem do tworzenia kampanii reklamowych firmy WPSHU s.c., promujących obozy i półkolonie dla dzieci. Sortowanie musi być wykonane precyzyjnie według szczegółowych wytycznych zawartych w dostarczonym pliku, aby umożliwić łatwe wyszukiwanie i wykorzystanie materiałów.",
+      "points": [
+        "Zlecenie sortowania dziesiątek/setek ujęć wideo z green screenu.",
+        "Cel: przygotowanie materiałów do kampanii reklamowych WPSHU s.c. (obozy i półkolonie dla dzieci).",
+        "Wymagane sortowanie wg. precyzyjnych wytycznych z załączonego pliku.",
+        "Klient: WPSHU s.c.",
+        "Budżet: Do negocjacji. Dodatkowe wymaganie: Wirtualna asystentura."
+      ],
+      "diagramPlaceholderText": "Schemat organizacji folderów z ujęciami WPSHU"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Systematyczne Sortowanie i Kategoryzacja Materiałów",
+      "description": "Proponujemy kompleksową usługę posortowania Państwa materiałów wideo z green screenu, zgodnie z dostarczoną specyfikacją. Nasz proces zakłada skrupulatne skategoryzowanie każdego ujęcia, co zapewni przejrzystą i funkcjonalną strukturę plików. Umożliwi to Państwu sprawne wykorzystanie nagrań w przyszłych kampaniach reklamowych. Oferujemy realizację całości zlecenia w cenie 480 zł netto.",
+      "points": [
+        "Profesjonalne sortowanie i kategoryzacja ujęć wideo z green screenu.",
+        "Dostarczenie posortowanych materiałów w ciągu 3-5 dni roboczych od otrzymania materiałów i wytycznych.",
+        "Wycena: 480 zł netto za całość zlecenia.",
+        "Metodologia oparta na analizie specyfikacji, skrupulatnym kategoryzowaniu i zapewnieniu funkcjonalnej struktury plików.",
+        "Doświadczenie Soft Synergy w zarządzaniu projektami i organizacji zasobów cyfrowych."
+      ],
+      "diagramPlaceholderText": "Przykładowa struktura posortowanych plików WPSHU"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Aspekty <span class=\"text-cyan-400\">Naszej Usługi</span> Sortowania",
+    "sectionSubtitle": "Przedstawiamy składowe naszej usługi, które zapewnią efektywne i precyzyjnie posortowane materiały wideo dla Państwa kampanii reklamowych WPSHU s.c.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z\" />",
+        "title": "Precyzyjne Sortowanie i Kategoryzacja",
+        "description": "Każde ujęcie zostanie dokładnie przeanalizowane i przypisane do odpowiedniej kategorii zgodnie z Państwa wytycznymi. Stworzymy logiczną i intuicyjną strukturę folderów oraz nazewnictwa plików.",
+        "mockupText": "Struktura katalogów WPSHU"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z\" />",
+        "title": "Weryfikacja i Kontrola Jakości",
+        "description": "Przeprowadzimy kontrolę kompletności materiałów oraz poprawności sortowania, aby zapewnić, że wszystkie ujęcia są odpowiednio sklasyfikowane i gotowe do użycia przez WPSHU s.c.",
+        "mockupText": "Raport z weryfikacji materiałów"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z\" />",
+        "title": "Szybka Realizacja i Wsparcie",
+        "description": "Gwarantujemy realizację zlecenia w ciągu 3-5 dni roboczych. Zapewniamy również wsparcie w ramach wirtualnej asystentury, zgodnie z Państwa dodatkowymi wymaganiami.",
+        "mockupText": "Plan pracy i kanały komunikacji"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap prac nad organizacją Państwa materiałów wideo dla WPSHU s.c., zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Odbiór Materiałów, Analiza Wymagań i Planowanie",
+        "description": "Zapoznanie się ze wszystkimi materiałami wideo oraz szczegółowymi wytycznymi z załączonego pliku. Przygotowanie struktury katalogów i narzędzi do efektywnego sortowania.",
+        "features": [
+          "Odebranie kompletu materiałów wideo oraz szczegółowych wytycznych od WPSHU s.c.",
+          "Dokładna analiza specyfikacji sortowania i celów kampanii reklamowych.",
+          "Potwierdzenie zakresu prac i ustalenie ewentualnych priorytetów.",
+          "Przygotowanie planu działania i struktury katalogów."
+        ]
+      },
+      {
+        "title": "Etap 2: Sortowanie, Kategoryzacja i Organizacja Ujęć",
+        "description": "Główny etap prac polegający na przeglądaniu każdego ujęcia, jego klasyfikacji i umieszczaniu w odpowiednim miejscu w przygotowanej strukturze. Nadawanie spójnych nazw plików, jeśli jest to częścią wytycznych.",
+        "features": [
+          "Systematyczne przeglądanie i klasyfikacja każdego pojedynczego ujęcia wideo.",
+          "Tworzenie logicznej struktury folderów zgodnie z wytycznymi WPSHU s.c.",
+          "Stosowanie spójnego nazewnictwa plików dla łatwiejszej identyfikacji.",
+          "Bieżąca weryfikacja poprawności przypisania ujęć."
+        ]
+      },
+      {
+        "title": "Etap 3: Finalna Weryfikacja, Przygotowanie i Przekazanie Danych",
+        "description": "Końcowa weryfikacja poprawności sortowania, sprawdzenie kompletności materiałów oraz przygotowanie paczki z posortowanymi plikami do przekazania klientowi.",
+        "features": [
+          "Kompleksowa kontrola jakości posortowanych materiałów.",
+          "Sprawdzenie kompletności wszystkich ujęć i zgodności z wytycznymi WPSHU s.c.",
+          "Przygotowanie finalnej paczki z posortowanymi plikami wideo.",
+          "Bezpieczne przekazanie danych Klientowi wraz z krótkim raportem."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Sprawną Organizację Materiałów</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę usługi sortowania materiałów wideo dla WPSHU s.c. Nasza propozycja jest konkurencyjna i dopasowana do Państwa potrzeb.",
+    "tabs": [
+      {
+        "id": "video_sorting_offer",
+        "name": "Sortowanie Ujęć Wideo"
+      }
+    ],
+    "packages": [
+      {
+        "id": "video_sorting_offer",
+        "name": "Sortowanie Ujęć Wideo Green Screen dla WPSHU s.c.",
+        "description": "Kompleksowa usługa profesjonalnego sortowania i kategoryzacji kilkuset ujęć wideo z green screenu, nagranych na potrzeby kampanii reklamowych firmy WPSHU s.c. Materiały zostaną zorganizowane zgodnie z Państwa szczegółowymi wytycznymi.",
+        "features": [
+          {
+            "text": "Analiza i sortowanie dziesiątek/setek ujęć wideo",
+            "included": true
+          },
+          {
+            "text": "Kategoryzacja według specyfikacji Klienta (WPSHU s.c.)",
+            "included": true
+          },
+          {
+            "text": "Tworzenie przejrzystej struktury folderów i plików",
+            "included": true
+          },
+          {
+            "text": "Weryfikacja kompletności i poprawności sortowania",
+            "included": true
+          },
+          {
+            "text": "Usługa wirtualnej asystentury w zakresie projektu",
+            "included": true
+          },
+          {
+            "text": "Realizacja w terminie 3-5 dni roboczych",
+            "included": true
+          },
+          {
+            "text": "Gwarancja poufności i bezpieczeństwa danych",
+            "included": true
+          }
+        ],
+        "price": "480 zł netto",
+        "priceNote": "Całościowa cena za zlecenie. Pierwotne zapytanie Klienta wskazywało: Budżet do negocjacji.",
+        "ctaText": "Zamów Sortowanie Materiałów",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Zlecenia Sortowania",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu sortowania materiałów wideo dla WPSHU s.c. Przewidywany czas realizacji: <u>3-5 dni roboczych</u> od momentu otrzymania wszystkich materiałów oraz szczegółowych wytycznych z załączonego pliku. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Otrzymanie Materiałów i Wstępna Analiza (Dzień 1)",
+        "duration": "1 dzień roboczy",
+        "description": "Potwierdzenie zlecenia, odbiór od WPSHU s.c. wszystkich nagrań wideo oraz pliku ze szczegółowymi wytycznymi dotyczącymi sposobu sortowania. Wstępna weryfikacja materiałów."
+      },
+      {
+        "phase": "Faza 2: Proces Sortowania i Kategoryzacji Ujęć (Dzień 1-4)",
+        "duration": "1-3 dni robocze (w zależności od ilości materiału)",
+        "description": "Systematyczne przeglądanie, klasyfikacja i organizacja każdego ujęcia wideo zgodnie z dostarczoną specyfikacją od WPSHU s.c. Tworzenie struktury folderów i dbałość o nazewnictwo."
+      },
+      {
+        "phase": "Faza 3: Weryfikacja Jakości, Finalizacja i Przekazanie Materiałów (Dzień 3-5)",
+        "duration": "1 dzień roboczy",
+        "description": "Końcowa kontrola poprawności i kompletności wykonanego sortowania. Przygotowanie finalnej paczki z posortowanymi materiałami wideo i przekazanie jej firmie WPSHU s.c."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Perfekcyjnie Zorganizowane</span> Materiały dla WPSHU s.c.?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy pomóc Państwu w uporządkowaniu materiałów wideo z green screenu, aby były gotowe do efektywnego wykorzystania w kampaniach reklamowych. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Sortowaniu Wideo",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "price": 480,
+  "timelineDays": 7,
+  "useme_id": 115482
+}
