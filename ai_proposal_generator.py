@@ -301,7 +301,7 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
     
     try:
         # Use the retry function with shorter timeout for relevance scoring
-        response_text = generate_with_retry(prompt, timeout=30)
+        response_text = generate_with_retry(prompt, timeout=300)
         # Próba wyodrębnienia liczby z odpowiedzi
         relevance_score = re.search(r'\b([1-9]|10)\b', response_text)
         if relevance_score:
@@ -682,7 +682,7 @@ def generate_slug(title, description, client_name):
     
     try:
         # Use the retry function with shorter timeout for slug generation
-        slug = generate_with_retry(prompt, timeout=30)
+        slug = generate_with_retry(prompt, timeout=300)
         slug = slug.strip().lower()
         # Usuń polskie znaki diakrytyczne
         slug = unicodedata.normalize('NFKD', slug).encode('ASCII', 'ignore').decode('utf-8')
