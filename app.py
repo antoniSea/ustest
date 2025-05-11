@@ -1253,4 +1253,6 @@ def server_error(e):
     return render_template('error.html', error=str(e)), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5001) 
+    # Force binding to all network interfaces with port 5001
+    # This helps bypass firewall restrictions in production
+    app.run(debug=False, host='0.0.0.0', port=5001, threaded=True) 
