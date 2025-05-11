@@ -208,7 +208,7 @@ def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
                     return f"Błąd generowania: {error_str}"
             
             # For all errors, wait before retrying
-            wait_time = min(2 ** retry_count, 30)  # Exponential backoff, capped at 30 seconds
+            wait_time = min(2 ** retry_count, 300)  # Exponential backoff, capped at 300 seconds
             logger.info(f"Waiting {wait_time}s before retry...")
             time.sleep(wait_time)
     

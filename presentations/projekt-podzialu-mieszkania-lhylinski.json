@@ -39,8 +39,8 @@
     "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
   },
   "hero": {
-    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/013/285813.png",
-    "clientLogoAlt": "Logo Cross the line",
+    "clientLogoSrc": "https://via.placeholder.com/150/4F46E5/FFFFFF?text=LH",
+    "clientLogoAlt": "Logo lhylinski",
     "titlePart1": "Propozycja Projektu dla",
     "titlePart2ClientName": "Carscenter",
     "subtitle": "Propozycja projektu dwustronnej ulotki dziękczynnej dla klientów sklepu internetowego Carscenter, realizowanej w technice grafiki 2D.",
@@ -268,8 +268,8 @@
     "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
     "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
   },
-  "useme_id": "115283",
+  "useme_id": "115281",
   "price": 40,
   "timelineDays": 7,
-  "employer_email": "anita@crosstheline.pl"
+  "employer_email": "lukasz.hylinski@gmail.com"
 }
