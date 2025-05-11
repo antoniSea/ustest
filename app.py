@@ -26,6 +26,9 @@ CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 PRESENTATIONS_DIR = os.path.join("presentations")
 AVATARS_DIR = os.path.join("avatars")
 
+# Domain configuration
+APP_DOMAIN = os.environ.get('APP_DOMAIN', 'prezentacje.soft-synergy.com')
+
 # Initialize database
 db = Database()
 
@@ -282,7 +285,7 @@ def api_generate_job_proposal(job_id):
         from ai_proposal_generator import extract_price_from_proposal, extract_timeline_from_proposal
         extracted_price = extract_price_from_proposal(proposal_text, job.get('budget', ''))
         extracted_timeline_days = extract_timeline_from_proposal(proposal_text)
-        presentation_url = f"prezentacje.soft-synergy.com/{project_slug}"
+        presentation_url = f"http://{APP_DOMAIN}/{project_slug}"
         
         # Store the proposal in the database
         db.update_job_proposal(
@@ -728,6 +731,15 @@ def presentation(filename):
             logger.info(f"Tracked view for presentation: {filename}")
         except Exception as e:
             logger.error(f"Error tracking presentation view: {str(e)}")
+        
+        # Check if we're on the correct domain for presentations
+        host = request.host.split(':')[0]  # Remove port if present
+        
+        # If not on the presentation domain and not authenticated, redirect to the correct domain
+        if host != APP_DOMAIN and not current_user.is_authenticated:
+            full_url = f"http://{APP_DOMAIN}/{filename}"
+            logger.info(f"Redirecting to presentation domain: {full_url}")
+            return redirect(full_url)
         
         return render_template('presentations/prezentation1.html', 
                             presentation=presentation_data, 
@@ -1253,9 +1265,33 @@ def server_error(e):
         return jsonify({'error': str(e)}), 500
     return render_template('error.html', error=str(e)), 500
 
+# Add before_request handler to handle domain routing
+@app.before_request
+def handle_domain_routing():
+    """Handle routing based on domain names"""
+    host = request.host.split(':')[0]  # Remove port if present
+    
+    # Check if we're accessing via the presentation domain
+    if host == APP_DOMAIN:
+        # If accessing the root path on the presentation domain
+        if request.path == '/':
+            # Check if there's a presentation slug in the query parameters
+            presentation_slug = request.args.get('p')
+            if presentation_slug:
+                return redirect(f'/{presentation_slug}')
+    
+    # Continue normal request processing
+    return None
+
+# Add a new function to help with presentation URL generation
+def get_presentation_url(slug):
+    """Generate a fully qualified URL for a presentation"""
+    return f"http://{APP_DOMAIN}/{slug}"
+
 if __name__ == '__main__':
     # Log important startup information
     logger.info(f"Starting Flask application on 0.0.0.0:5001")
+    logger.info(f"Presentation domain: {APP_DOMAIN}")
     logger.info(f"Local IP addresses:")
     
     # Attempt to print all available network interfaces for debugging
