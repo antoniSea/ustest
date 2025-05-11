@@ -16,6 +16,11 @@ from urllib.parse import quote_plus
 from database import Database
 import logging
 from extract_useme_email import extract_employer_email
+# Add imports for proxy support
+from fp.fp import FreeProxy
+import random
+import socket
+import socks
 
 # Configure logging
 logging.basicConfig(
@@ -27,11 +32,90 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Define a proxy pool with some known free proxies
+PROXY_POOL = [
+    "http://43.167.167.192:13001",  # Found working in our tests
+    "http://89.58.52.160:80",       # Polish proxy
+    "http://89.58.55.33:80",        # Polish proxy
+    "http://89.58.53.205:80",       # Polish proxy
+    # Add more proxies as needed
+]
+
 # Configure the Gemini API
 API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
-MODEL = "gemini-2.5-pro-exp-03-25"
+MODEL = "gemini-1.5-pro"  # Using the standard model name to ensure compatibility
 
-genai.configure(api_key=API_KEY)
+# Try to get a working proxy from the pool
+custom_session = requests.Session()
+working_proxy = None
+
+def test_proxy(proxy_url):
+    """Test if a proxy is working."""
+    logger.info(f"Testing proxy: {proxy_url}")
+    
+    test_session = requests.Session()
+    test_session.proxies = {
+        'http': proxy_url,
+        'https': proxy_url
+    }
+    
+    try:
+        # Try ipinfo.io first
+        response = test_session.get('https://ipinfo.io/json', timeout=5)
+        if response.status_code == 200:
+            ip_info = response.json()
+            logger.info(f"Proxy working! IP: {ip_info.get('ip')}, Location: {ip_info.get('country')}")
+            return True
+    except:
+        try:
+            # Try an alternate IP service as backup
+            response = test_session.get('https://api.ipify.org?format=json', timeout=5)
+            if response.status_code == 200:
+                ip_info = response.json()
+                logger.info(f"Proxy working! IP: {ip_info.get('ip')}")
+                return True
+        except:
+            pass
+    
+    logger.warning(f"Proxy failed: {proxy_url}")
+    return False
+
+# Try each proxy in the pool until we find a working one
+for proxy in PROXY_POOL:
+    if test_proxy(proxy):
+        working_proxy = proxy
+        custom_session.proxies = {
+            'http': working_proxy,
+            'https': working_proxy
+        }
+        logger.info(f"Using proxy: {working_proxy}")
+        break
+
+# If no proxy works, try getting a new one from FreeProxy
+if not working_proxy:
+    logger.info("No working proxy found in pool, trying to get a new one...")
+    try:
+        new_proxy = FreeProxy(country_id=['PL', 'DE', 'CZ'], rand=True).get()
+        if new_proxy and test_proxy(new_proxy):
+            working_proxy = new_proxy
+            custom_session.proxies = {
+                'http': working_proxy,
+                'https': working_proxy
+            }
+            logger.info(f"Using new proxy: {working_proxy}")
+        else:
+            logger.warning("No working proxy found. Using direct connection.")
+    except Exception as e:
+        logger.error(f"Error finding new proxy: {str(e)}. Using direct connection.")
+
+# Configure Gemini using the session with working proxy or direct connection
+if working_proxy:
+    genai.configure(api_key=API_KEY, transport=custom_session)
+    logger.info(f"Configured Gemini API with proxy: {working_proxy}")
+else:
+    genai.configure(api_key=API_KEY)
+    logger.info("Configured Gemini API with direct connection")
+
 # Set up model with timeout and retry configuration
 generation_config = {
     "max_output_tokens": 2048,
@@ -40,7 +124,10 @@ generation_config = {
     "top_k": 40
 }
 safety_settings = []
+
+# Create the model (transport is set at the API config level)
 model = genai.GenerativeModel(MODEL, generation_config=generation_config, safety_settings=safety_settings)
+logger.info(f"Created Gemini model: {MODEL}")
 
 # Max number of retries and timeout settings
 MAX_RETRIES = 3
@@ -48,6 +135,51 @@ TIMEOUT = 60  # seconds
 BACKOFF_FACTOR = 1.5  # exponential backoff
 
 console = Console()
+
+def get_another_proxy():
+    """Try to get another working proxy if the current one fails."""
+    global working_proxy, custom_session, model
+    
+    logger.info("Attempting to find a new working proxy...")
+    
+    # First try remaining proxies from our pool
+    remaining_proxies = [p for p in PROXY_POOL if p != working_proxy]
+    for proxy in remaining_proxies:
+        if test_proxy(proxy):
+            working_proxy = proxy
+            custom_session = requests.Session()
+            custom_session.proxies = {
+                'http': working_proxy,
+                'https': working_proxy
+            }
+            # Update the API configuration with the new session
+            genai.configure(api_key=API_KEY, transport=custom_session)
+            logger.info(f"Switched to proxy: {working_proxy}")
+            return True
+    
+    # If no proxy in pool works, try FreeProxy
+    try:
+        new_proxy = FreeProxy(country_id=['PL', 'DE', 'CZ'], rand=True).get()
+        if new_proxy and test_proxy(new_proxy):
+            working_proxy = new_proxy
+            custom_session = requests.Session()
+            custom_session.proxies = {
+                'http': working_proxy,
+                'https': working_proxy
+            }
+            # Update the API configuration with the new session
+            genai.configure(api_key=API_KEY, transport=custom_session)
+            logger.info(f"Switched to new proxy: {working_proxy}")
+            return True
+    except Exception as e:
+        logger.error(f"Error finding new proxy: {str(e)}")
+    
+    # If all fails, switch to direct connection
+    logger.warning("Failed to find a working proxy. Switching to direct connection.")
+    working_proxy = None
+    custom_session = requests.Session()
+    genai.configure(api_key=API_KEY)  # No transport for direct connection
+    return False
 
 def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
     """Generate content with retry logic for handling timeouts and errors."""
@@ -72,6 +204,11 @@ def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
             retry_count += 1
             error_str = str(e)
             logger.warning(f"API call failed (attempt {retry_count}/{max_retries+1}): {error_str}")
+            
+            # If proxy-related error, try switching proxies
+            if working_proxy and any(term in error_str.lower() for term in ["proxy", "connection", "timeout", "deadline"]):
+                logger.info("Proxy-related error detected, trying to switch proxies...")
+                get_another_proxy()
             
             # Check for specific error types to give better error messages
             is_timeout_error = any(error_term in error_str.lower() for error_term in ["504", "timeout", "deadline", "timed out"])
