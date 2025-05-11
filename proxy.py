@@ -1,148 +1,55 @@
-from fp.fp import FreeProxy
 import requests
-import os
-import certifi
-import time
-import logging
 import json
+import logging
 
-# Set SSL certificate path
-os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
-
-# Max number of retries and timeout settings
-MAX_RETRIES = 5  # Increased retries to find working proxy
-TIMEOUT = 60
-BACKOFF_FACTOR = 1.5
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
-
-def get_proxy():
-    """Get a free proxy from the FreeProxy service."""
-    for _ in range(3):  # Try up to 3 times to get a proxy
-        try:
-            proxy = FreeProxy(rand=True).get()
-            logger.info(f"Found proxy: {proxy}")
-            return proxy
-        except Exception as e:
-            logger.error(f"Failed to get proxy: {e}")
-            time.sleep(1)
-    return None
-
-def save_working_proxy(proxy):
-    """Save working proxy to a file."""
+def test_proxy_with_gemini(proxy, prompt):
     try:
-        with open('working_proxy.json', 'w') as f:
-            json.dump({'proxy': proxy, 'timestamp': time.time()}, f)
-        logger.info(f"Saved working proxy to working_proxy.json: {proxy}")
-    except Exception as e:
-        logger.error(f"Failed to save working proxy: {e}")
-
-def load_working_proxy():
-    """Load a previously saved working proxy if it exists and is recent."""
-    try:
-        if os.path.exists('working_proxy.json'):
-            with open('working_proxy.json', 'r') as f:
-                data = json.load(f)
-                proxy = data.get('proxy')
-                timestamp = data.get('timestamp', 0)
-                
-                # Check if proxy is not too old (less than 1 hour old)
-                if proxy and time.time() - timestamp < 3600:
-                    logger.info(f"Loaded previously working proxy: {proxy}")
-                    return proxy
-                else:
-                    logger.info("Saved proxy is too old or invalid, getting a new one")
-    except Exception as e:
-        logger.error(f"Error loading working proxy: {e}")
-    
-    return None
-
-# Try to load a previously working proxy first
-proxy = load_working_proxy()
-
-# If no working proxy found, get a new one
-if not proxy:
-    logger.info("No recent working proxy found, getting a new one")
-    proxy = get_proxy()
-
-# Ensure we have a proxy before proceeding
-if not proxy:
-    logger.error("No proxy available. Exiting.")
-    exit(1)
-
-logger.info(f"Using proxy: {proxy}")
-working_proxy_found = False
-
-for attempt in range(MAX_RETRIES):
-    try:
-        response = requests.post(
-            'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-exp-03-25:generateContent?key=AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM',
-            headers={'Content-Type': 'application/json'},
-            json={
-                "contents": [{
-                    "parts": [{"text": "Explain how AI works"}]
+        api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-exp-03-25:generateContent"
+        api_key = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
+        
+        headers = {
+            "Content-Type": "application/json"
+        }
+        
+        data = {
+            "contents": [{
+                "parts": [{
+                    "text": prompt
                 }]
-            },
-            proxies={'http': proxy, 'https': proxy},
-            timeout=TIMEOUT,
-            verify=True
+            }]
+        }
+        url = f"{api_url}?key={api_key}"
+        
+        response = requests.post(
+            url,
+            headers=headers,
+            json=data,
+            proxies={"http": proxy, "https": proxy},
+            timeout=200
         )
         
-        # Check if response is successful
-        if response.status_code == 200:
-            logger.info("Request successful")
-            print(response.text)
-            working_proxy_found = True
-            save_working_proxy(proxy)
-            break  # Success, exit the retry loop
+        if response.ok:
+            content = response.json()
+            if 'candidates' in content and len(content['candidates']) > 0:
+                if 'content' in content['candidates'][0]:
+                    content_data = content['candidates'][0]['content']
+                    if 'parts' in content_data and len(content_data['parts']) > 0:
+                        text_response = content_data['parts'][0].get('text', '')
+                        return text_response
+            
+            print(f"Proxy {proxy} connected but couldn't parse Gemini response: {response.text[:100]}...")
         else:
-            logger.warning(f"Request failed with status code: {response.status_code}")
-            raise Exception(f"Request failed with status code: {response.status_code}")
-            
-    except (requests.exceptions.ProxyError, 
-            requests.exceptions.ReadTimeout, 
-            requests.exceptions.SSLError,
-            requests.exceptions.ConnectionError) as e:
-        logger.error(f"Proxy error (attempt {attempt+1}/{MAX_RETRIES}): {e}")
-        if attempt < MAX_RETRIES - 1:
-            # Get a new proxy for the next attempt
-            logger.info("Getting new proxy...")
-            proxy = get_proxy()
-            if not proxy:
-                logger.error("Failed to get a new proxy. Exiting.")
-                exit(1)
-            logger.info(f"Switching to new proxy: {proxy}")
-            
-            # Calculate backoff time
-            backoff_time = BACKOFF_FACTOR ** attempt
-            logger.info(f"Retrying in {backoff_time:.1f} seconds...")
-            time.sleep(backoff_time)
+            print(f"Proxy {proxy} failed with Gemini API. Status code: {response.status_code}")
+            print(f"Response: {response.text[:100]}...")
     except Exception as e:
-        logger.error(f"Error (attempt {attempt+1}/{MAX_RETRIES}): {e}")
-        if attempt < MAX_RETRIES - 1:
-            # Get a new proxy for the next attempt
-            logger.info("Getting new proxy...")
-            proxy = get_proxy()
-            if not proxy:
-                logger.error("Failed to get a new proxy. Exiting.")
-                exit(1)
-            logger.info(f"Switching to new proxy: {proxy}")
-            
-            backoff_time = BACKOFF_FACTOR ** attempt
-            logger.info(f"Retrying in {backoff_time:.1f} seconds...")
-            time.sleep(backoff_time)
+        print(f"Error occurred while testing proxy {proxy} with Gemini: {e}")
 
-if working_proxy_found:
-    logger.info(f"Successfully found working proxy: {proxy}")
-else:
-    logger.error("Failed to find a working proxy after all attempts")
-
-logger.info(f"Used proxy: {proxy}")
+def get_gemini_response(prompt):
+    """
+    Get response from Gemini API through proxy.
+    Returns the raw text response string, not a response object.
+    """
+    proxy = "http://8c5906b99fbd1c0bcd0f916d545c565ad4a39b7f89ce737b59fe3b50f1a001f69c62459f79f743615cd889172872cf5d4e30038ec896a33b99b244eab73adf15347c77cc26480843748c75b893647fb2:qcqao80vou9s@proxy.toolip.io:31111"
+    
+    # This already returns text, so no need to do response.text or similar in the caller
+    return test_proxy_with_gemini(proxy, prompt)

@@ -1,0 +1,286 @@
+{
+  "price": 3250,
+  "timelineDays": 19,
+  "useme_id": 115301,
+  "employer_email": "miloszdym007@gmail.com",
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Sesji Zdjęciowej Paska Menstruacyjnego dla Miłoszek | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/056/474656.png",
+    "clientLogoAlt": "Logo Miłoszek",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Miłoszek",
+    "subtitle": "Profesjonalna sesja zdjęciowa paska menstruacyjnego na bóle miesiączkowe, obejmująca zdjęcia produktowe (packshot) oraz lifestyle z modelką, przeznaczone do sklepu internetowego i reklam.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zapytanie dotyczące sesji zdjęciowej paska menstruacyjnego, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Profesjonalne Zdjęcia Produktowe i Lifestyle</span>",
+      "description": "Głównym celem jest realizacja profesjonalnej sesji zdjęciowej paska menstruacyjnego na bóle miesiączkowe. Potrzebne są zdjęcia do sklepu internetowego i reklam, obejmujące zarówno klasyczne ujęcia produktowe (np. na białym tle), jak i lifestyle (np. w użyciu, z modelką). Kluczowe są estetyka, wysoka jakość oraz zdjęcia, które będą efektywnie wspierać sprzedaż produktu.",
+      "points": [
+        "Realizacja profesjonalnej sesji zdjęciowej paska menstruacyjnego.",
+        "Zdjęcia do sklepu internetowego i materiałów reklamowych.",
+        "Wymagane ujęcia produktowe (packshot) oraz lifestyle z modelką.",
+        "Nacisk na estetykę, wysoką jakość i potencjał sprzedażowy zdjęć.",
+        "Budżet: Do negocjacji."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji sesji zdjęciowej paska menstruacyjnego"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Kompleksowa Sesja Zdjęciowa",
+      "description": "Proponujemy realizację kompleksowej sesji zdjęciowej paska menstruacyjnego w cenie **3250 PLN netto**. Nasza oferta obejmuje zdjęcia produktowe (packshot) oraz lifestylowe z udziałem modelki, z pełną postprodukcją, gotowe do wykorzystania w sklepie internetowym i kampaniach reklamowych. Czas realizacji to do 14 dni roboczych.",
+      "points": [
+        "Kompleksowa sesja zdjęciowa: zdjęcia produktowe i lifestyle.",
+        "Profesjonalna realizacja z dbałością o detale i estetykę.",
+        "Staranna postprodukcja zapewniająca wysoką jakość zdjęć.",
+        "Wycena: 3250 PLN netto.",
+        "Czas realizacji: do 14 dni roboczych.",
+        "Doświadczenie Soft Synergy w fotografii produktowej i reklamowej."
+      ],
+      "diagramPlaceholderText": "Przykładowy kadr z sesji lifestyle"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Sesji</span> Zdjęciowej",
+    "sectionSubtitle": "Przedstawiamy składowe naszej propozycji, które zapewnią wysoką jakość i skuteczność zdjęć Państwa produktu.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.04l-.821 1.316z\" /><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z\" />",
+        "title": "Profesjonalne Zdjęcia Produktowe (Packshot)",
+        "description": "Realizacja wysokiej jakości zdjęć produktu na jednolitym tle (np. białym), idealnych do prezentacji w sklepie internetowym. Ujęcia ukazujące detale, fakturę i kluczowe cechy paska menstruacyjnego.",
+        "mockupText": "Przykładowy packshot paska menstruacyjnego"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z\" />",
+        "title": "Zdjęcia Lifestyle z Modelką",
+        "description": "Sesja z udziałem modelki, prezentująca pasek menstruacyjny w codziennym użyciu i kontekście. Zdjęcia te budują emocjonalne połączenie z odbiorcą i pokazują korzyści produktu w praktyce, idealne do reklam i social media.",
+        "mockupText": "Przykładowa scena lifestyle z modelką"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42\" />",
+        "title": "Staranna Postprodukcja i Retusz",
+        "description": "Profesjonalna obróbka graficzna wszystkich zdjęć, obejmująca korekcję kolorów, retusz, kadrowanie i optymalizację do publikacji w internecie. Zapewniamy spójny wygląd i najwyższą jakość finalnych materiałów.",
+        "mockupText": "Porównanie zdjęcia przed i po retuszu"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Fotograficznych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap realizacji sesji zdjęciowej Państwa paska menstruacyjnego, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Planowanie, Koncepcja Sesji i Przygotowania",
+        "description": "Dokładne omówienie Państwa oczekiwań, celów sesji, preferencji stylistycznych oraz logistyki. Wspólne opracowanie moodboardu i harmonogramu sesji. Przygotowanie produktu do zdjęć.",
+        "features": [
+          "Konsultacje dotyczące wizji i celów zdjęć (packshot, lifestyle).",
+          "Opracowanie szczegółowego scenariusza sesji i moodboardu.",
+          "Wybór modelki, stylizacji i lokalizacji dla zdjęć lifestyle.",
+          "Przygotowanie logistyczne studia/lokalizacji i sprzętu fotograficznego."
+        ]
+      },
+      {
+        "title": "Etap 2: Profesjonalna Realizacja Sesji Zdjęciowej",
+        "description": "Przeprowadzenie sesji zdjęciowej zgodnie z ustalonym planem, z dbałością o każdy detal. Realizacja ujęć produktowych (packshot) oraz lifestyle z modelką.",
+        "features": [
+          "Sesja zdjęciowa packshot: precyzyjne oświetlenie i kadrowanie produktu.",
+          "Sesja zdjęciowa lifestyle: praca z modelką, kreowanie naturalnych i angażujących scen.",
+          "Wykorzystanie profesjonalnego sprzętu fotograficznego i oświetleniowego.",
+          "Bieżący podgląd i akceptacja kluczowych ujęć (jeśli Klient uczestniczy w sesji)."
+        ]
+      },
+      {
+        "title": "Etap 3: Selekcja, Postprodukcja Zdjęć i Dostarczenie",
+        "description": "Staranna selekcja najlepszych ujęć, profesjonalna postprodukcja (retusz, korekcja barwna, kadrowanie) oraz przygotowanie finalnych zdjęć w formatach zoptymalizowanych do Państwa potrzeb (sklep internetowy, reklama).",
+        "features": [
+          "Selekcja najlepszych kadrów z całej sesji.",
+          "Profesjonalna postprodukcja: retusz skóry, produktu, korekcja kolorów, kontrastu.",
+          "Przygotowanie zdjęć w formatach i rozdzielczościach odpowiednich dla e-commerce i reklamy.",
+          "Dostarczenie kompletu finalnych zdjęć drogą elektroniczną (np. przez dysk chmurowy)."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalne Zdjęcia</span> Sprzedażowe",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę kompleksowej sesji zdjęciowej paska menstruacyjnego. Cena jest zgodna z naszą propozycją mailową.",
+    "tabs": [
+      {
+        "id": "photo_session_offer",
+        "name": "Sesja Zdjęciowa Paska Menstruacyjnego"
+      }
+    ],
+    "packages": [
+      {
+        "id": "photo_session_offer",
+        "name": "Kompleksowa Sesja Zdjęciowa Paska Menstruacyjnego na Bóle Miesiączkowe",
+        "description": "Pełna realizacja sesji zdjęciowej paska menstruacyjnego na bóle miesiączkowe, obejmująca zdjęcia produktowe (packshot) oraz lifestyle z modelką, przygotowane do wykorzystania w sklepie internetowym i działaniach reklamowych.",
+        "features": [
+          {
+            "text": "Sesja zdjęciowa produktowa (packshot)",
+            "included": true
+          },
+          {
+            "text": "Sesja zdjęciowa lifestyle z modelką (w tym koszt modelki)",
+            "included": true
+          },
+          {
+            "text": "Profesjonalne oświetlenie i sprzęt",
+            "included": true
+          },
+          {
+            "text": "Stylizacja produktu i scenografii (podstawowa)",
+            "included": true
+          },
+          {
+            "text": "Selekcja i profesjonalna postprodukcja zdjęć (retusz, kolor korekcja)",
+            "included": true
+          },
+          {
+            "text": "Liczba finalnych zdjęć: do ustalenia (np. 10 packshotów, 15 lifestyle)",
+            "included": true
+          },
+          {
+            "text": "Prawa autorskie majątkowe do wykorzystania zdjęć",
+            "included": true
+          },
+          {
+            "text": "Czas realizacji: do 14 dni roboczych",
+            "included": true
+          }
+        ],
+        "price": "3250 PLN netto",
+        "priceNote": "Przewidywany czas realizacji: do 14 dni roboczych. Budżet Klienta: Do negocjacji.",
+        "ctaText": "Zamów Sesję Zdjęciową",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Sesji Zdjęciowej",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu sesji zdjęciowej. Przewidywany czas realizacji projektu: **do 14 dni roboczych** od momentu akceptacji oferty i finalizacji szczegółów. Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Konsultacje, Planowanie i Przygotowania (Dni 1-3)",
+        "duration": "3 dni robocze",
+        "description": "Potwierdzenie zlecenia, szczegółowe omówienie koncepcji sesji (packshot, lifestyle), wybór modelki, stylizacji, lokalizacji. Przygotowanie moodboardu i harmonogramu."
+      },
+      {
+        "phase": "Faza 2: Realizacja Sesji Zdjęciowej (Dni 4-6)",
+        "duration": "2-3 dni robocze (w zależności od złożoności i liczby scen)",
+        "description": "Przeprowadzenie sesji zdjęciowej produktowej (packshot) w studio oraz sesji lifestyle z modelką w ustalonych lokalizacjach/aranżacjach."
+      },
+      {
+        "phase": "Faza 3: Selekcja Zdjęć i Wstępna Postprodukcja (Dni 7-10)",
+        "duration": "4 dni robocze",
+        "description": "Selekcja najlepszych ujęć z sesji. Wstępna obróbka zdjęć (kadrowanie, podstawowa korekcja). Prezentacja Klientowi galerii do wyboru finalnych zdjęć."
+      },
+      {
+        "phase": "Faza 4: Finalna Postprodukcja i Dostarczenie Materiałów (Dni 11-14)",
+        "duration": "4 dni robocze",
+        "description": "Zaawansowany retusz i finalna obróbka wybranych zdjęć. Przygotowanie plików w formatach zoptymalizowanych do druku i internetu. Przekazanie gotowych materiałów Klientowi."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów potwierdzają jakość i skuteczność naszych sesji zdjęciowych. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=JS",
+        "imageAlt": "Joanna Sokołowska",
+        "quote": "Sesja produktowa z Soft Synergy przerosła nasze oczekiwania. Zdjęcia są przepiękne i świetnie konwertują. Profesjonalizm na każdym etapie!",
+        "authorName": "Joanna Sokołowska",
+        "authorTitle": "Marketing Manager, BellaForma"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=TK",
+        "imageAlt": "Tomasz Kaczmarek",
+        "quote": "Zdjęcia reklamowe od Soft Synergy idealnie oddały charakter naszego produktu. Świetna komunikacja i terminowość. Zdecydowanie polecam!",
+        "authorName": "Tomasz Kaczmarek",
+        "authorTitle": "Właściciel, NaturaVita"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=EW",
+        "imageAlt": "Ewa Wójcik",
+        "quote": "Współpraca przy sesji lifestyle była czystą przyjemnością. Kreatywny zespół, który rozumie potrzeby klienta. Efekty mówią same za siebie.",
+        "authorName": "Ewa Wójcik",
+        "authorTitle": "Brand Manager, ComfortZone"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci z branży e-commerce i produktowej:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=BellaForma",
+        "alt": "Logo Klienta BellaForma"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NaturaVita",
+        "alt": "Logo Klienta NaturaVita"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ComfortZone",
+        "alt": "Logo Klienta ComfortZone"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EcoHealth",
+        "alt": "Logo Klienta EcoHealth"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ModernLook",
+        "alt": "Logo Klienta ModernLook"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Zdjęcia</span>, które Sprzedają?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy stworzyć profesjonalne zdjęcia paska menstruacyjnego, które przyciągną uwagę klientów i zwiększą sprzedaż. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Sesji Zdjęciowej",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  }
+}

@@ -1,8 +1,7 @@
 import os
 import json
 import csv
-import requests  # For direct API calls
-import certifi
+import google.generativeai as genai
 from rich.console import Console
 from rich.markdown import Markdown
 import time
@@ -10,12 +9,15 @@ from datetime import datetime
 import re
 import unicodedata
 from useme_post_proposal import UsemeProposalPoster
+import requests
 from bs4 import BeautifulSoup
 import concurrent.futures
 from urllib.parse import quote_plus
 from database import Database
 import logging
 from extract_useme_email import extract_employer_email
+from proxy import get_gemini_response
+
 
 # Configure logging
 logging.basicConfig(
@@ -30,190 +32,11 @@ logger = logging.getLogger(__name__)
 # Configure the Gemini API
 API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
 MODEL = "gemini-2.5-pro-exp-03-25"
-API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 
-# Set SSL certificate path
-os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
-
-# Set up model config
-generation_config = {
-    "max_output_tokens": 2048,
-    "temperature": 0.7,
-    "top_p": 0.95,
-    "top_k": 40
-}
-
-# Max number of retries and timeout settings
-MAX_RETRIES = 30
-TIMEOUT = 260  # seconds
-BACKOFF_FACTOR = 1.5  # exponential backoff
+genai.configure(api_key=API_KEY)
+model = genai.GenerativeModel(MODEL)
 
 console = Console()
-
-def load_working_proxy():
-    """Load a previously saved working proxy if it exists and is recent."""
-    try:
-        if os.path.exists('working_proxy.json'):
-            with open('working_proxy.json', 'r') as f:
-                data = json.load(f)
-                proxy = data.get('proxy')
-                timestamp = data.get('timestamp', 0)
-                
-                # Check if proxy is not too old (less than 1 hour old)
-                if proxy and time.time() - timestamp < 3600:
-                    logger.info(f"Loaded previously working proxy: {proxy}")
-                    return proxy
-                else:
-                    logger.info("Saved proxy is too old or invalid, getting a new one")
-    except Exception as e:
-        logger.error(f"Error loading working proxy: {e}")
-    
-    return None
-
-def get_proxy():
-    """Get a free proxy from the FreeProxy service."""
-    try:
-        # Import here to avoid issues if the library is not installed
-        from fp.fp import FreeProxy
-        for _ in range(3):  # Try up to 3 times to get a proxy
-            try:
-                proxy = FreeProxy(rand=True).get()
-                logger.info(f"Found proxy: {proxy}")
-                return proxy
-            except Exception as e:
-                logger.error(f"Failed to get proxy: {e}")
-                time.sleep(1)
-    except ImportError:
-        logger.warning("FreeProxy not installed, running without proxy")
-    
-    return None
-
-def save_working_proxy(proxy):
-    """Save working proxy to a file."""
-    try:
-        with open('working_proxy.json', 'w') as f:
-            json.dump({'proxy': proxy, 'timestamp': time.time()}, f)
-        logger.info(f"Saved working proxy to working_proxy.json: {proxy}")
-    except Exception as e:
-        logger.error(f"Failed to save working proxy: {e}")
-
-def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
-    """Generate content with retry logic for handling timeouts and errors."""
-    retry_count = 0
-    
-    # Try to load a previously working proxy first
-    proxy = load_working_proxy()
-    
-    # If no working proxy found, try to get a new one
-    if not proxy:
-        logger.info("No recent working proxy found, getting a new one")
-        proxy = get_proxy()
-    
-    # Ensure we have a proxy before proceeding
-    if not proxy:
-        logger.error("No proxy available. Cannot proceed without proxy.")
-        return "Błąd generowania: Brak dostępnego proxy. System wymaga proxy do działania."
-    
-    logger.info(f"Using proxy: {proxy}")
-    
-    while retry_count <= max_retries:
-        current_timeout = timeout * (BACKOFF_FACTOR ** retry_count)
-        logger.info(f"Attempting API call (retry {retry_count}) with timeout {current_timeout:.1f}s")
-        
-        try:
-            # Prepare the request payload
-            payload = {
-                "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": generation_config,
-                "safetySettings": []
-            }
-            
-            # Set up proxies dict with our proxy
-            proxies = {'http': proxy, 'https': proxy}
-            
-            # Try to generate content with timeout
-            response = requests.post(
-                f"{API_URL}?key={API_KEY}",
-                headers={'Content-Type': 'application/json'},
-                json=payload,
-                proxies=proxies,
-                timeout=current_timeout,
-                verify=False  # Skip SSL verification when using proxy
-            )
-            
-            # Check for server errors (5xx) and treat them as proxy errors
-            if response.status_code >= 500:
-                raise Exception(f"API server error with status code {response.status_code}: {response.text}")
-            
-            # Check for other non-200 status codes
-            elif response.status_code != 200:
-                raise Exception(f"API returned status code {response.status_code}: {response.text}")
-            
-            # Parse the response
-            response_json = response.json()
-            
-            # Extract the generated text
-            if (response_json.get('candidates') and 
-                response_json['candidates'][0].get('content') and 
-                response_json['candidates'][0]['content'].get('parts') and 
-                len(response_json['candidates'][0]['content']['parts']) > 0):
-                
-                generated_text = response_json['candidates'][0]['content']['parts'][0].get('text', '')
-                
-                # Save the working proxy
-                save_working_proxy(proxy)
-                    
-                return generated_text
-            else:
-                raise ValueError(f"Unexpected response format: {response_json}")
-                
-        except Exception as e:
-            retry_count += 1
-            error_str = str(e)
-            logger.warning(f"API call failed (attempt {retry_count}/{max_retries+1}): {error_str}")
-            
-            # Check for specific error types to give better error messages
-            is_timeout_error = any(error_term in error_str.lower() for error_term in ["504", "timeout", "deadline", "timed out"])
-            is_proxy_error = any(error_term in error_str.lower() for error_term in ["proxy", "connection", "ssl", "certificate"])
-            is_server_error = any(error_term in error_str.lower() for error_term in ["5", "502", "503", "server error"])
-            
-            # Consider server errors as proxy errors (try a new proxy)
-            if is_server_error:
-                logger.info("Server error detected, treating as proxy issue...")
-                is_proxy_error = True
-            
-            # If we've exhausted retries
-            if retry_count > max_retries:
-                logger.error(f"Failed after all attempts: {error_str}")
-                if is_timeout_error:
-                    return f"Błąd generowania: przekroczono limit czasu oczekiwania na odpowiedź (504 Deadline Exceeded). Proszę spróbować ponownie później."
-                else:
-                    return f"Błąd generowania: {error_str}"
-            
-            # If it's a proxy error, try to get a new proxy
-            if is_proxy_error:
-                logger.info("Proxy error detected, getting a new proxy...")
-                new_proxy = get_proxy()
-                if new_proxy:
-                    proxy = new_proxy
-                    logger.info(f"New proxy: {proxy}")
-                else:
-                    logger.warning("Failed to get a new proxy, using the old one")
-            
-            # If it's not a timeout/proxy/server error, decide whether to retry
-            if not is_timeout_error and not is_proxy_error and not is_server_error:
-                # Only retry other errors once
-                if retry_count > 1:
-                    logger.error(f"Non-recoverable error persists after retry: {error_str}")
-                    return f"Błąd generowania: {error_str}"
-            
-            # For all errors, wait before retrying
-            wait_time = min(2 ** retry_count, 300)  # Exponential backoff, capped at 300 seconds
-            logger.info(f"Waiting {wait_time}s before retry...")
-            time.sleep(wait_time)
-    
-    # This should not be reached, but just in case
-    return "Błąd generowania: przekroczono limit prób"
 
 def generate_proposal(job_description, client_info="", budget="", timeline="", additional_requirements="", project_slug="", research_data=None):
     """Generate a proposal for a job based on the provided information and research data."""
@@ -273,8 +96,8 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
     """
     
     try:
-        # Use the retry function instead of direct API call
-        return generate_with_retry(prompt)
+        return get_gemini_response(prompt)
+        
     except Exception as e:
         logger.error(f"Błąd generowania propozycji: {str(e)}")
         return f"Błąd generowania propozycji: {str(e)}"
@@ -300,10 +123,9 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
     """
     
     try:
-        # Use the retry function with shorter timeout for relevance scoring
-        response_text = generate_with_retry(prompt, timeout=300)
+        response = get_gemini_response(prompt)
         # Próba wyodrębnienia liczby z odpowiedzi
-        relevance_score = re.search(r'\b([1-9]|10)\b', response_text)
+        relevance_score = re.search(r'\b([1-9]|10)\b', response)
         if relevance_score:
             return int(relevance_score.group(1))
         else:
@@ -427,9 +249,9 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
     """
     
     try:
-        # Use the retry function with longer timeout for complex JSON generation
-        response_text = generate_with_retry(prompt, timeout=120)
-        response_text = response_text.strip()
+        response = get_gemini_response(prompt)
+        # The response is already a string, no need to call .strip() on it
+        response_text = response
         
         # First attempt: try to parse the whole response as JSON
         try:
@@ -681,9 +503,9 @@ def generate_slug(title, description, client_name):
     """
     
     try:
-        # Use the retry function with shorter timeout for slug generation
-        slug = generate_with_retry(prompt, timeout=300)
-        slug = slug.strip().lower()
+        response = get_gemini_response(prompt)
+        # The response is already a string
+        slug = response.lower()
         # Usuń polskie znaki diakrytyczne
         slug = unicodedata.normalize('NFKD', slug).encode('ASCII', 'ignore').decode('utf-8')
         # Usuń wszystkie znaki specjalne i zamień spacje na myślniki
@@ -769,8 +591,6 @@ def post_generated_proposals(proposals_file, auto_post=False):
                                     console.print(f"[bold green]Updated presentation data with employer email in {presentation_file}[/bold green]")
                                 except Exception as e:
                                     console.print(f"[bold red]Error updating presentation data: {str(e)}[/bold red]")
-
-                                    
                 else:
                     console.print(f"[bold red]Failed to post proposal to {job_url}[/bold red]")
                 
@@ -821,8 +641,9 @@ def generate_email(job_description, project_slug, client_info="", job_title=""):
     """
     
     try:
-        # Use the retry function for email generation
-        return generate_with_retry(prompt, timeout=45)
+        response = get_gemini_response(prompt)
+        # The response is already a string
+        return response
     except Exception as e:
         return f"Błąd generowania emaila: {str(e)}"
 
@@ -914,13 +735,6 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 project_slug=project_slug
             )
             
-            # Check for error messages early to avoid processing invalid proposals
-            error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
-            if any(error_text in proposal_text for error_text in error_indicators):
-                console.print(f"[bold red]⚠ Wykryto błąd w wygenerowanej propozycji. Propozycja nie zostanie zapisana ani wysłana.[/bold red]")
-                console.print(f"[red]Treść błędu: {proposal_text}[/red]")
-                continue
-                
             # Generate follow-up email content
             email_content = generate_email(
                 job_description=job_description, 
@@ -928,14 +742,7 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 client_info=client_info,
                 job_title=job_title
             )
-            
-            # Check for errors in email content
-            if any(error_text in email_content for error_text in error_indicators):
-                console.print(f"[bold red]⚠ Wykryto błąd w wygenerowanym emailu. Zostanie użyta tylko poprawna treść propozycji.[/bold red]")
-                console.print(f"[red]Treść błędu: {email_content}[/red]")
-                email_content = f"Nie udało się wygenerować treści email. Proszę użyć wygenerowanej propozycji."
-            else:
-                console.print(f"[green]✓[/green] Wygenerowano treść email dla oferty {job_id}")
+            console.print(f"[green]✓[/green] Wygenerowano treść email dla oferty {job_id}")
             
             # Calculate relevance score
             relevance_score = job.get('relevance_score')
@@ -970,35 +777,22 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
             
             # Update job in the database
             if auto_save:
-                # Make sure we're not saving error messages to the database
-                error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
-                has_errors = any(error_text in proposal_text for error_text in error_indicators) or any(error_text in email_content for error_text in error_indicators)
-                
-                if not has_errors:
-                    db.update_job_proposal(
-                        job_id=job_id,
-                        proposal_text=proposal_text,
-                        project_slug=project_slug,
-                        relevance_score=relevance_score,
-                        employer_email=employer_email,
-                        price=proposal_data["price"],
-                        timeline_days=proposal_data["timeline_days"],
-                        email_content=email_content,
-                        attachments=attachments
-                    )
-                    console.print(f"[green]✓[/green] Zaktualizowano ofertę {job_id} w bazie danych")
-                    processed_count += 1
-                else:
-                    console.print(f"[bold red]⚠ Wykryto błędy w treści propozycji lub emaila. Nie zapisuję do bazy danych.[/bold red]")
+                db.update_job_proposal(
+                    job_id=job_id,
+                    proposal_text=proposal_text,
+                    project_slug=project_slug,
+                    relevance_score=relevance_score,
+                    employer_email=employer_email,
+                    price=proposal_data["price"],
+                    timeline_days=proposal_data["timeline_days"],
+                    email_content=email_content,
+                    attachments=attachments
+                )
+                console.print(f"[green]✓[/green] Zaktualizowano ofertę {job_id} w bazie danych")
+                processed_count += 1
             
             # Optional: generate presentation data
             try:
-                # Skip presentation generation if proposal has errors
-                error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
-                if any(error_text in proposal_text for error_text in error_indicators):
-                    console.print(f"[bold yellow]⚠ Pomijam generowanie prezentacji - wykryto błędy w propozycji.[/bold yellow]")
-                    continue
-                
                 presentation_data = generate_presentation_data(
                     job_description=job_description,
                     proposal=proposal_text,
@@ -1024,18 +818,8 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 console.print(f"[green]✓[/green] Wygenerowano prezentację dla oferty {job_id}")
             except Exception as e:
                 console.print(f"[red]✗[/red] Błąd generowania prezentacji dla oferty {job_id}: {str(e)}")
-            
-            # POST PROPOSAL TO USEME if relevance > 3
+          # POST PROPOSAL TO USEME if relevance > 4
             if relevance_score > 3:
-                # First, check if proposal contains error messages
-                error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
-                
-                # Skip posting if proposal text contains any error indicators
-                if any(error_text in proposal_text for error_text in error_indicators):
-                    console.print(f"[bold red]⚠ Wykryto błąd w treści propozycji. Pomijam wysyłanie do Useme.[/bold red]")
-                    console.print(f"[red]Treść błędu: {proposal_text}[/red]")
-                    continue
-                    
                 from useme_post_proposal import UsemeProposalPoster
                 
                 poster = UsemeProposalPoster()
@@ -1054,54 +838,44 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                     posted_count += 1
                 else:
                     console.print(f"[red]✗[/red] Błąd wysyłania propozycji: {result.get('error', 'Nieznany błąd')}")
-                
-                # Check if we should send follow-up email
                 if relevance_score > 5 and employer_email:
-                    # Skip sending email if there are errors in the email content
-                    error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
-                    email_content = proposal_data.get("email_content", "")
+                    # Get the job details from the database
+                    job = db.get_job_by_id(job_id)
+                    # Configure EmailSender with Brevo SMTP settings
+                    from mailer import EmailSender
                     
-                    if any(error_text in email_content for error_text in error_indicators):
-                        console.print(f"[bold red]⚠ Wykryto błąd w treści emaila. Pomijam wysyłanie.[/bold red]")
-                        console.print(f"[red]Treść błędu: {email_content}[/red]")
+                    email_config = {
+                        'smtp_server': 'smtp-relay.brevo.com',
+                        'smtp_port': 587,
+                        'smtp_username': '7cf37b003@smtp-brevo.com',
+                        'smtp_password': '2ZT3G0RYBx1QrMna',
+                        'sender_email': 'info@soft-synergy.com',
+                        'sender_name': 'Antoni Seba | Soft Synergy'
+                    }
+                    
+                    email_sender = EmailSender(email_config)
+                    
+                    # Send the email
+                    subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
+                    recipient_email = employer_email  # Use the employer_email we already have
+                    email_content = proposal_data.get("email_content")  # Get email content from proposal data
+                    
+                    if email_sender.send_email(recipient_email, subject, email_content):
+                        # Update the database to mark email as sent
+                        conn = db.get_connection()
+                        cursor = conn.cursor()
+                        cursor.execute("""
+                            UPDATE jobs 
+                            SET follow_up_email_sent = 1, follow_up_email_sent_at = ? 
+                            WHERE job_id = ?
+                        """, (datetime.now().isoformat(), job_id))
+                        conn.commit()
+                        console.print(f"[green]✓[/green] Wysłano email do pracodawcy: {recipient_email}")
+                        emails_sent += 1
                     else:
-                        # Get the job details from the database
-                        job = db.get_job_by_id(job_id)
-                        # Configure EmailSender with Brevo SMTP settings
-                        from mailer import EmailSender
-                        
-                        email_config = {
-                            'smtp_server': 'smtp-relay.brevo.com',
-                            'smtp_port': 587,
-                            'smtp_username': '7cf37b003@smtp-brevo.com',
-                            'smtp_password': '2ZT3G0RYBx1QrMna',
-                            'sender_email': 'info@soft-synergy.com',
-                            'sender_name': 'Antoni Seba | Soft Synergy'
-                        }
-                        
-                        email_sender = EmailSender(email_config)
-                        
-                        # Send the email
-                        subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
-                        recipient_email = employer_email  # Use the employer_email we already have
-                        
-                        if email_sender.send_email(recipient_email, subject, email_content):
-                            # Update the database to mark email as sent
-                            conn = db.get_connection()
-                            cursor = conn.cursor()
-                            cursor.execute("""
-                                UPDATE jobs 
-                                SET follow_up_email_sent = 1, follow_up_email_sent_at = ? 
-                                WHERE job_id = ?
-                            """, (datetime.now().isoformat(), job_id))
-                            conn.commit()
-                            console.print(f"[green]✓[/green] Wysłano email do pracodawcy: {recipient_email}")
-                            emails_sent += 1
-                        else:
-                            console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
-                
-                # Also send a message through Useme if relevance > 7 and no errors in proposal
-                if relevance_score > 7 and not any(error_text in proposal_text for error_text in error_indicators):
+                        console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
+                # Also send a message through Useme if relevance > 7
+                if relevance_score > 7:
                     console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
                     try:
                         # Send message using the proposal text
