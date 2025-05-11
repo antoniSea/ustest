@@ -27,10 +27,19 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Helper function to create a session with ipv6first DNS parameter
+def create_ipv6first_session():
+    session = requests.Session()
+    session.mount('https://', requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=10, pool_block=False))
+    session.mount('http://', requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=10, pool_block=False))
+    setattr(session, 'dns_result_order', 'ipv6first')
+    return session
+    
 # Configure the Gemini API
 API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
 MODEL = "gemini-2.5-pro-exp-03-25"
 
+genai.configure(api_key=API_KEY)
 # Set up model with timeout and retry configuration
 generation_config = {
     "max_output_tokens": 2048,
@@ -39,8 +48,6 @@ generation_config = {
     "top_k": 40
 }
 safety_settings = []
-# Use the europe-west4 endpoint for Gemini API
-genai.configure(api_key=API_KEY, transport="rest", client_options={"api_endpoint": "https://europe-west4-aiplatform.googleapis.com"})
 model = genai.GenerativeModel(MODEL, generation_config=generation_config, safety_settings=safety_settings)
 
 # Max number of retries and timeout settings
