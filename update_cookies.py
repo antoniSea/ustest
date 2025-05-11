@@ -29,10 +29,6 @@ def extract_cookies_from_browser_string(cookie_string):
 def test_cookies(cookies):
     """Test if the cookies work by checking if we're logged in"""
     session = requests.Session()
-    # Add -dns-result-order=ipv6first parameter to session
-    session.mount('https://', requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=10, pool_block=False))
-    session.mount('http://', requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=10, pool_block=False))
-    setattr(session, 'dns_result_order', 'ipv6first')
     session.cookies.update(cookies)
     
     # Try to access the dashboard

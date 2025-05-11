@@ -33,10 +33,6 @@ headers = {
 class UsemeProposalPoster:
     def __init__(self, cookies=None):
         self.session = requests.Session()
-        # Add -dns-result-order=ipv6first parameter to session
-        self.session.mount('https://', requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=10, pool_block=False))
-        self.session.mount('http://', requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=10, pool_block=False))
-        setattr(self.session, 'dns_result_order', 'ipv6first')
         self.headers = headers.copy()
         self.employer_email = None
         self.db = Database()

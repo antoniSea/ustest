@@ -1,0 +1,275 @@
+{
+  "site": {
+    "companyName": "Soft Synergy",
+    "pageTitle": "Propozycja Projektu Ulotki Dziękczynnej dla Carscenter | Soft Synergy",
+    "currentYear": "2024"
+  },
+  "header": {
+    "logoText": "Soft",
+    "logoAccent": "Synergy",
+    "navLinks": [
+      {
+        "text": "Start",
+        "href": "#hero",
+        "isButton": false,
+        "isActive": true
+      },
+      {
+        "text": "Rozwiązanie",
+        "href": "#solutionFeatures",
+        "isButton": false
+      },
+      {
+        "text": "Wycena",
+        "href": "#pricing",
+        "isButton": false
+      },
+      {
+        "text": "Harmonogram",
+        "href": "#timeline",
+        "isButton": false
+      },
+      {
+        "text": "Kontakt",
+        "href": "#contact",
+        "isButton": true,
+        "buttonClass": "btn-premium bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg"
+      }
+    ],
+    "mobileMenuButtonIcon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16m-7 6h7\"></path></svg>"
+  },
+  "hero": {
+    "clientLogoSrc": "https://useme-prod-public.s3.amazonaws.com/avatars/084/254084.png",
+    "clientLogoAlt": "Logo Marek Pawłowski",
+    "titlePart1": "Propozycja Projektu dla",
+    "titlePart2ClientName": "Carscenter",
+    "subtitle": "Propozycja projektu dwustronnej ulotki dziękczynnej dla klientów sklepu internetowego Carscenter, realizowanej w technice grafiki 2D.",
+    "ctaButtonText": "Zobacz Szczegóły Oferty",
+    "ctaButtonLink": "#understanding"
+  },
+  "understanding": {
+    "sectionTitle": "Zrozumienie Państwa <span class=\"text-cyan-400\">Potrzeb</span>",
+    "sectionSubtitle": "Dokładnie przeanalizowaliśmy Państwa zlecenie dotyczące projektu ulotki dziękczynnej, aby zaproponować rozwiązanie idealnie dopasowane do Państwa celów.",
+    "problem": {
+      "title": "Cel Projektu: <span class=\"text-red-400\">Efektowna Ulotka Dziękczynna</span>",
+      "description": "Głównym celem jest zaprojektowanie profesjonalnej, dwustronnej ulotki dziękczynnej dla klientów sklepu internetowego Carscenter. Ulotka ma za zadanie wzmocnić pozytywne relacje z klientami i podziękować za dokonany zakup, budując lojalność wobec marki.",
+      "points": [
+        "Zlecenie projektu dwustronnej ulotki.",
+        "Cel: podziękowanie klientom za zakupy w sklepie internetowym Carscenter.",
+        "Wymagana grafika 2D, estetyczna i zgodna z wizerunkiem firmy.",
+        "Ustalony przez Państwa budżet na projekt: 200,00 PLN."
+      ],
+      "diagramPlaceholderText": "Wizualizacja koncepcji ulotki Carscenter"
+    },
+    "solution": {
+      "title": "Proponowane <span class=\"text-green-400\">Rozwiązanie</span>: Projekt Graficzny Ulotki 2D",
+      "description": "Proponujemy realizację projektu dwustronnej ulotki dziękczynnej w technice grafiki 2D. Gwarantujemy estetyczny i profesjonalny projekt, który spełni Państwa oczekiwania i pozytywnie wpłynie na wizerunek marki Carscenter, a wszystko to w atrakcyjnej cenie 190,00 PLN brutto.",
+      "points": [
+        "Realizacja projektu graficznego ulotki dwustronnej w technice 2D.",
+        "Dostarczenie gotowego projektu grafiki w ciągu 3-5 dni roboczych od momentu ustalenia szczegółów i otrzymania niezbędnych materiałów.",
+        "Atrakcyjna cena realizacji: 190,00 PLN brutto.",
+        "Proces projektowy obejmujący analizę Państwa potrzeb, stworzenie wstępnej koncepcji, a następnie dopracowanie projektu do pełnej satysfakcji na podstawie Państwa opinii.",
+        "Specjalizacja Soft Synergy w tworzeniu angażujących projektów graficznych, z dbałością o wysoką jakość i terminowość."
+      ],
+      "diagramPlaceholderText": "Przykładowy styl graficzny ulotki"
+    }
+  },
+  "solutionFeatures": {
+    "sectionTitle": "Kluczowe Elementy <span class=\"text-cyan-400\">Projektu</span> Ulotki",
+    "sectionSubtitle": "Przedstawiamy składowe projektu, które zapewnią wysoką jakość i estetykę Państwa ulotki dziękczynnej dla Carscenter.",
+    "features": [
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.038-.502.068-.75.098m8.25-.122A2.25 2.25 0 0019.5 5.5v5.714a2.25 2.25 0 01-1.591 2.241L14.25 14.5M18 18.75h.008v.008H18v-.008zm-4.508 0h.008v.008h-.008v-.008zm-4.508 0h.008v.008h-.008v-.008z\" />",
+        "title": "Profesjonalny Projekt Graficzny 2D",
+        "description": "Stworzenie unikalnego, dwustronnego projektu graficznego ulotki, dopasowanego do identyfikacji wizualnej Carscenter i charakteru podziękowania. Projekt będzie przygotowany z dbałością o estetykę, czytelność i nowoczesny design.",
+        "mockupText": "Koncepcja graficzna ulotki"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z\" />",
+        "title": "Skuteczny Przekaz Dziękczynny",
+        "description": "Opracowanie layoutu, który efektywnie przekaże treść podziękowania oraz ewentualne dodatkowe informacje (np. kod rabatowy na kolejne zakupy), wzmacniając pozytywne doświadczenia klientów po zakupie w sklepie internetowym Carscenter.",
+        "mockupText": "Layout strony 1 i 2 ulotki"
+      },
+      {
+        "iconSvgPath": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z\" />",
+        "title": "Pliki Gotowe do Druku",
+        "description": "Dostarczenie finalnego projektu w formatach odpowiednich do druku (np. PDF ze spadami, w odpowiedniej przestrzeni barwnej i rozdzielczości), gotowych do przekazania bezpośrednio do drukarni.",
+        "mockupText": "Specyfikacja plików do druku"
+      }
+    ]
+  },
+  "scope": {
+    "sectionTitle": "Szczegółowy <span class=\"text-cyan-400\">Zakres</span> Prac Projektowych",
+    "sectionSubtitle": "Precyzyjnie definiujemy każdy etap tworzenia Państwa ulotki dziękczynnej dla Carscenter, zapewniając transparentność procesu.",
+    "modules": [
+      {
+        "title": "Etap 1: Konsultacje, Zbieranie Wymagań i Wstępna Koncepcja",
+        "description": "Omówienie Państwa oczekiwań, celów ulotki, preferencji stylistycznych oraz analiza ewentualnych materiałów (logo, teksty, identyfikacja wizualna Carscenter). Stworzenie wstępnej koncepcji graficznej.",
+        "features": [
+          "Analiza potrzeb i celów komunikacyjnych ulotki dla Carscenter.",
+          "Ustalenie kluczowych elementów treściowych i wizualnych (np. ton komunikacji, ewentualne hasła).",
+          "Prezentacja wstępnych propozycji stylistycznych i układu graficznego.",
+          "Zebranie Państwa opinii i sugestii do dalszych prac."
+        ]
+      },
+      {
+        "title": "Etap 2: Projektowanie Graficzne i Iteracje",
+        "description": "Realizacja projektu graficznego ulotki (obie strony) w technice 2D, zgodnie z ustaleniami. Wprowadzanie poprawek na podstawie Państwa sugestii aż do uzyskania pełnej satysfakcji.",
+        "features": [
+          "Projektowanie graficzne obu stron ulotki z uwzględnieniem Państwa brandingu.",
+          "Dobór typografii, kolorystyki i elementów graficznych spójnych z wizerunkiem Carscenter.",
+          "Przygotowanie wizualizacji projektu do Państwa akceptacji.",
+          "Wprowadzanie ewentualnych korekt (do 2 pełnych rund poprawek wliczonych w cenę)."
+        ]
+      },
+      {
+        "title": "Etap 3: Finalizacja Projektu i Przygotowanie Plików do Druku",
+        "description": "Ostateczne dopracowanie projektu po Państwa akceptacji, przygotowanie plików w profesjonalnych formatach odpowiednich do druku oraz ich przekazanie.",
+        "features": [
+          "Ostateczna akceptacja projektu graficznego przez Carscenter.",
+          "Przygotowanie plików produkcyjnych (np. PDF drukarski ze spadami, CMYK).",
+          "Dostarczenie kompletu finalnych plików graficznych drogą elektroniczną.",
+          "Krótkie wsparcie techniczne w przypadku pytań od drukarni."
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "sectionTitle": "Inwestycja w <span class=\"text-cyan-400\">Profesjonalną Ulotkę</span>",
+    "sectionSubtitle": "Przedstawiamy transparentną wycenę projektu ulotki dziękczynnej dla Carscenter. Nasza propozycja mieści się w Państwa budżecie.",
+    "tabs": [
+      {
+        "id": "flyer_design_offer",
+        "name": "Projekt Ulotki Dziękczynnej"
+      }
+    ],
+    "packages": [
+      {
+        "id": "flyer_design_offer",
+        "name": "Projekt Ulotki Dziękczynnej dla Carscenter",
+        "description": "Kompleksowy projekt dwustronnej ulotki dziękczynnej w technice grafiki 2D, mającej na celu podziękowanie klientom za zakupy w sklepie internetowym i wzmocnienie pozytywnego wizerunku marki.",
+        "features": [
+          {
+            "text": "Projekt graficzny 2D ulotki dwustronnej",
+            "included": true
+          },
+          {
+            "text": "Dopasowanie do identyfikacji wizualnej Carscenter",
+            "included": true
+          },
+          {
+            "text": "Do 2 rund poprawek w cenie",
+            "included": true
+          },
+          {
+            "text": "Przygotowanie plików gotowych do druku (PDF)",
+            "included": true
+          },
+          {
+            "text": "Konsultacje i zarządzanie projektem",
+            "included": true
+          },
+          {
+            "text": "Szybki czas realizacji (3-5 dni roboczych)",
+            "included": true
+          },
+          {
+            "text": "Prawa autorskie majątkowe do projektu",
+            "included": true
+          }
+        ],
+        "price": "190,00 PLN brutto",
+        "priceNote": "Cena zawiera podatek VAT. Pierwotny budżet Klienta: 200,00 PLN.",
+        "ctaText": "Zamów Projekt Ulotki",
+        "isRecommended": true
+      }
+    ]
+  },
+  "timeline": {
+    "sectionTitle": "Harmonogram <span class=\"text-cyan-400\">Realizacji</span> Projektu Ulotki",
+    "sectionSubtitle": "Przejrzysty plan działania dla projektu ulotki dla Carscenter. Przewidywany czas realizacji projektu: **3-5 dni roboczych** od momentu ustalenia szczegółów i otrzymania od Państwa niezbędnych materiałów (np. logo, teksty). Niniejsza oferta cenowa jest ważna przez 30 dni.",
+    "milestones": [
+      {
+        "phase": "Faza 1: Ustalenie Szczegółów i Rozpoczęcie (Dzień 1)",
+        "duration": "1 dzień roboczy",
+        "description": "Potwierdzenie zlecenia, omówienie szczegółów projektu, zebranie niezbędnych materiałów od Carscenter (logo w wektorze, ewentualne wytyczne dotyczące tekstów, preferencje stylistyczne)."
+      },
+      {
+        "phase": "Faza 2: Projektowanie Graficzne i Prezentacja Wstępnej Koncepcji (Dzień 1-2)",
+        "duration": "1-2 dni robocze",
+        "description": "Stworzenie wstępnej koncepcji graficznej ulotki (np. 1-2 propozycje układu), prezentacja Państwu do wglądu i zebranie pierwszych uwag."
+      },
+      {
+        "phase": "Faza 3: Wprowadzenie Poprawek i Finalizacja Projektu (Dzień 2-5)",
+        "duration": "1-2 dni robocze",
+        "description": "Wprowadzenie ewentualnych korekt i modyfikacji zgłoszonych przez Carscenter (w ramach ustalonych rund poprawek). Przygotowanie finalnych, zaakceptowanych plików do druku."
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "Zaufali Nam <span class=\"text-cyan-400\">Klienci</span>",
+    "sectionSubtitle": "Nasze portfolio i opinie klientów mówią same za siebie. Dołącz do grona zadowolonych partnerów Soft Synergy.",
+    "slides": [
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=AS",
+        "imageAlt": "Anna Szymańska",
+        "quote": "Soft Synergy przygotowało dla nas materiały marketingowe, które znacząco podniosły rozpoznawalność naszej marki. Pełen profesjonalizm i świetna komunikacja!",
+        "authorName": "Anna Szymańska",
+        "authorTitle": "Marketing Manager, Kreatywna Strefa"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=PB",
+        "imageAlt": "Piotr Baranowski",
+        "quote": "Projekty graficzne od Soft Synergy zawsze trafiają w nasze oczekiwania. Szybka realizacja i dbałość o detale to ich znak rozpoznawczy. Polecam!",
+        "authorName": "Piotr Baranowski",
+        "authorTitle": "Właściciel, EkoSmaki"
+      },
+      {
+        "imageSrc": "https://via.placeholder.com/80/FFFFFF/0A0F1F?text=MK",
+        "imageAlt": "Magdalena Kowalczyk",
+        "quote": "Współpraca z Soft Synergy to gwarancja jakości. Ich kreatywne podejście i terminowość są nieocenione. Zdecydowanie polecam ich usługi graficzne.",
+        "authorName": "Magdalena Kowalczyk",
+        "authorTitle": "Specjalista ds. PR, Nowe Horyzonty"
+      }
+    ],
+    "clientsIntro": "Wybrani Klienci:",
+    "clientLogos": [
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=KreatywnaSF",
+        "alt": "Logo Klienta Kreatywna Strefa"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=EkoSmaki",
+        "alt": "Logo Klienta EkoSmaki"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=NoweHoryz",
+        "alt": "Logo Klienta Nowe Horyzonty"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=InnovaTech",
+        "alt": "Logo Klienta InnovaTech"
+      },
+      {
+        "src": "https://via.placeholder.com/120x50/FFFFFF/0A0F1F?text=ProBiznes",
+        "alt": "Logo Klienta ProBiznes"
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Gotowi na <span class=\"text-cyan-400\">Nową Ulotkę</span> dla Carscenter?",
+    "sectionSubtitle": "Porozmawiajmy o tym, jak możemy wspólnie stworzyć ulotkę dziękczynną, która efektywnie wzmocni Państwa relacje z klientami i zachęci do kolejnych zakupów. Skontaktuj się z nami, aby omówić szczegóły i rozpocząć owocną współpracę.",
+    "ctaButtonText": "Porozmawiajmy o Projekcie Ulotki",
+    "email": "info@soft-synergy.com",
+    "phone": "576 205 389",
+    "address": "ul. Kreatywna 7, 01-001 Warszawa"
+  },
+  "footer": {
+    "copyrightText": "© 2024 Soft Synergy. Wszelkie prawa zastrzeżone.",
+    "credits": "Szablon prezentacji dostosowany przez Soft Synergy."
+  },
+  "useme_id": "115270",
+  "price": 40,
+  "timelineDays": 7,
+  "employer_email": "marek.pawlowski.pp@gmail.com"
+}
