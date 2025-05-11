@@ -41,17 +41,20 @@ MODEL = "gemini-2.5-pro-exp-03-25"
 
 # Free proxy list - to be rotated
 FREE_PROXIES = [
+    # Darmowe proxy, które często działają, ale mogą być niestabilne
     "http://34.142.51.21:80",
-    "http://142.93.126.114:80",
+    "http://142.93.126.114:80", 
     "http://20.205.61.143:80",
     "http://199.60.103.28:80",
     "http://165.154.243.154:80",
-    "http://142.132.178.248:3128",
-    "http://154.12.251.133:80",
-    "http://47.56.110.204:8989",
-    "http://168.119.232.85:8080",
-    "http://51.79.152.70:80"
+    # Dodaj tutaj więcej działających proxy
 ]
+
+# Flaga kontrolująca, czy w ogóle używać proxy
+USE_PROXIES = True  # Ustaw na False, aby całkowicie wyłączyć proxy
+
+# Zapisuj działające proxy do tego pliku
+WORKING_PROXIES_FILE = "working_proxies.txt"
 
 # Max number of retries and timeout settings
 MAX_RETRIES = 3
@@ -61,8 +64,20 @@ BACKOFF_FACTOR = 1.5  # exponential backoff
 console = Console()
 
 def get_random_proxy():
-    """Return a random proxy from the list"""
+    """Return a random proxy from the list or None if no proxies should be used"""
+    if not USE_PROXIES or not FREE_PROXIES:
+        return None
     return random.choice(FREE_PROXIES)
+
+def save_working_proxy(proxy):
+    """Save a working proxy to file for future reference"""
+    if not proxy:
+        return
+    try:
+        with open(WORKING_PROXIES_FILE, "a") as f:
+            f.write(f"{proxy},{datetime.now().isoformat()}\n")
+    except Exception as e:
+        logger.warning(f"Nie można zapisać działającego proxy: {str(e)}")
 
 def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
     """Generate content with retry logic using direct HTTP requests."""
@@ -86,68 +101,176 @@ def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
     api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={API_KEY}"
     
     headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
+    
+    # Track the last error for better diagnostics
+    last_error = None
     
     while retry_count <= max_retries:
         try:
             current_timeout = timeout * (BACKOFF_FACTOR ** retry_count)
             logger.info(f"Attempting API call (retry {retry_count}) with timeout {current_timeout:.1f}s")
             
-            # Select a random proxy
-            current_proxy = get_random_proxy()
-            logger.info(f"Using proxy: {current_proxy}")
+            # Decide whether to use proxy or direct connection based on retry count and configuration
+            # First try direct, then try with proxy on alternating retries
+            use_proxy = USE_PROXIES and retry_count % 2 == 1
             
-            proxies = {
-                "http": current_proxy,
-                "https": current_proxy
-            }
+            session = requests.Session()
             
-            # Make the API request
-            response = requests.post(
-                api_url,
-                json=payload,
-                headers=headers,
-                proxies=proxies,
-                timeout=current_timeout
-            )
+            if use_proxy:
+                # Select a random proxy
+                current_proxy = get_random_proxy()
+                if current_proxy:
+                    logger.info(f"Using proxy: {current_proxy}")
+                    
+                    proxies = {
+                        "http": current_proxy,
+                        "https": current_proxy
+                    }
+                    
+                    # Make the API request with proxy
+                    response = session.post(
+                        api_url,
+                        json=payload,
+                        headers=headers,
+                        proxies=proxies,
+                        timeout=current_timeout
+                    )
+                else:
+                    # Fallback to direct if no proxy available
+                    logger.info("No proxies available, using direct connection")
+                    response = session.post(
+                        api_url,
+                        json=payload,
+                        headers=headers,
+                        timeout=current_timeout
+                    )
+            else:
+                # Make direct API request without proxy
+                logger.info("Using direct connection (no proxy)")
+                response = session.post(
+                    api_url,
+                    json=payload,
+                    headers=headers,
+                    timeout=current_timeout
+                )
             
-            # Check for errors
-            if response.status_code != 200:
-                error_message = f"API error: HTTP {response.status_code}: {response.text}"
+            # Check HTTP status codes
+            if response.status_code == 200:
+                # Success!
+                if use_proxy and current_proxy:
+                    # Save successful proxy for future reference
+                    save_working_proxy(current_proxy)
+                    
+                # Parse the response
+                response_json = response.json()
+                
+                # Extract the text from the response
+                if 'candidates' in response_json and len(response_json['candidates']) > 0:
+                    if 'content' in response_json['candidates'][0] and 'parts' in response_json['candidates'][0]['content']:
+                        parts = response_json['candidates'][0]['content']['parts']
+                        if parts and 'text' in parts[0]:
+                            return parts[0]['text']
+                
+                logger.warning(f"Unexpected response format: {response_json}")
+                raise ValueError("Empty or invalid response received from API")
+            
+            # Handle different HTTP status codes
+            elif response.status_code == 400:
+                error_message = f"API error: Invalid request (400): {response.text}"
                 logger.warning(error_message)
+                # Bad request - likely won't be fixed by retrying
+                raise Exception(error_message)
+            
+            elif response.status_code == 401 or response.status_code == 403:
+                error_message = f"API error: Authentication error ({response.status_code}): {response.text}"
+                logger.warning(error_message)
+                # Auth error - check API key
                 raise Exception(error_message)
                 
-            # Parse the response
-            response_json = response.json()
-            
-            # Extract the text from the response
-            if 'candidates' in response_json and len(response_json['candidates']) > 0:
-                if 'content' in response_json['candidates'][0] and 'parts' in response_json['candidates'][0]['content']:
-                    parts = response_json['candidates'][0]['content']['parts']
-                    if parts and 'text' in parts[0]:
-                        return parts[0]['text']
-            
-            raise ValueError("Empty or invalid response received from API")
+            elif response.status_code == 429:
+                error_message = f"API error: Rate limit exceeded (429): {response.text}"
+                logger.warning(error_message)
+                # Rate limit - wait longer before retry
+                retry_count += 1
+                wait_time = min(60, 5 * (2 ** retry_count))  # Longer wait for rate limits
+                logger.info(f"Rate limit hit. Waiting {wait_time}s before retry...")
+                time.sleep(wait_time)
+                continue
                 
+            elif response.status_code >= 500:
+                error_message = f"API error: Server error ({response.status_code}): {response.text}"
+                logger.warning(error_message)
+                # Server error - retry
+                last_error = error_message
+                retry_count += 1
+                continue
+                
+            else:
+                error_message = f"API error: HTTP {response.status_code}: {response.text}"
+                logger.warning(error_message)
+                last_error = error_message
+                raise Exception(error_message)
+                
+        except (requests.exceptions.ProxyError, requests.exceptions.SSLError) as e:
+            retry_count += 1
+            error_str = str(e)
+            logger.warning(f"Proxy error (attempt {retry_count}/{max_retries+1}): {error_str}")
+            last_error = error_str
+            
+            # Force next attempt to be direct connection
+            if retry_count % 2 == 1:
+                retry_count += 1
+                
+            # Short wait before retry
+            wait_time = 2  # Quick retry for proxy errors
+            logger.info(f"Proxy error. Waiting {wait_time}s before retry with direct connection...")
+            time.sleep(wait_time)
+            continue
+            
+        except requests.exceptions.Timeout as e:
+            retry_count += 1
+            error_str = str(e)
+            logger.warning(f"Timeout error (attempt {retry_count}/{max_retries+1}): {error_str}")
+            last_error = error_str
+            
+            # Wait before retrying
+            wait_time = min(2 ** retry_count, 30)
+            logger.info(f"Timeout error. Waiting {wait_time}s before retry...")
+            time.sleep(wait_time)
+            continue
+            
         except Exception as e:
             retry_count += 1
             error_str = str(e)
             logger.warning(f"API call failed (attempt {retry_count}/{max_retries+1}): {error_str}")
+            last_error = error_str
             
             # Check for specific error types to give better error messages
             is_timeout_error = any(error_term in error_str.lower() for error_term in ["504", "timeout", "deadline", "timed out"])
             is_location_error = "user location is not supported" in error_str.lower()
+            is_proxy_error = any(error_term in error_str.lower() for error_term in ["proxy", "tunnel", "connection failed", "301 moved"])
             
-            # If we've exhausted retries or it's not a timeout-related error or location error
+            # If we've exhausted retries
             if retry_count > max_retries:
                 logger.error(f"Failed after {retry_count} attempts: {error_str}")
                 if is_timeout_error:
                     return f"Błąd generowania: przekroczono limit czasu oczekiwania na odpowiedź (504 Deadline Exceeded). Proszę spróbować ponownie później."
                 elif is_location_error:
-                    return f"Błąd generowania: lokalizacja użytkownika nie jest wspierana. Spróbuj użyć VPN lub proxy."
+                    return f"Błąd generowania: lokalizacja użytkownika nie jest wspierana. Spróbuj użyć VPN lub zmienić proxy."
+                elif is_proxy_error:
+                    return f"Błąd generowania: problem z połączeniem proxy. Spróbuj bez proxy lub z innym adresem."
                 else:
                     return f"Błąd generowania: {error_str}"
+            
+            # Try alternative method if proxy is failing
+            if is_proxy_error and use_proxy:
+                logger.info("Proxy error detected, will try direct connection on next attempt")
+                # Force next attempt to be direct
+                if retry_count % 2 == 1:
+                    retry_count += 1
             
             # Wait before retrying
             wait_time = min(2 ** retry_count, 30)  # Exponential backoff, capped at 30 seconds
@@ -155,7 +278,7 @@ def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
             time.sleep(wait_time)
     
     # This should not be reached, but just in case
-    return "Błąd generowania: przekroczono limit prób"
+    return f"Błąd generowania: przekroczono limit prób. Ostatni błąd: {last_error if last_error else 'nieznany'}"
 
 def generate_proposal(job_description, client_info="", budget="", timeline="", additional_requirements="", project_slug="", research_data=None):
     """Generate a proposal for a job based on the provided information and research data."""
