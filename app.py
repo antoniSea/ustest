@@ -28,6 +28,7 @@ AVATARS_DIR = os.path.join("avatars")
 
 # Domain configuration
 APP_DOMAIN = os.environ.get('APP_DOMAIN', 'prezentacje.soft-synergy.com')
+FORCE_HTTPS = os.environ.get('FORCE_HTTPS', 'true').lower() in ('true', '1', 'yes')
 
 # Initialize database
 db = Database()
@@ -1262,12 +1263,17 @@ def server_error(e):
 # Add before_request handler to handle domain routing
 @app.before_request
 def handle_domain_routing():
-    """Handle routing based on domain names"""
+    """Handle routing based on domain names and provide HTTPS support"""
     # Only process GET requests to avoid affecting API calls
     if request.method != 'GET':
         return None
         
     host = request.host.split(':')[0]  # Remove port if present
+    
+    # Check if we should redirect to HTTPS
+    if FORCE_HTTPS and request.headers.get('X-Forwarded-Proto') == 'http':
+        url = request.url.replace('http://', 'https://', 1)
+        return redirect(url, code=301)
     
     # Check if we're accessing via the presentation domain
     if host == APP_DOMAIN:
@@ -1281,10 +1287,16 @@ def handle_domain_routing():
     # Continue normal request processing
     return None
 
-# Add a new function to help with presentation URL generation
+# Add a function to check if request is secure
+def is_secure_request():
+    """Check if the current request is secure (HTTPS)"""
+    return request.headers.get('X-Forwarded-Proto') == 'https'
+
+# Add a function to generate absolute URLs with correct protocol
 def get_presentation_url(slug):
     """Generate a fully qualified URL for a presentation"""
-    return f"http://{APP_DOMAIN}/{slug}"
+    protocol = 'https' if FORCE_HTTPS else 'http'
+    return f"{protocol}://{APP_DOMAIN}/{slug}"
 
 if __name__ == '__main__':
     # Parse command line arguments
@@ -1292,11 +1304,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run the Flask application')
     parser.add_argument('--port', type=int, default=5001, help='Port to run the application on')
     parser.add_argument('--debug', action='store_true', help='Run in debug mode')
+    parser.add_argument('--force-https', action='store_true', help='Force HTTPS for all URLs')
     args = parser.parse_args()
+    
+    # Set FORCE_HTTPS from command line if specified
+    if args.force_https:
+        FORCE_HTTPS = True
     
     # Log important startup information
     logger.info(f"Starting Flask application on 0.0.0.0:{args.port}")
     logger.info(f"Presentation domain: {APP_DOMAIN}")
+    logger.info(f"Force HTTPS: {FORCE_HTTPS}")
     logger.info(f"Local IP addresses:")
     
     # Attempt to print all available network interfaces for debugging
