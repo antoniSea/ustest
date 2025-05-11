@@ -34,8 +34,6 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific
-presentations/
-avatars/
 avatars_standalone/
 output_files/
 cookies.json
@@ -44,4 +42,9 @@ message_*.html
 proposals_*.json
 useme_jobs.json
 *.pid
-scheduler*.pid 
+scheduler*.pid
+
+# Allow specific directories and files
+!presentations/
+!presentations/*.json
+!avatars/ 
