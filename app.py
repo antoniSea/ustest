@@ -732,14 +732,8 @@ def presentation(filename):
         except Exception as e:
             logger.error(f"Error tracking presentation view: {str(e)}")
         
-        # Check if we're on the correct domain for presentations
-        host = request.host.split(':')[0]  # Remove port if present
-        
-        # If not on the presentation domain and not authenticated, redirect to the correct domain
-        if host != APP_DOMAIN and not current_user.is_authenticated:
-            full_url = f"http://{APP_DOMAIN}/{filename}"
-            logger.info(f"Redirecting to presentation domain: {full_url}")
-            return redirect(full_url)
+        # IMPORTANT: Removed the redirection logic to prevent redirect loops
+        # We'll let Nginx handle the domain routing instead
         
         return render_template('presentations/prezentation1.html', 
                             presentation=presentation_data, 
@@ -1269,6 +1263,10 @@ def server_error(e):
 @app.before_request
 def handle_domain_routing():
     """Handle routing based on domain names"""
+    # Only process GET requests to avoid affecting API calls
+    if request.method != 'GET':
+        return None
+        
     host = request.host.split(':')[0]  # Remove port if present
     
     # Check if we're accessing via the presentation domain
