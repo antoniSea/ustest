@@ -43,7 +43,7 @@ PROXY_POOL = [
 
 # Configure the Gemini API
 API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
-MODEL = "gemini-2.5-pro-exp-03-2"  # Using the standard model name to ensure compatibility
+MODEL = "gemini-2.5-pro-preview-05-06"  # Using the standard model name to ensure compatibility
 
 # Try to get a working proxy from the pool
 working_proxy = None
