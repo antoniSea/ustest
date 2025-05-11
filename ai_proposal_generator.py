@@ -40,12 +40,7 @@ generation_config = {
     "top_k": 40
 }
 safety_settings = []
-model = genai.GenerativeModel(
-    MODEL, 
-    generation_config=generation_config, 
-    safety_settings=safety_settings,
-    location="us-central1"
-)
+model = genai.GenerativeModel(MODEL, generation_config=generation_config, safety_settings=safety_settings)
 
 # Max number of retries and timeout settings
 MAX_RETRIES = 3
