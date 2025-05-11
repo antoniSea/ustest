@@ -34,7 +34,6 @@ logger = logging.getLogger(__name__)
 
 # Define a proxy pool with some known free proxies
 PROXY_POOL = [
-    "http://43.167.167.192:13001",  # Found working in our tests
     "http://89.58.52.160:80",       # Polish proxy
     "http://89.58.55.33:80",        # Polish proxy
     "http://89.58.53.205:80",       # Polish proxy
