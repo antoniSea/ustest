@@ -46,7 +46,6 @@ API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
 MODEL = "gemini-1.5-pro"  # Using the standard model name to ensure compatibility
 
 # Try to get a working proxy from the pool
-custom_session = requests.Session()
 working_proxy = None
 
 def test_proxy(proxy_url):
@@ -84,11 +83,7 @@ def test_proxy(proxy_url):
 for proxy in PROXY_POOL:
     if test_proxy(proxy):
         working_proxy = proxy
-        custom_session.proxies = {
-            'http': working_proxy,
-            'https': working_proxy
-        }
-        logger.info(f"Using proxy: {working_proxy}")
+        logger.info(f"Found working proxy: {working_proxy}")
         break
 
 # If no proxy works, try getting a new one from FreeProxy
@@ -98,23 +93,14 @@ if not working_proxy:
         new_proxy = FreeProxy(country_id=['PL', 'DE', 'CZ'], rand=True).get()
         if new_proxy and test_proxy(new_proxy):
             working_proxy = new_proxy
-            custom_session.proxies = {
-                'http': working_proxy,
-                'https': working_proxy
-            }
-            logger.info(f"Using new proxy: {working_proxy}")
+            logger.info(f"Found new proxy: {working_proxy}")
         else:
             logger.warning("No working proxy found. Using direct connection.")
     except Exception as e:
         logger.error(f"Error finding new proxy: {str(e)}. Using direct connection.")
 
-# Configure Gemini using the session with working proxy or direct connection
-if working_proxy:
-    genai.configure(api_key=API_KEY, transport=custom_session)
-    logger.info(f"Configured Gemini API with proxy: {working_proxy}")
-else:
-    genai.configure(api_key=API_KEY)
-    logger.info("Configured Gemini API with direct connection")
+# Configure Gemini API without proxy for now
+genai.configure(api_key=API_KEY)
 
 # Set up model with timeout and retry configuration
 generation_config = {
@@ -138,7 +124,7 @@ console = Console()
 
 def get_another_proxy():
     """Try to get another working proxy if the current one fails."""
-    global working_proxy, custom_session, model
+    global working_proxy
     
     logger.info("Attempting to find a new working proxy...")
     
@@ -147,13 +133,6 @@ def get_another_proxy():
     for proxy in remaining_proxies:
         if test_proxy(proxy):
             working_proxy = proxy
-            custom_session = requests.Session()
-            custom_session.proxies = {
-                'http': working_proxy,
-                'https': working_proxy
-            }
-            # Update the API configuration with the new session
-            genai.configure(api_key=API_KEY, transport=custom_session)
             logger.info(f"Switched to proxy: {working_proxy}")
             return True
     
@@ -162,13 +141,6 @@ def get_another_proxy():
         new_proxy = FreeProxy(country_id=['PL', 'DE', 'CZ'], rand=True).get()
         if new_proxy and test_proxy(new_proxy):
             working_proxy = new_proxy
-            custom_session = requests.Session()
-            custom_session.proxies = {
-                'http': working_proxy,
-                'https': working_proxy
-            }
-            # Update the API configuration with the new session
-            genai.configure(api_key=API_KEY, transport=custom_session)
             logger.info(f"Switched to new proxy: {working_proxy}")
             return True
     except Exception as e:
@@ -177,9 +149,24 @@ def get_another_proxy():
     # If all fails, switch to direct connection
     logger.warning("Failed to find a working proxy. Switching to direct connection.")
     working_proxy = None
-    custom_session = requests.Session()
-    genai.configure(api_key=API_KEY)  # No transport for direct connection
     return False
+
+def handle_rate_limit(error_str):
+    """Handle rate limit errors by extracting retry delay from the error message."""
+    # Try to extract the retry delay from the error message
+    retry_delay_match = re.search(r'retry_delay\s*\{\s*seconds:\s*(\d+)', error_str)
+    if retry_delay_match:
+        delay = int(retry_delay_match.group(1))
+        # Cap the delay at 2 minutes to avoid excessive waiting
+        delay = min(delay, 120)
+        logger.info(f"Rate limit hit. API suggests waiting {delay} seconds. Will wait...")
+        time.sleep(delay)
+        return True
+    
+    # If no specific delay found, use a default
+    logger.info("Rate limit hit. Will wait 60 seconds before retrying...")
+    time.sleep(60)
+    return True
 
 def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
     """Generate content with retry logic for handling timeouts and errors."""
@@ -205,8 +192,22 @@ def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
             error_str = str(e)
             logger.warning(f"API call failed (attempt {retry_count}/{max_retries+1}): {error_str}")
             
+            # Check for rate limit errors (429)
+            if "429" in error_str or "quota" in error_str.lower() or "rate limit" in error_str.lower():
+                logger.info("Rate limit error detected...")
+                
+                # First try switching proxies if we have one
+                if working_proxy:
+                    logger.info("Trying to switch proxy to bypass rate limit...")
+                    if get_another_proxy():
+                        continue  # Skip the rest and retry immediately with new proxy
+                
+                # If proxy switch didn't work or wasn't available, handle the rate limit properly
+                handle_rate_limit(error_str)
+                continue  # Skip the rest and retry after waiting
+            
             # If proxy-related error, try switching proxies
-            if working_proxy and any(term in error_str.lower() for term in ["proxy", "connection", "timeout", "deadline"]):
+            if working_proxy and any(term in error_str.lower() for term in ["proxy", "connection", "timeout", "deadline", "timed out"]):
                 logger.info("Proxy-related error detected, trying to switch proxies...")
                 get_another_proxy()
             
@@ -218,12 +219,14 @@ def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
                 logger.error(f"Failed after {retry_count} attempts: {error_str}")
                 if is_timeout_error:
                     return f"Błąd generowania: przekroczono limit czasu oczekiwania na odpowiedź (504 Deadline Exceeded). Proszę spróbować ponownie później."
+                elif "429" in error_str or "quota" in error_str.lower():
+                    return f"Błąd generowania: przekroczono dzienny limit zapytań (429 Too Many Requests). Proszę spróbować ponownie za kilka minut."
                 else:
                     return f"Błąd generowania: {error_str}"
             
             # If it's not a timeout error and we haven't exhausted retries yet, decide whether to retry
-            if not is_timeout_error:
-                # Only retry non-timeout errors once
+            if not is_timeout_error and "429" not in error_str and "quota" not in error_str.lower():
+                # Only retry non-timeout, non-rate-limit errors once
                 if retry_count > 1:
                     logger.error(f"Non-timeout error persists after retry: {error_str}")
                     return f"Błąd generowania: {error_str}"
