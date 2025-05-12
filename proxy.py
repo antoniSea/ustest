@@ -4,9 +4,9 @@ import logging
 import os
 import configparser
 
-def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-pro-exp-03-25", backup_api_key=None):
+def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-flash-preview-04-17", backup_api_key=None):
     try:
-        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent"
         
         headers = {
             "Content-Type": "application/json"
@@ -19,7 +19,7 @@ def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-pro-exp-03-
                 }]
             }]
         }
-        url = f"{api_url}?key={api_key}"
+        url = f"{api_url}?key=AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
         
         response = requests.post(
             url,
@@ -29,17 +29,19 @@ def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-pro-exp-03-
             timeout=200
         )
         
-        # Check for rate limit error (429) and retry with backup key if available
-        if response.status_code == 429 and backup_api_key:
-            print(f"Rate limit exceeded (429). Trying with backup API key...")
-            url = f"{api_url}?key=AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
-            response = requests.post(
-                url,
-                headers=headers,
-                json=data,
-                proxies={"http": proxy, "https": proxy},
-                timeout=200
-            )
+        # # Check for rate limit error (429) and retry with backup key if available
+        # if response.status_code == 429 and backup_api_key:
+        #     print(f"Rate limit exceeded (429). Trying with backup API key...")
+        #     url = f"{api_url}?key=AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
+        #     response = requests.post(
+        #         url,
+        #         headers=headers,
+        #         json=data,
+        #         proxies={"http": proxy, "https": proxy},
+        #         timeout=200
+        #     )
+
+
         
         if response.ok:
             content = response.json()
@@ -68,11 +70,11 @@ def get_gemini_response(prompt):
     
     if os.path.exists(config_file):
         config.read(config_file)
-        api_key = config['API'].get('gemini_api_key', "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM")
+        api_key = config['API'].get('gemini_api_key', "AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg")
         model = config['API'].get('gemini_model', "gemini-2.5-pro-exp-03-25")
         backup_api_key = config['API'].get('backup_api_key', None)
     else:
-        api_key = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
+        api_key = "AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
         model = "gemini-2.5-pro-exp-03-25"
         backup_api_key = None
     
@@ -80,3 +82,5 @@ def get_gemini_response(prompt):
     
     # This already returns text, so no need to do response.text or similar in the caller
     return test_proxy_with_gemini(proxy, prompt, api_key, model, backup_api_key)
+
+print(get_gemini_response("Explain how AI works"))
