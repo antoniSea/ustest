@@ -6,6 +6,7 @@ from flask_cors import CORS
 from database import Database
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+import configparser
 
 # Konfiguracja loggera
 logging.basicConfig(
@@ -440,19 +441,10 @@ def api_send_email(job_id):
         if not job.get('email_content'):
             return jsonify({"error": "No email content available for this job"}), 400
             
-        # Configure EmailSender with Brevo SMTP settings
+        # Configure EmailSender with settings from config.ini
         from mailer import EmailSender
         
-        email_config = {
-            'smtp_server': 'smtp-relay.brevo.com',
-            'smtp_port': 587,
-            'smtp_username': '7cf37b003@smtp-brevo.com',
-            'smtp_password': '2ZT3G0RYBx1QrMna',
-            'sender_email': 'info@soft-synergy.com',
-            'sender_name': 'Antoni Seba | Soft Synergy'
-        }
-        
-        email_sender = EmailSender(email_config)
+        email_sender = EmailSender()  # Loads config automatically
         
         # Send the email
         subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
@@ -1300,6 +1292,166 @@ def get_presentation_url(slug):
     """Generate a fully qualified URL for a presentation"""
     protocol = 'https' if FORCE_HTTPS else 'http'
     return f"{protocol}://{APP_DOMAIN}/{slug}"
+
+# Function to load config from file
+def load_config():
+    config = configparser.ConfigParser()
+    config_file = 'config.ini'
+    
+    # Create default config if it doesn't exist
+    if not os.path.exists(config_file):
+        config['API'] = {
+            'gemini_api_key': 'AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM',
+            'backup_api_key': 'AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg',
+            'gemini_model': 'gemini-2.5-pro-exp-03-25'
+        }
+        config['EMAIL'] = {
+            'smtp_server': 'smtp-relay.brevo.com',
+            'smtp_port': '587',
+            'smtp_username': '7cf37b003@smtp-brevo.com',
+            'smtp_password': '2ZT3G0RYBx1QrMna',
+            'sender_email': 'info@soft-synergy.com',
+            'sender_name': 'Antoni Seba | Soft Synergy'
+        }
+        config['PROMPTS'] = {
+            'proposal_prompt': '',
+            'presentation_prompt': '',
+            'email_prompt': ''
+        }
+        
+        with open(config_file, 'w') as f:
+            config.write(f)
+    
+    config.read(config_file)
+    return config
+
+# Load configuration
+app_config = load_config()
+
+# Add settings routes
+@app.route('/settings')
+@login_required
+def settings():
+    """Settings management page"""
+    config = load_config()
+    
+    # Get prompts from database
+    try:
+        conn = db.get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM prompts ORDER BY id")
+        prompts = [dict(row) for row in cursor.fetchall()]
+    except Exception as e:
+        logger.error(f"Error loading prompts: {str(e)}")
+        prompts = []
+    
+    return render_template('settings.html', 
+                           config=config, 
+                           prompts=prompts)
+
+@app.route('/api/settings/save', methods=['POST'])
+@login_required
+def api_save_settings():
+    """API endpoint to save settings"""
+    try:
+        data = request.json
+        config = load_config()
+        
+        # Update API settings
+        if 'api' in data:
+            config['API']['gemini_api_key'] = data['api'].get('gemini_api_key', '')
+            config['API']['backup_api_key'] = data['api'].get('backup_api_key', '')
+            config['API']['gemini_model'] = data['api'].get('gemini_model', '')
+        
+        # Update email settings
+        if 'email' in data:
+            config['EMAIL']['smtp_server'] = data['email'].get('smtp_server', '')
+            config['EMAIL']['smtp_port'] = str(data['email'].get('smtp_port', '587'))
+            config['EMAIL']['smtp_username'] = data['email'].get('smtp_username', '')
+            config['EMAIL']['smtp_password'] = data['email'].get('smtp_password', '')
+            config['EMAIL']['sender_email'] = data['email'].get('sender_email', '')
+            config['EMAIL']['sender_name'] = data['email'].get('sender_name', '')
+        
+        # Save config
+        with open('config.ini', 'w') as f:
+            config.write(f)
+        
+        return jsonify({"success": True, "message": "Settings saved successfully"})
+    except Exception as e:
+        logger.error(f"Error saving settings: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/prompts/save', methods=['POST'])
+@login_required
+def api_save_prompt():
+    """API endpoint to save a prompt"""
+    try:
+        data = request.json
+        prompt_id = data.get('id')
+        prompt_name = data.get('name')
+        prompt_type = data.get('type')
+        prompt_content = data.get('content')
+        
+        conn = db.get_connection()
+        cursor = conn.cursor()
+        
+        if prompt_id:
+            # Update existing prompt
+            cursor.execute(
+                "UPDATE prompts SET name = ?, type = ?, content = ? WHERE id = ?",
+                (prompt_name, prompt_type, prompt_content, prompt_id)
+            )
+        else:
+            # Insert new prompt
+            cursor.execute(
+                "INSERT INTO prompts (name, type, content) VALUES (?, ?, ?)",
+                (prompt_name, prompt_type, prompt_content)
+            )
+        
+        conn.commit()
+        
+        return jsonify({"success": True, "message": "Prompt saved successfully"})
+    except Exception as e:
+        logger.error(f"Error saving prompt: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/prompts/delete/<int:prompt_id>', methods=['DELETE'])
+@login_required
+def api_delete_prompt(prompt_id):
+    """API endpoint to delete a prompt"""
+    try:
+        conn = db.get_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("DELETE FROM prompts WHERE id = ?", (prompt_id,))
+        conn.commit()
+        
+        return jsonify({"success": True, "message": "Prompt deleted successfully"})
+    except Exception as e:
+        logger.error(f"Error deleting prompt: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/prompts/get/<int:prompt_id>', methods=['GET'])
+@login_required
+def api_get_prompt(prompt_id):
+    """API endpoint to get a prompt by ID"""
+    try:
+        conn = db.get_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("SELECT * FROM prompts WHERE id = ?", (prompt_id,))
+        prompt = cursor.fetchone()
+        
+        if not prompt:
+            return jsonify({"success": False, "error": "Prompt not found"}), 404
+        
+        return jsonify({
+            "success": True, 
+            "prompt": dict(prompt)
+        })
+    except Exception as e:
+        logger.error(f"Error getting prompt: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
 
 if __name__ == '__main__':
     # Parse command line arguments

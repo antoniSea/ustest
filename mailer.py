@@ -11,35 +11,68 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from datetime import datetime, timedelta
+import configparser
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
 logger = logging.getLogger(__name__)
+
+def load_config():
+    """Load email configuration from config.ini file"""
+    config = configparser.ConfigParser()
+    config_file = 'config.ini'
+    
+    if not os.path.exists(config_file):
+        config['EMAIL'] = {
+            'smtp_server': 'smtp-relay.brevo.com',
+            'smtp_port': '587',
+            'smtp_username': '7cf37b003@smtp-brevo.com',
+            'smtp_password': '2ZT3G0RYBx1QrMna',
+            'sender_email': 'info@soft-synergy.com',
+            'sender_name': 'Antoni Seba | Soft Synergy'
+        }
+        
+        with open(config_file, 'w') as f:
+            config.write(f)
+    
+    config.read(config_file)
+    return config
 
 class EmailSender:
     def __init__(self, config=None):
-        """Initialize email sender with configuration."""
-        self.config = config or {}
-        
-        # Get SMTP settings from environment variables or config
-        self.smtp_server = os.environ.get('SMTP_SERVER', self.config.get('smtp_server', 'smtp.gmail.com'))
-        self.smtp_port = int(os.environ.get('SMTP_PORT', self.config.get('smtp_port', 587)))
-        self.smtp_username = os.environ.get('SMTP_USERNAME', self.config.get('smtp_username', 'info@soft-synergy.com'))
-        self.smtp_password = os.environ.get('SMTP_PASSWORD', self.config.get('smtp_password', ''))
-        self.sender_email = os.environ.get('SENDER_EMAIL', self.config.get('sender_email', 'info@soft-synergy.com'))
-        self.sender_name = os.environ.get('SENDER_NAME', self.config.get('sender_name', 'Antoni Seba | Soft Synergy'))
-        
-        if not self.smtp_password:
-            logger.warning("SMTP password not set! Email sending will not work.")
+        """Initialize EmailSender with configuration"""
+        if config is None:
+            # Load from config.ini if not provided
+            config_parser = load_config()
+            self.config = {
+                'smtp_server': config_parser['EMAIL'].get('smtp_server'),
+                'smtp_port': int(config_parser['EMAIL'].get('smtp_port', 587)),
+                'smtp_username': config_parser['EMAIL'].get('smtp_username'),
+                'smtp_password': config_parser['EMAIL'].get('smtp_password'),
+                'sender_email': config_parser['EMAIL'].get('sender_email'),
+                'sender_name': config_parser['EMAIL'].get('sender_name')
+            }
+        else:
+            self.config = config
+            
+        logger.info(f"EmailSender initialized with SMTP server: {self.config['smtp_server']}:{self.config['smtp_port']}")
     
     def send_email(self, recipient_email, subject, body, attachments=None):
         """Send an email to the specified recipient."""
-        if not self.smtp_password:
+        if not self.config['smtp_password']:
             logger.error("Cannot send email: SMTP password not set")
             return False
             
         try:
             # Create message
             msg = MIMEMultipart()
-            msg['From'] = f"{self.sender_name} <{self.sender_email}>"
+            msg['From'] = f"{self.config['sender_name']} <{self.config['sender_email']}>"
             msg['To'] = recipient_email
             msg['Subject'] = subject
             
@@ -56,9 +89,9 @@ class EmailSender:
                             msg.attach(part)
             
             # Connect to SMTP server
-            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+            with smtplib.SMTP(self.config['smtp_server'], self.config['smtp_port']) as server:
                 server.starttls()
-                server.login(self.smtp_username, self.smtp_password)
+                server.login(self.config['smtp_username'], self.config['smtp_password'])
                 server.send_message(msg)
                 
             logger.info(f"Email sent to {recipient_email}: {subject}")
@@ -134,6 +167,42 @@ def send_followup_email(db, min_relevance=7):
         import traceback
         traceback.print_exc()
         return 0
+
+# Example usage
+if __name__ == "__main__":
+    # Example email
+    config = load_config()
+    
+    email_config = {
+        'smtp_server': config['EMAIL'].get('smtp_server'),
+        'smtp_port': int(config['EMAIL'].get('smtp_port', 587)),
+        'smtp_username': config['EMAIL'].get('smtp_username'),
+        'smtp_password': config['EMAIL'].get('smtp_password'),
+        'sender_email': config['EMAIL'].get('sender_email'),
+        'sender_name': config['EMAIL'].get('sender_name')
+    }
+    
+    sender = EmailSender(email_config)
+    
+    test_recipient = "test@example.com"
+    test_subject = "Test Email from EmailSender"
+    test_body = """
+    <html>
+    <body>
+        <h1>Test Email</h1>
+        <p>This is a test email from the EmailSender class.</p>
+        <p>If you're seeing this, the email system is working correctly.</p>
+    </body>
+    </html>
+    """
+    
+    print(f"Sending test email to {test_recipient}...")
+    result = sender.send_email(test_recipient, test_subject, test_body)
+    
+    if result:
+        print("Test email sent successfully!")
+    else:
+        print("Failed to send test email. Check logs for details.")
 
 
 

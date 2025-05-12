@@ -17,6 +17,7 @@ from database import Database
 import logging
 from extract_useme_email import extract_employer_email
 from proxy import get_gemini_response
+import configparser
 
 
 # Configure logging
@@ -29,14 +30,43 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Configure the Gemini API
-API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
-MODEL = "gemini-2.5-pro-exp-03-25"
+# Load configuration
+def load_config():
+    config = configparser.ConfigParser()
+    config_file = 'config.ini'
+    
+    # Create default config if it doesn't exist
+    if not os.path.exists(config_file):
+        config['API'] = {
+            'gemini_api_key': 'AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM',
+            'gemini_model': 'gemini-2.5-pro-exp-03-25'
+        }
+        
+        with open(config_file, 'w') as f:
+            config.write(f)
+    
+    config.read(config_file)
+    return config
+
+# Get API config
+config = load_config()
+API_KEY = config['API'].get('gemini_api_key', "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM")
+MODEL = config['API'].get('gemini_model', "gemini-2.5-pro-exp-03-25")
 
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel(MODEL)
 
 console = Console()
+
+def get_prompt_from_db(prompt_type):
+    """Get the appropriate prompt from the database"""
+    db = Database()
+    prompt_data = db.get_default_prompt(prompt_type)
+    
+    if prompt_data and prompt_data.get('content'):
+        return prompt_data.get('content')
+    
+    return None
 
 def generate_proposal(job_description, client_info="", budget="", timeline="", additional_requirements="", project_slug="", research_data=None):
     """Generate a proposal for a job based on the provided information and research data."""
@@ -52,48 +82,63 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         - Podsumowanie: {research_data.get('summary', 'Brak danych')}
         """
     
-    prompt = f"""
-    Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy.
+    # Try to get prompt from database first
+    custom_prompt = get_prompt_from_db('proposal')
+    
+    if custom_prompt:
+        # Replace placeholders in the custom prompt
+        prompt = custom_prompt
+        prompt = prompt.replace("{job_description}", job_description)
+        prompt = prompt.replace("{client_info}", client_info or "")
+        prompt = prompt.replace("{budget}", budget or "")
+        prompt = prompt.replace("{timeline}", timeline or "")
+        prompt = prompt.replace("{additional_requirements}", additional_requirements or "")
+        prompt = prompt.replace("{project_slug}", project_slug or "")
+        prompt = prompt.replace("{research_info}", research_info)
+    else:
+        # Use default prompt
+        prompt = f"""
+        Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy.
 
-    Wygeneruj krótką, profesjonalną propozycję dla zlecenia o następujących parametrach:
-    
-    Opis zlecenia: {job_description}
-    
-    {f"Informacje o kliencie: {client_info}" if client_info else ""}
-    {f"Budżet: {budget}" if budget else ""}
-    {f"Harmonogram: {timeline}" if timeline else ""}
-    {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
-    
-    {research_info}
-    
-    Propozycja MUSI zawierać:
-    1. Zwięzłe powitanie
-    2. Krótkie podsumowanie zlecenia (max 2 zdania)
-    3. Konkretną wycenę i termin realizacji (bazuj na wynikach researchu, jeśli są dostępne)
-    4. Bardzo zwięzły opis metodologii (max 2 zdania)
-    5. Krótkie uzasadnienie moich kompetencji (max 2 zdania)
-    6. Informację, że przygotowaliśmy wizualną prezentację oferty dostępną pod linkiem: prezentacje.soft-synergy.com/{project_slug}
-    7. Krótkie zakończenie z CTA
-    
-    ZASADY:
-    - Pisz w języku polskim, profesjonalnie i przekonująco
-    - Maksymalnie 200 słów
-    - Wycena powinna być oparta na researchu rynkowym, jeśli jest dostępny, lub wynosić około 60% standardowej stawki rynkowej
-    - Wycena musi być wyraźnie wyodrębniona w tekście (użyj **pogrubienia**)
-    - Używaj formatowania tekstu: **pogrubienia**, *kursywy*, podkreślenia, listy, nowe linie
-    - Dodaj przynajmniej 2-3 puste linie między sekcjami dla lepszej czytelności
-    - Pamiętaj, że składasz propozycję na giełdzie zleceń, a nie odpowiadasz na bezpośrednie zapytanie
-    - Zwracaj TYLKO treść propozycji bez żadnych dodatkowych komentarzy czy objaśnień
-    - Nie używaj zwrotów sugerujących, że jesteś AI
-    - KONIECZNIE umieść informację o przygotowanej prezentacji wizualnej z linkiem: prezentacje.soft-synergy.com/{project_slug}
+        Wygeneruj krótką, profesjonalną propozycję dla zlecenia o następujących parametrach:
+        
+        Opis zlecenia: {job_description}
+        
+        {f"Informacje o kliencie: {client_info}" if client_info else ""}
+        {f"Budżet: {budget}" if budget else ""}
+        {f"Harmonogram: {timeline}" if timeline else ""}
+        {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
+        
+        {research_info}
+        
+        Propozycja MUSI zawierać:
+        1. Zwięzłe powitanie
+        2. Krótkie podsumowanie zlecenia (max 2 zdania)
+        3. Konkretną wycenę i termin realizacji (bazuj na wynikach researchu, jeśli są dostępne)
+        4. Bardzo zwięzły opis metodologii (max 2 zdania)
+        5. Krótkie uzasadnienie moich kompetencji (max 2 zdania)
+        6. Informację, że przygotowaliśmy wizualną prezentację oferty dostępną pod linkiem: prezentacje.soft-synergy.com/{project_slug}
+        7. Krótkie zakończenie z CTA
+        
+        ZASADY:
+        - Pisz w języku polskim, profesjonalnie i przekonująco
+        - Maksymalnie 200 słów
+        - Wycena powinna być oparta na researchu rynkowym, jeśli jest dostępny, lub wynosić około 60% standardowej stawki rynkowej
+        - Wycena musi być wyraźnie wyodrębniona w tekście (użyj **pogrubienia**)
+        - Używaj formatowania tekstu: **pogrubienia**, *kursywy*, podkreślenia, listy, nowe linie
+        - Dodaj przynajmniej 2-3 puste linie między sekcjami dla lepszej czytelności
+        - Pamiętaj, że składasz propozycję na giełdzie zleceń, a nie odpowiadasz na bezpośrednie zapytanie
+        - Zwracaj TYLKO treść propozycji bez żadnych dodatkowych komentarzy czy objaśnień
+        - Nie używaj zwrotów sugerujących, że jesteś AI
+        - KONIECZNIE umieść informację o przygotowanej prezentacji wizualnej z linkiem: prezentacje.soft-synergy.com/{project_slug}
 
-    Dane kontaktowe (umieść je na końcu w osobnych liniach):
-    Email: info@soft-synergy.com 
-    Strona: https://soft-synergy.com
-    Osoba kontaktowa: Antoni Seba
-    Telefon: 576 205 389
-    
-    """
+        Dane kontaktowe (umieść je na końcu w osobnych liniach):
+        Email: info@soft-synergy.com 
+        Strona: https://soft-synergy.com
+        Osoba kontaktowa: Antoni Seba
+        Telefon: 576 205 389
+        
+        """
     
     try:
         return get_gemini_response(prompt)
@@ -104,23 +149,36 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
 
 def evaluate_relevance(job_description, client_info="", budget="", timeline="", additional_requirements=""):
     """Evaluate the relevance of a job for a software house on a scale from 1 to 10."""
-    prompt = f"""
-    Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce.
+    # Try to get prompt from database first
+    custom_prompt = get_prompt_from_db('relevance')
     
-    Opis zlecenia: {job_description}
-    
-    {f"Informacje o kliencie: {client_info}" if client_info else ""}
-    {f"Budżet: {budget}" if budget else ""}
-    {f"Harmonogram: {timeline}" if timeline else ""}
-    {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
-    
-    Gdzie:
-    1 = Zupełnie nieodpowiednie dla software house'u (np. usługi fizyczne, niezwiązane z IT)
-    5 = Częściowo odpowiednie (np. wymaga pewnych umiejętności IT, ale nie jest to główna specjalizacja software house'u)
-    10 = Idealnie dopasowane do kompetencji software house'u (np. tworzenie zaawansowanych aplikacji webowych)
-    
-    Zwróć tylko liczbę od 1 do 10 bez żadnych dodatkowych komentarzy.
-    """
+    if custom_prompt:
+        # Replace placeholders in the custom prompt
+        prompt = custom_prompt
+        prompt = prompt.replace("{job_description}", job_description)
+        prompt = prompt.replace("{client_info}", client_info or "")
+        prompt = prompt.replace("{budget}", budget or "")
+        prompt = prompt.replace("{timeline}", timeline or "")
+        prompt = prompt.replace("{additional_requirements}", additional_requirements or "")
+    else:
+        # Use default prompt
+        prompt = f"""
+        Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce.
+        
+        Opis zlecenia: {job_description}
+        
+        {f"Informacje o kliencie: {client_info}" if client_info else ""}
+        {f"Budżet: {budget}" if budget else ""}
+        {f"Harmonogram: {timeline}" if timeline else ""}
+        {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
+        
+        Gdzie:
+        1 = Zupełnie nieodpowiednie dla software house'u (np. usługi fizyczne, niezwiązane z IT)
+        5 = Częściowo odpowiednie (np. wymaga pewnych umiejętności IT, ale nie jest to główna specjalizacja software house'u)
+        10 = Idealnie dopasowane do kompetencji software house'u (np. tworzenie zaawansowanych aplikacji webowych)
+        
+        Zwróć tylko liczbę od 1 do 10 bez żadnych dodatkowych komentarzy.
+        """
     
     try:
         response = get_gemini_response(prompt)
@@ -217,36 +275,52 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         avatar_url = generate_initials_avatar(client_info)
         console.print(f"[blue]ℹ[/blue] Wygenerowano domyślny avatar z inicjałami: {avatar_url}")
     
-    prompt = f"""
-    Wygeneruj dane do prezentacji projektu w formacie JSON na podstawie następujących informacji:
+    # Try to get prompt from database first
+    custom_prompt = get_prompt_from_db('presentation')
     
-    Opis zlecenia: {job_description}
-    {f"Informacje o kliencie: {client_info}" if client_info else ""}
-    {f"Budżet: {budget}" if budget else ""}
-    {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
-    {f"Email klienta: {employer_email}" if employer_email else ""}
-    
-    Propozycja, którą już przygotowaliśmy dla klienta:
-    {proposal}
-    
-    Dane powinny być zgodne z dokładnie taką samą strukturą jak poniższy JSON i zawierać realistyczne, profesjonalne informacje w języku polskim.
-    Wypełnij wszystkie pola odpowiednimi danymi, które pasują do opisu projektu.
-    
-    WAŻNE: 
-    - Upewnij się, że wycena w prezentacji jest dokładnie taka sama jak w propozycji (około 60% standardowej ceny rynkowej).
-    - Cena musi być podana jako liczba całkowita, bez żadnych jednostek, znaków czy formatowania (np. 5000, a nie "5000 PLN").
-    - Struktura "timeline" w JSON musi być DOKŁADNIE taka sama jak w przykładzie, z kluczami "sectionTitle", "sectionSubtitle" i "milestones".
-    - Pola ceny (price) i czasu wykonania (timelineDays) będą używane tylko w metadata, NIE MODYFIKUJ struktury timeline w głównej części JSON.
-    - Dodaj pole "useme_id" z wartością {job_id} (jeśli podano).
-    {f'- Dodaj pole "employer_email" z wartością "{employer_email}".' if employer_email else ""}
-    
-    {f"Logo klienta znajduje się pod ścieżką: {client_logo_path}" if client_logo_path else ""}
-    
-    Zwróć tylko i wyłącznie poprawny JSON bez żadnych dodatkowych komentarzy czy wyjaśnień.
-    Struktura musi być DOKŁADNIE taka sama jak w przykładzie, z tymi samymi kluczami i typami wartości.
+    if custom_prompt:
+        # Replace placeholders in the custom prompt
+        prompt = custom_prompt
+        prompt = prompt.replace("{job_description}", job_description)
+        prompt = prompt.replace("{client_info}", client_info or "")
+        prompt = prompt.replace("{budget}", budget or "")
+        prompt = prompt.replace("{additional_requirements}", additional_requirements or "")
+        prompt = prompt.replace("{employer_email}", employer_email or "")
+        prompt = prompt.replace("{proposal}", proposal or "")
+        prompt = prompt.replace("{job_id}", job_id or "")
+        prompt = prompt.replace("{default_data}", json.dumps(default_data, ensure_ascii=False))
+    else:
+        # Use default prompt
+        prompt = f"""
+        Wygeneruj dane do prezentacji projektu w formacie JSON na podstawie następujących informacji:
+        
+        Opis zlecenia: {job_description}
+        {f"Informacje o kliencie: {client_info}" if client_info else ""}
+        {f"Budżet: {budget}" if budget else ""}
+        {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
+        {f"Email klienta: {employer_email}" if employer_email else ""}
+        
+        Propozycja, którą już przygotowaliśmy dla klienta:
+        {proposal}
+        
+        Dane powinny być zgodne z dokładnie taką samą strukturą jak poniższy JSON i zawierać realistyczne, profesjonalne informacje w języku polskim.
+        Wypełnij wszystkie pola odpowiednimi danymi, które pasują do opisu projektu.
+        
+        WAŻNE: 
+        - Upewnij się, że wycena w prezentacji jest dokładnie taka sama jak w propozycji (około 60% standardowej ceny rynkowej).
+        - Cena musi być podana jako liczba całkowita, bez żadnych jednostek, znaków czy formatowania (np. 5000, a nie "5000 PLN").
+        - Struktura "timeline" w JSON musi być DOKŁADNIE taka sama jak w przykładzie, z kluczami "sectionTitle", "sectionSubtitle" i "milestones".
+        - Pola ceny (price) i czasu wykonania (timelineDays) będą używane tylko w metadata, NIE MODYFIKUJ struktury timeline w głównej części JSON.
+        - Dodaj pole "useme_id" z wartością {job_id} (jeśli podano).
+        {f'- Dodaj pole "employer_email" z wartością "{employer_email}".' if employer_email else ""}
+        
+        {f"Logo klienta znajduje się pod ścieżką: {client_logo_path}" if client_logo_path else ""}
+        
+        Zwróć tylko i wyłącznie poprawny JSON bez żadnych dodatkowych komentarzy czy wyjaśnień.
+        Struktura musi być DOKŁADNIE taka sama jak w przykładzie, z tymi samymi kluczami i typami wartości.
 
-    Przykładowy JSON: {json.dumps(default_data, ensure_ascii=False)}
-    """
+        Przykładowy JSON: {json.dumps(default_data, ensure_ascii=False)}
+        """
     
     try:
         response = get_gemini_response(prompt)
@@ -608,37 +682,49 @@ def post_generated_proposals(proposals_file, auto_post=False):
 
 def generate_email(job_description, project_slug, client_info="", job_title=""):
     """Generate a follow-up email for a job proposal."""
-    prompt = f"""
-    Wygeneruj krótki, profesjonalny email w języku polskim, który zostałby wysłany do klienta po złożeniu propozycji na giełdzie zleceń Useme.
+    # Try to get prompt from database first
+    custom_prompt = get_prompt_from_db('email')
     
-    Opis zlecenia: {job_description}
-    {f"Informacje o kliencie: {client_info}" if client_info else ""}    
-    
-    Email powinien zawierać:
-    1. Przywitanie + odniesienie się do ogłoszenia na Useme
-    2. Propozycja rozwiązania – jak podejdziemy do projektu
-    3. Social proof – link do portfolio (https://soft-synergy.com) + krótko o doświadczeniu
-    4. Call to action – zaproszenie do kontaktu i link do przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
-    
-    ZASADY:
-    - Maksymalnie 150 słów
-    - Email musi być w języku polskim
-    - Używaj profesjonalnego, ale przyjaznego tonu
-    - Podkreśl, że widział ogłoszenie na Useme
-    - Podkreśl link do prezentacji: prezentacje.soft-synergy.com/{project_slug}
-    - Nie używaj zwrotów sugerujących, że jesteś AI
-    - Nie musisz dołączać nagłówka "Temat:" w treści maila
-    - Pisz jako Antoni Seba, przedstawiciel firmy Soft Synergy
-    
-    Dane kontaktowe (umieść je na końcu w osobnych liniach):
-    Z poważaniem,
-    Antoni Seba
-    Soft Synergy
-    Tel: 576 205 389
-    Email: info@soft-synergy.com
-    
-    Zwróć tylko treść emaila bez dodatkowych komentarzy czy objaśnień.
-    """
+    if custom_prompt:
+        # Replace placeholders in the custom prompt
+        prompt = custom_prompt
+        prompt = prompt.replace("{job_description}", job_description)
+        prompt = prompt.replace("{client_info}", client_info or "")
+        prompt = prompt.replace("{project_slug}", project_slug or "")
+        prompt = prompt.replace("{job_title}", job_title or "")
+    else:
+        # Use default prompt
+        prompt = f"""
+        Wygeneruj krótki, profesjonalny email w języku polskim, który zostałby wysłany do klienta po złożeniu propozycji na giełdzie zleceń Useme.
+        
+        Opis zlecenia: {job_description}
+        {f"Informacje o kliencie: {client_info}" if client_info else ""}    
+        
+        Email powinien zawierać:
+        1. Przywitanie + odniesienie się do ogłoszenia na Useme
+        2. Propozycja rozwiązania – jak podejdziemy do projektu
+        3. Social proof – link do portfolio (https://soft-synergy.com) + krótko o doświadczeniu
+        4. Call to action – zaproszenie do kontaktu i link do przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        
+        ZASADY:
+        - Maksymalnie 150 słów
+        - Email musi być w języku polskim
+        - Używaj profesjonalnego, ale przyjaznego tonu
+        - Podkreśl, że widział ogłoszenie na Useme
+        - Podkreśl link do prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        - Nie używaj zwrotów sugerujących, że jesteś AI
+        - Nie musisz dołączać nagłówka "Temat:" w treści maila
+        - Pisz jako Antoni Seba, przedstawiciel firmy Soft Synergy
+        
+        Dane kontaktowe (umieść je na końcu w osobnych liniach):
+        Z poważaniem,
+        Antoni Seba
+        Soft Synergy
+        Tel: 576 205 389
+        Email: info@soft-synergy.com
+        
+        Zwróć tylko treść emaila bez dodatkowych komentarzy czy objaśnień.
+        """
     
     try:
         response = get_gemini_response(prompt)
@@ -841,19 +927,10 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 if relevance_score > 5 and employer_email:
                     # Get the job details from the database
                     job = db.get_job_by_id(job_id)
-                    # Configure EmailSender with Brevo SMTP settings
+                    # Configure EmailSender with settings from config.ini
                     from mailer import EmailSender
                     
-                    email_config = {
-                        'smtp_server': 'smtp-relay.brevo.com',
-                        'smtp_port': 587,
-                        'smtp_username': '7cf37b003@smtp-brevo.com',
-                        'smtp_password': '2ZT3G0RYBx1QrMna',
-                        'sender_email': 'info@soft-synergy.com',
-                        'sender_name': 'Antoni Seba | Soft Synergy'
-                    }
-                    
-                    email_sender = EmailSender(email_config)
+                    email_sender = EmailSender()  # This will load config automatically
                     
                     # Send the email
                     subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
@@ -1039,8 +1116,11 @@ def send_useme_message(job_id, message_content, use_proposal=False):
                 message_link = f"/pl/mesg/compose/{job_id}/{employer_id}/"
                 logger.info(f"Found employer ID {employer_id} and constructed message link: {message_link}")
             else:
-                message_link = f"/pl/mesg/compose/{job_id}/481815/"
-                logger.warning(f"Using fallback message link format: {message_link}")
+                logger.error("Could not extract employer ID from job page")
+                return {
+                    "success": False,
+                    "message": "Could not extract employer ID from job page"
+                }
         
         if not message_link:
             logger.error("Could not find message link on job page")

@@ -1,0 +1,513 @@
+{% extends "base.html" %}
+
+{% block title %}Ustawienia | Useme Bot Admin{% endblock %}
+
+{% block head_extra %}
+<!-- Additional CSS for settings page -->
+<style>
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    .settings-tab.active {
+        background-color: #f3f4f6;
+        color: #4f46e5;
+        border-left: 3px solid #4f46e5;
+    }
+    .code-editor {
+        min-height: 400px;
+        font-family: monospace;
+        line-height: 1.5;
+        tab-size: 4;
+        white-space: pre-wrap;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow rounded-lg overflow-hidden">
+    <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+            <i class="fas fa-cog mr-2"></i>Ustawienia systemu
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            Zarządzaj ustawieniami API, SMTP, oraz szablonami promptów.
+        </p>
+    </div>
+
+    <div class="flex">
+        <!-- Sidebar tabs -->
+        <div class="w-1/4 bg-gray-50 border-r border-gray-200">
+            <ul class="py-4">
+                <li>
+                    <button id="tab-api" class="settings-tab active w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-key mr-2"></i>API
+                    </button>
+                </li>
+                <li>
+                    <button id="tab-email" class="settings-tab w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Email
+                    </button>
+                </li>
+                <li>
+                    <button id="tab-prompts" class="settings-tab w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-comment-dots mr-2"></i>Prompty
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Content area -->
+        <div class="w-3/4 p-6">
+            <!-- API Settings Tab -->
+            <div id="content-api" class="tab-content active">
+                <h2 class="text-xl font-semibold mb-4">Ustawienia API</h2>
+                <form id="api-form" class="space-y-4">
+                    <div>
+                        <label for="gemini_api_key" class="block text-sm font-medium text-gray-700">Klucz API Gemini</label>
+                        <input type="password" name="gemini_api_key" id="gemini_api_key" 
+                               class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                               value="{{ config['API']['gemini_api_key'] }}">
+                    </div>
+                    <div>
+                        <label for="backup_api_key" class="block text-sm font-medium text-gray-700">Zapasowy klucz API Gemini</label>
+                        <input type="password" name="backup_api_key" id="backup_api_key" 
+                               class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                               value="{{ config['API']['backup_api_key'] }}">
+                        <p class="mt-1 text-xs text-gray-500">Używany automatycznie w przypadku wyczerpania limitu dla głównego klucza API.</p>
+                    </div>
+                    <div>
+                        <label for="gemini_model" class="block text-sm font-medium text-gray-700">Model Gemini</label>
+                        <input type="text" name="gemini_model" id="gemini_model" 
+                               class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                               value="{{ config['API']['gemini_model'] }}">
+                    </div>
+                    <div class="pt-5">
+                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            Zapisz ustawienia API
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Email Settings Tab -->
+            <div id="content-email" class="tab-content">
+                <h2 class="text-xl font-semibold mb-4">Ustawienia Email (SMTP)</h2>
+                <form id="email-form" class="space-y-4">
+                    <div class="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2">
+                        <div>
+                            <label for="smtp_server" class="block text-sm font-medium text-gray-700">Serwer SMTP</label>
+                            <input type="text" name="smtp_server" id="smtp_server" 
+                                   class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                   value="{{ config['EMAIL']['smtp_server'] }}">
+                        </div>
+                        <div>
+                            <label for="smtp_port" class="block text-sm font-medium text-gray-700">Port SMTP</label>
+                            <input type="number" name="smtp_port" id="smtp_port" 
+                                   class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                   value="{{ config['EMAIL']['smtp_port'] }}">
+                        </div>
+                        <div>
+                            <label for="smtp_username" class="block text-sm font-medium text-gray-700">Nazwa użytkownika SMTP</label>
+                            <input type="text" name="smtp_username" id="smtp_username" 
+                                   class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                   value="{{ config['EMAIL']['smtp_username'] }}">
+                        </div>
+                        <div>
+                            <label for="smtp_password" class="block text-sm font-medium text-gray-700">Hasło SMTP</label>
+                            <input type="password" name="smtp_password" id="smtp_password" 
+                                   class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                   value="{{ config['EMAIL']['smtp_password'] }}">
+                        </div>
+                        <div>
+                            <label for="sender_email" class="block text-sm font-medium text-gray-700">Email nadawcy</label>
+                            <input type="email" name="sender_email" id="sender_email" 
+                                   class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                   value="{{ config['EMAIL']['sender_email'] }}">
+                        </div>
+                        <div>
+                            <label for="sender_name" class="block text-sm font-medium text-gray-700">Nazwa nadawcy</label>
+                            <input type="text" name="sender_name" id="sender_name" 
+                                   class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                   value="{{ config['EMAIL']['sender_name'] }}">
+                        </div>
+                    </div>
+                    <div class="pt-5">
+                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            Zapisz ustawienia Email
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Prompts Settings Tab -->
+            <div id="content-prompts" class="tab-content">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold">Zarządzanie promptami</h2>
+                    <button id="add-prompt-btn" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                        <i class="fas fa-plus mr-2"></i> Dodaj nowy prompt
+                    </button>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-md mb-6">
+                    <p class="text-sm text-gray-600">
+                        Prompty to szablony tekstu używane do komunikacji z API Gemini. Możesz dostosować je do swoich potrzeb.
+                    </p>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nazwa</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Typ</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Domyślny</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ostatnia aktualizacja</th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="prompts-table-body">
+                            {% for prompt in prompts %}
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ prompt.name }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ prompt.type }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {% if prompt.is_default %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <i class="fas fa-check mr-1"></i> Tak
+                                    </span>
+                                    {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                        Nie
+                                    </span>
+                                    {% endif %}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ prompt.updated_at }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <button class="edit-prompt text-primary-600 hover:text-primary-900 mr-3" data-id="{{ prompt.id }}">
+                                        <i class="fas fa-edit"></i> Edytuj
+                                    </button>
+                                    <button class="delete-prompt text-red-600 hover:text-red-900" data-id="{{ prompt.id }}">
+                                        <i class="fas fa-trash"></i> Usuń
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% if not prompts %}
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">Brak zdefiniowanych promptów. Dodaj pierwszy prompt.</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Prompt Modal -->
+<div id="prompt-modal" class="fixed inset-0 overflow-y-auto hidden" style="z-index: 50;">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full lg:max-w-4xl">
+            <form id="prompt-form">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="w-full">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                Dodaj nowy prompt
+                            </h3>
+                            <div class="mt-4 space-y-4">
+                                <input type="hidden" id="prompt-id" name="prompt-id">
+                                <div>
+                                    <label for="prompt-name" class="block text-sm font-medium text-gray-700">Nazwa promptu</label>
+                                    <input type="text" name="prompt-name" id="prompt-name" 
+                                           class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                           placeholder="Np. Generowanie oferty">
+                                </div>
+                                <div>
+                                    <label for="prompt-type" class="block text-sm font-medium text-gray-700">Typ promptu</label>
+                                    <select name="prompt-type" id="prompt-type" 
+                                            class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <option value="proposal">Propozycja oferty</option>
+                                        <option value="presentation">Prezentacja</option>
+                                        <option value="email">Email</option>
+                                        <option value="other">Inny</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="prompt-default" class="flex items-center">
+                                        <input type="checkbox" name="prompt-default" id="prompt-default" 
+                                               class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded">
+                                        <span class="ml-2 text-sm text-gray-700">Ustaw jako domyślny dla tego typu</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="prompt-content" class="block text-sm font-medium text-gray-700">Treść promptu</label>
+                                    <textarea name="prompt-content" id="prompt-content" rows="15"
+                                              class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md code-editor"
+                                              placeholder="Wpisz treść promptu tutaj..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm">
+                        Zapisz
+                    </button>
+                    <button type="button" id="close-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        Anuluj
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="delete-modal" class="fixed inset-0 overflow-y-auto hidden" style="z-index: 50;">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                        <i class="fas fa-exclamation-triangle text-red-600"></i>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                            Usuń prompt
+                        </h3>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-500">
+                                Czy na pewno chcesz usunąć ten prompt? Ta operacja jest nieodwracalna.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" id="confirm-delete" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    Usuń
+                </button>
+                <button type="button" id="cancel-delete" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    Anuluj
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts_extra %}
+<script>
+    // Tab switching functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.settings-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Get content ID from tab ID
+                const contentId = 'content-' + tab.id.split('-')[1];
+                document.getElementById(contentId).classList.add('active');
+            });
+        });
+
+        // API Settings Form
+        const apiForm = document.getElementById('api-form');
+        apiForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                api: {
+                    gemini_api_key: document.getElementById('gemini_api_key').value,
+                    backup_api_key: document.getElementById('backup_api_key').value,
+                    gemini_model: document.getElementById('gemini_model').value
+                }
+            };
+            
+            saveSettings(formData);
+        });
+
+        // Email Settings Form
+        const emailForm = document.getElementById('email-form');
+        emailForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                email: {
+                    smtp_server: document.getElementById('smtp_server').value,
+                    smtp_port: document.getElementById('smtp_port').value,
+                    smtp_username: document.getElementById('smtp_username').value,
+                    smtp_password: document.getElementById('smtp_password').value,
+                    sender_email: document.getElementById('sender_email').value,
+                    sender_name: document.getElementById('sender_name').value
+                }
+            };
+            
+            saveSettings(formData);
+        });
+
+        function saveSettings(data) {
+            fetch('/api/settings/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Ustawienia zostały zapisane.');
+                } else {
+                    alert('Błąd podczas zapisywania ustawień: ' + data.error);
+                }
+            })
+            .catch(error => {
+                alert('Wystąpił błąd: ' + error);
+            });
+        }
+        
+        // Prompt Modal Functions
+        const promptModal = document.getElementById('prompt-modal');
+        const addPromptBtn = document.getElementById('add-prompt-btn');
+        const closeModalBtn = document.getElementById('close-modal');
+        const promptForm = document.getElementById('prompt-form');
+        
+        addPromptBtn.addEventListener('click', () => {
+            // Reset form
+            promptForm.reset();
+            document.getElementById('prompt-id').value = '';
+            document.getElementById('modal-title').textContent = 'Dodaj nowy prompt';
+            promptModal.classList.remove('hidden');
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            promptModal.classList.add('hidden');
+        });
+        
+        // Handle Edit Prompt buttons
+        document.querySelectorAll('.edit-prompt').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const promptId = btn.getAttribute('data-id');
+                fetchPromptDetails(promptId);
+            });
+        });
+        
+        function fetchPromptDetails(promptId) {
+            fetch(`/api/prompts/get/${promptId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const prompt = data.prompt;
+                    document.getElementById('prompt-id').value = prompt.id;
+                    document.getElementById('prompt-name').value = prompt.name;
+                    document.getElementById('prompt-type').value = prompt.type;
+                    document.getElementById('prompt-default').checked = prompt.is_default;
+                    document.getElementById('prompt-content').value = prompt.content;
+                    document.getElementById('modal-title').textContent = 'Edytuj prompt';
+                    promptModal.classList.remove('hidden');
+                } else {
+                    alert('Błąd podczas pobierania danych promptu: ' + data.error);
+                }
+            })
+            .catch(error => {
+                alert('Wystąpił błąd: ' + error);
+            });
+        }
+        
+        // Handle Prompt Form Submit
+        promptForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                id: document.getElementById('prompt-id').value || null,
+                name: document.getElementById('prompt-name').value,
+                type: document.getElementById('prompt-type').value,
+                content: document.getElementById('prompt-content').value,
+                is_default: document.getElementById('prompt-default').checked
+            };
+            
+            fetch('/api/prompts/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Prompt został zapisany.');
+                    promptModal.classList.add('hidden');
+                    // Reload page to see changes
+                    window.location.reload();
+                } else {
+                    alert('Błąd podczas zapisywania promptu: ' + data.error);
+                }
+            })
+            .catch(error => {
+                alert('Wystąpił błąd: ' + error);
+            });
+        });
+        
+        // Handle Delete Prompt
+        const deleteModal = document.getElementById('delete-modal');
+        const confirmDeleteBtn = document.getElementById('confirm-delete');
+        const cancelDeleteBtn = document.getElementById('cancel-delete');
+        let promptToDelete = null;
+        
+        document.querySelectorAll('.delete-prompt').forEach(btn => {
+            btn.addEventListener('click', () => {
+                promptToDelete = btn.getAttribute('data-id');
+                deleteModal.classList.remove('hidden');
+            });
+        });
+        
+        cancelDeleteBtn.addEventListener('click', () => {
+            deleteModal.classList.add('hidden');
+            promptToDelete = null;
+        });
+        
+        confirmDeleteBtn.addEventListener('click', () => {
+            if (promptToDelete) {
+                fetch(`/api/prompts/delete/${promptToDelete}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Prompt został usunięty.');
+                        deleteModal.classList.add('hidden');
+                        // Reload page to see changes
+                        window.location.reload();
+                    } else {
+                        alert('Błąd podczas usuwania promptu: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    alert('Wystąpił błąd: ' + error);
+                });
+            }
+        });
+    });
+</script>
+{% endblock %} 

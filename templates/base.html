@@ -120,6 +120,9 @@
                             <a href="/presentation-stats" class="px-3 py-2 rounded-md text-sm font-medium {% if '/presentation-stats' in request.path %}text-primary-600 border-b-2 border-primary-500{% else %}text-gray-600 hover:text-primary-600{% endif %}">
                                 <i class="fas fa-chart-bar mr-1"></i> Statystyki
                             </a>
+                            <a href="/settings" class="px-3 py-2 rounded-md text-sm font-medium {% if '/settings' in request.path %}text-primary-600 border-b-2 border-primary-500{% else %}text-gray-600 hover:text-primary-600{% endif %}">
+                                <i class="fas fa-cog mr-1"></i> Ustawienia
+                            </a>
                         </div>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -164,6 +167,9 @@
                     </a>
                     <a href="/presentation-stats" class="block pl-3 pr-4 py-2 {% if '/presentation-stats' in request.path %}text-primary-600 bg-primary-50{% else %}text-gray-600 hover:bg-gray-50 hover:text-primary-600{% endif %} text-base font-medium">
                         <i class="fas fa-chart-bar mr-1"></i> Statystyki
+                    </a>
+                    <a href="/settings" class="block pl-3 pr-4 py-2 {% if '/settings' in request.path %}text-primary-600 bg-primary-50{% else %}text-gray-600 hover:bg-gray-50 hover:text-primary-600{% endif %} text-base font-medium">
+                        <i class="fas fa-cog mr-1"></i> Ustawienia
                     </a>
                     
                     <div class="pt-4 pb-3 border-t border-gray-200">

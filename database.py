@@ -96,6 +96,19 @@ class Database:
         )
         ''')
         
+        # Create a table for storing prompts
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS prompts (
+            id INTEGER PRIMARY KEY,
+            name TEXT,
+            type TEXT,
+            content TEXT,
+            is_default BOOLEAN DEFAULT FALSE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        ''')
+        
         # Check if extra_details column exists, add it if it doesn't
         cursor.execute("PRAGMA table_info(jobs)")
         columns = cursor.fetchall()
@@ -133,6 +146,9 @@ class Database:
             cursor.execute('ALTER TABLE jobs ADD COLUMN presentation_follow_up_sent_at TIMESTAMP')
             
         conn.commit()
+        
+        # Initialize default prompts if needed
+        self.initialize_default_prompts()
     
     def store_job(self, job):
         """Store a job in the database"""
@@ -517,12 +533,248 @@ class Database:
         return [dict(row) for row in cursor.fetchall()]
     
     def mark_message_sent(self, job_id):
-        """Mark a job as having a message sent through Useme"""
-        conn = self.get_connection()
-        cursor = conn.cursor()
-        
-        cursor.execute("""
-        UPDATE jobs SET message_sent = 1 WHERE job_id = ?
-        """, (job_id,))
-        
-        conn.commit() 
+        """Mark a job as having had a message sent through Useme"""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            cursor.execute('''
+                UPDATE jobs 
+                SET message_sent = 1
+                WHERE job_id = ?
+            ''', (job_id,))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Error marking message sent: {str(e)}")
+            return False
+            
+    def get_prompts(self, prompt_type=None):
+        """Get all prompts or prompts of a specific type"""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            
+            if prompt_type:
+                cursor.execute('''
+                    SELECT * FROM prompts WHERE type = ? ORDER BY name
+                ''', (prompt_type,))
+            else:
+                cursor.execute('SELECT * FROM prompts ORDER BY type, name')
+                
+            return [dict(row) for row in cursor.fetchall()]
+        except Exception as e:
+            print(f"Error getting prompts: {str(e)}")
+            return []
+            
+    def get_prompt_by_id(self, prompt_id):
+        """Get a prompt by its ID"""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM prompts WHERE id = ?', (prompt_id,))
+            prompt = cursor.fetchone()
+            return dict(prompt) if prompt else None
+        except Exception as e:
+            print(f"Error getting prompt by ID: {str(e)}")
+            return None
+            
+    def get_default_prompt(self, prompt_type):
+        """Get the default prompt for a specific type"""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            cursor.execute('''
+                SELECT * FROM prompts 
+                WHERE type = ? AND is_default = 1
+                LIMIT 1
+            ''', (prompt_type,))
+            prompt = cursor.fetchone()
+            return dict(prompt) if prompt else None
+        except Exception as e:
+            print(f"Error getting default prompt: {str(e)}")
+            return None
+            
+    def save_prompt(self, name, prompt_type, content, prompt_id=None, is_default=False):
+        """Save a new prompt or update an existing one"""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            
+            # If this is set as default, unset any other defaults for this type
+            if is_default:
+                cursor.execute('''
+                    UPDATE prompts SET is_default = 0 
+                    WHERE type = ? AND id != ?
+                ''', (prompt_type, prompt_id or -1))
+            
+            if prompt_id:
+                # Update existing prompt
+                cursor.execute('''
+                    UPDATE prompts 
+                    SET name = ?, type = ?, content = ?, is_default = ?, 
+                        updated_at = ?
+                    WHERE id = ?
+                ''', (name, prompt_type, content, is_default, 
+                      datetime.now().isoformat(), prompt_id))
+            else:
+                # Insert new prompt
+                cursor.execute('''
+                    INSERT INTO prompts 
+                    (name, type, content, is_default, created_at, updated_at)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                ''', (name, prompt_type, content, is_default, 
+                      datetime.now().isoformat(), datetime.now().isoformat()))
+                prompt_id = cursor.lastrowid
+                
+            conn.commit()
+            return prompt_id
+        except Exception as e:
+            print(f"Error saving prompt: {str(e)}")
+            return None
+            
+    def delete_prompt(self, prompt_id):
+        """Delete a prompt by ID"""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            
+            # Check if it's a default prompt
+            cursor.execute('SELECT is_default, type FROM prompts WHERE id = ?', (prompt_id,))
+            prompt = cursor.fetchone()
+            
+            if prompt:
+                cursor.execute('DELETE FROM prompts WHERE id = ?', (prompt_id,))
+                conn.commit()
+                return True
+            return False
+        except Exception as e:
+            print(f"Error deleting prompt: {str(e)}")
+            return False
+
+    def initialize_default_prompts(self):
+        """Initialize default prompts if they don't exist"""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            
+            # Check if we have any prompts
+            cursor.execute("SELECT COUNT(*) FROM prompts")
+            count = cursor.fetchone()[0]
+            
+            if count == 0:
+                # Add default proposal prompt
+                proposal_prompt = """
+                Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy.
+
+                Wygeneruj krótką, profesjonalną propozycję dla zlecenia o następujących parametrach:
+                
+                Opis zlecenia: {job_description}
+                
+                {client_info}
+                {budget}
+                {timeline}
+                {additional_requirements}
+                
+                {research_info}
+                
+                Propozycja MUSI zawierać:
+                1. Zwięzłe powitanie
+                2. Krótkie podsumowanie zlecenia (max 2 zdania)
+                3. Konkretną wycenę i termin realizacji (bazuj na wynikach researchu, jeśli są dostępne)
+                4. Bardzo zwięzły opis metodologii (max 2 zdania)
+                5. Krótkie uzasadnienie moich kompetencji (max 2 zdania)
+                6. Informację, że przygotowaliśmy wizualną prezentację oferty dostępną pod linkiem: prezentacje.soft-synergy.com/{project_slug}
+                7. Krótkie zakończenie z CTA
+                
+                ZASADY:
+                - Pisz w języku polskim, profesjonalnie i przekonująco
+                - Maksymalnie 200 słów
+                - Wycena powinna być oparta na researchu rynkowym, jeśli jest dostępny, lub wynosić około 60% standardowej stawki rynkowej
+                - Wycena musi być wyraźnie wyodrębniona w tekście (użyj **pogrubienia**)
+                - Używaj formatowania tekstu: **pogrubienia**, *kursywy*, podkreślenia, listy, nowe linie
+                - Dodaj przynajmniej 2-3 puste linie między sekcjami dla lepszej czytelności
+                - Pamiętaj, że składasz propozycję na giełdzie zleceń, a nie odpowiadasz na bezpośrednie zapytanie
+                - Zwracaj TYLKO treść propozycji bez żadnych dodatkowych komentarzy czy objaśnień
+                - Nie używaj zwrotów sugerujących, że jesteś AI
+                - KONIECZNIE umieść informację o przygotowanej prezentacji wizualnej z linkiem: prezentacje.soft-synergy.com/{project_slug}
+
+                Dane kontaktowe (umieść je na końcu w osobnych liniach):
+                Email: info@soft-synergy.com 
+                Strona: https://soft-synergy.com
+                Osoba kontaktowa: Antoni Seba
+                Telefon: 576 205 389
+                """
+                
+                # Add default email prompt
+                email_prompt = """
+                Wygeneruj krótki, profesjonalny email w języku polskim, który zostałby wysłany do klienta po złożeniu propozycji na giełdzie zleceń Useme.
+                
+                Opis zlecenia: {job_description}
+                {client_info}
+                
+                Email powinien zawierać:
+                1. Przywitanie + odniesienie się do ogłoszenia na Useme
+                2. Propozycja rozwiązania – jak podejdziemy do projektu
+                3. Social proof – link do portfolio (https://soft-synergy.com) + krótko o doświadczeniu
+                4. Call to action – zaproszenie do kontaktu i link do przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
+                
+                ZASADY:
+                - Maksymalnie 150 słów
+                - Email musi być w języku polskim
+                - Używaj profesjonalnego, ale przyjaznego tonu
+                - Podkreśl, że widział ogłoszenie na Useme
+                - Podkreśl link do prezentacji: prezentacje.soft-synergy.com/{project_slug}
+                - Nie używaj zwrotów sugerujących, że jesteś AI
+                - Nie musisz dołączać nagłówka "Temat:" w treści maila
+                - Pisz jako Antoni Seba, przedstawiciel firmy Soft Synergy
+                
+                Dane kontaktowe (umieść je na końcu w osobnych liniach):
+                Z poważaniem,
+                Antoni Seba
+                Soft Synergy
+                Tel: 576 205 389
+                Email: info@soft-synergy.com
+                """
+                
+                # Add default relevance prompt
+                relevance_prompt = """
+                Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce.
+                
+                Opis zlecenia: {job_description}
+                
+                {client_info}
+                {budget}
+                {timeline}
+                {additional_requirements}
+                
+                Gdzie:
+                1 = Zupełnie nieodpowiednie dla software house'u (np. usługi fizyczne, niezwiązane z IT)
+                5 = Częściowo odpowiednie (np. wymaga pewnych umiejętności IT, ale nie jest to główna specjalizacja software house'u)
+                10 = Idealnie dopasowane do kompetencji software house'u (np. tworzenie zaawansowanych aplikacji webowych)
+                
+                Zwróć tylko liczbę od 1 do 10 bez żadnych dodatkowych komentarzy.
+                """
+                
+                # Insert the default prompts
+                cursor.execute(
+                    "INSERT INTO prompts (name, type, content, is_default) VALUES (?, ?, ?, ?)",
+                    ("Domyślny prompt propozycji", "proposal", proposal_prompt, True)
+                )
+                
+                cursor.execute(
+                    "INSERT INTO prompts (name, type, content, is_default) VALUES (?, ?, ?, ?)",
+                    ("Domyślny prompt email", "email", email_prompt, True)
+                )
+                
+                cursor.execute(
+                    "INSERT INTO prompts (name, type, content, is_default) VALUES (?, ?, ?, ?)",
+                    ("Domyślny prompt oceny", "relevance", relevance_prompt, True)
+                )
+                
+                conn.commit()
+                return True
+            
+            return False
+        except Exception as e:
+            print(f"Error initializing default prompts: {str(e)}")
+            return False 
