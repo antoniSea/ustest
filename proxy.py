@@ -32,7 +32,7 @@ def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-pro-exp-03-
         # Check for rate limit error (429) and retry with backup key if available
         if response.status_code == 429 and backup_api_key:
             print(f"Rate limit exceeded (429). Trying with backup API key...")
-            url = f"{api_url}?key={backup_api_key}"
+            url = f"{api_url}?key=AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
             response = requests.post(
                 url,
                 headers=headers,
