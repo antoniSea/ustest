@@ -98,7 +98,23 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
     else:
         # Use default prompt
         prompt = f"""
-        Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy.
+        Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy. pamiętaj jesteś managerem
+
+        technologie które używamy: 
+        - React
+        - Woocomerce
+        - Elementor
+        - PHP
+        - MySQL
+        - Docker
+        - Linux
+        - Nginx
+        - flutter
+        - react native
+        - python
+        - django
+        
+        
 
         Wygeneruj krótką, profesjonalną propozycję dla zlecenia o następujących parametrach:
         
