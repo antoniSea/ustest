@@ -3,84 +3,68 @@ import json
 import logging
 import os
 import configparser
+import re
 
-def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-flash-preview-04-17", backup_api_key=None):
+def test_proxy_with_openrouter(proxy, prompt, api_key):
     try:
-        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-exp-03-25:generateContent"
+        api_url = "https://openrouter.ai/api/v1/chat/completions"
         
         headers = {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}",
+            "HTTP-Referer": "http://localhost:8000"
         }
         
         data = {
-            "contents": [{
-                "parts": [{
-                    "text": prompt
-                }]
-            }]
+            "model": "deepseek/deepseek-r1:free",
+            "messages": [
+                {"role": "user", "content": prompt}
+            ]
         }
-        url = f"{api_url}?key=AIzaSyCSHjnrAJiPw2ItVOrQRtkIBuNc0Wym3oI"
         
         response = requests.post(
-            url,
+            api_url,       
             headers=headers,
             json=data,
             proxies={"http": proxy, "https": proxy},
             timeout=200
         )
         
-        # # Check for rate limit error (429) and retry with backup key if available
-        # if response.status_code == 429 and backup_api_key:
-        #     print(f"Rate limit exceeded (429). Trying with backup API key...")
-        #     url = f"{api_url}?key=AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
-        #     response = requests.post(
-        #         url,
-        #         headers=headers,
-        #         json=data,
-        #         proxies={"http": proxy, "https": proxy},
-        #         timeout=200
-        #     )
-
-
-        
         if response.ok:
             content = response.json()
-            if 'candidates' in content and len(content['candidates']) > 0:
-                if 'content' in content['candidates'][0]:
-                    content_data = content['candidates'][0]['content']
-                    if 'parts' in content_data and len(content_data['parts']) > 0:
-                        text_response = content_data['parts'][0].get('text', '')
+            if 'choices' in content and len(content['choices']) > 0:
+                if 'message' in content['choices'][0]:
+                    message = content['choices'][0]['message']
+                    if 'content' in message:
+                        text_response = message['content']
+                        # Remove thinking tags
+                        text_response = re.sub(r'<thinking>.*?</thinking>', '', text_response, flags=re.DOTALL)
                         return text_response
             
-            print(f"Proxy {proxy} connected but couldn't parse Gemini response: {response.text[:100]}...")
+            print(f"Proxy {proxy} connected but couldn't parse OpenRouter response: {response.text[:100]}...")
         else:
-            print(f"Proxy {proxy} failed with Gemini API. Status code: {response.status_code}")
+            print(f"Proxy {proxy} failed with OpenRouter API. Status code: {response.status_code}")
             print(f"Response: {response.text[:100]}...")
     except Exception as e:
-        print(f"Error occurred while testing proxy {proxy} with Gemini: {e}")
+        print(f"Error occurred while testing proxy {proxy} with OpenRouter: {e}")
 
-def get_gemini_response(prompt):
+def get_openrouter_response(prompt):
     """
-    Get response from Gemini API through proxy.
-    Returns the raw text response string, not a response object.
+    Get response from OpenRouter API through proxy.
+    Returns the raw text response string with thinking tags removed.
     """
     # Load configuration
     config = configparser.ConfigParser()
     config_file = 'config.ini'
     
-    if os.path.exists(config_file):
-        config.read(config_file)
-        api_key = config['API'].get('gemini_api_key', "AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg")
-        model = config['API'].get('gemini_model', "gemini-2.5-pro-exp-03-25")
-        backup_api_key = config['API'].get('backup_api_key', None)
-    else:
-        api_key = "AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
-        model = "gemini-2.5-pro-exp-03-25"
-        backup_api_key = None
+    # if os.path.exists(config_file):
+    #     config.read(config_file)
+    #     api_key = config['API'].get('openrouter_api_key', "YOUR_DEFAULT_OPENROUTER_API_KEY")
+    # else:
+    api_key = "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"
     
     proxy = "http://fmwytxzp:042mq93wiwm1@198.23.239.134:6540"
     
-    # This already returns text, so no need to do response.text or similar in the caller
-    return test_proxy_with_gemini(proxy, prompt, api_key, model, backup_api_key)
+    return test_proxy_with_openrouter(proxy, prompt, api_key)
 
-
+print(get_openrouter_response("Explain how AI works"))
