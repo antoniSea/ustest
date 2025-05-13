@@ -48,7 +48,7 @@ def test_proxy_with_openrouter(proxy, prompt, api_key):
     except Exception as e:
         print(f"Error occurred while testing proxy {proxy} with OpenRouter: {e}")
 
-def get_openrouter_response(prompt):
+def get_gemini_response(prompt):
     """
     Get response from OpenRouter API through proxy.
     Returns the raw text response string with thinking tags removed.
@@ -67,4 +67,4 @@ def get_openrouter_response(prompt):
     
     return test_proxy_with_openrouter(proxy, prompt, api_key)
 
-print(get_openrouter_response("Explain how AI works"))
+# print(get_openrouter_response("Explain how AI works"))
