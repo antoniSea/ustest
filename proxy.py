@@ -19,7 +19,7 @@ def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-flash-previ
                 }]
             }]
         }
-        url = f"{api_url}?key=AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
+        url = f"{api_url}?key=AIzaSyCSHjnrAJiPw2ItVOrQRtkIBuNc0Wym3oI"
         
         response = requests.post(
             url,
