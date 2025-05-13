@@ -841,6 +841,11 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                     additional_requirements=additional_requirements
                 )
             
+            # Skip jobs with relevance < 5 to save API tokens
+            if relevance_score < 5:
+                console.print(f"[yellow]⚠[/yellow] Pomijam ofertę {job_id} - zbyt niska ocena relevance: {relevance_score}")
+                continue
+                
             # Prepare proposal data
             proposal_data = {
                 "job_id": job_id,
@@ -904,71 +909,70 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 console.print(f"[green]✓[/green] Wygenerowano prezentację dla oferty {job_id}")
             except Exception as e:
                 console.print(f"[red]✗[/red] Błąd generowania prezentacji dla oferty {job_id}: {str(e)}")
-          # POST PROPOSAL TO USEME if relevance > 4
-            if relevance_score > 3:
-                from useme_post_proposal import UsemeProposalPoster
+          # POST PROPOSAL TO USEME
+            from useme_post_proposal import UsemeProposalPoster
+            
+            poster = UsemeProposalPoster()
+            job_url = job.get('url')
+            
+            # Post the proposal
+            result = poster.post_proposal(
+                job_url=job_url,
+                proposal_text=proposal_text,
+                price=proposal_data["price"],
+                timeline_days=proposal_data["timeline_days"]
+            )
+            
+            if result.get('success'):
+                console.print(f"[green]✓[/green] Pomyślnie wysłano propozycję dla oferty {job_id}")
+                posted_count += 1
+            else:
+                console.print(f"[red]✗[/red] Błąd wysyłania propozycji: {result.get('error', 'Nieznany błąd')}")
+            if relevance_score > 5 and employer_email:
+                # Get the job details from the database
+                job = db.get_job_by_id(job_id)
+                # Configure EmailSender with settings from config.ini
+                from mailer import EmailSender
                 
-                poster = UsemeProposalPoster()
-                job_url = job.get('url')
+                email_sender = EmailSender()  # This will load config automatically
                 
-                # Post the proposal
-                result = poster.post_proposal(
-                    job_url=job_url,
-                    proposal_text=proposal_text,
-                    price=proposal_data["price"],
-                    timeline_days=proposal_data["timeline_days"]
-                )
+                # Send the email
+                subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
+                recipient_email = employer_email  # Use the employer_email we already have
+                email_content = proposal_data.get("email_content")  # Get email content from proposal data
                 
-                if result.get('success'):
-                    console.print(f"[green]✓[/green] Pomyślnie wysłano propozycję dla oferty {job_id}")
-                    posted_count += 1
+                if email_sender.send_email(recipient_email, subject, email_content):
+                    # Update the database to mark email as sent
+                    conn = db.get_connection()
+                    cursor = conn.cursor()
+                    cursor.execute("""
+                        UPDATE jobs 
+                        SET follow_up_email_sent = 1, follow_up_email_sent_at = ? 
+                        WHERE job_id = ?
+                    """, (datetime.now().isoformat(), job_id))
+                    conn.commit()
+                    console.print(f"[green]✓[/green] Wysłano email do pracodawcy: {recipient_email}")
+                    emails_sent += 1
                 else:
-                    console.print(f"[red]✗[/red] Błąd wysyłania propozycji: {result.get('error', 'Nieznany błąd')}")
-                if relevance_score > 5 and employer_email:
-                    # Get the job details from the database
-                    job = db.get_job_by_id(job_id)
-                    # Configure EmailSender with settings from config.ini
-                    from mailer import EmailSender
+                    console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
+            # Also send a message through Useme if relevance > 7
+            if relevance_score > 7:
+                console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
+                try:
+                    # Send message using the proposal text
+                    message_result = send_useme_message(job_id=job_id, message_content="", use_proposal=True)
                     
-                    email_sender = EmailSender()  # This will load config automatically
-                    
-                    # Send the email
-                    subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
-                    recipient_email = employer_email  # Use the employer_email we already have
-                    email_content = proposal_data.get("email_content")  # Get email content from proposal data
-                    
-                    if email_sender.send_email(recipient_email, subject, email_content):
-                        # Update the database to mark email as sent
-                        conn = db.get_connection()
-                        cursor = conn.cursor()
-                        cursor.execute("""
-                            UPDATE jobs 
-                            SET follow_up_email_sent = 1, follow_up_email_sent_at = ? 
-                            WHERE job_id = ?
-                        """, (datetime.now().isoformat(), job_id))
-                        conn.commit()
-                        console.print(f"[green]✓[/green] Wysłano email do pracodawcy: {recipient_email}")
-                        emails_sent += 1
+                    if message_result.get('success'):
+                        console.print(f"[bold green]Successfully sent message through Useme for job {job_id}[/bold green]")
+                        # Update the job in the database
+                        db.mark_message_sent(job_id)
                     else:
-                        console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
-                # Also send a message through Useme if relevance > 7
-                if relevance_score > 7:
-                    console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
-                    try:
-                        # Send message using the proposal text
-                        message_result = send_useme_message(job_id=job_id, message_content="", use_proposal=True)
-                        
-                        if message_result.get('success'):
-                            console.print(f"[bold green]Successfully sent message through Useme for job {job_id}[/bold green]")
-                            # Update the job in the database
-                            db.mark_message_sent(job_id)
-                        else:
-                            console.print(f"[bold red]Failed to send message through Useme: {message_result.get('message')}[/bold red]")
-                    except Exception as e:
-                        console.print(f"[bold red]Error sending message through Useme: {str(e)}[/bold red]")
-                
-                # Small delay to avoid rate limiting
-                time.sleep(1.5)
+                        console.print(f"[bold red]Failed to send message through Useme: {message_result.get('message')}[/bold red]")
+                except Exception as e:
+                    console.print(f"[bold red]Error sending message through Useme: {str(e)}[/bold red]")
+            
+            # Small delay to avoid rate limiting
+            time.sleep(1.5)
                 
         except Exception as e:
             console.print(f"[red]✗[/red] Błąd generowania propozycji dla oferty {job_id}: {str(e)}")
