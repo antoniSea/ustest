@@ -83,5 +83,4 @@ def get_gemini_response(prompt):
     # This already returns text, so no need to do response.text or similar in the caller
     return test_proxy_with_gemini(proxy, prompt, api_key, model, backup_api_key)
 
-print(get_gemini_response("Explain how AI works"))
 
