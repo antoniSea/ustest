@@ -78,7 +78,7 @@ def get_gemini_response(prompt):
         model = "gemini-2.5-pro-exp-03-25"
         backup_api_key = None
     
-    proxy = "http://8c5906b99fbd1c0bcd0f916d545c565ad4a39b7f89ce737b59fe3b50f1a001f69c62459f79f743615cd889172872cf5d4e30038ec896a33b99b244eab73adf15347c77cc26480843748c75b893647fb2:qcqao80vou9s@proxy.toolip.io:31111"
+    proxy = "http://fmwytxzp:042mq93wiwm1@198.23.239.134:6540"
     
     # This already returns text, so no need to do response.text or similar in the caller
     return test_proxy_with_gemini(proxy, prompt, api_key, model, backup_api_key)
