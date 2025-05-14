@@ -134,6 +134,10 @@ class Database:
         if 'proposal_posted' not in column_names:
             cursor.execute('ALTER TABLE jobs ADD COLUMN proposal_posted BOOLEAN DEFAULT FALSE')
             
+        # Add column for tracking proposal submission timestamp
+        if 'proposal_submitted_at' not in column_names:
+            cursor.execute('ALTER TABLE jobs ADD COLUMN proposal_submitted_at TIMESTAMP')
+            
         # Add column for tracking sent messages
         if 'message_sent' not in column_names:
             cursor.execute('ALTER TABLE jobs ADD COLUMN message_sent BOOLEAN DEFAULT FALSE')
@@ -459,78 +463,38 @@ class Database:
         )
         return cursor.fetchone() is not None
     
-    def export_jobs_to_json(self, filename="useme_jobs.json"):
-        """Export all jobs to JSON file"""
-        conn = self.get_connection()
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM jobs")
-        jobs = [dict(row) for row in cursor.fetchall()]
-        
-        with open(filename, "w", encoding="utf-8") as f:
-            json.dump(jobs, f, ensure_ascii=False, indent=2)
-            
-        return len(jobs)
-    
-    def track_presentation_view(self, presentation_slug, job_id=None, client_ip=None, user_agent=None, referrer=None):
-        """Track a presentation view"""
-        conn = self.get_connection()
-        cursor = conn.cursor()
-        
+    def mark_proposal_submitted(self, job_id):
+        """Mark a job as having had its proposal submitted to Useme"""
         try:
-            # First, if job_id is not provided but presentation_slug is available,
-            # try to find the job_id from existing records
-            if not job_id and presentation_slug:
-                cursor.execute(
-                    "SELECT job_id FROM jobs WHERE project_slug = ?", 
-                    (presentation_slug,)
-                )
-                result = cursor.fetchone()
-                if result:
-                    job_id = result[0]
+            conn = self.get_connection()
+            cursor = conn.cursor()
             
-            # Insert the view record
-            cursor.execute('''
-            INSERT INTO presentation_views 
-            (presentation_slug, job_id, client_ip, user_agent, referrer, viewed_at) 
-            VALUES (?, ?, ?, ?, ?, datetime('now'))
-            ''', (
-                presentation_slug,
-                job_id,
-                client_ip,
-                user_agent,
-                referrer
-            ))
+            # Update the job record to mark it as posted
+            cursor.execute("""
+                UPDATE jobs 
+                SET proposal_posted = 1, 
+                    proposal_submitted_at = ?
+                WHERE job_id = ?
+            """, (datetime.now().isoformat(), job_id))
+            
+            # Also store in the submitted_proposals table if it's not already there
+            if not self.check_proposal_submitted(job_id):
+                # Get the proposal text from the job record
+                cursor.execute("SELECT proposal_text FROM jobs WHERE job_id = ?", (job_id,))
+                job = cursor.fetchone()
+                if job and job['proposal_text']:
+                    self.store_submitted_proposal(
+                        job_id, 
+                        job['proposal_text'], 
+                        status="success", 
+                        submission_time=datetime.now().isoformat()
+                    )
+            
             conn.commit()
-            return cursor.lastrowid
+            return True
         except Exception as e:
-            print(f"Error tracking presentation view: {str(e)}")
-            return None
-            
-    def get_presentation_views(self, presentation_slug=None, job_id=None, limit=100):
-        """Get presentation view statistics"""
-        conn = self.get_connection()
-        cursor = conn.cursor()
-        
-        query = "SELECT * FROM presentation_views"
-        params = []
-        conditions = []
-        
-        if presentation_slug:
-            conditions.append("presentation_slug = ?")
-            params.append(presentation_slug)
-            
-        if job_id:
-            conditions.append("job_id = ?")
-            params.append(job_id)
-            
-        if conditions:
-            query += " WHERE " + " AND ".join(conditions)
-            
-        query += " ORDER BY viewed_at DESC LIMIT ?"
-        params.append(limit)
-        
-        cursor.execute(query, params)
-        return [dict(row) for row in cursor.fetchall()]
+            print(f"Error marking proposal submitted: {str(e)}")
+            return False
     
     def mark_message_sent(self, job_id):
         """Mark a job as having had a message sent through Useme"""
@@ -777,4 +741,77 @@ class Database:
             return False
         except Exception as e:
             print(f"Error initializing default prompts: {str(e)}")
-            return False 
+            return False
+
+    def export_jobs_to_json(self, filename="useme_jobs.json"):
+        """Export all jobs to JSON file"""
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM jobs")
+        jobs = [dict(row) for row in cursor.fetchall()]
+        
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(jobs, f, ensure_ascii=False, indent=2)
+            
+        return len(jobs)
+    
+    def track_presentation_view(self, presentation_slug, job_id=None, client_ip=None, user_agent=None, referrer=None):
+        """Track a presentation view"""
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        
+        try:
+            # First, if job_id is not provided but presentation_slug is available,
+            # try to find the job_id from existing records
+            if not job_id and presentation_slug:
+                cursor.execute(
+                    "SELECT job_id FROM jobs WHERE project_slug = ?", 
+                    (presentation_slug,)
+                )
+                result = cursor.fetchone()
+                if result:
+                    job_id = result[0]
+            
+            # Insert the view record
+            cursor.execute('''
+            INSERT INTO presentation_views 
+            (presentation_slug, job_id, client_ip, user_agent, referrer, viewed_at) 
+            VALUES (?, ?, ?, ?, ?, datetime('now'))
+            ''', (
+                presentation_slug,
+                job_id,
+                client_ip,
+                user_agent,
+                referrer
+            ))
+            conn.commit()
+            return cursor.lastrowid
+        except Exception as e:
+            print(f"Error tracking presentation view: {str(e)}")
+            return None
+            
+    def get_presentation_views(self, presentation_slug=None, job_id=None, limit=100):
+        """Get presentation view statistics"""
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        
+        query = "SELECT * FROM presentation_views"
+        params = []
+        conditions = []
+        
+        if presentation_slug:
+            conditions.append("presentation_slug = ?")
+            params.append(presentation_slug)
+            
+        if job_id:
+            conditions.append("job_id = ?")
+            params.append(job_id)
+            
+        if conditions:
+            query += " WHERE " + " AND ".join(conditions)
+            
+        query += " ORDER BY viewed_at DESC LIMIT ?"
+        params.append(limit)
+        
+        cursor.execute(query, params)
+        return [dict(row) for row in cursor.fetchall()] 

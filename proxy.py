@@ -6,7 +6,7 @@ import configparser
 
 def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-flash-preview-04-17", backup_api_key=None):
     try:
-        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent"
+        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent"
         
         headers = {
             "Content-Type": "application/json"
