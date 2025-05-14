@@ -380,7 +380,7 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
         prompt = prompt.replace("{timeline}", timeline or "")
         prompt = prompt.replace("{additional_requirements}", additional_requirements or "")
     else:
-        # Use default prompt
+        # Use default prompt with more optimistic wording
         prompt = f"""
         Dokonaj strategicznej analizy biznesowej poniższego zlecenia pod kątem potencjalnej wartości dla software house'u specjalizującego się w aplikacjach webowych, mobilnych, systemach e-commerce, projektowaniu graficznym, identyfikacji wizualnej, marketingu i social media.
         
@@ -393,20 +393,23 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
         
         KRYTERIA OCENY WARTOŚCI BIZNESOWEJ (skala 1-10):
         
-        1. DOPASOWANIE TECHNOLOGICZNE - czy projekt pasuje do naszych kompetencji w React, PHP, Flutter, Python, WooCommerce, projektowaniu graficznym, identyfikacji wizualnej, marketingu lub social media?
-        2. POTENCJAŁ DŁUGOTERMINOWY - czy zlecenie może prowadzić do stałej współpracy lub rozszerzeń projektu?
-        3. PRESTIŻ I WARTOŚĆ REFERENCYJNA - czy projekt będzie atrakcyjnym case study dla przyszłych klientów?
-        4. MARŻA I RENTOWNOŚĆ - czy budżet pozwala na wypracowanie satysfakcjonującej marży (min. 40%)?
-        5. CZAS REALIZACJI VS. ZYSKOWNOŚĆ - czy stosunek wymaganego nakładu pracy do oczekiwanego wynagrodzenia jest korzystny?
-        6. SKALOWALNOŚĆ TECHNOLOGII - czy technologia pozwala na efektywne wykorzystanie istniejących komponentów lub bibliotek?
-        7. POTENCJAŁ POWTARZALNOŚCI - czy z projektu można wyprowadzić powtarzalne rozwiązanie dla innych klientów?
-        8. RYZYKO WDROŻENIA - czy projekt niesie nadzwyczajne ryzyko opóźnień lub komplikacji?
-        9. KOMPLEMENTARNOŚĆ USŁUG - czy projekt może prowadzić do sprzedaży powiązanych usług (np. strona + identyfikacja wizualna, marketing)?
+        1. DOPASOWANIE TECHNOLOGICZNE - czy projekt pasuje do naszych kompetencji w React, PHP, Flutter, Python, WooCommerce, projektowaniu graficznym, identyfikacji wizualnej, marketingu lub social media? Znajdź punkt styczny nawet dla nietypowych projektów.
+        2. POTENCJAŁ DŁUGOTERMINOWY - czy zlecenie może prowadzić do stałej współpracy lub rozszerzeń projektu? Poszukaj możliwości budowania relacji.
+        3. PRESTIŻ I WARTOŚĆ REFERENCYJNA - czy projekt będzie atrakcyjnym case study dla przyszłych klientów? Rozważ jak można wykorzystać projekt w portfolio.
+        4. MARŻA I RENTOWNOŚĆ - czy budżet pozwala na wypracowanie satysfakcjonującej marży (min. 30%)? Załóż, że mamy efektywne procesy realizacji.
+        5. CZAS REALIZACJI VS. ZYSKOWNOŚĆ - czy stosunek wymaganego nakładu pracy do oczekiwanego wynagrodzenia jest korzystny? Załóż, że mamy gotowe komponenty przyspieszające pracę.
+        6. SKALOWALNOŚĆ TECHNOLOGII - czy technologia pozwala na efektywne wykorzystanie istniejących komponentów lub bibliotek? Załóż, że posiadamy szeroką bazę reużywalnych zasobów.
+        7. POTENCJAŁ POWTARZALNOŚCI - czy z projektu można wyprowadzić powtarzalne rozwiązanie dla innych klientów? Poszukaj uniwersalnych elementów.
+        8. RYZYKO WDROŻENIA - czy projekt niesie nadzwyczajne ryzyko opóźnień lub komplikacji? Załóż, że posiadamy doświadczenie w zarządzaniu kryzysami projektowymi.
+        9. KOMPLEMENTARNOŚĆ USŁUG - czy projekt może prowadzić do sprzedaży powiązanych usług (np. strona + identyfikacja wizualna, marketing)? Szukaj możliwości cross-sellingu.
+        
+        WAŻNE: Skup się przede wszystkim na szansach i potencjale, nie na ograniczeniach. W przypadku wątpliwości, oceniaj bardziej optymistycznie.
         
         Przypisz wagę każdemu kryterium, uwzględniając specyfikę zlecenia, następnie oblicz średnią ważoną, gdzie:
-        1 = Zlecenie kompletnie nieopłacalne lub niedopasowane
-        5 = Zlecenie przeciętnie opłacalne, wymaga dokładnej kalkulacji
-        10 = Zlecenie idealnie dopasowane, wysokomarżowe, o dużym potencjale długoterminowym
+        3-4 = Zlecenie o niskim dopasowaniu lub potencjale
+        5-6 = Zlecenie przeciętnie opłacalne, warte rozważenia
+        7-8 = Zlecenie bardzo dobre, dobrze dopasowane do naszych kompetencji
+        9-10 = Zlecenie idealne, perfekcyjnie pasujące do naszych możliwości i strategii
         
         UWAGA: Zwróć WYŁĄCZNIE finalną ocenę w postaci liczby całkowitej od 1 do 10, bez żadnych komentarzy czy wyjaśnień.
         """
@@ -416,12 +419,26 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
         # Próba wyodrębnienia liczby z odpowiedzi
         relevance_score = re.search(r'\b([1-9]|10)\b', response)
         if relevance_score:
-            return int(relevance_score.group(1))
+            raw_score = int(relevance_score.group(1))
+            
+            # Make the score more optimistic - apply a gentle curve that boosts lower scores
+            # while keeping high scores mostly the same
+            if raw_score <= 5:
+                # Boost lower scores more significantly
+                adjusted_score = min(10, raw_score + 3)
+            elif raw_score <= 7:
+                # Moderate boost for middle scores
+                adjusted_score = min(10, raw_score + 2)
+            else:
+                # Slight boost for already high scores
+                adjusted_score = min(10, raw_score + 1)
+                
+            return adjusted_score
         else:
-            return 5  # Domyślna wartość w przypadku problemu z parsowaniem
+            return 7  # Default to an optimistic value if parsing fails
     except Exception as e:
         logger.error(f"Błąd oceny relevance: {str(e)}")
-        return 5  # Domyślna wartość w przypadku błędu
+        return 7  # Default to an optimistic value in case of error
 
 def generate_initials_avatar(client_info):
     """Generate a URL for an avatar with the client's initials when no real avatar is available."""
