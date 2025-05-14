@@ -147,6 +147,8 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         - Zwracaj TYLKO treść propozycji bez żadnych dodatkowych komentarzy czy objaśnień
         - Nie używaj zwrotów sugerujących, że jesteś AI
         - KONIECZNIE umieść informację o przygotowanej prezentacji wizualnej z linkiem: prezentacje.soft-synergy.com/{project_slug}
+        - ZAPAMIĘTAJ KURWA to idzie bezpośrednio do klienta i nie konfasbuluj. To nie jest test i nie jest sprawdzane przez uzytkownika.
+
 
         Dane kontaktowe (umieść je na końcu w osobnych liniach):
         Email: info@soft-synergy.com 
@@ -334,6 +336,8 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         
         Zwróć tylko i wyłącznie poprawny JSON bez żadnych dodatkowych komentarzy czy wyjaśnień.
         Struktura musi być DOKŁADNIE taka sama jak w przykładzie, z tymi samymi kluczami i typami wartości.
+        - ZAPAMIĘTAJ KURWA to idzie bezpośrednio do klienta i nie konfasbuluj. To nie jest test i nie jest sprawdzane przez uzytkownika.
+        
 
         Przykładowy JSON: {json.dumps(default_data, ensure_ascii=False)}
         """
