@@ -21,7 +21,12 @@ def test_proxy_with_deepseek(proxy, prompt, api_key):
         
         data = {
             "model": "deepseek/deepseek-r1:free",
-            "messages": [{"role": "user", "content": prompt}]
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.2,  # Lower temperature for more focused responses
+            "max_tokens": 3000,  # Ensure enough token space for complete responses
+            "top_p": 0.1,  # More focused sampling from token distribution
+            "frequency_penalty": 0.5,  # Discourage repetition
+            "presence_penalty": 0.5  # Discourage topic wandering
         }
         
         response = requests.post(
@@ -39,6 +44,9 @@ def test_proxy_with_deepseek(proxy, prompt, api_key):
                     text_response = content['choices'][0]['message'].get('content', '')
                     # Remove thinking tags
                     text_response = remove_thinking_tags(text_response)
+                    # Additional post-processing to clean responses
+                    text_response = re.sub(r'(^|\n)Temat:.*?\n', '', text_response, flags=re.IGNORECASE)  # Remove any subject lines
+                    text_response = re.sub(r'(As an AI|I am an AI|As a language model|I\'m an AI|I\'m just an AI)', '', text_response, flags=re.IGNORECASE)
                     return text_response
             
             print(f"Proxy {proxy} connected but couldn't parse DeepSeek response: {response.text[:100]}...")
@@ -53,6 +61,16 @@ def get_gemini_response(prompt):
     Get response from DeepSeek through Open Router API via proxy.
     Returns the raw text response string, not a response object.
     """
+    # Add explicit instructions to reduce confabulation
+    enhanced_prompt = f"""INSTRUKCJE:
+1. Odpowiedz BEZPOŚREDNIO na pytanie bez dodatkowych wyjaśnień
+2. NIE KONFABULUJ - odpowiadaj tylko na podstawie faktów
+3. NIE używaj sformułowań typu "jako AI", "jako model językowy" itp.
+4. NIE dodawaj informacji, o które nie pytano
+
+PYTANIE/ZADANIE:
+{prompt}"""
+    
     # Load configuration
     config = configparser.ConfigParser()
     config_file = 'config.ini'
@@ -66,4 +84,4 @@ def get_gemini_response(prompt):
     proxy = "http://fmwytxzp:042mq93wiwm1@198.23.239.134:6540"
     
     # This already returns text, so no need to do response.text or similar in the caller
-    return test_proxy_with_deepseek(proxy, prompt, api_key)
+    return test_proxy_with_deepseek(proxy, enhanced_prompt, api_key)
