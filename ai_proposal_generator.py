@@ -96,14 +96,11 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         prompt = prompt.replace("{project_slug}", project_slug or "")
         prompt = prompt.replace("{research_info}", research_info)
     else:
-        # Use default prompt with improved structure for DeepSeek
+        # Use default prompt
         prompt = f"""
-        FORMAT ZADANIA: Wygeneruj propozycję dla zlecenia.
+        Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy. pamiętaj jesteś managerem
 
-        TWOJA ROLA: 
-        Jesteś Antonim Sebą, menagerem projektów w Soft Synergy.
-
-        TECHNOLOGIE, KTÓRYCH UŻYWAMY:
+        technologie które używamy: 
         - React
         - Woocomerce
         - Elementor
@@ -112,47 +109,53 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         - Docker
         - Linux
         - Nginx
-        - Flutter
-        - React Native
-        - Python
-        - Django
+        - flutter
+        - react native
+        - python
+        - django
+        
+        
 
-        INFORMACJE O ZLECENIU:
-        Opis: {job_description}
-        {f"Klient: {client_info}" if client_info else ""}
+        Wygeneruj krótką, profesjonalną propozycję dla zlecenia o następujących parametrach:
+        
+        Opis zlecenia: {job_description}
+        
+        {f"Informacje o kliencie: {client_info}" if client_info else ""}
         {f"Budżet: {budget}" if budget else ""}
         {f"Harmonogram: {timeline}" if timeline else ""}
         {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
         
         {research_info}
         
-        STRUKTURA PROPOZYCJI (WAŻNE):
-        1. Zwięzłe powitanie (1 zdanie)
+        Propozycja MUSI zawierać:
+        1. Zwięzłe powitanie
         2. Krótkie podsumowanie zlecenia (max 2 zdania)
-        3. Konkretna wycena i termin realizacji (bazuj na wynikach researchu, jeśli są dostępne)
-        4. Metodologia (max 2 zdania)
-        5. Uzasadnienie kompetencji (max 2 zdania)
-        6. Informacja o prezentacji dostępnej pod: prezentacje.soft-synergy.com/{project_slug}
-        7. Zakończenie z call to action (1-2 zdania)
-
-        ZASADY WYKONANIA (KRYTYCZNE):
-        - Pisz w języku polskim
+        3. Konkretną wycenę i termin realizacji (bazuj na wynikach researchu, jeśli są dostępne)
+        4. Bardzo zwięzły opis metodologii (max 2 zdania)
+        5. Krótkie uzasadnienie moich kompetencji (max 2 zdania)
+        6. Informację, że przygotowaliśmy wizualną prezentację oferty dostępną pod linkiem: prezentacje.soft-synergy.com/{project_slug}
+        7. Krótkie zakończenie z CTA
+        
+        ZASADY:
+        - Pisz w języku polskim, profesjonalnie i przekonująco
         - Maksymalnie 200 słów
-        - Wycena powinna być oparta na researchu rynkowym lub wynosić 60% standardowej stawki
-        - Wycena MUSI być wyraźnie **pogrubiona**
-        - Stosuj formatowanie: **pogrubienie**, *kursywa*, listy i nowe linie
-        - Dodaj 2-3 puste linie między sekcjami
-        - NIE PISZ komentarzy, wyjaśnień ani pytań
-        - NIE UŻYWAJ zwrotów sugerujących, że jesteś AI
-        - NIE PISZ rzeczy typu "Oto moja propozycja" ani "Zgodnie z zaleceniami"
+        - Wycena powinna być oparta na researchu rynkowym, jeśli jest dostępny, lub wynosić około 60% standardowej stawki rynkowej
+        - Wycena musi być wyraźnie wyodrębniona w tekście (użyj **pogrubienia**)
+        - Używaj formatowania tekstu: **pogrubienia**, *kursywy*, podkreślenia, listy, nowe linie
+        - Dodaj przynajmniej 2-3 puste linie między sekcjami dla lepszej czytelności
+        - Pamiętaj, że składasz propozycję na giełdzie zleceń, a nie odpowiadasz na bezpośrednie zapytanie
+        - Zwracaj TYLKO treść propozycji bez żadnych dodatkowych komentarzy czy objaśnień
+        - Nie używaj zwrotów sugerujących, że jesteś AI
+        - KONIECZNIE umieść informację o przygotowanej prezentacji wizualnej z linkiem: prezentacje.soft-synergy.com/{project_slug}
+        - ZAPAMIĘTAJ KURWA to idzie bezpośrednio do klienta i nie konfasbuluj. To nie jest test i nie jest sprawdzane przez uzytkownika.
 
-        DANE KONTAKTOWE (na końcu propozycji w osobnych liniach):
+
+        Dane kontaktowe (umieść je na końcu w osobnych liniach):
         Email: info@soft-synergy.com 
         Strona: https://soft-synergy.com
         Osoba kontaktowa: Antoni Seba
         Telefon: 576 205 389
         
-        WAŻNE: Pisz propozycję bezpośrednio, tak jakby klient miał ją otrzymać bez dalszych przeróbek.
         """
     
     try:
@@ -307,84 +310,62 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
     else:
         # Use default prompt
         prompt = f"""
-        FORMAT ZADANIA: Wygeneruj dane JSON do prezentacji projektu.
+        Wygeneruj dane do prezentacji projektu w formacie JSON na podstawie następujących informacji:
         
-        INFORMACJE O PROJEKCIE:
         Opis zlecenia: {job_description}
-        {f"Klient: {client_info}" if client_info else ""}
+        {f"Informacje o kliencie: {client_info}" if client_info else ""}
         {f"Budżet: {budget}" if budget else ""}
         {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
         {f"Email klienta: {employer_email}" if employer_email else ""}
         
-        Propozycja, którą już przygotowaliśmy:
+        Propozycja, którą już przygotowaliśmy dla klienta:
         {proposal}
         
-        WYMAGANIA (KRYTYCZNE):
-        1. Wygeneruj TYLKO czysty, poprawny JSON bez żadnych komentarzy, bloków kodu ani wyjaśnień
-        2. Struktura MUSI być IDENTYCZNA jak w przykładzie poniżej
-        3. Wypełnij realistycznymi, profesjonalnymi danymi w języku polskim
-        4. Cena w metadata musi być liczbą całkowitą (np. 5000), bez jednostek
-        5. Cena w polach "price" w pakietach musi mieć format: "5000,00 PLN brutto"
-        6. Pole "timelineDays" powinno być liczbą całkowitą (np. 14), nie stringiem
-        7. Dokładna struktura "timeline" z sekcjami "sectionTitle", "sectionSubtitle" i "milestones" musi być zachowana
+        Dane powinny być zgodne z dokładnie taką samą strukturą jak poniższy JSON i zawierać realistyczne, profesjonalne informacje w języku polskim.
+        Wypełnij wszystkie pola odpowiednimi danymi, które pasują do opisu projektu.
         
-        DODATKOWE POLA (WAŻNE):
-        {f'- Dodaj pole "useme_id" z wartością "{job_id}"' if job_id else ""}
-        {f'- Dodaj pole "employer_email" z wartością "{employer_email}"' if employer_email else ""}
+        WAŻNE: 
+        - Upewnij się, że wycena w prezentacji jest dokładnie taka sama jak w propozycji (około 60% standardowej ceny rynkowej).
+        - Cena musi być podana jako liczba całkowita, bez żadnych jednostek, znaków czy formatowania (np. 5000, a nie "5000 PLN").
+        - Struktura "timeline" w JSON musi być DOKŁADNIE taka sama jak w przykładzie, z kluczami "sectionTitle", "sectionSubtitle" i "milestones".
+        - Pola ceny (price) i czasu wykonania (timelineDays) będą używane tylko w metadata, NIE MODYFIKUJ struktury timeline w głównej części JSON.
+        - Dodaj pole "useme_id" z wartością {job_id} (jeśli podano).
+        {f'- Dodaj pole "employer_email" z wartością "{employer_email}".' if employer_email else ""}
         
-        PRZYKŁADOWY JSON (DOKŁADNIE ODWZORUJ TĘ STRUKTURĘ):
-        ```json
-        {json.dumps(default_data, ensure_ascii=False, indent=2)}
-        ```
+        {f"Logo klienta znajduje się pod ścieżką: {client_logo_path}" if client_logo_path else ""}
         
-        ZWRÓĆ TYLKO POPRAWNY JSON BEZ DODATKOWYCH KOMENTARZY CZY OZNACZEŃ.
+        Zwróć tylko i wyłącznie poprawny JSON bez żadnych dodatkowych komentarzy czy wyjaśnień.
+        Struktura musi być DOKŁADNIE taka sama jak w przykładzie, z tymi samymi kluczami i typami wartości.
+        - ZAPAMIĘTAJ KURWA to idzie bezpośrednio do klienta i nie konfasbuluj. To nie jest test i nie jest sprawdzane przez uzytkownika.
+        
+
+        Przykładowy JSON: {json.dumps(default_data, ensure_ascii=False)}
         """
     
     try:
         response = get_gemini_response(prompt)
+        # The response is already a string, no need to call .strip() on it
+        response_text = response
         
-        # Clean the response to extract valid JSON
-        def clean_json_response(text):
-            # Remove any potential markdown code block markers
-            text = re.sub(r'```(?:json)?\s*', '', text)
-            text = re.sub(r'\s*```', '', text)
-            
-            # Remove any text before the first {
-            if '{' in text:
-                text = text[text.find('{'):]
-            
-            # Remove any text after the last }
-            if '}' in text:
-                text = text[:text.rfind('}')+1]
-            
-            # Fix common JSON formatting issues
-            text = text.replace('\n', ' ')
-            text = re.sub(r',\s*}', '}', text)  # Remove trailing commas
-            text = re.sub(r',\s*]', ']', text)  # Remove trailing commas in arrays
-            
-            return text
-        
-        # First attempt: try to parse the whole cleaned response as JSON
+        # First attempt: try to parse the whole response as JSON
         try:
-            cleaned_response = clean_json_response(response)
-            json_data = json.loads(cleaned_response)
-            console.print("[green]✓[/green] Poprawnie sparsowano JSON z oczyszczonej odpowiedzi")
-        except json.JSONDecodeError as e:
-            console.print(f"[yellow]⚠[/yellow] Niepoprawny format JSON w odpowiedzi ({str(e)}), próbuję wyodrębnić")
+            json_data = json.loads(response_text)
+            console.print("[green]✓[/green] Poprawnie sparsowano JSON z odpowiedzi")
+        except json.JSONDecodeError:
+            console.print("[yellow]⚠[/yellow] Niepoprawny format JSON w odpowiedzi, próbuję wyodrębnić")
             
             # Second attempt: try to extract JSON from the response
-            json_match = re.search(r'```(?:json)?\s*({[\s\S]*?})\s*```', response)
+            json_match = re.search(r'```(?:json)?\s*({[\s\S]*?})\s*```', response_text)
             if not json_match:
-                json_match = re.search(r'({[\s\S]*})', response)
+                json_match = re.search(r'({[\s\S]*})', response_text)
                 
             if json_match:
                 try:
                     json_text = json_match.group(1).strip()
-                    json_text = clean_json_response(json_text)
                     json_data = json.loads(json_text)
                     console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z odpowiedzi")
-                except json.JSONDecodeError as e:
-                    console.print(f"[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON: {str(e)}")
+                except json.JSONDecodeError:
+                    console.print("[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON")
                     # Use the default template and fill in known values
                     json_data = default_data.copy()
                     console.print("[yellow]⚠[/yellow] Użyto domyślnego szablonu z minimalnymi danymi")
@@ -734,42 +715,35 @@ def generate_email(job_description, project_slug, client_info="", job_title=""):
     else:
         # Use default prompt
         prompt = f"""
-        FORMAT ZADANIA: Wygeneruj email do klienta po złożeniu propozycji na Useme.
-
-        OKOLICZNOŚCI:
-        - Złożyliśmy już propozycję na giełdzie zleceń Useme
-        - Teraz wysyłamy bezpośredni email do klienta
-
-        INFORMACJE:
+        Wygeneruj krótki, profesjonalny email w języku polskim, który zostałby wysłany do klienta po złożeniu propozycji na giełdzie zleceń Useme.
+        
         Opis zlecenia: {job_description}
-        {f"Informacje o kliencie: {client_info}" if client_info else ""}
-        Link do prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        {f"Informacje o kliencie: {client_info}" if client_info else ""}    
         
-        STRUKTURA EMAILA (KAŻDY PUNKT MAKSYMALNIE 2 ZDANIA):
-        1. Przywitanie + wzmianka o ogłoszeniu na Useme
-        2. Propozycja rozwiązania projektu
-        3. Doświadczenie + link do portfolio (https://soft-synergy.com) 
-        4. Call to action: zaproszenie do kontaktu + link do prezentacji
-        5. NIE PISZ tytułu emaila - zajmiemy się tym osobno
+        Email powinien zawierać:
+        1. Przywitanie + odniesienie się do ogłoszenia na Useme
+        2. Propozycja rozwiązania – jak podejdziemy do projektu
+        3. Social proof – link do portfolio (https://soft-synergy.com) + krótko o doświadczeniu
+        4. Call to action – zaproszenie do kontaktu i link do przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
         
-        ZASADY (KRYTYCZNE):
+        ZASADY:
         - Maksymalnie 150 słów
-        - Język polski, formalny ale przyjazny
-        - NIE PISZ "Temat:" ani żadnych nagłówków
-        - PODKREŚL że widzieliśmy ogłoszenie na Useme
-        - KONIECZNIE podaj link: prezentacje.soft-synergy.com/{project_slug}
-        - NIE UŻYWAJ zwrotów sugerujących, że jesteś AI
-        - NIE DODAWAJ wyjaśnień, komentarzy ani pytań
-        - NIE KONFABULUJ - bazuj tylko na podanych informacjach
+        - Email musi być w języku polskim
+        - Używaj profesjonalnego, ale przyjaznego tonu
+        - Podkreśl, że widział ogłoszenie na Useme
+        - Podkreśl link do prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        - Nie używaj zwrotów sugerujących, że jesteś AI
+        - Nie musisz dołączać nagłówka "Temat:" w treści maila
+        - Pisz jako Antoni Seba, przedstawiciel firmy Soft Synergy
         
-        DANE KONTAKTOWE (na końcu w osobnych liniach):
+        Dane kontaktowe (umieść je na końcu w osobnych liniach):
         Z poważaniem,
         Antoni Seba
         Soft Synergy
         Tel: 576 205 389
         Email: info@soft-synergy.com
         
-        WAŻNE: Ten email zostanie wysłany bezpośrednio do klienta.
+        Zwróć tylko treść emaila bez dodatkowych komentarzy czy objaśnień.
         """
     
     try:
