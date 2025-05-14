@@ -1,7 +1,8 @@
 import os
 import json
 import csv
-import google.generativeai as genai
+import requests  # For direct API calls
+import certifi
 from rich.console import Console
 from rich.markdown import Markdown
 import time
@@ -9,16 +10,12 @@ from datetime import datetime
 import re
 import unicodedata
 from useme_post_proposal import UsemeProposalPoster
-import requests
 from bs4 import BeautifulSoup
 import concurrent.futures
 from urllib.parse import quote_plus
 from database import Database
 import logging
 from extract_useme_email import extract_employer_email
-from proxy import get_gemini_response
-import configparser
-
 
 # Configure logging
 logging.basicConfig(
@@ -30,43 +27,193 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Load configuration
-def load_config():
-    config = configparser.ConfigParser()
-    config_file = 'config.ini'
-    
-    # Create default config if it doesn't exist
-    if not os.path.exists(config_file):
-        config['API'] = {
-            'gemini_api_key': 'AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM',
-            'gemini_model': 'gemini-2.5-pro-exp-03-25'
-        }
-        
-        with open(config_file, 'w') as f:
-            config.write(f)
-    
-    config.read(config_file)
-    return config
+# Configure the Gemini API
+API_KEY = "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM"
+MODEL = "gemini-2.5-pro-exp-03-25"
+API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 
-# Get API config
-config = load_config()
-API_KEY = config['API'].get('gemini_api_key', "AIzaSyDh3EMORXEvvVpeuT9QKVUlKe1_uBvwkpM")
-MODEL = config['API'].get('gemini_model', "gemini-2.5-pro-exp-03-25")
+# Set SSL certificate path
+os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
 
-genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel(MODEL)
+# Set up model config
+generation_config = {
+    "max_output_tokens": 2048,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "top_k": 40
+}
+
+# Max number of retries and timeout settings
+MAX_RETRIES = 30
+TIMEOUT = 260  # seconds
+BACKOFF_FACTOR = 1.5  # exponential backoff
 
 console = Console()
 
-def get_prompt_from_db(prompt_type):
-    """Get the appropriate prompt from the database"""
-    db = Database()
-    prompt_data = db.get_default_prompt(prompt_type)
-    
-    if prompt_data and prompt_data.get('content'):
-        return prompt_data.get('content')
+def load_working_proxy():
+    """Load a previously saved working proxy if it exists and is recent."""
+    try:
+        if os.path.exists('working_proxy.json'):
+            with open('working_proxy.json', 'r') as f:
+                data = json.load(f)
+                proxy = data.get('proxy')
+                timestamp = data.get('timestamp', 0)
+                
+                # Check if proxy is not too old (less than 1 hour old)
+                if proxy and time.time() - timestamp < 3600:
+                    logger.info(f"Loaded previously working proxy: {proxy}")
+                    return proxy
+                else:
+                    logger.info("Saved proxy is too old or invalid, getting a new one")
+    except Exception as e:
+        logger.error(f"Error loading working proxy: {e}")
     
     return None
+
+def get_proxy():
+    """Get a free proxy from the FreeProxy service."""
+    try:
+        # Import here to avoid issues if the library is not installed
+        from fp.fp import FreeProxy
+        for _ in range(3):  # Try up to 3 times to get a proxy
+            try:
+                proxy = FreeProxy(rand=True).get()
+                logger.info(f"Found proxy: {proxy}")
+                return proxy
+            except Exception as e:
+                logger.error(f"Failed to get proxy: {e}")
+                time.sleep(1)
+    except ImportError:
+        logger.warning("FreeProxy not installed, running without proxy")
+    
+    return None
+
+def save_working_proxy(proxy):
+    """Save working proxy to a file."""
+    try:
+        with open('working_proxy.json', 'w') as f:
+            json.dump({'proxy': proxy, 'timestamp': time.time()}, f)
+        logger.info(f"Saved working proxy to working_proxy.json: {proxy}")
+    except Exception as e:
+        logger.error(f"Failed to save working proxy: {e}")
+
+def generate_with_retry(prompt, max_retries=MAX_RETRIES, timeout=TIMEOUT):
+    """Generate content with retry logic for handling timeouts and errors."""
+    retry_count = 0
+    
+    # Try to load a previously working proxy first
+    proxy = load_working_proxy()
+    
+    # If no working proxy found, try to get a new one
+    if not proxy:
+        logger.info("No recent working proxy found, getting a new one")
+        proxy = get_proxy()
+    
+    # Ensure we have a proxy before proceeding
+    if not proxy:
+        logger.error("No proxy available. Cannot proceed without proxy.")
+        return "Błąd generowania: Brak dostępnego proxy. System wymaga proxy do działania."
+    
+    logger.info(f"Using proxy: {proxy}")
+    
+    while retry_count <= max_retries:
+        current_timeout = timeout * (BACKOFF_FACTOR ** retry_count)
+        logger.info(f"Attempting API call (retry {retry_count}) with timeout {current_timeout:.1f}s")
+        
+        try:
+            # Prepare the request payload
+            payload = {
+                "contents": [{"parts": [{"text": prompt}]}],
+                "generationConfig": generation_config,
+                "safetySettings": []
+            }
+            
+            # Set up proxies dict with our proxy
+            proxies = {'http': proxy, 'https': proxy}
+            
+            # Try to generate content with timeout
+            response = requests.post(
+                f"{API_URL}?key={API_KEY}",
+                headers={'Content-Type': 'application/json'},
+                json=payload,
+                proxies=proxies,
+                timeout=current_timeout,
+                verify=False  # Skip SSL verification when using proxy
+            )
+            
+            # Check for server errors (5xx) and treat them as proxy errors
+            if response.status_code >= 500:
+                raise Exception(f"API server error with status code {response.status_code}: {response.text}")
+            
+            # Check for other non-200 status codes
+            elif response.status_code != 200:
+                raise Exception(f"API returned status code {response.status_code}: {response.text}")
+            
+            # Parse the response
+            response_json = response.json()
+            
+            # Extract the generated text
+            if (response_json.get('candidates') and 
+                response_json['candidates'][0].get('content') and 
+                response_json['candidates'][0]['content'].get('parts') and 
+                len(response_json['candidates'][0]['content']['parts']) > 0):
+                
+                generated_text = response_json['candidates'][0]['content']['parts'][0].get('text', '')
+                
+                # Save the working proxy
+                save_working_proxy(proxy)
+                    
+                return generated_text
+            else:
+                raise ValueError(f"Unexpected response format: {response_json}")
+                
+        except Exception as e:
+            retry_count += 1
+            error_str = str(e)
+            logger.warning(f"API call failed (attempt {retry_count}/{max_retries+1}): {error_str}")
+            
+            # Check for specific error types to give better error messages
+            is_timeout_error = any(error_term in error_str.lower() for error_term in ["504", "timeout", "deadline", "timed out"])
+            is_proxy_error = any(error_term in error_str.lower() for error_term in ["proxy", "connection", "ssl", "certificate"])
+            is_server_error = any(error_term in error_str.lower() for error_term in ["5", "502", "503", "server error"])
+            
+            # Consider server errors as proxy errors (try a new proxy)
+            if is_server_error:
+                logger.info("Server error detected, treating as proxy issue...")
+                is_proxy_error = True
+            
+            # If we've exhausted retries
+            if retry_count > max_retries:
+                logger.error(f"Failed after all attempts: {error_str}")
+                if is_timeout_error:
+                    return f"Błąd generowania: przekroczono limit czasu oczekiwania na odpowiedź (504 Deadline Exceeded). Proszę spróbować ponownie później."
+                else:
+                    return f"Błąd generowania: {error_str}"
+            
+            # If it's a proxy error, try to get a new proxy
+            if is_proxy_error:
+                logger.info("Proxy error detected, getting a new proxy...")
+                new_proxy = get_proxy()
+                if new_proxy:
+                    proxy = new_proxy
+                    logger.info(f"New proxy: {proxy}")
+                else:
+                    logger.warning("Failed to get a new proxy, using the old one")
+            
+            # If it's not a timeout/proxy/server error, decide whether to retry
+            if not is_timeout_error and not is_proxy_error and not is_server_error:
+                # Only retry other errors once
+                if retry_count > 1:
+                    logger.error(f"Non-recoverable error persists after retry: {error_str}")
+                    return f"Błąd generowania: {error_str}"
+            
+            # For all errors, wait before retrying
+            wait_time = min(2 ** retry_count, 300)  # Exponential backoff, capped at 300 seconds
+            logger.info(f"Waiting {wait_time}s before retry...")
+            time.sleep(wait_time)
+    
+    # This should not be reached, but just in case
+    return "Błąd generowania: przekroczono limit prób"
 
 def generate_proposal(job_description, client_info="", budget="", timeline="", additional_requirements="", project_slug="", research_data=None):
     """Generate a proposal for a job based on the provided information and research data."""
@@ -82,363 +229,88 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         - Podsumowanie: {research_data.get('summary', 'Brak danych')}
         """
     
-    # Try to get prompt from database first
-    custom_prompt = get_prompt_from_db('proposal')
+    prompt = f"""
+    Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy.
+
+    Wygeneruj krótką, profesjonalną propozycję dla zlecenia o następujących parametrach:
     
-    if custom_prompt:
-        # Replace placeholders in the custom prompt
-        prompt = custom_prompt
-        prompt = prompt.replace("{job_description}", job_description)
-        prompt = prompt.replace("{client_info}", client_info or "")
-        prompt = prompt.replace("{budget}", budget or "")
-        prompt = prompt.replace("{timeline}", timeline or "")
-        prompt = prompt.replace("{additional_requirements}", additional_requirements or "")
-        prompt = prompt.replace("{project_slug}", project_slug or "")
-        prompt = prompt.replace("{research_info}", research_info)
-    else:
-        # Use default prompt
-        prompt = f"""
-        Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy, specjalizującym się w skutecznym dostarczaniu rozwiązań IT, które zwiększają przychody klientów.
+    Opis zlecenia: {job_description}
+    
+    {f"Informacje o kliencie: {client_info}" if client_info else ""}
+    {f"Budżet: {budget}" if budget else ""}
+    {f"Harmonogram: {timeline}" if timeline else ""}
+    {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
+    
+    {research_info}
+    
+    Propozycja MUSI zawierać:
+    1. Zwięzłe powitanie
+    2. Krótkie podsumowanie zlecenia (max 2 zdania)
+    3. Konkretną wycenę i termin realizacji (bazuj na wynikach researchu, jeśli są dostępne)
+    4. Bardzo zwięzły opis metodologii (max 2 zdania)
+    5. Krótkie uzasadnienie moich kompetencji (max 2 zdania)
+    6. Informację, że przygotowaliśmy wizualną prezentację oferty dostępną pod linkiem: prezentacje.soft-synergy.com/{project_slug}
+    7. Krótkie zakończenie z CTA
+    
+    ZASADY:
+    - Pisz w języku polskim, profesjonalnie i przekonująco
+    - Maksymalnie 200 słów
+    - Wycena powinna być oparta na researchu rynkowym, jeśli jest dostępny, lub wynosić około 60% standardowej stawki rynkowej
+    - Wycena musi być wyraźnie wyodrębniona w tekście (użyj **pogrubienia**)
+    - Używaj formatowania tekstu: **pogrubienia**, *kursywy*, podkreślenia, listy, nowe linie
+    - Dodaj przynajmniej 2-3 puste linie między sekcjami dla lepszej czytelności
+    - Pamiętaj, że składasz propozycję na giełdzie zleceń, a nie odpowiadasz na bezpośrednie zapytanie
+    - Zwracaj TYLKO treść propozycji bez żadnych dodatkowych komentarzy czy objaśnień
+    - Nie używaj zwrotów sugerujących, że jesteś AI
+    - KONIECZNIE umieść informację o przygotowanej prezentacji wizualnej z linkiem: prezentacje.soft-synergy.com/{project_slug}
 
-        technologie które używamy: 
-        - React
-        - Woocomerce
-        - Elementor
-        - PHP
-        - MySQL
-        - Docker
-        - Linux
-        - Nginx
-        - flutter
-        - react native
-        - python
-        - django
-        - projektowanie graficzne
-        - identyfikacja wizualna
-        - marketing
-        - social media
-        
-        Wygeneruj wyjątkowo przekonującą, profesjonalną propozycję dla zlecenia poniżej. Użyj strategii persuazji zaczerpniętych z METODY SPIN SELLING oraz metodologii AIDA (Attention, Interest, Desire, Action):
-        
-        Opis zlecenia: {job_description}
-        
-        {f"Informacje o kliencie: {client_info}" if client_info else ""}
-        {f"Budżet: {budget}" if budget else ""}
-        {f"Harmonogram: {timeline}" if timeline else ""}
-        {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
-        
-        {research_info}
-        
-        Propozycja MUSI zawierać:
-        1. Magnetyzujące powitanie, które NATYCHMIAST wywołuje zainteresowanie (1-2 krótkie zdania)
-        2. Szczegółową diagnozę problemów, które klient próbuje rozwiązać (dopasuj do opisu zlecenia)
-        3. Podkreślenie konsekwencji NIE rozwiązania tych problemów (budowanie pilności i wykazanie głębokiego zrozumienia)
-        4. Konkretną propozycję rozwiązania zawierającą wycenę i termin (bold: **3000 PLN, czas realizacji: 14 dni**)
-        5. Precyzyjne uzasadnienie WARTOŚCI oferty (nie ceny) - pokaż ROI
-        6. Silne elementy budujące zaufanie i ograniczające postrzegane ryzyko
-        7. Link do wizualnej prezentacji: prezentacje.soft-synergy.com/{project_slug}
-        8. Bezpośrednie wezwanie do działania z przejawami ograniczoności czasowej (techniki scarcity)
-        
-        KLUCZOWE ZASADY PSYCHOLOGII SPRZEDAŻY:
-        - Pisz w języku polskim, zawsze odnoszącym się do KORZYŚCI klienta
-        - Maksymalnie 200 słów podzielonych krótkimi paragrafami
-        - Używaj elementów social proof (np. "97% naszych klientów zgłasza wzrost konwersji o minimum 23%")
-        - Stosuj zasadę wzajemności oferując KONKRETNĄ wartość już w propozycji
-        - Wdrażaj fundamenty neuromarketingu - użyj zwrotów aktywujących obszary mózgu odpowiedzialne za decyzje zakupowe
-        - Wykorzystaj FOMO (Fear Of Missing Out) i ograniczoną dostępność terminu
-        - Wycena musi być wyraźnie wyodrębniona w tekście (użyj **pogrubienia**)
-        - Format musi być łatwo skanowalny wzrokiem - krótkie paragrafy, punktory, pogrubienia
-        - Podkreśl unikalny charakter oferty - dlaczego to TY powinieneś realizować to zlecenie
-        - KONIECZNIE umieść informację o przygotowanej prezentacji wizualnej z linkiem: prezentacje.soft-synergy.com/{project_slug}
-        - Wzbudź natychmiastową wiarygodność używając konkretnych liczb, a nie zaokrągleń (np. "zwiększyliśmy konwersje o 27.3%" zamiast "około 30%")
-        - Stosuj techniki NLP i framingu emocjonalnego, dopasowując ton do charakteru zlecenia
-
-        Dane kontaktowe (umieść je na końcu w osobnych liniach):
-        Email: info@soft-synergy.com 
-        Strona: https://soft-synergy.com
-        Osoba kontaktowa: Antoni Seba
-        Telefon: 576 205 389
-        
-        """
-        
-        # Apply industry-specific enhancements to the prompt
-        prompt = apply_industry_specific_prompt(job_description, additional_requirements, prompt)
+    Dane kontaktowe (umieść je na końcu w osobnych liniach):
+    Email: info@soft-synergy.com 
+    Strona: https://soft-synergy.com
+    Osoba kontaktowa: Antoni Seba
+    Telefon: 576 205 389
+    
+    """
     
     try:
-        return get_gemini_response(prompt)
-        
+        # Use the retry function instead of direct API call
+        return generate_with_retry(prompt)
     except Exception as e:
         logger.error(f"Błąd generowania propozycji: {str(e)}")
         return f"Błąd generowania propozycji: {str(e)}"
 
-def generate_industry_specific_prompt(industry, job_description):
-    """
-    Generate industry-specific prompt enhancements based on the job's industry/category.
-    This helps tailor the AI's responses to specific industries for better conversion rates.
-    """
-    # Try to get custom industry prompt from database first
-    custom_industry_prompt = get_prompt_from_db(f'industry_{industry.lower()}')
-    if custom_industry_prompt:
-        return custom_industry_prompt
-    
-    # Default industry-specific prompts
-    industry_prompts = {
-        "e-commerce": f"""
-        Dla tego projektu e-commerce zastosuj następujące podejście:
-        
-        1. Podkreśl DOŚWIADCZENIE w zwiększaniu konwersji sklepów online (min. +35%)
-        2. Wymień kluczowe metryki, które monitorujemy (CAC, LTV, AOV, CR)
-        3. Odnieś się do optymalizacji ścieżki zakupowej i redukcji porzuceń koszyka
-        4. Wspomnij o WooCommerce/Shopify jako sprawdzonych platformach
-        5. Podkreśl nasze doświadczenie w integracji z systemami płatności i logistyki
-        6. Zaproponuj analizę koszyków i zachowań użytkowników za pomocą heatmap
-        7. Zaznacz rozumienie procesów zwiększania średniej wartości zamówienia
-        8. Podkreśl umiejętność wdrożenia programów lojalnościowych
-        9. Zaproponuj spójną identyfikację wizualną i strategię marketingową dla sklepu
-        
-        Kluczowe korzyści do podkreślenia: wzrost sprzedaży, optymalizacja konwersji, zwiększenie ruchu organicznego.
-        """,
-        
-        "landing_page": f"""
-        Dla tego projektu landing page zastosuj następujące podejście:
-        
-        1. Podkreśl nasze doświadczenie w ZWIĘKSZANIU KONWERSJI stron docelowych (+50-120%)
-        2. Zaznacz wiedzę z zakresu psychologii decyzji i neuromarketingu
-        3. Odnieś się do technik A/B testowania dla optymalizacji CTA
-        4. Wspomnij o projektowaniu pod kątem maksymalizacji współczynnika konwersji
-        5. Podkreśl rozumienie lejków sprzedażowych i mechanizmów lead generation
-        6. Zaproponuj analizę User Experience i optymalizację czasu ładowania (<1.5s)
-        7. Wspomnij o strategiach budowania zaufania (social proof, testimonials)
-        8. Podkreśl umiejętność integracji z narzędziami analitycznymi i marketingowymi
-        9. Zaproponuj profesjonalne projekty graficzne i spójną identyfikację wizualną
-        
-        Kluczowe korzyści do podkreślenia: wzrost konwersji, lepszy ROI z kampanii, więcej jakościowych leadów.
-        """,
-        
-        "aplikacja_mobilna": f"""
-        Dla tego projektu aplikacji mobilnej zastosuj następujące podejście:
-        
-        1. Podkreśl nasze doświadczenie w tworzeniu ANGAŻUJĄCYCH aplikacji z wysokimi ocenami (4.8+)
-        2. Zaznacz wiedzę z zakresu Flutter i React Native dla wieloplatformowego rozwoju
-        3. Odnieś się do procesu projektowania UX/UI dla maksymalnej retencji użytkowników
-        4. Wspomnij o strategiach monetyzacji aplikacji i analityce zachowań
-        5. Podkreśl rozumienie procesów publikacji w App Store i Google Play
-        6. Zaproponuj implementację funkcji offline i optymalizację wydajności
-        7. Wspomnij o zabezpieczeniach RODO/GDPR i bezpieczeństwie danych
-        8. Podkreśl doświadczenie w tworzeniu aplikacji, które się skalują z rosnącą bazą użytkowników
-        9. Zaproponuj kompleksowy projekt graficzny i strategię marketingową dla aplikacji
-        
-        Kluczowe korzyści do podkreślenia: wysokie oceny użytkowników, niski współczynnik odrzuceń, efektywna monetyzacja.
-        """,
-        
-        "system_crm": f"""
-        Dla tego projektu systemu CRM/ERP zastosuj następujące podejście:
-        
-        1. Podkreśl nasze doświadczenie w AUTOMATYZACJI procesów biznesowych (+40% efektywności)
-        2. Zaznacz wiedzę z zakresu integracji systemów i przepływu danych
-        3. Odnieś się do tworzenia intuicyjnych interfejsów dla złożonych systemów
-        4. Wspomnij o dostosowywaniu systemów do specyficznych procesów klienta
-        5. Podkreśl rozumienie bezpieczeństwa danych i zgodności z regulacjami
-        6. Zaproponuj implementację raportowania i dashboardów biznesowych
-        7. Wspomnij o skalowalności rozwiązania wraz z rozwojem firmy
-        8. Podkreśl doświadczenie w szkoleniach i onboardingu nowych użytkowników
-        9. Zaproponuj spójną identyfikację wizualną i strategię komunikacji systemu
-        
-        Kluczowe korzyści do podkreślenia: oszczędność czasu pracowników, lepsza analiza danych, automatyzacja powtarzalnych zadań.
-        """,
-        
-        "strona_firmowa": f"""
-        Dla tego projektu strony firmowej zastosuj następujące podejście:
-        
-        1. Podkreśl nasze doświadczenie w budowaniu WIZERUNKOWYCH stron zwiększających wiarygodność
-        2. Zaznacz wiedzę z zakresu SEO i pozycjonowania lokalnego
-        3. Odnieś się do projektowania zgodnego z identyfikacją wizualną klienta
-        4. Wspomnij o responsywności i dostosowaniu do urządzeń mobilnych
-        5. Podkreśl umiejętność tworzenia angażujących treści i zrozumiałej architektury informacji
-        6. Zaproponuj integrację z mediami społecznościowymi i narzędziami analitycznymi
-        7. Wspomnij o optymalizacji szybkości ładowania i SEO technicznym
-        8. Podkreśl umiejętność wdrożenia systemu CMS dla samodzielnej aktualizacji
-        9. Zaproponuj kompleksowe wsparcie w zakresie identyfikacji wizualnej i social media
-        
-        Kluczowe korzyści do podkreślenia: wzmocnienie marki, wyższa pozycja w Google, wzrost zapytań od klientów.
-        """,
-        
-        "projektowanie_graficzne": f"""
-        Dla tego projektu graficznego zastosuj następujące podejście:
-        
-        1. Podkreśl nasze DOŚWIADCZENIE w tworzeniu profesjonalnych projektów graficznych
-        2. Zaznacz wiedzę z zakresu teorii koloru, typografii i kompozycji
-        3. Odnieś się do procesu badania grupy docelowej i doboru odpowiednich środków wyrazu
-        4. Wspomnij o tworzeniu spójnych systemów identyfikacji wizualnej
-        5. Podkreśl umiejętność projektowania dla różnych formatów i mediów
-        6. Zaproponuj warsztaty odkrywania tożsamości marki dla lepszego zrozumienia potrzeb
-        7. Wspomnij o przygotowaniu kompletnych ksiąg znaku i wytycznych brandingowych
-        8. Podkreśl doświadczenie w projektach zintegrowanych z kampaniami marketingowymi
-        9. Zaproponuj również wsparcie we wdrożeniu identyfikacji w mediach cyfrowych
-        
-        Kluczowe korzyści do podkreślenia: rozpoznawalna marka, spójny przekaz, profesjonalny wizerunek.
-        """,
-        
-        "marketing": f"""
-        Dla tego projektu marketingowego zastosuj następujące podejście:
-        
-        1. Podkreśl nasze DOŚWIADCZENIE w tworzeniu skutecznych kampanii marketingowych (+40% ROI)
-        2. Zaznacz wiedzę z zakresu customer journey i procesów decyzyjnych
-        3. Odnieś się do analityki marketingowej i optymalizacji kampanii
-        4. Wspomnij o integracji działań online i offline dla maksymalizacji efektów
-        5. Podkreśl umiejętność targetowania odpowiednich grup odbiorców
-        6. Zaproponuj strategie content marketingu i budowania wizerunku eksperckiego
-        7. Wspomnij o doświadczeniu w kampaniach Google Ads, Meta Ads i LinkedIn Ads
-        8. Podkreśl kompleksowe podejście łączące marketing treści, SEO i social media
-        9. Zaproponuj również wsparcie graficzne i wizualne dla kampanii
-        
-        Kluczowe korzyści do podkreślenia: zwiększenie rozpoznawalności, wzrost konwersji, budowanie lojalności klientów.
-        """,
-        
-        "social_media": f"""
-        Dla tego projektu social media zastosuj następujące podejście:
-        
-        1. Podkreśl nasze DOŚWIADCZENIE w prowadzeniu skutecznych kampanii w mediach społecznościowych
-        2. Zaznacz wiedzę z zakresu algorytmów poszczególnych platform i najlepszych praktyk
-        3. Odnieś się do tworzenia angażującej treści i budowania społeczności
-        4. Wspomnij o strategiach zwiększania zasięgów organicznych i płatnych
-        5. Podkreśl umiejętność tworzenia contentu dopasowanego do grup docelowych
-        6. Zaproponuj harmonogram publikacji i strategie zarządzania kryzysowego
-        7. Wspomnij o monitoringu efektywności i raportowaniu wyników
-        8. Podkreśl doświadczenie w tworzeniu kampanii reklamowych w social media
-        9. Zaproponuj kompleksową obsługę: strategia, grafiki, copywriting, analityka
-        
-        Kluczowe korzyści do podkreślenia: większe zaangażowanie, wzrost rozpoznawalności marki, konwersja obserwujących na klientów.
-        """
-    }
-    
-    # Try to match industry or return a default enhancement
-    for key, prompt in industry_prompts.items():
-        if key.lower() in industry.lower() or key.lower() in job_description.lower():
-            return prompt
-    
-    # Default general enhancement if no specific industry matched
-    return f"""
-    Dla tego projektu zastosuj następujące podejście:
-    
-    1. Podkreśl nasze doświadczenie w podobnych projektach i technologiach
-    2. Zaznacz konkretne mierzalne rezultaty osiągnięte dla poprzednich klientów
-    3. Odnieś się do unikalnych wyzwań tego typu projektów i jak je przezwyciężamy
-    4. Wspomnij o metodologii, która zapewnia terminowe dostarczenie i wysoką jakość
-    5. Podkreśl wartość naszego rozwiązania w kontekście ROI dla klienta
-    6. Zaproponuj dodatkową wartość, która wyróżnia naszą ofertę
-    7. Wspomnij o procesie współpracy i komunikacji podczas projektu
-    8. Podkreśl elastyczność i gotowość do dostosowania rozwiązania do konkretnych potrzeb
-    9. Zaproponuj kompleksowe podejście łączące technologię z projektowaniem graficznym, identyfikacją wizualną i strategią marketingową
-    
-    Kluczowe korzyści do podkreślenia: efektywność kosztowa, wysokiej jakości rezultaty, przewaga konkurencyjna, spójny przekaz marki.
-    """
-
-def apply_industry_specific_prompt(job_description, category, prompt):
-    """
-    Apply industry-specific prompt enhancement to the main prompt based on job category
-    """
-    # Determine industry/category from job data
-    industry = category.lower() if category else ""
-    
-    # If no clear category, try to infer from job description
-    if not industry:
-        # Common industry keywords to look for
-        industry_keywords = {
-            "e-commerce": ["sklep", "e-commerce", "ecommerce", "woocommerce", "shopify", "sprzedaż online", "koszyk"],
-            "landing_page": ["landing page", "strona docelowa", "leadowa", "konwersja", "lead generation"],
-            "aplikacja_mobilna": ["aplikacja mobilna", "aplikacja na telefon", "android", "ios", "flutter", "react native"],
-            "system_crm": ["crm", "erp", "system zarządzania", "system dla firmy", "automatyzacja procesów"],
-            "strona_firmowa": ["strona www", "strona internetowa", "wizytówka", "firma", "wizytówka internetowa"]
-        }
-        
-        # Check for keywords in job description
-        for key, keywords in industry_keywords.items():
-            if any(keyword.lower() in job_description.lower() for keyword in keywords):
-                industry = key
-                break
-    
-    # Get industry-specific enhancements
-    industry_enhancements = generate_industry_specific_prompt(industry, job_description)
-    
-    # Add industry-specific enhancements to the main prompt
-    enhanced_prompt = f"{prompt}\n\nDODATKOWE WSKAZÓWKI DLA BRANŻY:\n{industry_enhancements}"
-    
-    return enhanced_prompt
-
 def evaluate_relevance(job_description, client_info="", budget="", timeline="", additional_requirements=""):
     """Evaluate the relevance of a job for a software house on a scale from 1 to 10."""
-    # Try to get prompt from database first
-    custom_prompt = get_prompt_from_db('relevance')
+    prompt = f"""
+    Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce.
     
-    if custom_prompt:
-        # Replace placeholders in the custom prompt
-        prompt = custom_prompt
-        prompt = prompt.replace("{job_description}", job_description)
-        prompt = prompt.replace("{client_info}", client_info or "")
-        prompt = prompt.replace("{budget}", budget or "")
-        prompt = prompt.replace("{timeline}", timeline or "")
-        prompt = prompt.replace("{additional_requirements}", additional_requirements or "")
-    else:
-        # Use default prompt with more optimistic wording
-        prompt = f"""
-        Dokonaj strategicznej analizy biznesowej poniższego zlecenia pod kątem potencjalnej wartości dla software house'u specjalizującego się w aplikacjach webowych, mobilnych, systemach e-commerce, projektowaniu graficznym, identyfikacji wizualnej, marketingu i social media.
-        
-        Opis zlecenia: {job_description}
-        
-        {f"Informacje o kliencie: {client_info}" if client_info else ""}
-        {f"Budżet: {budget}" if budget else ""}
-        {f"Harmonogram: {timeline}" if timeline else ""}
-        {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
-        
-        KRYTERIA OCENY WARTOŚCI BIZNESOWEJ (skala 1-10):
-        
-        1. DOPASOWANIE TECHNOLOGICZNE - czy projekt pasuje do naszych kompetencji w React, PHP, Flutter, Python, WooCommerce, projektowaniu graficznym, identyfikacji wizualnej, marketingu lub social media? Znajdź punkt styczny nawet dla nietypowych projektów.
-        2. POTENCJAŁ DŁUGOTERMINOWY - czy zlecenie może prowadzić do stałej współpracy lub rozszerzeń projektu? Poszukaj możliwości budowania relacji.
-        3. PRESTIŻ I WARTOŚĆ REFERENCYJNA - czy projekt będzie atrakcyjnym case study dla przyszłych klientów? Rozważ jak można wykorzystać projekt w portfolio.
-        4. MARŻA I RENTOWNOŚĆ - czy budżet pozwala na wypracowanie satysfakcjonującej marży (min. 30%)? Załóż, że mamy efektywne procesy realizacji.
-        5. CZAS REALIZACJI VS. ZYSKOWNOŚĆ - czy stosunek wymaganego nakładu pracy do oczekiwanego wynagrodzenia jest korzystny? Załóż, że mamy gotowe komponenty przyspieszające pracę.
-        6. SKALOWALNOŚĆ TECHNOLOGII - czy technologia pozwala na efektywne wykorzystanie istniejących komponentów lub bibliotek? Załóż, że posiadamy szeroką bazę reużywalnych zasobów.
-        7. POTENCJAŁ POWTARZALNOŚCI - czy z projektu można wyprowadzić powtarzalne rozwiązanie dla innych klientów? Poszukaj uniwersalnych elementów.
-        8. RYZYKO WDROŻENIA - czy projekt niesie nadzwyczajne ryzyko opóźnień lub komplikacji? Załóż, że posiadamy doświadczenie w zarządzaniu kryzysami projektowymi.
-        9. KOMPLEMENTARNOŚĆ USŁUG - czy projekt może prowadzić do sprzedaży powiązanych usług (np. strona + identyfikacja wizualna, marketing)? Szukaj możliwości cross-sellingu.
-        
-        WAŻNE: Skup się przede wszystkim na szansach i potencjale, nie na ograniczeniach. W przypadku wątpliwości, oceniaj bardziej optymistycznie.
-        
-        Przypisz wagę każdemu kryterium, uwzględniając specyfikę zlecenia, następnie oblicz średnią ważoną, gdzie:
-        3-4 = Zlecenie o niskim dopasowaniu lub potencjale
-        5-6 = Zlecenie przeciętnie opłacalne, warte rozważenia
-        7-8 = Zlecenie bardzo dobre, dobrze dopasowane do naszych kompetencji
-        9-10 = Zlecenie idealne, perfekcyjnie pasujące do naszych możliwości i strategii
-        
-        UWAGA: Zwróć WYŁĄCZNIE finalną ocenę w postaci liczby całkowitej od 1 do 10, bez żadnych komentarzy czy wyjaśnień.
-        """
+    Opis zlecenia: {job_description}
+    
+    {f"Informacje o kliencie: {client_info}" if client_info else ""}
+    {f"Budżet: {budget}" if budget else ""}
+    {f"Harmonogram: {timeline}" if timeline else ""}
+    {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
+    
+    Gdzie:
+    1 = Zupełnie nieodpowiednie dla software house'u (np. usługi fizyczne, niezwiązane z IT)
+    5 = Częściowo odpowiednie (np. wymaga pewnych umiejętności IT, ale nie jest to główna specjalizacja software house'u)
+    10 = Idealnie dopasowane do kompetencji software house'u (np. tworzenie zaawansowanych aplikacji webowych)
+    
+    Zwróć tylko liczbę od 1 do 10 bez żadnych dodatkowych komentarzy.
+    """
     
     try:
-        response = get_gemini_response(prompt)
+        # Use the retry function with shorter timeout for relevance scoring
+        response_text = generate_with_retry(prompt, timeout=300)
         # Próba wyodrębnienia liczby z odpowiedzi
-        relevance_score = re.search(r'\b([1-9]|10)\b', response)
+        relevance_score = re.search(r'\b([1-9]|10)\b', response_text)
         if relevance_score:
-            raw_score = int(relevance_score.group(1))
-            
-            # Make the score more optimistic - apply a gentle curve that boosts lower scores
-            # while keeping high scores mostly the same
-            if raw_score <= 5:
-                # Boost lower scores more significantly
-                adjusted_score = min(10, raw_score + 3)
-            elif raw_score <= 7:
-                # Moderate boost for middle scores
-                adjusted_score = min(10, raw_score + 2)
-            else:
-                # Slight boost for already high scores
-                adjusted_score = min(10, raw_score + 1)
-                
-            return adjusted_score
+            return int(relevance_score.group(1))
         else:
-            return 7  # Default to an optimistic value if parsing fails
+            return 5  # Domyślna wartość w przypadku problemu z parsowaniem
     except Exception as e:
         logger.error(f"Błąd oceny relevance: {str(e)}")
-        return 7  # Default to an optimistic value in case of error
+        return 5  # Domyślna wartość w przypadku błędu
 
 def generate_initials_avatar(client_info):
     """Generate a URL for an avatar with the client's initials when no real avatar is available."""
@@ -523,136 +395,69 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         avatar_url = generate_initials_avatar(client_info)
         console.print(f"[blue]ℹ[/blue] Wygenerowano domyślny avatar z inicjałami: {avatar_url}")
     
-    # Try to get prompt from database first
-    custom_prompt = get_prompt_from_db('presentation')
+    prompt = f"""
+    Wygeneruj dane do prezentacji projektu w formacie JSON na podstawie następujących informacji:
     
-    if custom_prompt:
-        # Replace placeholders in the custom prompt
-        prompt = custom_prompt
-        prompt = prompt.replace("{job_description}", job_description)
-        prompt = prompt.replace("{client_info}", client_info or "")
-        prompt = prompt.replace("{budget}", budget or "")
-        prompt = prompt.replace("{additional_requirements}", additional_requirements or "")
-        prompt = prompt.replace("{employer_email}", employer_email or "")
-        prompt = prompt.replace("{proposal}", proposal or "")
-        prompt = prompt.replace("{job_id}", job_id or "")
-        prompt = prompt.replace("{default_data}", json.dumps(default_data, ensure_ascii=False))
-    else:
-        # Use default prompt
-        prompt = f"""
-        Wygeneruj wysoce perswazyjne dane do prezentacji projektu, wykorzystujące naukowe badania neuromarketingowe i psychologię decyzji zakupowych. Dane muszą być w formacie JSON, zgodnie z podaną strukturą.
-        
-        Opis zlecenia: {job_description}
-        {f"Informacje o kliencie: {client_info}" if client_info else ""}
-        {f"Budżet: {budget}" if budget else ""}
-        {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
-        {f"Email klienta: {employer_email}" if employer_email else ""}
-        
-        Propozycja, którą już przygotowaliśmy:
-        {proposal}
-        
-        WYMAGANE ELEMENTY PSYCHOLOGICZNE W PREZENTACJI:
-        1. KONTRASTUJĄCE SEKCJE PROBLEMÓW I ROZWIĄZAŃ - użyj języka bólu i przyjemności (pain vs. pleasure)
-        2. SPOŁECZNY DOWÓD SŁUSZNOŚCI - zawrzyj przynajmniej dwa konkretne przykłady z liczbami/statystykami
-        3. ZASADA AUTORYTETU - podkreśl ekspertyzę i doświadczenie zespołu
-        4. STRATEGIA WYRAŹNYCH KORZYŚCI - formułuj wartość w kategoriach ROI i przewagi konkurencyjnej
-        5. ELIMINACJA RYZYKA - uwzględnij gwarancję, jasny harmonogram i przewidywalne rezultaty
-        6. BEZPOŚREDNI WPŁYW NA BIZNES - podkreśl jak rozwiązanie zwiększa przychody/obniża koszty
-        7. WIZUALIZACJA SUKCESU - zawrzyj sekcje opisujące wyobrażalny scenariusz po wdrożeniu
-        8. INTEGRACJA USŁUG - podkreśl jak łączymy rozwiązania technologiczne z projektowaniem graficznym, identyfikacją wizualną i strategią marketingową
-        
-        STRUKTURA ARGUMENTACJI:
-        - Użyj formatu PROBLEM > IMPLIKACJE > ROZWIĄZANIE > WARTOŚĆ dla każdej kluczowej sekcji
-        - Zastosuj strukturę social proof HISTORIA > LICZBY > WYNIK
-        - Dodaj elementy wizualne wzmacniające przekaz w sekcji "features" i "benefits"
-        - Stwórz złożone, wielopoziomowe pakiety cenowe zwiększające postrzeganą wartość
-        - W sekcji "pricing" unikaj okrągłych kwot - użyj precyzyjnych liczb (np. 4999 zamiast 5000)
-        
-        WAŻNE STRATEGIE KONWERSJI:
-        - Użyj konkretnych, mierzalnych liczb we wszystkich kluczowych sekcjach (wzrost konwersji o X%)
-        - Wstaw przynajmniej jedno porównanie "przed i po" w sekcji zalet lub korzyści
-        - Umieść minimum dwa pytania retoryczne wzmacniające zaangażowanie
-        - Zastosuj techniki decoy pricing dla zwiększenia atrakcyjności głównej oferty
-        - Wycena musi być wyrażona jako inwestycja z oczekiwanym zwrotem, nie jako koszt
-        - Struktura zawiera trzy pakiety cenowe o różnej wartości, z wyraźnie oznaczonym pakietem rekomendowanym
-        
-        Zwróć kompletny, poprawny JSON zgodny DOKŁADNIE z podaną strukturą, zachowując wszystkie klucze i typy wartości.
-        
-        UWAGA: ZWRÓĆ WYŁĄCZNIE POPRAWNY, KOMPLETNY JSON - BEZ ŻADNYCH DODATKOWYCH WYJAŚNIEŃ CZY WPROWADZENIA. ZACZNIJ ODPOWIEDŹ NATYCHMIAST OD ZNAKU '{' I ZAKOŃCZ NA '}'.
-        
-        Przykładowy JSON (zachowaj dokładnie tę strukturę): {json.dumps(default_data, ensure_ascii=False)}
-        """
+    Opis zlecenia: {job_description}
+    {f"Informacje o kliencie: {client_info}" if client_info else ""}
+    {f"Budżet: {budget}" if budget else ""}
+    {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
+    {f"Email klienta: {employer_email}" if employer_email else ""}
+    
+    Propozycja, którą już przygotowaliśmy dla klienta:
+    {proposal}
+    
+    Dane powinny być zgodne z dokładnie taką samą strukturą jak poniższy JSON i zawierać realistyczne, profesjonalne informacje w języku polskim.
+    Wypełnij wszystkie pola odpowiednimi danymi, które pasują do opisu projektu.
+    
+    WAŻNE: 
+    - Upewnij się, że wycena w prezentacji jest dokładnie taka sama jak w propozycji (około 60% standardowej ceny rynkowej).
+    - Cena musi być podana jako liczba całkowita, bez żadnych jednostek, znaków czy formatowania (np. 5000, a nie "5000 PLN").
+    - Struktura "timeline" w JSON musi być DOKŁADNIE taka sama jak w przykładzie, z kluczami "sectionTitle", "sectionSubtitle" i "milestones".
+    - Pola ceny (price) i czasu wykonania (timelineDays) będą używane tylko w metadata, NIE MODYFIKUJ struktury timeline w głównej części JSON.
+    - Dodaj pole "useme_id" z wartością {job_id} (jeśli podano).
+    {f'- Dodaj pole "employer_email" z wartością "{employer_email}".' if employer_email else ""}
+    
+    {f"Logo klienta znajduje się pod ścieżką: {client_logo_path}" if client_logo_path else ""}
+    
+    Zwróć tylko i wyłącznie poprawny JSON bez żadnych dodatkowych komentarzy czy wyjaśnień.
+    Struktura musi być DOKŁADNIE taka sama jak w przykładzie, z tymi samymi kluczami i typami wartości.
+
+    Przykładowy JSON: {json.dumps(default_data, ensure_ascii=False)}
+    """
     
     try:
-        response = get_gemini_response(prompt)
-        console.print("[blue]ℹ[/blue] Otrzymano odpowiedź AI do generowania prezentacji")
-        
-        # The response is already a string, no need to call .strip() on it
-        response_text = response
+        # Use the retry function with longer timeout for complex JSON generation
+        response_text = generate_with_retry(prompt, timeout=120)
+        response_text = response_text.strip()
         
         # First attempt: try to parse the whole response as JSON
         try:
-            # Check if the response starts with "```json" and ends with "```" and remove those markers
-            if response_text.startswith("```json") and response_text.endswith("```"):
-                response_text = response_text[7:-3].strip()
-            elif response_text.startswith("```") and response_text.endswith("```"):
-                response_text = response_text[3:-3].strip()
-                
-            # Try to find and extract a JSON object
-            if not response_text.startswith("{"):
-                json_start = response_text.find("{")
-                if json_start != -1:
-                    response_text = response_text[json_start:]
-                    
             json_data = json.loads(response_text)
             console.print("[green]✓[/green] Poprawnie sparsowano JSON z odpowiedzi")
-        except json.JSONDecodeError as e:
-            console.print(f"[yellow]⚠[/yellow] Niepoprawny format JSON w odpowiedzi: {str(e)}, próbuję wyodrębnić")
+        except json.JSONDecodeError:
+            console.print("[yellow]⚠[/yellow] Niepoprawny format JSON w odpowiedzi, próbuję wyodrębnić")
             
             # Second attempt: try to extract JSON from the response
             json_match = re.search(r'```(?:json)?\s*({[\s\S]*?})\s*```', response_text)
             if not json_match:
-                # Try more aggressive extraction - find from first { to last }
-                open_brace = response_text.find('{')
-                close_brace = response_text.rfind('}')
-                if open_brace != -1 and close_brace != -1 and open_brace < close_brace:
-                    json_text = response_text[open_brace:close_brace+1]
-                    try:
-                        json_data = json.loads(json_text)
-                        console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z odpowiedzi")
-                    except json.JSONDecodeError:
-                        console.print("[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON")
-                        # Let's try to repair JSON if it's truncated
-                        try:
-                            # Add closing braces if needed
-                            missing_braces = json_text.count('{') - json_text.count('}')
-                            if missing_braces > 0:
-                                json_text += '}' * missing_braces
-                                json_data = json.loads(json_text)
-                                console.print("[green]✓[/green] Naprawiono i sparsowano niepełny JSON")
-                            else:
-                                # If not a simple truncation, use fallback
-                                json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
-                                console.print("[yellow]⚠[/yellow] Nie udało się naprawić JSON, wygenerowano strukturę z tekstu")
-                        except:
-                            # Create a customized structure based on content extraction from AI response
-                            json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
-                            console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
-                else:
-                    console.print("[red]✗[/red] Nie znaleziono pełnej struktury JSON")
-                    # Create a customized structure based on content extraction from AI response
-                    json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
-                    console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
-            else:
+                json_match = re.search(r'({[\s\S]*})', response_text)
+                
+            if json_match:
                 try:
                     json_text = json_match.group(1).strip()
                     json_data = json.loads(json_text)
-                    console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z kodu w odpowiedzi")
+                    console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z odpowiedzi")
                 except json.JSONDecodeError:
                     console.print("[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON")
-                    # Create a customized structure based on content extraction from AI response
-                    json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
-                    console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
+                    # Use the default template and fill in known values
+                    json_data = default_data.copy()
+                    console.print("[yellow]⚠[/yellow] Użyto domyślnego szablonu z minimalnymi danymi")
+            else:
+                console.print("[red]✗[/red] Nie znaleziono JSON w odpowiedzi")
+                # Use the default template and fill in known values
+                json_data = default_data.copy()
+                console.print("[yellow]⚠[/yellow] Użyto domyślnego szablonu z minimalnymi danymi")
         
         # Extract numeric price and timeline values for metadata only
         extracted_price = extract_price_from_proposal(proposal, budget)
@@ -681,7 +486,8 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         # Make sure timeline section exists and has the proper structure
         if 'timeline' not in json_data or not isinstance(json_data['timeline'], dict):
             console.print("[yellow]⚠[/yellow] Brak lub nieprawidłowa sekcja timeline w wygenerowanym JSON, używam domyślnej")
-            json_data['timeline'] = generate_timeline_section(proposal, job_description)
+            if 'timeline' in default_data:
+                json_data['timeline'] = default_data['timeline']
         
         # Ensure client name is set in hero section
         if 'hero' in json_data and client_info and not json_data['hero'].get('titlePart2ClientName'):
@@ -697,309 +503,20 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         
     except Exception as e:
         console.print(f"[bold red]Błąd generowania danych prezentacji: {str(e)}[/bold red]")
-        # In case of any error, create a customized fallback structure with available data
-        custom_fallback = create_presentation_from_text("", default_data, client_info, job_description, proposal)
-        custom_fallback["useme_id"] = job_id
-        custom_fallback["price"] = extract_price_from_proposal(proposal, budget)
-        custom_fallback["timelineDays"] = extract_timeline_from_proposal(proposal)
+        # In case of any error, return a basic but valid JSON structure
+        default_data["useme_id"] = job_id
+        default_data["price"] = extract_price_from_proposal(proposal, budget)
+        default_data["timelineDays"] = extract_timeline_from_proposal(proposal)
         if employer_email:
-            custom_fallback["employer_email"] = employer_email
+            default_data["employer_email"] = employer_email
         
-        # If we have an avatar URL, update the clientLogoSrc in the hero section even for the custom fallback
-        if avatar_url and 'hero' in custom_fallback:
-            custom_fallback['hero']['clientLogoSrc'] = avatar_url
-            custom_fallback['hero']['clientLogoAlt'] = f"Logo {client_info or 'Klienta'}"
+        # If we have an avatar URL, update the clientLogoSrc in the hero section even for the default data
+        if avatar_url and 'hero' in default_data:
+            default_data['hero']['clientLogoSrc'] = avatar_url
+            default_data['hero']['clientLogoAlt'] = f"Logo {client_info or 'Klienta'}"
             console.print(f"[green]✓[/green] Ustawiono avatar klienta w domyślnej prezentacji")
             
-        return custom_fallback
-
-def create_presentation_from_text(ai_response, template_data, client_info, job_description, proposal):
-    """
-    Create a customized presentation structure by extracting key information from AI response text.
-    This is used as a fallback when JSON parsing fails.
-    """
-    # Start with a copy of the template
-    custom_data = template_data.copy()
-    
-    # Set personalized hero section
-    if 'hero' in custom_data:
-        custom_data['hero']['titlePart2ClientName'] = client_info or "Klienta"
-        
-        # Extract subtitle/description from response or job_description
-        if len(job_description) > 150:
-            custom_data['hero']['subtitle'] = job_description[:147] + "..."
-        else:
-            custom_data['hero']['subtitle'] = job_description
-    
-    # Extract pricing information from the proposal
-    extracted_price = extract_price_from_proposal(proposal)
-    price_text = f"{extracted_price},00 PLN brutto"
-    
-    # Get timeline information
-    timeline_days = extract_timeline_from_proposal(proposal)
-    
-    # Create a custom pricing section
-    if 'pricing' not in custom_data:
-        custom_data['pricing'] = {
-            "title": "Pakiety Cenowe",
-            "subtitle": "Wybierz pakiet dopasowany do Twoich potrzeb",
-            "packages": []
-        }
-    
-    # Create customized packages based on the extracted price
-    package_base = int(extracted_price * 0.8)
-    package_premium = int(extracted_price * 1.2)
-    
-    # Build packages with appropriate descriptions
-    custom_data['pricing']['packages'] = [
-        {
-            "name": "Pakiet Podstawowy",
-            "price": f"{package_base},00 PLN brutto",
-            "description": "Realizacja podstawowego zakresu projektu",
-            "features": ["Podstawowa funkcjonalność", "Wdrożenie rozwiązania", "Testy jakościowe"],
-            "isPopular": False
-        },
-        {
-            "name": "Pakiet Standardowy",
-            "price": price_text,
-            "description": "Kompletne rozwiązanie dostosowane do Twoich potrzeb",
-            "features": ["Pełna funkcjonalność", "Wsparcie techniczne", "Testy i optymalizacja", "Dokumentacja"],
-            "isPopular": True
-        },
-        {
-            "name": "Pakiet Premium",
-            "price": f"{package_premium},00 PLN brutto",
-            "description": "Rozszerzona wersja z dodatkowymi funkcjami i wsparciem",
-            "features": ["Wszystkie funkcje pakietu Standardowego", "Priorytetowe wsparcie", "Dodatkowe funkcje", "Szkolenie i wdrożenie"],
-            "isPopular": False
-        }
-    ]
-    
-    # Create understanding section if needed
-    if 'understanding' not in custom_data:
-        custom_data['understanding'] = {
-            "title": "Nasze Podejście",
-            "subtitle": "Rozumiemy Twoje potrzeby",
-            "content": extract_understanding(job_description, ai_response)
-        }
-    
-    # Create benefits section if needed
-    if 'benefits' not in custom_data:
-        custom_data['benefits'] = {
-            "title": "Korzyści Współpracy",
-            "subtitle": "Co zyskujesz wybierając naszą ofertę",
-            "items": extract_benefits(job_description, ai_response, proposal)
-        }
-    
-    # Create testimonials if needed
-    if 'testimonials' not in custom_data:
-        custom_data['testimonials'] = {
-            "title": "Opinie Klientów",
-            "subtitle": "Co mówią o nas klienci",
-            "items": [
-                {
-                    "quote": "Zespół Soft Synergy dostarczył rozwiązanie, które znacząco zwiększyło efektywność naszej firmy. Profesjonalizm i terminowość to ich znaki rozpoznawcze.",
-                    "author": "Marta Kowalska",
-                    "company": "Tech Solutions"
-                },
-                {
-                    "quote": "Współpraca na najwyższym poziomie. Polecam każdemu, kto szuka rzetelnego partnera IT.",
-                    "author": "Tomasz Nowak",
-                    "company": "Marketing Plus"
-                }
-            ]
-        }
-    
-    # Create features section if needed
-    if 'features' not in custom_data:
-        custom_data['features'] = {
-            "title": "Funkcjonalności",
-            "subtitle": "Co oferujemy w ramach projektu",
-            "items": extract_features(job_description, ai_response)
-        }
-    
-    # Create timeline section
-    custom_data['timeline'] = generate_timeline_section(proposal, job_description)
-    
-    return custom_data
-
-def extract_understanding(job_description, ai_response):
-    """Extract or generate understanding content from job description and AI response"""
-    description_excerpt = job_description[:min(len(job_description), 300)]
-    
-    understanding = (
-        f"Dokładnie przeanalizowaliśmy Twoje potrzeby i rozumiemy, że kluczowe dla Ciebie są: "
-        f"wydajność, niezawodność i terminowość realizacji. Na podstawie Twojego opisu projektu "
-        f"zidentyfikowaliśmy główne wyzwania i przygotowaliśmy rozwiązanie, które w pełni odpowiada na Twoje oczekiwania. "
-        f"\n\nNasz zespół ma doświadczenie w realizacji podobnych projektów, dzięki czemu możemy zagwarantować "
-        f"wysoką jakość wykonania i terminową realizację."
-    )
-    return understanding
-
-def extract_benefits(job_description, ai_response, proposal):
-    """Extract or generate benefits from job description, AI response and proposal"""
-    basic_benefits = [
-        {
-            "title": "Wzrost Efektywności",
-            "description": "Nasze rozwiązanie zwiększa efektywność operacyjną o minimum 30%, co przekłada się na realne oszczędności"
-        },
-        {
-            "title": "Przewaga Konkurencyjna",
-            "description": "Zyskasz rozwiązanie, które wyróżni Cię na tle konkurencji i przyciągnie nowych klientów"
-        },
-        {
-            "title": "Wsparcie Techniczne",
-            "description": "Zapewniamy pełne wsparcie techniczne i bieżące aktualizacje systemu"
-        },
-        {
-            "title": "Terminowa Realizacja",
-            "description": f"Gwarantujemy terminową realizację projektu w ciągu {extract_timeline_from_proposal(proposal)} dni"
-        }
-    ]
-    return basic_benefits
-
-def extract_features(job_description, ai_response):
-    """Extract or generate features from job description and AI response"""
-    if "strona" in job_description.lower() or "website" in job_description.lower():
-        return [
-            {
-                "title": "Responsywny Design",
-                "description": "Strona dostosowana do wszystkich urządzeń - desktop, tablet, mobile"
-            },
-            {
-                "title": "Optymalizacja SEO",
-                "description": "Implementacja najlepszych praktyk SEO dla lepszej widoczności w wyszukiwarkach"
-            },
-            {
-                "title": "Intuicyjny CMS",
-                "description": "Prosty system zarządzania treścią, który pozwoli na samodzielną aktualizację strony"
-            },
-            {
-                "title": "Bezpieczeństwo",
-                "description": "Implementacja zaawansowanych zabezpieczeń chroniących przed atakami"
-            }
-        ]
-    elif "aplikacja" in job_description.lower() or "app" in job_description.lower():
-        return [
-            {
-                "title": "Intuicyjny Interfejs",
-                "description": "Aplikacja z prostym i intuicyjnym interfejsem użytkownika"
-            },
-            {
-                "title": "Tryb Offline",
-                "description": "Możliwość korzystania z kluczowych funkcji nawet bez dostępu do internetu"
-            },
-            {
-                "title": "Szybkość Działania",
-                "description": "Zoptymalizowany kod zapewniający płynne działanie aplikacji"
-            },
-            {
-                "title": "Integracje",
-                "description": "Możliwość integracji z popularnymi serwisami i API"
-            }
-        ]
-    else:
-        return [
-            {
-                "title": "Jakość Wykonania",
-                "description": "Gwarancja wysokiej jakości wykonania zgodnie z najlepszymi praktykami"
-            },
-            {
-                "title": "Wsparcie Techniczne",
-                "description": "Pełne wsparcie techniczne w trakcie i po zakończeniu projektu"
-            },
-            {
-                "title": "Skalowalność",
-                "description": "Rozwiązanie, które rośnie wraz z Twoim biznesem"
-            },
-            {
-                "title": "Bezpieczeństwo",
-                "description": "Implementacja zaawansowanych zabezpieczeń i zgodność z RODO"
-            }
-        ]
-
-def generate_timeline_section(proposal, job_description):
-    """Generate timeline section based on proposal text and job description"""
-    timeline_days = extract_timeline_from_proposal(proposal)
-    
-    # Default timeline steps
-    timeline_steps = [
-        {
-            "title": "Analiza Wymagań",
-            "description": "Dokładna analiza Twoich potrzeb i oczekiwań",
-            "days": max(2, int(timeline_days * 0.2))
-        },
-        {
-            "title": "Projektowanie",
-            "description": "Opracowanie koncepcji i projektu rozwiązania",
-            "days": max(3, int(timeline_days * 0.3))
-        },
-        {
-            "title": "Implementacja",
-            "description": "Wdrożenie rozwiązania zgodnie z projektem",
-            "days": max(5, int(timeline_days * 0.4))
-        },
-        {
-            "title": "Testy i Finalizacja",
-            "description": "Testy jakościowe i przekazanie finalnego produktu",
-            "days": max(2, int(timeline_days * 0.1))
-        }
-    ]
-    
-    # Customize timeline based on job type
-    if "strona" in job_description.lower() or "website" in job_description.lower():
-        timeline_steps = [
-            {
-                "title": "Analiza i Projektowanie",
-                "description": "Analiza wymagań i przygotowanie projektu graficznego",
-                "days": max(2, int(timeline_days * 0.2))
-            },
-            {
-                "title": "Akceptacja Projektu",
-                "description": "Prezentacja i akceptacja projektu graficznego",
-                "days": max(2, int(timeline_days * 0.1))
-            },
-            {
-                "title": "Kodowanie",
-                "description": "Implementacja strony zgodnie z projektem",
-                "days": max(5, int(timeline_days * 0.5))
-            },
-            {
-                "title": "Testy i Wdrożenie",
-                "description": "Testy funkcjonalne i wdrożenie na serwer produkcyjny",
-                "days": max(2, int(timeline_days * 0.2))
-            }
-        ]
-    elif "aplikacja" in job_description.lower() or "app" in job_description.lower():
-        timeline_steps = [
-            {
-                "title": "Analiza Wymagań",
-                "description": "Określenie funkcjonalności i architektury aplikacji",
-                "days": max(3, int(timeline_days * 0.15))
-            },
-            {
-                "title": "Projekt UX/UI",
-                "description": "Zaprojektowanie interfejsu użytkownika",
-                "days": max(4, int(timeline_days * 0.2))
-            },
-            {
-                "title": "Rozwój Aplikacji",
-                "description": "Implementacja funkcjonalności aplikacji",
-                "days": max(8, int(timeline_days * 0.5))
-            },
-            {
-                "title": "Testy i Publikacja",
-                "description": "Testy, poprawki i publikacja aplikacji",
-                "days": max(3, int(timeline_days * 0.15))
-            }
-        ]
-    
-    return {
-        "title": "Harmonogram Realizacji",
-        "subtitle": f"Projekt zostanie zrealizowany w ciągu {timeline_days} dni",
-        "totalDays": timeline_days,
-        "steps": timeline_steps
-    }
+        return default_data
 
 # Helper functions to extract price and timeline from proposal
 def extract_price_from_proposal(proposal, budget=""):
@@ -1164,9 +681,9 @@ def generate_slug(title, description, client_name):
     """
     
     try:
-        response = get_gemini_response(prompt)
-        # The response is already a string
-        slug = response.lower()
+        # Use the retry function with shorter timeout for slug generation
+        slug = generate_with_retry(prompt, timeout=300)
+        slug = slug.strip().lower()
         # Usuń polskie znaki diakrytyczne
         slug = unicodedata.normalize('NFKD', slug).encode('ASCII', 'ignore').decode('utf-8')
         # Usuń wszystkie znaki specjalne i zamień spacje na myślniki
@@ -1252,6 +769,8 @@ def post_generated_proposals(proposals_file, auto_post=False):
                                     console.print(f"[bold green]Updated presentation data with employer email in {presentation_file}[/bold green]")
                                 except Exception as e:
                                     console.print(f"[bold red]Error updating presentation data: {str(e)}[/bold red]")
+
+                                    
                 else:
                     console.print(f"[bold red]Failed to post proposal to {job_url}[/bold red]")
                 
@@ -1269,65 +788,41 @@ def post_generated_proposals(proposals_file, auto_post=False):
 
 def generate_email(job_description, project_slug, client_info="", job_title=""):
     """Generate a follow-up email for a job proposal."""
-    # Try to get prompt from database first
-    custom_prompt = get_prompt_from_db('email')
+    prompt = f"""
+    Wygeneruj krótki, profesjonalny email w języku polskim, który zostałby wysłany do klienta po złożeniu propozycji na giełdzie zleceń Useme.
     
-    if custom_prompt:
-        # Replace placeholders in the custom prompt
-        prompt = custom_prompt
-        prompt = prompt.replace("{job_description}", job_description)
-        prompt = prompt.replace("{client_info}", client_info or "")
-        prompt = prompt.replace("{project_slug}", project_slug or "")
-        prompt = prompt.replace("{job_title}", job_title or "")
-    else:
-        # Use default prompt
-        prompt = f"""
-        Wygeneruj niezwykle skuteczny email follow-up wykorzystujący najnowocześniejsze strategie konwersji oparte na badaniach behawioralnych. Email będzie wysłany po złożeniu propozycji na Useme.
-        
-        Opis zlecenia: {job_description}
-        {f"Informacje o kliencie: {client_info}" if client_info else ""}    
-        
-        Email musi wykorzystywać następujące techniki psychologii perswazji:
-        
-        1. PERSONALIZACJA I ROZPOZNANIE - rozpocznij od silnego, spersonalizowanego powitania nawiązującego do konkretnego projektu z Useme
-        2. PRZEMYŚLANA DIAGNOZA - udowodnij, że dokładnie rozumiesz UKRYTE problemy i potrzeby klienta (głębsze niż to, co wyraził bezpośrednio)
-        3. OPOWIADANIE HISTORII - przedstaw krótką historię podobnego sukcesu (z liczbami i konkretnymi rezultatami)
-        4. PODKREŚLENIE WARTOŚCI - wyjaśnij, dlaczego współpraca z Soft Synergy to nie koszt, ale inwestycja o wymiernym zwrocie
-        5. PILNOŚĆ DZIAŁANIA - subtelnie podkreśl koszty zwlekania z decyzją 
-        6. ELEMENT ZASKOCZENIA - zaoferuj coś nieoczekiwanego, co przekracza standardową propozycję
-        7. SILNE CTA - zaproś do obejrzenia przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
-        8. KOMPLEKSOWOŚĆ USŁUG - podkreśl, że oferujemy pełen zakres usług: rozwiązania technologiczne, projektowanie graficzne, identyfikację wizualną, marketing i social media
-        
-        PSYCHOLOGICZNE WYZWALACZE:
-        - Wykorzystaj efekt świeżości i primacy stawiając najważniejsze treści na początku i końcu
-        - Wstaw co najmniej jedno pytanie angażujące czytelnika
-        - Użyj technik presupozycji (np. "Kiedy zobaczy Pan/Pani efekty naszej pracy..." zamiast "Jeśli zdecyduje się Pan/Pani...")
-        - Zastosuj przynajmniej jedną technikę wzbudzania ciekawości/luki informacyjnej
-        - Zawrzyj przynajmniej jedną uwiarygadniającą statystykę lub liczbę
-        - Użyj języka inkluzywnego (my/nasz) zamiast dystansującego (ja/mój)
-        - Dodaj element wzmacniający poczucie ekskluzywności propozycji
-        
-        FORMATOWANIE:
-        - Email musi być w języku polskim, profesjonalny i naturalny
-        - Krótkie paragrafy (max 2-3 linijki)
-        - Przynajmniej 1 pytanie retoryczne (zwiększa zaangażowanie o 85%)
-        - Link do prezentacji: prezentacje.soft-synergy.com/{project_slug} musi być wyraźnie wyróżniony
-        - NIE używaj korporacyjnych klisz czy przesadnie formalnego języka
-        
-        Dane kontaktowe (umieść je na końcu w osobnych liniach):
-        Z poważaniem,
-        Antoni Seba
-        Soft Synergy
-        Tel: 576 205 389
-        Email: info@soft-synergy.com
-        
-        Zwróć tylko treść emaila bez dodatkowych komentarzy czy objaśnień.
-        """
+    Opis zlecenia: {job_description}
+    {f"Informacje o kliencie: {client_info}" if client_info else ""}    
+    
+    Email powinien zawierać:
+    1. Przywitanie + odniesienie się do ogłoszenia na Useme
+    2. Propozycja rozwiązania – jak podejdziemy do projektu
+    3. Social proof – link do portfolio (https://soft-synergy.com) + krótko o doświadczeniu
+    4. Call to action – zaproszenie do kontaktu i link do przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
+    
+    ZASADY:
+    - Maksymalnie 150 słów
+    - Email musi być w języku polskim
+    - Używaj profesjonalnego, ale przyjaznego tonu
+    - Podkreśl, że widział ogłoszenie na Useme
+    - Podkreśl link do prezentacji: prezentacje.soft-synergy.com/{project_slug}
+    - Nie używaj zwrotów sugerujących, że jesteś AI
+    - Nie musisz dołączać nagłówka "Temat:" w treści maila
+    - Pisz jako Antoni Seba, przedstawiciel firmy Soft Synergy
+    
+    Dane kontaktowe (umieść je na końcu w osobnych liniach):
+    Z poważaniem,
+    Antoni Seba
+    Soft Synergy
+    Tel: 576 205 389
+    Email: info@soft-synergy.com
+    
+    Zwróć tylko treść emaila bez dodatkowych komentarzy czy objaśnień.
+    """
     
     try:
-        response = get_gemini_response(prompt)
-        # The response is already a string
-        return response
+        # Use the retry function for email generation
+        return generate_with_retry(prompt, timeout=45)
     except Exception as e:
         return f"Błąd generowania emaila: {str(e)}"
 
@@ -1368,11 +863,6 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
         timeline = job.get('expiry_date', '')
         additional_requirements = job.get('category', '')
         
-        console.print(f"\n[bold cyan]Przetwarzanie oferty {job_id} ({i+1}/{job_count}): {job_title}[/bold cyan]")
-        
-        # Get existing data from database to avoid regenerating it
-        existing_data = db.get_job_by_id(job_id)
-        
         # Determine if this job has attachments
         attachments = []
         if job.get('attachments'):
@@ -1386,113 +876,78 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
             except Exception as e:
                 console.print(f"[red]Błąd parsowania załączników dla oferty {job_id}: {str(e)}[/red]")
         
-        # Check for existing relevance score first
-        relevance_score = None
-        if existing_data and existing_data.get('relevance_score'):
-            relevance_score = existing_data.get('relevance_score')
-            console.print(f"[green]✓[/green] Użyto istniejącej oceny relevance: {relevance_score}")
-        else:
-            # Calculate relevance score only if it doesn't exist
-            relevance_score = evaluate_relevance(
+        console.print(f"\n[bold cyan]Przetwarzanie oferty {job_id} ({i+1}/{job_count}): {job_title}[/bold cyan]")
+        
+        # Generate project slug
+        project_slug = generate_slug(job_title, job_description, client_info)
+        console.print(f"[blue]Wygenerowany slug projektu: {project_slug}[/blue]")
+        
+        # Try to extract employer email directly from Useme
+        employer_email = None
+        try:
+            console.print(f"[blue]Próba ekstraktowania adresu email pracodawcy dla {job_id}...[/blue]")
+            # Get cookies from UsemeProposalPoster to ensure they're up-to-date
+            try:
+                from useme_post_proposal import COOKIES as USEME_COOKIES
+                console.print(f"[blue]Używanie aktualnych cookie z useme_post_proposal.py[/blue]")
+                employer_email = extract_employer_email(job_id, cookies=USEME_COOKIES)
+            except ImportError:
+                # Fallback to default cookies in extract_useme_email
+                console.print(f"[yellow]Używanie domyślnych cookie z extract_useme_email.py[/yellow]")
+                employer_email = extract_employer_email(job_id)
+                
+            if employer_email:
+                console.print(f"[green]✓[/green] Wyodrębniono adres email pracodawcy: {employer_email}")
+            else:
+                console.print(f"[yellow]⚠[/yellow] Nie udało się wyodrębnić adresu email pracodawcy")
+        except Exception as e:
+            console.print(f"[red]✗[/red] Błąd podczas próby wyodrębnienia adresu email: {str(e)}")
+        
+        try:
+            # Generate proposal
+            proposal_text = generate_proposal(
                 job_description=job_description,
                 client_info=client_info,
                 budget=budget,
                 timeline=timeline,
-                additional_requirements=additional_requirements
+                additional_requirements=additional_requirements,
+                project_slug=project_slug
             )
-            console.print(f"[blue]ℹ[/blue] Wygenerowano nową ocenę relevance: {relevance_score}")
             
-            # Make the rating more optimistic - scale it up if it's below 8
-            if relevance_score < 8:
-                original_score = relevance_score
-                relevance_score = min(10, relevance_score + 2)  # Add 2 to score but cap at 10
-                console.print(f"[yellow]⚠[/yellow] Skorygowano ocenę relevance z {original_score} na {relevance_score}")
-        
-        # Skip jobs with relevance < min_relevance to save API tokens
-        if relevance_score < min_relevance:
-            console.print(f"[yellow]⚠[/yellow] Pomijam ofertę {job_id} - zbyt niska ocena relevance: {relevance_score}")
-            continue
-        
-        # Check for existing project slug and reuse if available
-        project_slug = None
-        if existing_data and existing_data.get('project_slug'):
-            project_slug = existing_data.get('project_slug')
-            console.print(f"[green]✓[/green] Użyto istniejącego sluga projektu: {project_slug}")
-        else:
-            # Generate project slug only if it doesn't exist
-            project_slug = generate_slug(job_title, job_description, client_info)
-            console.print(f"[blue]ℹ[/blue] Wygenerowano nowy slug projektu: {project_slug}")
-        
-        # Try to extract employer email directly from Useme if it doesn't exist yet
-        employer_email = None
-        if existing_data and existing_data.get('employer_email'):
-            employer_email = existing_data.get('employer_email')
-            console.print(f"[green]✓[/green] Użyto istniejącego adresu email pracodawcy: {employer_email}")
-        else:
-            try:
-                console.print(f"[blue]Próba ekstraktowania adresu email pracodawcy dla {job_id}...[/blue]")
-                # Get cookies from UsemeProposalPoster to ensure they're up-to-date
-                try:
-                    from useme_post_proposal import COOKIES as USEME_COOKIES
-                    console.print(f"[blue]Używanie aktualnych cookie z useme_post_proposal.py[/blue]")
-                    employer_email = extract_employer_email(job_id, cookies=USEME_COOKIES)
-                except ImportError:
-                    # Fallback to default cookies in extract_useme_email
-                    console.print(f"[yellow]Używanie domyślnych cookie z extract_useme_email.py[/yellow]")
-                    employer_email = extract_employer_email(job_id)
-                    
-                if employer_email:
-                    console.print(f"[green]✓[/green] Wyodrębniono adres email pracodawcy: {employer_email}")
-                else:
-                    console.print(f"[yellow]⚠[/yellow] Nie udało się wyodrębnić adresu email pracodawcy")
-            except Exception as e:
-                console.print(f"[red]✗[/red] Błąd podczas próby wyodrębnienia adresu email: {str(e)}")
-        
-        try:
-            # Check for existing proposal and reuse if available
-            proposal_text = None
-            if existing_data and existing_data.get('proposal_text'):
-                proposal_text = existing_data.get('proposal_text')
-                console.print(f"[green]✓[/green] Użyto istniejącej propozycji dla oferty {job_id}")
+            # Check for error messages early to avoid processing invalid proposals
+            error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
+            if any(error_text in proposal_text for error_text in error_indicators):
+                console.print(f"[bold red]⚠ Wykryto błąd w wygenerowanej propozycji. Propozycja nie zostanie zapisana ani wysłana.[/bold red]")
+                console.print(f"[red]Treść błędu: {proposal_text}[/red]")
+                continue
+                
+            # Generate follow-up email content
+            email_content = generate_email(
+                job_description=job_description, 
+                project_slug=project_slug,
+                client_info=client_info,
+                job_title=job_title
+            )
+            
+            # Check for errors in email content
+            if any(error_text in email_content for error_text in error_indicators):
+                console.print(f"[bold red]⚠ Wykryto błąd w wygenerowanym emailu. Zostanie użyta tylko poprawna treść propozycji.[/bold red]")
+                console.print(f"[red]Treść błędu: {email_content}[/red]")
+                email_content = f"Nie udało się wygenerować treści email. Proszę użyć wygenerowanej propozycji."
             else:
-                # Generate proposal only if it doesn't exist
-                proposal_text = generate_proposal(
+                console.print(f"[green]✓[/green] Wygenerowano treść email dla oferty {job_id}")
+            
+            # Calculate relevance score
+            relevance_score = job.get('relevance_score')
+            if not relevance_score:
+                relevance_score = evaluate_relevance(
                     job_description=job_description,
                     client_info=client_info,
                     budget=budget,
                     timeline=timeline,
-                    additional_requirements=additional_requirements,
-                    project_slug=project_slug
+                    additional_requirements=additional_requirements
                 )
-                console.print(f"[blue]ℹ[/blue] Wygenerowano nową propozycję dla oferty {job_id}")
             
-            # Check for existing email content and reuse if available
-            email_content = None
-            if existing_data and existing_data.get('email_content'):
-                email_content = existing_data.get('email_content')
-                console.print(f"[green]✓[/green] Użyto istniejącej treści email dla oferty {job_id}")
-            else:
-                # Generate email content only if it doesn't exist
-                email_content = generate_email(
-                    job_description=job_description, 
-                    project_slug=project_slug,
-                    client_info=client_info,
-                    job_title=job_title
-                )
-                console.print(f"[blue]ℹ[/blue] Wygenerowano nową treść email dla oferty {job_id}")
-            
-            # Extract price and timeline only if needed
-            price = None
-            timeline_days = None
-            if existing_data and existing_data.get('price') and existing_data.get('timeline_days'):
-                price = existing_data.get('price')
-                timeline_days = existing_data.get('timeline_days')
-                console.print(f"[green]✓[/green] Użyto istniejącej ceny: {price} PLN i czasu realizacji: {timeline_days} dni")
-            else:
-                price = extract_price_from_proposal(proposal_text, budget)
-                timeline_days = extract_timeline_from_proposal(proposal_text)
-                console.print(f"[blue]ℹ[/blue] Wyodrębniono cenę: {price} PLN i czas realizacji: {timeline_days} dni")
-                
             # Prepare proposal data
             proposal_data = {
                 "job_id": job_id,
@@ -1501,8 +956,8 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 "url": job.get('url', f"https://useme.com/pl/jobs/{job_id}/"),
                 "project_slug": project_slug,
                 "relevance_score": relevance_score,
-                "price": price,
-                "timeline_days": timeline_days,
+                "price": extract_price_from_proposal(proposal_text, budget),
+                "timeline_days": extract_timeline_from_proposal(proposal_text),
                 "email_content": email_content,
                 "attachments": attachments
             }
@@ -1515,54 +970,72 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
             
             # Update job in the database
             if auto_save:
-                db.update_job_proposal(
-                    job_id=job_id,
-                    proposal_text=proposal_text,
-                    project_slug=project_slug,
-                    relevance_score=relevance_score,
-                    employer_email=employer_email,
-                    price=price,
-                    timeline_days=timeline_days,
-                    email_content=email_content,
-                    attachments=attachments
-                )
-                console.print(f"[green]✓[/green] Zaktualizowano ofertę {job_id} w bazie danych")
-                processed_count += 1
-            
-            # Optional: generate presentation data if it doesn't exist already
-            presentation_exists = os.path.exists(os.path.join('presentations', f"{project_slug}.json"))
-            if not presentation_exists:
-                try:
-                    presentation_data = generate_presentation_data(
-                        job_description=job_description,
-                        proposal=proposal_text,
-                        job_id=job_id,
-                        client_info=client_info,
-                        budget=budget,
-                        timeline=timeline,
-                        additional_requirements=additional_requirements,
-                        employer_email=employer_email
-                    )
-                    
-                    # Save presentation data to file
-                    if presentation_data:
-                        # Create presentations directory if it doesn't exist
-                        os.makedirs('presentations', exist_ok=True)
-                        
-                        # Save presentation data
-                        presentation_file = os.path.join('presentations', f"{project_slug}.json")
-                        with open(presentation_file, 'w', encoding='utf-8') as f:
-                            json.dump(presentation_data, f, ensure_ascii=False, indent=2)
-                        console.print(f"[green]✓[/green] Zapisano dane prezentacji do pliku {presentation_file}")
-                    
-                    console.print(f"[green]✓[/green] Wygenerowano prezentację dla oferty {job_id}")
-                except Exception as e:
-                    console.print(f"[red]✗[/red] Błąd generowania prezentacji dla oferty {job_id}: {str(e)}")
-            else:
-                console.print(f"[green]✓[/green] Prezentacja dla oferty {job_id} już istnieje")
+                # Make sure we're not saving error messages to the database
+                error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
+                has_errors = any(error_text in proposal_text for error_text in error_indicators) or any(error_text in email_content for error_text in error_indicators)
                 
-            # POST PROPOSAL TO USEME if not already posted
-            if not existing_data or not existing_data.get('proposal_submitted_at'):
+                if not has_errors:
+                    db.update_job_proposal(
+                        job_id=job_id,
+                        proposal_text=proposal_text,
+                        project_slug=project_slug,
+                        relevance_score=relevance_score,
+                        employer_email=employer_email,
+                        price=proposal_data["price"],
+                        timeline_days=proposal_data["timeline_days"],
+                        email_content=email_content,
+                        attachments=attachments
+                    )
+                    console.print(f"[green]✓[/green] Zaktualizowano ofertę {job_id} w bazie danych")
+                    processed_count += 1
+                else:
+                    console.print(f"[bold red]⚠ Wykryto błędy w treści propozycji lub emaila. Nie zapisuję do bazy danych.[/bold red]")
+            
+            # Optional: generate presentation data
+            try:
+                # Skip presentation generation if proposal has errors
+                error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
+                if any(error_text in proposal_text for error_text in error_indicators):
+                    console.print(f"[bold yellow]⚠ Pomijam generowanie prezentacji - wykryto błędy w propozycji.[/bold yellow]")
+                    continue
+                
+                presentation_data = generate_presentation_data(
+                    job_description=job_description,
+                    proposal=proposal_text,
+                    job_id=job_id,
+                    client_info=client_info,
+                    budget=budget,
+                    timeline=timeline,
+                    additional_requirements=additional_requirements,
+                    employer_email=employer_email
+                )
+                
+                # Save presentation data to file
+                if presentation_data:
+                    # Create presentations directory if it doesn't exist
+                    os.makedirs('presentations', exist_ok=True)
+                    
+                    # Save presentation data
+                    presentation_file = os.path.join('presentations', f"{project_slug}.json")
+                    with open(presentation_file, 'w', encoding='utf-8') as f:
+                        json.dump(presentation_data, f, ensure_ascii=False, indent=2)
+                    console.print(f"[green]✓[/green] Zapisano dane prezentacji do pliku {presentation_file}")
+                
+                console.print(f"[green]✓[/green] Wygenerowano prezentację dla oferty {job_id}")
+            except Exception as e:
+                console.print(f"[red]✗[/red] Błąd generowania prezentacji dla oferty {job_id}: {str(e)}")
+            
+            # POST PROPOSAL TO USEME if relevance > 3
+            if relevance_score > 3:
+                # First, check if proposal contains error messages
+                error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
+                
+                # Skip posting if proposal text contains any error indicators
+                if any(error_text in proposal_text for error_text in error_indicators):
+                    console.print(f"[bold red]⚠ Wykryto błąd w treści propozycji. Pomijam wysyłanie do Useme.[/bold red]")
+                    console.print(f"[red]Treść błędu: {proposal_text}[/red]")
+                    continue
+                    
                 from useme_post_proposal import UsemeProposalPoster
                 
                 poster = UsemeProposalPoster()
@@ -1572,72 +1045,82 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 result = poster.post_proposal(
                     job_url=job_url,
                     proposal_text=proposal_text,
-                    price=price,
-                    timeline_days=timeline_days
+                    price=proposal_data["price"],
+                    timeline_days=proposal_data["timeline_days"]
                 )
                 
                 if result.get('success'):
                     console.print(f"[green]✓[/green] Pomyślnie wysłano propozycję dla oferty {job_id}")
                     posted_count += 1
-                    
-                    # Update the database to mark proposal as submitted
-                    db.mark_proposal_submitted(job_id)
                 else:
                     console.print(f"[red]✗[/red] Błąd wysyłania propozycji: {result.get('error', 'Nieznany błąd')}")
-            else:
-                console.print(f"[green]✓[/green] Propozycja dla oferty {job_id} już została wysłana wcześniej")
                 
-            # Send follow-up email if needed
-            if relevance_score >= min_relevance and employer_email and (not existing_data or not existing_data.get('follow_up_email_sent')):
-                # Configure EmailSender with settings from config.ini
-                from mailer import EmailSender
-                
-                email_sender = EmailSender()  # This will load config automatically
-                
-                # Send the email
-                subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
-                recipient_email = employer_email
-                
-                if email_sender.send_email(recipient_email, subject, email_content):
-                    # Update the database to mark email as sent
-                    conn = db.get_connection()
-                    cursor = conn.cursor()
-                    cursor.execute("""
-                        UPDATE jobs 
-                        SET follow_up_email_sent = 1, follow_up_email_sent_at = ? 
-                        WHERE job_id = ?
-                    """, (datetime.now().isoformat(), job_id))
-                    conn.commit()
-                    console.print(f"[green]✓[/green] Wysłano email do pracodawcy: {recipient_email}")
-                    emails_sent += 1
-                else:
-                    console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
-            elif existing_data and existing_data.get('follow_up_email_sent'):
-                console.print(f"[green]✓[/green] Email follow-up dla oferty {job_id} już został wysłany wcześniej")
-                
-            # Also send a message through Useme if relevance > 7 and not sent yet
-            if relevance_score > 7 and (not existing_data or not existing_data.get('message_sent')):
-                console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
-                try:
-                    # Send message using the proposal text
-                    message_result = send_useme_message(job_id=job_id, message_content="", use_proposal=True)
+                # Check if we should send follow-up email
+                if relevance_score > 5 and employer_email:
+                    # Skip sending email if there are errors in the email content
+                    error_indicators = ["Błąd generowania", "504", "Deadline Exceeded", "przekroczono limit prób"]
+                    email_content = proposal_data.get("email_content", "")
                     
-                    if message_result.get('success'):
-                        console.print(f"[bold green]Successfully sent message through Useme for job {job_id}[/bold green]")
-                        # Update the job in the database
-                        db.mark_message_sent(job_id)
+                    if any(error_text in email_content for error_text in error_indicators):
+                        console.print(f"[bold red]⚠ Wykryto błąd w treści emaila. Pomijam wysyłanie.[/bold red]")
+                        console.print(f"[red]Treść błędu: {email_content}[/red]")
                     else:
-                        console.print(f"[bold red]Failed to send message through Useme: {message_result.get('message')}[/bold red]")
-                except Exception as e:
-                    console.print(f"[bold red]Error sending message through Useme: {str(e)}[/bold red]")
-            elif existing_data and existing_data.get('message_sent'):
-                console.print(f"[green]✓[/green] Wiadomość dla oferty {job_id} już została wysłana wcześniej")
-            
-            # Small delay to avoid rate limiting
-            time.sleep(1.5)
+                        # Get the job details from the database
+                        job = db.get_job_by_id(job_id)
+                        # Configure EmailSender with Brevo SMTP settings
+                        from mailer import EmailSender
+                        
+                        email_config = {
+                            'smtp_server': 'smtp-relay.brevo.com',
+                            'smtp_port': 587,
+                            'smtp_username': '7cf37b003@smtp-brevo.com',
+                            'smtp_password': '2ZT3G0RYBx1QrMna',
+                            'sender_email': 'info@soft-synergy.com',
+                            'sender_name': 'Antoni Seba | Soft Synergy'
+                        }
+                        
+                        email_sender = EmailSender(email_config)
+                        
+                        # Send the email
+                        subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
+                        recipient_email = employer_email  # Use the employer_email we already have
+                        
+                        if email_sender.send_email(recipient_email, subject, email_content):
+                            # Update the database to mark email as sent
+                            conn = db.get_connection()
+                            cursor = conn.cursor()
+                            cursor.execute("""
+                                UPDATE jobs 
+                                SET follow_up_email_sent = 1, follow_up_email_sent_at = ? 
+                                WHERE job_id = ?
+                            """, (datetime.now().isoformat(), job_id))
+                            conn.commit()
+                            console.print(f"[green]✓[/green] Wysłano email do pracodawcy: {recipient_email}")
+                            emails_sent += 1
+                        else:
+                            console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
+                
+                # Also send a message through Useme if relevance > 7 and no errors in proposal
+                if relevance_score > 7 and not any(error_text in proposal_text for error_text in error_indicators):
+                    console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
+                    try:
+                        # Send message using the proposal text
+                        message_result = send_useme_message(job_id=job_id, message_content="", use_proposal=True)
+                        
+                        if message_result.get('success'):
+                            console.print(f"[bold green]Successfully sent message through Useme for job {job_id}[/bold green]")
+                            # Update the job in the database
+                            db.mark_message_sent(job_id)
+                        else:
+                            console.print(f"[bold red]Failed to send message through Useme: {message_result.get('message')}[/bold red]")
+                    except Exception as e:
+                        console.print(f"[bold red]Error sending message through Useme: {str(e)}[/bold red]")
+                
+                # Small delay to avoid rate limiting
+                time.sleep(1.5)
                 
         except Exception as e:
-            console.print(f"[red]✗[/red] Błąd przetwarzania oferty {job_id}: {str(e)}")
+            console.print(f"[red]✗[/red] Błąd generowania propozycji dla oferty {job_id}: {str(e)}")
             continue
     
     # Save all proposals to JSON file
@@ -1782,11 +1265,8 @@ def send_useme_message(job_id, message_content, use_proposal=False):
                 message_link = f"/pl/mesg/compose/{job_id}/{employer_id}/"
                 logger.info(f"Found employer ID {employer_id} and constructed message link: {message_link}")
             else:
-                logger.error("Could not extract employer ID from job page")
-                return {
-                    "success": False,
-                    "message": "Could not extract employer ID from job page"
-                }
+                message_link = f"/pl/mesg/compose/{job_id}/481815/"
+                logger.warning(f"Using fallback message link format: {message_link}")
         
         if not message_link:
             logger.error("Could not find message link on job page")
