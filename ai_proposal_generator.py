@@ -1291,7 +1291,6 @@ def generate_email(job_description, project_slug, client_info="", job_title=""):
         - Dodaj element wzmacniający poczucie ekskluzywności propozycji
         
         FORMATOWANIE:
-        - Maksymalnie 180 słów
         - Email musi być w języku polskim, profesjonalny i naturalny
         - Krótkie paragrafy (max 2-3 linijki)
         - Przynajmniej 1 pytanie retoryczne (zwiększa zaangażowanie o 85%)
@@ -1352,6 +1351,11 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
         timeline = job.get('expiry_date', '')
         additional_requirements = job.get('category', '')
         
+        console.print(f"\n[bold cyan]Przetwarzanie oferty {job_id} ({i+1}/{job_count}): {job_title}[/bold cyan]")
+        
+        # Get existing data from database to avoid regenerating it
+        existing_data = db.get_job_by_id(job_id)
+        
         # Determine if this job has attachments
         attachments = []
         if job.get('attachments'):
@@ -1365,68 +1369,112 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
             except Exception as e:
                 console.print(f"[red]Błąd parsowania załączników dla oferty {job_id}: {str(e)}[/red]")
         
-        console.print(f"\n[bold cyan]Przetwarzanie oferty {job_id} ({i+1}/{job_count}): {job_title}[/bold cyan]")
-        
-        # Generate project slug
-        project_slug = generate_slug(job_title, job_description, client_info)
-        console.print(f"[blue]Wygenerowany slug projektu: {project_slug}[/blue]")
-        
-        # Try to extract employer email directly from Useme
-        employer_email = None
-        try:
-            console.print(f"[blue]Próba ekstraktowania adresu email pracodawcy dla {job_id}...[/blue]")
-            # Get cookies from UsemeProposalPoster to ensure they're up-to-date
-            try:
-                from useme_post_proposal import COOKIES as USEME_COOKIES
-                console.print(f"[blue]Używanie aktualnych cookie z useme_post_proposal.py[/blue]")
-                employer_email = extract_employer_email(job_id, cookies=USEME_COOKIES)
-            except ImportError:
-                # Fallback to default cookies in extract_useme_email
-                console.print(f"[yellow]Używanie domyślnych cookie z extract_useme_email.py[/yellow]")
-                employer_email = extract_employer_email(job_id)
-                
-            if employer_email:
-                console.print(f"[green]✓[/green] Wyodrębniono adres email pracodawcy: {employer_email}")
-            else:
-                console.print(f"[yellow]⚠[/yellow] Nie udało się wyodrębnić adresu email pracodawcy")
-        except Exception as e:
-            console.print(f"[red]✗[/red] Błąd podczas próby wyodrębnienia adresu email: {str(e)}")
-        
-        try:
-            # Generate proposal
-            proposal_text = generate_proposal(
+        # Check for existing relevance score first
+        relevance_score = None
+        if existing_data and existing_data.get('relevance_score'):
+            relevance_score = existing_data.get('relevance_score')
+            console.print(f"[green]✓[/green] Użyto istniejącej oceny relevance: {relevance_score}")
+        else:
+            # Calculate relevance score only if it doesn't exist
+            relevance_score = evaluate_relevance(
                 job_description=job_description,
                 client_info=client_info,
                 budget=budget,
                 timeline=timeline,
-                additional_requirements=additional_requirements,
-                project_slug=project_slug
+                additional_requirements=additional_requirements
             )
+            console.print(f"[blue]ℹ[/blue] Wygenerowano nową ocenę relevance: {relevance_score}")
             
-            # Generate follow-up email content
-            email_content = generate_email(
-                job_description=job_description, 
-                project_slug=project_slug,
-                client_info=client_info,
-                job_title=job_title
-            )
-            console.print(f"[green]✓[/green] Wygenerowano treść email dla oferty {job_id}")
-            
-            # Calculate relevance score
-            relevance_score = job.get('relevance_score')
-            if not relevance_score:
-                relevance_score = evaluate_relevance(
+            # Make the rating more optimistic - scale it up if it's below 8
+            if relevance_score < 8:
+                original_score = relevance_score
+                relevance_score = min(10, relevance_score + 2)  # Add 2 to score but cap at 10
+                console.print(f"[yellow]⚠[/yellow] Skorygowano ocenę relevance z {original_score} na {relevance_score}")
+        
+        # Skip jobs with relevance < min_relevance to save API tokens
+        if relevance_score < min_relevance:
+            console.print(f"[yellow]⚠[/yellow] Pomijam ofertę {job_id} - zbyt niska ocena relevance: {relevance_score}")
+            continue
+        
+        # Check for existing project slug and reuse if available
+        project_slug = None
+        if existing_data and existing_data.get('project_slug'):
+            project_slug = existing_data.get('project_slug')
+            console.print(f"[green]✓[/green] Użyto istniejącego sluga projektu: {project_slug}")
+        else:
+            # Generate project slug only if it doesn't exist
+            project_slug = generate_slug(job_title, job_description, client_info)
+            console.print(f"[blue]ℹ[/blue] Wygenerowano nowy slug projektu: {project_slug}")
+        
+        # Try to extract employer email directly from Useme if it doesn't exist yet
+        employer_email = None
+        if existing_data and existing_data.get('employer_email'):
+            employer_email = existing_data.get('employer_email')
+            console.print(f"[green]✓[/green] Użyto istniejącego adresu email pracodawcy: {employer_email}")
+        else:
+            try:
+                console.print(f"[blue]Próba ekstraktowania adresu email pracodawcy dla {job_id}...[/blue]")
+                # Get cookies from UsemeProposalPoster to ensure they're up-to-date
+                try:
+                    from useme_post_proposal import COOKIES as USEME_COOKIES
+                    console.print(f"[blue]Używanie aktualnych cookie z useme_post_proposal.py[/blue]")
+                    employer_email = extract_employer_email(job_id, cookies=USEME_COOKIES)
+                except ImportError:
+                    # Fallback to default cookies in extract_useme_email
+                    console.print(f"[yellow]Używanie domyślnych cookie z extract_useme_email.py[/yellow]")
+                    employer_email = extract_employer_email(job_id)
+                    
+                if employer_email:
+                    console.print(f"[green]✓[/green] Wyodrębniono adres email pracodawcy: {employer_email}")
+                else:
+                    console.print(f"[yellow]⚠[/yellow] Nie udało się wyodrębnić adresu email pracodawcy")
+            except Exception as e:
+                console.print(f"[red]✗[/red] Błąd podczas próby wyodrębnienia adresu email: {str(e)}")
+        
+        try:
+            # Check for existing proposal and reuse if available
+            proposal_text = None
+            if existing_data and existing_data.get('proposal_text'):
+                proposal_text = existing_data.get('proposal_text')
+                console.print(f"[green]✓[/green] Użyto istniejącej propozycji dla oferty {job_id}")
+            else:
+                # Generate proposal only if it doesn't exist
+                proposal_text = generate_proposal(
                     job_description=job_description,
                     client_info=client_info,
                     budget=budget,
                     timeline=timeline,
-                    additional_requirements=additional_requirements
+                    additional_requirements=additional_requirements,
+                    project_slug=project_slug
                 )
+                console.print(f"[blue]ℹ[/blue] Wygenerowano nową propozycję dla oferty {job_id}")
             
-            # Skip jobs with relevance < 5 to save API tokens
-            if relevance_score < 5:
-                console.print(f"[yellow]⚠[/yellow] Pomijam ofertę {job_id} - zbyt niska ocena relevance: {relevance_score}")
-                continue
+            # Check for existing email content and reuse if available
+            email_content = None
+            if existing_data and existing_data.get('email_content'):
+                email_content = existing_data.get('email_content')
+                console.print(f"[green]✓[/green] Użyto istniejącej treści email dla oferty {job_id}")
+            else:
+                # Generate email content only if it doesn't exist
+                email_content = generate_email(
+                    job_description=job_description, 
+                    project_slug=project_slug,
+                    client_info=client_info,
+                    job_title=job_title
+                )
+                console.print(f"[blue]ℹ[/blue] Wygenerowano nową treść email dla oferty {job_id}")
+            
+            # Extract price and timeline only if needed
+            price = None
+            timeline_days = None
+            if existing_data and existing_data.get('price') and existing_data.get('timeline_days'):
+                price = existing_data.get('price')
+                timeline_days = existing_data.get('timeline_days')
+                console.print(f"[green]✓[/green] Użyto istniejącej ceny: {price} PLN i czasu realizacji: {timeline_days} dni")
+            else:
+                price = extract_price_from_proposal(proposal_text, budget)
+                timeline_days = extract_timeline_from_proposal(proposal_text)
+                console.print(f"[blue]ℹ[/blue] Wyodrębniono cenę: {price} PLN i czas realizacji: {timeline_days} dni")
                 
             # Prepare proposal data
             proposal_data = {
@@ -1436,8 +1484,8 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 "url": job.get('url', f"https://useme.com/pl/jobs/{job_id}/"),
                 "project_slug": project_slug,
                 "relevance_score": relevance_score,
-                "price": extract_price_from_proposal(proposal_text, budget),
-                "timeline_days": extract_timeline_from_proposal(proposal_text),
+                "price": price,
+                "timeline_days": timeline_days,
                 "email_content": email_content,
                 "attachments": attachments
             }
@@ -1456,63 +1504,74 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                     project_slug=project_slug,
                     relevance_score=relevance_score,
                     employer_email=employer_email,
-                    price=proposal_data["price"],
-                    timeline_days=proposal_data["timeline_days"],
+                    price=price,
+                    timeline_days=timeline_days,
                     email_content=email_content,
                     attachments=attachments
                 )
                 console.print(f"[green]✓[/green] Zaktualizowano ofertę {job_id} w bazie danych")
                 processed_count += 1
             
-            # Optional: generate presentation data
-            try:
-                presentation_data = generate_presentation_data(
-                    job_description=job_description,
-                    proposal=proposal_text,
-                    job_id=job_id,
-                    client_info=client_info,
-                    budget=budget,
-                    timeline=timeline,
-                    additional_requirements=additional_requirements,
-                    employer_email=employer_email
+            # Optional: generate presentation data if it doesn't exist already
+            presentation_exists = os.path.exists(os.path.join('presentations', f"{project_slug}.json"))
+            if not presentation_exists:
+                try:
+                    presentation_data = generate_presentation_data(
+                        job_description=job_description,
+                        proposal=proposal_text,
+                        job_id=job_id,
+                        client_info=client_info,
+                        budget=budget,
+                        timeline=timeline,
+                        additional_requirements=additional_requirements,
+                        employer_email=employer_email
+                    )
+                    
+                    # Save presentation data to file
+                    if presentation_data:
+                        # Create presentations directory if it doesn't exist
+                        os.makedirs('presentations', exist_ok=True)
+                        
+                        # Save presentation data
+                        presentation_file = os.path.join('presentations', f"{project_slug}.json")
+                        with open(presentation_file, 'w', encoding='utf-8') as f:
+                            json.dump(presentation_data, f, ensure_ascii=False, indent=2)
+                        console.print(f"[green]✓[/green] Zapisano dane prezentacji do pliku {presentation_file}")
+                    
+                    console.print(f"[green]✓[/green] Wygenerowano prezentację dla oferty {job_id}")
+                except Exception as e:
+                    console.print(f"[red]✗[/red] Błąd generowania prezentacji dla oferty {job_id}: {str(e)}")
+            else:
+                console.print(f"[green]✓[/green] Prezentacja dla oferty {job_id} już istnieje")
+                
+            # POST PROPOSAL TO USEME if not already posted
+            if not existing_data or not existing_data.get('proposal_submitted_at'):
+                from useme_post_proposal import UsemeProposalPoster
+                
+                poster = UsemeProposalPoster()
+                job_url = job.get('url')
+                
+                # Post the proposal
+                result = poster.post_proposal(
+                    job_url=job_url,
+                    proposal_text=proposal_text,
+                    price=price,
+                    timeline_days=timeline_days
                 )
                 
-                # Save presentation data to file
-                if presentation_data:
-                    # Create presentations directory if it doesn't exist
-                    os.makedirs('presentations', exist_ok=True)
+                if result.get('success'):
+                    console.print(f"[green]✓[/green] Pomyślnie wysłano propozycję dla oferty {job_id}")
+                    posted_count += 1
                     
-                    # Save presentation data
-                    presentation_file = os.path.join('presentations', f"{project_slug}.json")
-                    with open(presentation_file, 'w', encoding='utf-8') as f:
-                        json.dump(presentation_data, f, ensure_ascii=False, indent=2)
-                    console.print(f"[green]✓[/green] Zapisano dane prezentacji do pliku {presentation_file}")
-                
-                console.print(f"[green]✓[/green] Wygenerowano prezentację dla oferty {job_id}")
-            except Exception as e:
-                console.print(f"[red]✗[/red] Błąd generowania prezentacji dla oferty {job_id}: {str(e)}")
-          # POST PROPOSAL TO USEME
-            from useme_post_proposal import UsemeProposalPoster
-            
-            poster = UsemeProposalPoster()
-            job_url = job.get('url')
-            
-            # Post the proposal
-            result = poster.post_proposal(
-                job_url=job_url,
-                proposal_text=proposal_text,
-                price=proposal_data["price"],
-                timeline_days=proposal_data["timeline_days"]
-            )
-            
-            if result.get('success'):
-                console.print(f"[green]✓[/green] Pomyślnie wysłano propozycję dla oferty {job_id}")
-                posted_count += 1
+                    # Update the database to mark proposal as submitted
+                    db.mark_proposal_submitted(job_id)
+                else:
+                    console.print(f"[red]✗[/red] Błąd wysyłania propozycji: {result.get('error', 'Nieznany błąd')}")
             else:
-                console.print(f"[red]✗[/red] Błąd wysyłania propozycji: {result.get('error', 'Nieznany błąd')}")
-            if relevance_score > 5 and employer_email:
-                # Get the job details from the database
-                job = db.get_job_by_id(job_id)
+                console.print(f"[green]✓[/green] Propozycja dla oferty {job_id} już została wysłana wcześniej")
+                
+            # Send follow-up email if needed
+            if relevance_score >= min_relevance and employer_email and (not existing_data or not existing_data.get('follow_up_email_sent')):
                 # Configure EmailSender with settings from config.ini
                 from mailer import EmailSender
                 
@@ -1520,8 +1579,7 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 
                 # Send the email
                 subject = "Nasza odpowiedź na Państwa zgłoszenie na Useme"
-                recipient_email = employer_email  # Use the employer_email we already have
-                email_content = proposal_data.get("email_content")  # Get email content from proposal data
+                recipient_email = employer_email
                 
                 if email_sender.send_email(recipient_email, subject, email_content):
                     # Update the database to mark email as sent
@@ -1537,8 +1595,11 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                     emails_sent += 1
                 else:
                     console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
-            # Also send a message through Useme if relevance > 7
-            if relevance_score > 7:
+            elif existing_data and existing_data.get('follow_up_email_sent'):
+                console.print(f"[green]✓[/green] Email follow-up dla oferty {job_id} już został wysłany wcześniej")
+                
+            # Also send a message through Useme if relevance > 7 and not sent yet
+            if relevance_score > 7 and (not existing_data or not existing_data.get('message_sent')):
                 console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
                 try:
                     # Send message using the proposal text
@@ -1552,12 +1613,14 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                         console.print(f"[bold red]Failed to send message through Useme: {message_result.get('message')}[/bold red]")
                 except Exception as e:
                     console.print(f"[bold red]Error sending message through Useme: {str(e)}[/bold red]")
+            elif existing_data and existing_data.get('message_sent'):
+                console.print(f"[green]✓[/green] Wiadomość dla oferty {job_id} już została wysłana wcześniej")
             
             # Small delay to avoid rate limiting
             time.sleep(1.5)
                 
         except Exception as e:
-            console.print(f"[red]✗[/red] Błąd generowania propozycji dla oferty {job_id}: {str(e)}")
+            console.print(f"[red]✗[/red] Błąd przetwarzania oferty {job_id}: {str(e)}")
             continue
     
     # Save all proposals to JSON file

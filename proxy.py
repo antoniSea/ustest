@@ -22,7 +22,6 @@ def test_proxy_with_gemini(proxy, prompt, api_key, model="gemini-2.5-flash-previ
                 "temperature": 0.7,
                 "top_p": 0.9,
                 "top_k": 40,
-                "max_output_tokens": 8192
             }
         }
         url = f"{api_url}?key=AIzaSyC_ibblijbVhr0EXFoVX04fZi71z3mB7Kg"
