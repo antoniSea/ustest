@@ -561,43 +561,81 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         
         Zwróć kompletny, poprawny JSON zgodny DOKŁADNIE z podaną strukturą, zachowując wszystkie klucze i typy wartości.
         
+        UWAGA: ZWRÓĆ WYŁĄCZNIE POPRAWNY, KOMPLETNY JSON - BEZ ŻADNYCH DODATKOWYCH WYJAŚNIEŃ CZY WPROWADZENIA. ZACZNIJ ODPOWIEDŹ NATYCHMIAST OD ZNAKU '{' I ZAKOŃCZ NA '}'.
+        
         Przykładowy JSON (zachowaj dokładnie tę strukturę): {json.dumps(default_data, ensure_ascii=False)}
         """
     
     try:
         response = get_gemini_response(prompt)
-        print(response)
+        console.print("[blue]ℹ[/blue] Otrzymano odpowiedź AI do generowania prezentacji")
         
         # The response is already a string, no need to call .strip() on it
         response_text = response
         
         # First attempt: try to parse the whole response as JSON
         try:
+            # Check if the response starts with "```json" and ends with "```" and remove those markers
+            if response_text.startswith("```json") and response_text.endswith("```"):
+                response_text = response_text[7:-3].strip()
+            elif response_text.startswith("```") and response_text.endswith("```"):
+                response_text = response_text[3:-3].strip()
+                
+            # Try to find and extract a JSON object
+            if not response_text.startswith("{"):
+                json_start = response_text.find("{")
+                if json_start != -1:
+                    response_text = response_text[json_start:]
+                    
             json_data = json.loads(response_text)
             console.print("[green]✓[/green] Poprawnie sparsowano JSON z odpowiedzi")
-        except json.JSONDecodeError:
-            console.print("[yellow]⚠[/yellow] Niepoprawny format JSON w odpowiedzi, próbuję wyodrębnić")
+        except json.JSONDecodeError as e:
+            console.print(f"[yellow]⚠[/yellow] Niepoprawny format JSON w odpowiedzi: {str(e)}, próbuję wyodrębnić")
             
             # Second attempt: try to extract JSON from the response
             json_match = re.search(r'```(?:json)?\s*({[\s\S]*?})\s*```', response_text)
             if not json_match:
-                json_match = re.search(r'({[\s\S]*})', response_text)
-                
-            if json_match:
+                # Try more aggressive extraction - find from first { to last }
+                open_brace = response_text.find('{')
+                close_brace = response_text.rfind('}')
+                if open_brace != -1 and close_brace != -1 and open_brace < close_brace:
+                    json_text = response_text[open_brace:close_brace+1]
+                    try:
+                        json_data = json.loads(json_text)
+                        console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z odpowiedzi")
+                    except json.JSONDecodeError:
+                        console.print("[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON")
+                        # Let's try to repair JSON if it's truncated
+                        try:
+                            # Add closing braces if needed
+                            missing_braces = json_text.count('{') - json_text.count('}')
+                            if missing_braces > 0:
+                                json_text += '}' * missing_braces
+                                json_data = json.loads(json_text)
+                                console.print("[green]✓[/green] Naprawiono i sparsowano niepełny JSON")
+                            else:
+                                # If not a simple truncation, use fallback
+                                json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
+                                console.print("[yellow]⚠[/yellow] Nie udało się naprawić JSON, wygenerowano strukturę z tekstu")
+                        except:
+                            # Create a customized structure based on content extraction from AI response
+                            json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
+                            console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
+                else:
+                    console.print("[red]✗[/red] Nie znaleziono pełnej struktury JSON")
+                    # Create a customized structure based on content extraction from AI response
+                    json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
+                    console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
+            else:
                 try:
                     json_text = json_match.group(1).strip()
                     json_data = json.loads(json_text)
-                    console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z odpowiedzi")
+                    console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z kodu w odpowiedzi")
                 except json.JSONDecodeError:
                     console.print("[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON")
                     # Create a customized structure based on content extraction from AI response
                     json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
                     console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
-            else:
-                console.print("[red]✗[/red] Nie znaleziono JSON w odpowiedzi")
-                # Create a customized structure based on content extraction from AI response
-                json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
-                console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
         
         # Extract numeric price and timeline values for metadata only
         extracted_price = extract_price_from_proposal(proposal, budget)
