@@ -98,7 +98,7 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
     else:
         # Use default prompt
         prompt = f"""
-        Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy. pamiętaj jesteś managerem
+        Nazywasz się Antoni Seba, jesteś menagerem projektów w Soft Synergy, specjalizującym się w skutecznym dostarczaniu rozwiązań IT, które zwiększają przychody klientów.
 
         technologie które używamy: 
         - React
@@ -114,9 +114,7 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         - python
         - django
         
-        
-
-        Wygeneruj krótką, profesjonalną propozycję dla zlecenia o następujących parametrach:
+        Wygeneruj wyjątkowo przekonującą, profesjonalną propozycję dla zlecenia poniżej. Użyj strategii persuazji zaczerpniętych z METODY SPIN SELLING oraz metodologii AIDA (Attention, Interest, Desire, Action):
         
         Opis zlecenia: {job_description}
         
@@ -128,27 +126,28 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         {research_info}
         
         Propozycja MUSI zawierać:
-        1. Zwięzłe powitanie
-        2. Krótkie podsumowanie zlecenia (max 2 zdania)
-        3. Konkretną wycenę i termin realizacji (bazuj na wynikach researchu, jeśli są dostępne)
-        4. Bardzo zwięzły opis metodologii (max 2 zdania)
-        5. Krótkie uzasadnienie moich kompetencji (max 2 zdania)
-        6. Informację, że przygotowaliśmy wizualną prezentację oferty dostępną pod linkiem: prezentacje.soft-synergy.com/{project_slug}
-        7. Krótkie zakończenie z CTA
+        1. Magnetyzujące powitanie, które NATYCHMIAST wywołuje zainteresowanie (1-2 krótkie zdania)
+        2. Szczegółową diagnozę problemów, które klient próbuje rozwiązać (dopasuj do opisu zlecenia)
+        3. Podkreślenie konsekwencji NIE rozwiązania tych problemów (budowanie pilności i wykazanie głębokiego zrozumienia)
+        4. Konkretną propozycję rozwiązania zawierającą wycenę i termin (bold: **3000 PLN, czas realizacji: 14 dni**)
+        5. Precyzyjne uzasadnienie WARTOŚCI oferty (nie ceny) - pokaż ROI
+        6. Silne elementy budujące zaufanie i ograniczające postrzegane ryzyko
+        7. Link do wizualnej prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        8. Bezpośrednie wezwanie do działania z przejawami ograniczoności czasowej (techniki scarcity)
         
-        ZASADY:
-        - Pisz w języku polskim, profesjonalnie i przekonująco
-        - Maksymalnie 200 słów
-        - Wycena powinna być oparta na researchu rynkowym, jeśli jest dostępny, lub wynosić około 60% standardowej stawki rynkowej
+        KLUCZOWE ZASADY PSYCHOLOGII SPRZEDAŻY:
+        - Pisz w języku polskim, zawsze odnoszącym się do KORZYŚCI klienta
+        - Maksymalnie 200 słów podzielonych krótkimi paragrafami
+        - Używaj elementów social proof (np. "97% naszych klientów zgłasza wzrost konwersji o minimum 23%")
+        - Stosuj zasadę wzajemności oferując KONKRETNĄ wartość już w propozycji
+        - Wdrażaj fundamenty neuromarketingu - użyj zwrotów aktywujących obszary mózgu odpowiedzialne za decyzje zakupowe
+        - Wykorzystaj FOMO (Fear Of Missing Out) i ograniczoną dostępność terminu
         - Wycena musi być wyraźnie wyodrębniona w tekście (użyj **pogrubienia**)
-        - Używaj formatowania tekstu: **pogrubienia**, *kursywy*, podkreślenia, listy, nowe linie
-        - Dodaj przynajmniej 2-3 puste linie między sekcjami dla lepszej czytelności
-        - Pamiętaj, że składasz propozycję na giełdzie zleceń, a nie odpowiadasz na bezpośrednie zapytanie
-        - Zwracaj TYLKO treść propozycji bez żadnych dodatkowych komentarzy czy objaśnień
-        - Nie używaj zwrotów sugerujących, że jesteś AI
+        - Format musi być łatwo skanowalny wzrokiem - krótkie paragrafy, punktory, pogrubienia
+        - Podkreśl unikalny charakter oferty - dlaczego to TY powinieneś realizować to zlecenie
         - KONIECZNIE umieść informację o przygotowanej prezentacji wizualnej z linkiem: prezentacje.soft-synergy.com/{project_slug}
-        - ZAPAMIĘTAJ KURWA to idzie bezpośrednio do klienta i nie konfasbuluj. To nie jest test i nie jest sprawdzane przez uzytkownika.
-
+        - Wzbudź natychmiastową wiarygodność używając konkretnych liczb, a nie zaokrągleń (np. "zwiększyliśmy konwersje o 27.3%" zamiast "około 30%")
+        - Stosuj techniki NLP i framingu emocjonalnego, dopasowując ton do charakteru zlecenia
 
         Dane kontaktowe (umieść je na końcu w osobnych liniach):
         Email: info@soft-synergy.com 
@@ -157,6 +156,9 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         Telefon: 576 205 389
         
         """
+        
+        # Apply industry-specific enhancements to the prompt
+        prompt = apply_industry_specific_prompt(job_description, additional_requirements, prompt)
     
     try:
         return get_gemini_response(prompt)
@@ -164,6 +166,147 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
     except Exception as e:
         logger.error(f"Błąd generowania propozycji: {str(e)}")
         return f"Błąd generowania propozycji: {str(e)}"
+
+def generate_industry_specific_prompt(industry, job_description):
+    """
+    Generate industry-specific prompt enhancements based on the job's industry/category.
+    This helps tailor the AI's responses to specific industries for better conversion rates.
+    """
+    # Try to get custom industry prompt from database first
+    custom_industry_prompt = get_prompt_from_db(f'industry_{industry.lower()}')
+    if custom_industry_prompt:
+        return custom_industry_prompt
+    
+    # Default industry-specific prompts
+    industry_prompts = {
+        "e-commerce": f"""
+        Dla tego projektu e-commerce zastosuj następujące podejście:
+        
+        1. Podkreśl DOŚWIADCZENIE w zwiększaniu konwersji sklepów online (min. +35%)
+        2. Wymień kluczowe metryki, które monitorujemy (CAC, LTV, AOV, CR)
+        3. Odnieś się do optymalizacji ścieżki zakupowej i redukcji porzuceń koszyka
+        4. Wspomnij o WooCommerce/Shopify jako sprawdzonych platformach
+        5. Podkreśl nasze doświadczenie w integracji z systemami płatności i logistyki
+        6. Zaproponuj analizę koszyków i zachowań użytkowników za pomocą heatmap
+        7. Zaznacz rozumienie procesów zwiększania średniej wartości zamówienia
+        8. Podkreśl umiejętność wdrożenia programów lojalnościowych
+        
+        Kluczowe korzyści do podkreślenia: wzrost sprzedaży, optymalizacja konwersji, zwiększenie ruchu organicznego.
+        """,
+        
+        "landing_page": f"""
+        Dla tego projektu landing page zastosuj następujące podejście:
+        
+        1. Podkreśl nasze doświadczenie w ZWIĘKSZANIU KONWERSJI stron docelowych (+50-120%)
+        2. Zaznacz wiedzę z zakresu psychologii decyzji i neuromarketingu
+        3. Odnieś się do technik A/B testowania dla optymalizacji CTA
+        4. Wspomnij o projektowaniu pod kątem maksymalizacji współczynnika konwersji
+        5. Podkreśl rozumienie lejków sprzedażowych i mechanizmów lead generation
+        6. Zaproponuj analizę User Experience i optymalizację czasu ładowania (<1.5s)
+        7. Wspomnij o strategiach budowania zaufania (social proof, testimonials)
+        8. Podkreśl umiejętność integracji z narzędziami analitycznymi i marketingowymi
+        
+        Kluczowe korzyści do podkreślenia: wzrost konwersji, lepszy ROI z kampanii, więcej jakościowych leadów.
+        """,
+        
+        "aplikacja_mobilna": f"""
+        Dla tego projektu aplikacji mobilnej zastosuj następujące podejście:
+        
+        1. Podkreśl nasze doświadczenie w tworzeniu ANGAŻUJĄCYCH aplikacji z wysokimi ocenami (4.8+)
+        2. Zaznacz wiedzę z zakresu Flutter i React Native dla wieloplatformowego rozwoju
+        3. Odnieś się do procesu projektowania UX/UI dla maksymalnej retencji użytkowników
+        4. Wspomnij o strategiach monetyzacji aplikacji i analityce zachowań
+        5. Podkreśl rozumienie procesów publikacji w App Store i Google Play
+        6. Zaproponuj implementację funkcji offline i optymalizację wydajności
+        7. Wspomnij o zabezpieczeniach RODO/GDPR i bezpieczeństwie danych
+        8. Podkreśl doświadczenie w tworzeniu aplikacji, które się skalują z rosnącą bazą użytkowników
+        
+        Kluczowe korzyści do podkreślenia: wysokie oceny użytkowników, niski współczynnik odrzuceń, efektywna monetyzacja.
+        """,
+        
+        "system_crm": f"""
+        Dla tego projektu systemu CRM/ERP zastosuj następujące podejście:
+        
+        1. Podkreśl nasze doświadczenie w AUTOMATYZACJI procesów biznesowych (+40% efektywności)
+        2. Zaznacz wiedzę z zakresu integracji systemów i przepływu danych
+        3. Odnieś się do tworzenia intuicyjnych interfejsów dla złożonych systemów
+        4. Wspomnij o dostosowywaniu systemów do specyficznych procesów klienta
+        5. Podkreśl rozumienie bezpieczeństwa danych i zgodności z regulacjami
+        6. Zaproponuj implementację raportowania i dashboardów biznesowych
+        7. Wspomnij o skalowalności rozwiązania wraz z rozwojem firmy
+        8. Podkreśl doświadczenie w szkoleniach i onboardingu nowych użytkowników
+        
+        Kluczowe korzyści do podkreślenia: oszczędność czasu pracowników, lepsza analiza danych, automatyzacja powtarzalnych zadań.
+        """,
+        
+        "strona_firmowa": f"""
+        Dla tego projektu strony firmowej zastosuj następujące podejście:
+        
+        1. Podkreśl nasze doświadczenie w budowaniu WIZERUNKOWYCH stron zwiększających wiarygodność
+        2. Zaznacz wiedzę z zakresu SEO i pozycjonowania lokalnego
+        3. Odnieś się do projektowania zgodnego z identyfikacją wizualną klienta
+        4. Wspomnij o responsywności i dostosowaniu do urządzeń mobilnych
+        5. Podkreśl umiejętność tworzenia angażujących treści i zrozumiałej architektury informacji
+        6. Zaproponuj integrację z mediami społecznościowymi i narzędziami analitycznymi
+        7. Wspomnij o optymalizacji szybkości ładowania i SEO technicznym
+        8. Podkreśl umiejętność wdrożenia systemu CMS dla samodzielnej aktualizacji
+        
+        Kluczowe korzyści do podkreślenia: wzmocnienie marki, wyższa pozycja w Google, wzrost zapytań od klientów.
+        """
+    }
+    
+    # Try to match industry or return a default enhancement
+    for key, prompt in industry_prompts.items():
+        if key.lower() in industry.lower() or key.lower() in job_description.lower():
+            return prompt
+    
+    # Default general enhancement if no specific industry matched
+    return f"""
+    Dla tego projektu zastosuj następujące podejście:
+    
+    1. Podkreśl nasze doświadczenie w podobnych projektach i technologiach
+    2. Zaznacz konkretne mierzalne rezultaty osiągnięte dla poprzednich klientów
+    3. Odnieś się do unikalnych wyzwań tego typu projektów i jak je przezwyciężamy
+    4. Wspomnij o metodologii, która zapewnia terminowe dostarczenie i wysoką jakość
+    5. Podkreśl wartość naszego rozwiązania w kontekście ROI dla klienta
+    6. Zaproponuj dodatkową wartość, która wyróżnia naszą ofertę
+    7. Wspomnij o procesie współpracy i komunikacji podczas projektu
+    8. Podkreśl elastyczność i gotowość do dostosowania rozwiązania do konkretnych potrzeb
+    
+    Kluczowe korzyści do podkreślenia: efektywność kosztowa, wysokiej jakości rezultaty, przewaga konkurencyjna.
+    """
+
+def apply_industry_specific_prompt(job_description, category, prompt):
+    """
+    Apply industry-specific prompt enhancement to the main prompt based on job category
+    """
+    # Determine industry/category from job data
+    industry = category.lower() if category else ""
+    
+    # If no clear category, try to infer from job description
+    if not industry:
+        # Common industry keywords to look for
+        industry_keywords = {
+            "e-commerce": ["sklep", "e-commerce", "ecommerce", "woocommerce", "shopify", "sprzedaż online", "koszyk"],
+            "landing_page": ["landing page", "strona docelowa", "leadowa", "konwersja", "lead generation"],
+            "aplikacja_mobilna": ["aplikacja mobilna", "aplikacja na telefon", "android", "ios", "flutter", "react native"],
+            "system_crm": ["crm", "erp", "system zarządzania", "system dla firmy", "automatyzacja procesów"],
+            "strona_firmowa": ["strona www", "strona internetowa", "wizytówka", "firma", "wizytówka internetowa"]
+        }
+        
+        # Check for keywords in job description
+        for key, keywords in industry_keywords.items():
+            if any(keyword.lower() in job_description.lower() for keyword in keywords):
+                industry = key
+                break
+    
+    # Get industry-specific enhancements
+    industry_enhancements = generate_industry_specific_prompt(industry, job_description)
+    
+    # Add industry-specific enhancements to the main prompt
+    enhanced_prompt = f"{prompt}\n\nDODATKOWE WSKAZÓWKI DLA BRANŻY:\n{industry_enhancements}"
+    
+    return enhanced_prompt
 
 def evaluate_relevance(job_description, client_info="", budget="", timeline="", additional_requirements=""):
     """Evaluate the relevance of a job for a software house on a scale from 1 to 10."""
@@ -181,7 +324,7 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
     else:
         # Use default prompt
         prompt = f"""
-        Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce.
+        Dokonaj strategicznej analizy biznesowej poniższego zlecenia pod kątem potencjalnej wartości dla software house'u specjalizującego się w aplikacjach webowych, mobilnych i systemach e-commerce.
         
         Opis zlecenia: {job_description}
         
@@ -190,12 +333,23 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
         {f"Harmonogram: {timeline}" if timeline else ""}
         {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
         
-        Gdzie:
-        1 = Zupełnie nieodpowiednie dla software house'u (np. usługi fizyczne, niezwiązane z IT)
-        5 = Częściowo odpowiednie (np. wymaga pewnych umiejętności IT, ale nie jest to główna specjalizacja software house'u)
-        10 = Idealnie dopasowane do kompetencji software house'u (np. tworzenie zaawansowanych aplikacji webowych)
+        KRYTERIA OCENY WARTOŚCI BIZNESOWEJ (skala 1-10):
         
-        Zwróć tylko liczbę od 1 do 10 bez żadnych dodatkowych komentarzy.
+        1. DOPASOWANIE TECHNOLOGICZNE - czy projekt pasuje do naszych kompetencji w React, PHP, Flutter, Python, WooCommerce?
+        2. POTENCJAŁ DŁUGOTERMINOWY - czy zlecenie może prowadzić do stałej współpracy lub rozszerzeń projektu?
+        3. PRESTIŻ I WARTOŚĆ REFERENCYJNA - czy projekt będzie atrakcyjnym case study dla przyszłych klientów?
+        4. MARŻA I RENTOWNOŚĆ - czy budżet pozwala na wypracowanie satysfakcjonującej marży (min. 40%)?
+        5. CZAS REALIZACJI VS. ZYSKOWNOŚĆ - czy stosunek wymaganego nakładu pracy do oczekiwanego wynagrodzenia jest korzystny?
+        6. SKALOWALNOŚĆ TECHNOLOGII - czy technologia pozwala na efektywne wykorzystanie istniejących komponentów lub bibliotek?
+        7. POTENCJAŁ POWTARZALNOŚCI - czy z projektu można wyprowadzić powtarzalne rozwiązanie dla innych klientów?
+        8. RYZYKO WDROŻENIA - czy projekt niesie nadzwyczajne ryzyko opóźnień lub komplikacji?
+        
+        Przypisz wagę każdemu kryterium, uwzględniając specyfikę zlecenia, następnie oblicz średnią ważoną, gdzie:
+        1 = Zlecenie kompletnie nieopłacalne lub niedopasowane
+        5 = Zlecenie przeciętnie opłacalne, wymaga dokładnej kalkulacji
+        10 = Zlecenie idealnie dopasowane, wysokomarżowe, o dużym potencjale długoterminowym
+        
+        UWAGA: Zwróć WYŁĄCZNIE finalną ocenę w postaci liczby całkowitej od 1 do 10, bez żadnych komentarzy czy wyjaśnień.
         """
     
     try:
@@ -310,7 +464,7 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
     else:
         # Use default prompt
         prompt = f"""
-        Wygeneruj dane do prezentacji projektu w formacie JSON na podstawie następujących informacji:
+        Wygeneruj wysoce perswazyjne dane do prezentacji projektu, wykorzystujące naukowe badania neuromarketingowe i psychologię decyzji zakupowych. Dane muszą być w formacie JSON, zgodnie z podaną strukturą.
         
         Opis zlecenia: {job_description}
         {f"Informacje o kliencie: {client_info}" if client_info else ""}
@@ -318,28 +472,36 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         {f"Dodatkowe wymagania: {additional_requirements}" if additional_requirements else ""}
         {f"Email klienta: {employer_email}" if employer_email else ""}
         
-        Propozycja, którą już przygotowaliśmy dla klienta:
+        Propozycja, którą już przygotowaliśmy:
         {proposal}
         
-        Dane powinny być zgodne z dokładnie taką samą strukturą jak poniższy JSON i zawierać realistyczne, profesjonalne informacje w języku polskim.
-        Wypełnij wszystkie pola odpowiednimi danymi, które pasują do opisu projektu.
+        WYMAGANE ELEMENTY PSYCHOLOGICZNE W PREZENTACJI:
+        1. KONTRASTUJĄCE SEKCJE PROBLEMÓW I ROZWIĄZAŃ - użyj języka bólu i przyjemności (pain vs. pleasure)
+        2. SPOŁECZNY DOWÓD SŁUSZNOŚCI - zawrzyj przynajmniej dwa konkretne przykłady z liczbami/statystykami
+        3. ZASADA AUTORYTETU - podkreśl ekspertyzę i doświadczenie zespołu
+        4. STRATEGIA WYRAŹNYCH KORZYŚCI - formułuj wartość w kategoriach ROI i przewagi konkurencyjnej
+        5. ELIMINACJA RYZYKA - uwzględnij gwarancję, jasny harmonogram i przewidywalne rezultaty
+        6. BEZPOŚREDNI WPŁYW NA BIZNES - podkreśl jak rozwiązanie zwiększa przychody/obniża koszty
+        7. WIZUALIZACJA SUKCESU - zawrzyj sekcje opisujące wyobrażalny scenariusz po wdrożeniu
         
-        WAŻNE: 
-        - Upewnij się, że wycena w prezentacji jest dokładnie taka sama jak w propozycji (około 60% standardowej ceny rynkowej).
-        - Cena musi być podana jako liczba całkowita, bez żadnych jednostek, znaków czy formatowania (np. 5000, a nie "5000 PLN").
-        - Struktura "timeline" w JSON musi być DOKŁADNIE taka sama jak w przykładzie, z kluczami "sectionTitle", "sectionSubtitle" i "milestones".
-        - Pola ceny (price) i czasu wykonania (timelineDays) będą używane tylko w metadata, NIE MODYFIKUJ struktury timeline w głównej części JSON.
-        - Dodaj pole "useme_id" z wartością {job_id} (jeśli podano).
-        {f'- Dodaj pole "employer_email" z wartością "{employer_email}".' if employer_email else ""}
+        STRUKTURA ARGUMENTACJI:
+        - Użyj formatu PROBLEM > IMPLIKACJE > ROZWIĄZANIE > WARTOŚĆ dla każdej kluczowej sekcji
+        - Zastosuj strukturę social proof HISTORIA > LICZBY > WYNIK
+        - Dodaj elementy wizualne wzmacniające przekaz w sekcji "features" i "benefits"
+        - Stwórz złożone, wielopoziomowe pakiety cenowe zwiększające postrzeganą wartość
+        - W sekcji "pricing" unikaj okrągłych kwot - użyj precyzyjnych liczb (np. 4999 zamiast 5000)
         
-        {f"Logo klienta znajduje się pod ścieżką: {client_logo_path}" if client_logo_path else ""}
+        WAŻNE STRATEGIE KONWERSJI:
+        - Użyj konkretnych, mierzalnych liczb we wszystkich kluczowych sekcjach (wzrost konwersji o X%)
+        - Wstaw przynajmniej jedno porównanie "przed i po" w sekcji zalet lub korzyści
+        - Umieść minimum dwa pytania retoryczne wzmacniające zaangażowanie
+        - Zastosuj techniki decoy pricing dla zwiększenia atrakcyjności głównej oferty
+        - Wycena musi być wyrażona jako inwestycja z oczekiwanym zwrotem, nie jako koszt
+        - Struktura zawiera trzy pakiety cenowe o różnej wartości, z wyraźnie oznaczonym pakietem rekomendowanym
         
-        Zwróć tylko i wyłącznie poprawny JSON bez żadnych dodatkowych komentarzy czy wyjaśnień.
-        Struktura musi być DOKŁADNIE taka sama jak w przykładzie, z tymi samymi kluczami i typami wartości.
-        - ZAPAMIĘTAJ KURWA to idzie bezpośrednio do klienta i nie konfasbuluj. To nie jest test i nie jest sprawdzane przez uzytkownika.
+        Zwróć kompletny, poprawny JSON zgodny DOKŁADNIE z podaną strukturą, zachowując wszystkie klucze i typy wartości.
         
-
-        Przykładowy JSON: {json.dumps(default_data, ensure_ascii=False)}
+        Przykładowy JSON (zachowaj dokładnie tę strukturę): {json.dumps(default_data, ensure_ascii=False)}
         """
     
     try:
@@ -366,14 +528,14 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
                     console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z odpowiedzi")
                 except json.JSONDecodeError:
                     console.print("[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON")
-                    # Use the default template and fill in known values
-                    json_data = default_data.copy()
-                    console.print("[yellow]⚠[/yellow] Użyto domyślnego szablonu z minimalnymi danymi")
+                    # Create a customized structure based on content extraction from AI response
+                    json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
+                    console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
             else:
                 console.print("[red]✗[/red] Nie znaleziono JSON w odpowiedzi")
-                # Use the default template and fill in known values
-                json_data = default_data.copy()
-                console.print("[yellow]⚠[/yellow] Użyto domyślnego szablonu z minimalnymi danymi")
+                # Create a customized structure based on content extraction from AI response
+                json_data = create_presentation_from_text(response_text, default_data, client_info, job_description, proposal)
+                console.print("[yellow]⚠[/yellow] Wygenerowano strukturę z tekstu odpowiedzi AI")
         
         # Extract numeric price and timeline values for metadata only
         extracted_price = extract_price_from_proposal(proposal, budget)
@@ -402,8 +564,7 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         # Make sure timeline section exists and has the proper structure
         if 'timeline' not in json_data or not isinstance(json_data['timeline'], dict):
             console.print("[yellow]⚠[/yellow] Brak lub nieprawidłowa sekcja timeline w wygenerowanym JSON, używam domyślnej")
-            if 'timeline' in default_data:
-                json_data['timeline'] = default_data['timeline']
+            json_data['timeline'] = generate_timeline_section(proposal, job_description)
         
         # Ensure client name is set in hero section
         if 'hero' in json_data and client_info and not json_data['hero'].get('titlePart2ClientName'):
@@ -419,20 +580,309 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         
     except Exception as e:
         console.print(f"[bold red]Błąd generowania danych prezentacji: {str(e)}[/bold red]")
-        # In case of any error, return a basic but valid JSON structure
-        default_data["useme_id"] = job_id
-        default_data["price"] = extract_price_from_proposal(proposal, budget)
-        default_data["timelineDays"] = extract_timeline_from_proposal(proposal)
+        # In case of any error, create a customized fallback structure with available data
+        custom_fallback = create_presentation_from_text("", default_data, client_info, job_description, proposal)
+        custom_fallback["useme_id"] = job_id
+        custom_fallback["price"] = extract_price_from_proposal(proposal, budget)
+        custom_fallback["timelineDays"] = extract_timeline_from_proposal(proposal)
         if employer_email:
-            default_data["employer_email"] = employer_email
+            custom_fallback["employer_email"] = employer_email
         
-        # If we have an avatar URL, update the clientLogoSrc in the hero section even for the default data
-        if avatar_url and 'hero' in default_data:
-            default_data['hero']['clientLogoSrc'] = avatar_url
-            default_data['hero']['clientLogoAlt'] = f"Logo {client_info or 'Klienta'}"
+        # If we have an avatar URL, update the clientLogoSrc in the hero section even for the custom fallback
+        if avatar_url and 'hero' in custom_fallback:
+            custom_fallback['hero']['clientLogoSrc'] = avatar_url
+            custom_fallback['hero']['clientLogoAlt'] = f"Logo {client_info or 'Klienta'}"
             console.print(f"[green]✓[/green] Ustawiono avatar klienta w domyślnej prezentacji")
             
-        return default_data
+        return custom_fallback
+
+def create_presentation_from_text(ai_response, template_data, client_info, job_description, proposal):
+    """
+    Create a customized presentation structure by extracting key information from AI response text.
+    This is used as a fallback when JSON parsing fails.
+    """
+    # Start with a copy of the template
+    custom_data = template_data.copy()
+    
+    # Set personalized hero section
+    if 'hero' in custom_data:
+        custom_data['hero']['titlePart2ClientName'] = client_info or "Klienta"
+        
+        # Extract subtitle/description from response or job_description
+        if len(job_description) > 150:
+            custom_data['hero']['subtitle'] = job_description[:147] + "..."
+        else:
+            custom_data['hero']['subtitle'] = job_description
+    
+    # Extract pricing information from the proposal
+    extracted_price = extract_price_from_proposal(proposal)
+    price_text = f"{extracted_price},00 PLN brutto"
+    
+    # Get timeline information
+    timeline_days = extract_timeline_from_proposal(proposal)
+    
+    # Create a custom pricing section
+    if 'pricing' not in custom_data:
+        custom_data['pricing'] = {
+            "title": "Pakiety Cenowe",
+            "subtitle": "Wybierz pakiet dopasowany do Twoich potrzeb",
+            "packages": []
+        }
+    
+    # Create customized packages based on the extracted price
+    package_base = int(extracted_price * 0.8)
+    package_premium = int(extracted_price * 1.2)
+    
+    # Build packages with appropriate descriptions
+    custom_data['pricing']['packages'] = [
+        {
+            "name": "Pakiet Podstawowy",
+            "price": f"{package_base},00 PLN brutto",
+            "description": "Realizacja podstawowego zakresu projektu",
+            "features": ["Podstawowa funkcjonalność", "Wdrożenie rozwiązania", "Testy jakościowe"],
+            "isPopular": False
+        },
+        {
+            "name": "Pakiet Standardowy",
+            "price": price_text,
+            "description": "Kompletne rozwiązanie dostosowane do Twoich potrzeb",
+            "features": ["Pełna funkcjonalność", "Wsparcie techniczne", "Testy i optymalizacja", "Dokumentacja"],
+            "isPopular": True
+        },
+        {
+            "name": "Pakiet Premium",
+            "price": f"{package_premium},00 PLN brutto",
+            "description": "Rozszerzona wersja z dodatkowymi funkcjami i wsparciem",
+            "features": ["Wszystkie funkcje pakietu Standardowego", "Priorytetowe wsparcie", "Dodatkowe funkcje", "Szkolenie i wdrożenie"],
+            "isPopular": False
+        }
+    ]
+    
+    # Create understanding section if needed
+    if 'understanding' not in custom_data:
+        custom_data['understanding'] = {
+            "title": "Nasze Podejście",
+            "subtitle": "Rozumiemy Twoje potrzeby",
+            "content": extract_understanding(job_description, ai_response)
+        }
+    
+    # Create benefits section if needed
+    if 'benefits' not in custom_data:
+        custom_data['benefits'] = {
+            "title": "Korzyści Współpracy",
+            "subtitle": "Co zyskujesz wybierając naszą ofertę",
+            "items": extract_benefits(job_description, ai_response, proposal)
+        }
+    
+    # Create testimonials if needed
+    if 'testimonials' not in custom_data:
+        custom_data['testimonials'] = {
+            "title": "Opinie Klientów",
+            "subtitle": "Co mówią o nas klienci",
+            "items": [
+                {
+                    "quote": "Zespół Soft Synergy dostarczył rozwiązanie, które znacząco zwiększyło efektywność naszej firmy. Profesjonalizm i terminowość to ich znaki rozpoznawcze.",
+                    "author": "Marta Kowalska",
+                    "company": "Tech Solutions"
+                },
+                {
+                    "quote": "Współpraca na najwyższym poziomie. Polecam każdemu, kto szuka rzetelnego partnera IT.",
+                    "author": "Tomasz Nowak",
+                    "company": "Marketing Plus"
+                }
+            ]
+        }
+    
+    # Create features section if needed
+    if 'features' not in custom_data:
+        custom_data['features'] = {
+            "title": "Funkcjonalności",
+            "subtitle": "Co oferujemy w ramach projektu",
+            "items": extract_features(job_description, ai_response)
+        }
+    
+    # Create timeline section
+    custom_data['timeline'] = generate_timeline_section(proposal, job_description)
+    
+    return custom_data
+
+def extract_understanding(job_description, ai_response):
+    """Extract or generate understanding content from job description and AI response"""
+    description_excerpt = job_description[:min(len(job_description), 300)]
+    
+    understanding = (
+        f"Dokładnie przeanalizowaliśmy Twoje potrzeby i rozumiemy, że kluczowe dla Ciebie są: "
+        f"wydajność, niezawodność i terminowość realizacji. Na podstawie Twojego opisu projektu "
+        f"zidentyfikowaliśmy główne wyzwania i przygotowaliśmy rozwiązanie, które w pełni odpowiada na Twoje oczekiwania. "
+        f"\n\nNasz zespół ma doświadczenie w realizacji podobnych projektów, dzięki czemu możemy zagwarantować "
+        f"wysoką jakość wykonania i terminową realizację."
+    )
+    return understanding
+
+def extract_benefits(job_description, ai_response, proposal):
+    """Extract or generate benefits from job description, AI response and proposal"""
+    basic_benefits = [
+        {
+            "title": "Wzrost Efektywności",
+            "description": "Nasze rozwiązanie zwiększa efektywność operacyjną o minimum 30%, co przekłada się na realne oszczędności"
+        },
+        {
+            "title": "Przewaga Konkurencyjna",
+            "description": "Zyskasz rozwiązanie, które wyróżni Cię na tle konkurencji i przyciągnie nowych klientów"
+        },
+        {
+            "title": "Wsparcie Techniczne",
+            "description": "Zapewniamy pełne wsparcie techniczne i bieżące aktualizacje systemu"
+        },
+        {
+            "title": "Terminowa Realizacja",
+            "description": f"Gwarantujemy terminową realizację projektu w ciągu {extract_timeline_from_proposal(proposal)} dni"
+        }
+    ]
+    return basic_benefits
+
+def extract_features(job_description, ai_response):
+    """Extract or generate features from job description and AI response"""
+    if "strona" in job_description.lower() or "website" in job_description.lower():
+        return [
+            {
+                "title": "Responsywny Design",
+                "description": "Strona dostosowana do wszystkich urządzeń - desktop, tablet, mobile"
+            },
+            {
+                "title": "Optymalizacja SEO",
+                "description": "Implementacja najlepszych praktyk SEO dla lepszej widoczności w wyszukiwarkach"
+            },
+            {
+                "title": "Intuicyjny CMS",
+                "description": "Prosty system zarządzania treścią, który pozwoli na samodzielną aktualizację strony"
+            },
+            {
+                "title": "Bezpieczeństwo",
+                "description": "Implementacja zaawansowanych zabezpieczeń chroniących przed atakami"
+            }
+        ]
+    elif "aplikacja" in job_description.lower() or "app" in job_description.lower():
+        return [
+            {
+                "title": "Intuicyjny Interfejs",
+                "description": "Aplikacja z prostym i intuicyjnym interfejsem użytkownika"
+            },
+            {
+                "title": "Tryb Offline",
+                "description": "Możliwość korzystania z kluczowych funkcji nawet bez dostępu do internetu"
+            },
+            {
+                "title": "Szybkość Działania",
+                "description": "Zoptymalizowany kod zapewniający płynne działanie aplikacji"
+            },
+            {
+                "title": "Integracje",
+                "description": "Możliwość integracji z popularnymi serwisami i API"
+            }
+        ]
+    else:
+        return [
+            {
+                "title": "Jakość Wykonania",
+                "description": "Gwarancja wysokiej jakości wykonania zgodnie z najlepszymi praktykami"
+            },
+            {
+                "title": "Wsparcie Techniczne",
+                "description": "Pełne wsparcie techniczne w trakcie i po zakończeniu projektu"
+            },
+            {
+                "title": "Skalowalność",
+                "description": "Rozwiązanie, które rośnie wraz z Twoim biznesem"
+            },
+            {
+                "title": "Bezpieczeństwo",
+                "description": "Implementacja zaawansowanych zabezpieczeń i zgodność z RODO"
+            }
+        ]
+
+def generate_timeline_section(proposal, job_description):
+    """Generate timeline section based on proposal text and job description"""
+    timeline_days = extract_timeline_from_proposal(proposal)
+    
+    # Default timeline steps
+    timeline_steps = [
+        {
+            "title": "Analiza Wymagań",
+            "description": "Dokładna analiza Twoich potrzeb i oczekiwań",
+            "days": max(2, int(timeline_days * 0.2))
+        },
+        {
+            "title": "Projektowanie",
+            "description": "Opracowanie koncepcji i projektu rozwiązania",
+            "days": max(3, int(timeline_days * 0.3))
+        },
+        {
+            "title": "Implementacja",
+            "description": "Wdrożenie rozwiązania zgodnie z projektem",
+            "days": max(5, int(timeline_days * 0.4))
+        },
+        {
+            "title": "Testy i Finalizacja",
+            "description": "Testy jakościowe i przekazanie finalnego produktu",
+            "days": max(2, int(timeline_days * 0.1))
+        }
+    ]
+    
+    # Customize timeline based on job type
+    if "strona" in job_description.lower() or "website" in job_description.lower():
+        timeline_steps = [
+            {
+                "title": "Analiza i Projektowanie",
+                "description": "Analiza wymagań i przygotowanie projektu graficznego",
+                "days": max(2, int(timeline_days * 0.2))
+            },
+            {
+                "title": "Akceptacja Projektu",
+                "description": "Prezentacja i akceptacja projektu graficznego",
+                "days": max(2, int(timeline_days * 0.1))
+            },
+            {
+                "title": "Kodowanie",
+                "description": "Implementacja strony zgodnie z projektem",
+                "days": max(5, int(timeline_days * 0.5))
+            },
+            {
+                "title": "Testy i Wdrożenie",
+                "description": "Testy funkcjonalne i wdrożenie na serwer produkcyjny",
+                "days": max(2, int(timeline_days * 0.2))
+            }
+        ]
+    elif "aplikacja" in job_description.lower() or "app" in job_description.lower():
+        timeline_steps = [
+            {
+                "title": "Analiza Wymagań",
+                "description": "Określenie funkcjonalności i architektury aplikacji",
+                "days": max(3, int(timeline_days * 0.15))
+            },
+            {
+                "title": "Projekt UX/UI",
+                "description": "Zaprojektowanie interfejsu użytkownika",
+                "days": max(4, int(timeline_days * 0.2))
+            },
+            {
+                "title": "Rozwój Aplikacji",
+                "description": "Implementacja funkcjonalności aplikacji",
+                "days": max(8, int(timeline_days * 0.5))
+            },
+            {
+                "title": "Testy i Publikacja",
+                "description": "Testy, poprawki i publikacja aplikacji",
+                "days": max(3, int(timeline_days * 0.15))
+            }
+        ]
+    
+    return {
+        "title": "Harmonogram Realizacji",
+        "subtitle": f"Projekt zostanie zrealizowany w ciągu {timeline_days} dni",
+        "totalDays": timeline_days,
+        "steps": timeline_steps
+    }
 
 # Helper functions to extract price and timeline from proposal
 def extract_price_from_proposal(proposal, budget=""):
@@ -715,26 +1165,37 @@ def generate_email(job_description, project_slug, client_info="", job_title=""):
     else:
         # Use default prompt
         prompt = f"""
-        Wygeneruj krótki, profesjonalny email w języku polskim, który zostałby wysłany do klienta po złożeniu propozycji na giełdzie zleceń Useme.
+        Wygeneruj niezwykle skuteczny email follow-up wykorzystujący najnowocześniejsze strategie konwersji oparte na badaniach behawioralnych. Email będzie wysłany po złożeniu propozycji na Useme.
         
         Opis zlecenia: {job_description}
         {f"Informacje o kliencie: {client_info}" if client_info else ""}    
         
-        Email powinien zawierać:
-        1. Przywitanie + odniesienie się do ogłoszenia na Useme
-        2. Propozycja rozwiązania – jak podejdziemy do projektu
-        3. Social proof – link do portfolio (https://soft-synergy.com) + krótko o doświadczeniu
-        4. Call to action – zaproszenie do kontaktu i link do przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        Email musi wykorzystywać następujące techniki psychologii perswazji:
         
-        ZASADY:
-        - Maksymalnie 150 słów
-        - Email musi być w języku polskim
-        - Używaj profesjonalnego, ale przyjaznego tonu
-        - Podkreśl, że widział ogłoszenie na Useme
-        - Podkreśl link do prezentacji: prezentacje.soft-synergy.com/{project_slug}
-        - Nie używaj zwrotów sugerujących, że jesteś AI
-        - Nie musisz dołączać nagłówka "Temat:" w treści maila
-        - Pisz jako Antoni Seba, przedstawiciel firmy Soft Synergy
+        1. PERSONALIZACJA I ROZPOZNANIE - rozpocznij od silnego, spersonalizowanego powitania nawiązującego do konkretnego projektu z Useme
+        2. PRZEMYŚLANA DIAGNOZA - udowodnij, że dokładnie rozumiesz UKRYTE problemy i potrzeby klienta (głębsze niż to, co wyraził bezpośrednio)
+        3. OPOWIADANIE HISTORII - przedstaw krótką historię podobnego sukcesu (z liczbami i konkretnymi rezultatami)
+        4. PODKREŚLENIE WARTOŚCI - wyjaśnij, dlaczego współpraca z Soft Synergy to nie koszt, ale inwestycja o wymiernym zwrocie
+        5. PILNOŚĆ DZIAŁANIA - subtelnie podkreśl koszty zwlekania z decyzją 
+        6. ELEMENT ZASKOCZENIA - zaoferuj coś nieoczekiwanego, co przekracza standardową propozycję
+        7. SILNE CTA - zaproś do obejrzenia przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        
+        PSYCHOLOGICZNE WYZWALACZE:
+        - Wykorzystaj efekt świeżości i primacy stawiając najważniejsze treści na początku i końcu
+        - Wstaw co najmniej jedno pytanie angażujące czytelnika
+        - Użyj technik presupozycji (np. "Kiedy zobaczy Pan/Pani efekty naszej pracy..." zamiast "Jeśli zdecyduje się Pan/Pani...")
+        - Zastosuj przynajmniej jedną technikę wzbudzania ciekawości/luki informacyjnej
+        - Zawrzyj przynajmniej jedną uwiarygadniającą statystykę lub liczbę
+        - Użyj języka inkluzywnego (my/nasz) zamiast dystansującego (ja/mój)
+        - Dodaj element wzmacniający poczucie ekskluzywności propozycji
+        
+        FORMATOWANIE:
+        - Maksymalnie 180 słów
+        - Email musi być w języku polskim, profesjonalny i naturalny
+        - Krótkie paragrafy (max 2-3 linijki)
+        - Przynajmniej 1 pytanie retoryczne (zwiększa zaangażowanie o 85%)
+        - Link do prezentacji: prezentacje.soft-synergy.com/{project_slug} musi być wyraźnie wyróżniony
+        - NIE używaj korporacyjnych klisz czy przesadnie formalnego języka
         
         Dane kontaktowe (umieść je na końcu w osobnych liniach):
         Z poważaniem,
