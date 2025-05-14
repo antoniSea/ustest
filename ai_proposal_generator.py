@@ -344,28 +344,49 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
     
     try:
         response = get_gemini_response(prompt)
-        # The response is already a string, no need to call .strip() on it
-        response_text = response
         
-        # First attempt: try to parse the whole response as JSON
+        # Clean the response to extract valid JSON
+        def clean_json_response(text):
+            # Remove any potential markdown code block markers
+            text = re.sub(r'```(?:json)?\s*', '', text)
+            text = re.sub(r'\s*```', '', text)
+            
+            # Remove any text before the first {
+            if '{' in text:
+                text = text[text.find('{'):]
+            
+            # Remove any text after the last }
+            if '}' in text:
+                text = text[:text.rfind('}')+1]
+            
+            # Fix common JSON formatting issues
+            text = text.replace('\n', ' ')
+            text = re.sub(r',\s*}', '}', text)  # Remove trailing commas
+            text = re.sub(r',\s*]', ']', text)  # Remove trailing commas in arrays
+            
+            return text
+        
+        # First attempt: try to parse the whole cleaned response as JSON
         try:
-            json_data = json.loads(response_text)
-            console.print("[green]✓[/green] Poprawnie sparsowano JSON z odpowiedzi")
-        except json.JSONDecodeError:
-            console.print("[yellow]⚠[/yellow] Niepoprawny format JSON w odpowiedzi, próbuję wyodrębnić")
+            cleaned_response = clean_json_response(response)
+            json_data = json.loads(cleaned_response)
+            console.print("[green]✓[/green] Poprawnie sparsowano JSON z oczyszczonej odpowiedzi")
+        except json.JSONDecodeError as e:
+            console.print(f"[yellow]⚠[/yellow] Niepoprawny format JSON w odpowiedzi ({str(e)}), próbuję wyodrębnić")
             
             # Second attempt: try to extract JSON from the response
-            json_match = re.search(r'```(?:json)?\s*({[\s\S]*?})\s*```', response_text)
+            json_match = re.search(r'```(?:json)?\s*({[\s\S]*?})\s*```', response)
             if not json_match:
-                json_match = re.search(r'({[\s\S]*})', response_text)
+                json_match = re.search(r'({[\s\S]*})', response)
                 
             if json_match:
                 try:
                     json_text = json_match.group(1).strip()
+                    json_text = clean_json_response(json_text)
                     json_data = json.loads(json_text)
                     console.print("[green]✓[/green] Poprawnie wyodrębniono i sparsowano JSON z odpowiedzi")
-                except json.JSONDecodeError:
-                    console.print("[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON")
+                except json.JSONDecodeError as e:
+                    console.print(f"[red]✗[/red] Nie udało się sparsować wyodrębnionego JSON: {str(e)}")
                     # Use the default template and fill in known values
                     json_data = default_data.copy()
                     console.print("[yellow]⚠[/yellow] Użyto domyślnego szablonu z minimalnymi danymi")
