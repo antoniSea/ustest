@@ -746,6 +746,7 @@ def generate_email(job_description, project_slug, client_info="", job_title=""):
         2. Propozycja rozwiązania – jak podejdziemy do projektu
         3. Social proof – link do portfolio (https://soft-synergy.com) + krótko o doświadczeniu
         4. Call to action – zaproszenie do kontaktu i link do przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        5. nie pisz tytułu emaila to załatwimy w innym miejscu
         
         ZASADY:
         - Maksymalnie 150 słów
@@ -756,7 +757,7 @@ def generate_email(job_description, project_slug, client_info="", job_title=""):
         - Nie używaj zwrotów sugerujących, że jesteś AI
         - Nie musisz dołączać nagłówka "Temat:" w treści maila
         - Pisz jako Antoni Seba, przedstawiciel firmy Soft Synergy
-        
+        - ZAPAMĘTAJ KURWA to idzie bezpośrednio do klienta i nie konfasbuluj. To nie jest t
         Dane kontaktowe (umieść je na końcu w osobnych liniach):
         Z poważaniem,
         Antoni Seba
