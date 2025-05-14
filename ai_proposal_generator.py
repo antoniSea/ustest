@@ -506,6 +506,8 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
     
     try:
         response = get_gemini_response(prompt)
+        print(response)
+        return 'sadasdadasd'
         # The response is already a string, no need to call .strip() on it
         response_text = response
         
