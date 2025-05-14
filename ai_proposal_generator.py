@@ -113,6 +113,10 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
         - react native
         - python
         - django
+        - projektowanie graficzne
+        - identyfikacja wizualna
+        - marketing
+        - social media
         
         Wygeneruj wyjątkowo przekonującą, profesjonalną propozycję dla zlecenia poniżej. Użyj strategii persuazji zaczerpniętych z METODY SPIN SELLING oraz metodologii AIDA (Attention, Interest, Desire, Action):
         
@@ -190,6 +194,7 @@ def generate_industry_specific_prompt(industry, job_description):
         6. Zaproponuj analizę koszyków i zachowań użytkowników za pomocą heatmap
         7. Zaznacz rozumienie procesów zwiększania średniej wartości zamówienia
         8. Podkreśl umiejętność wdrożenia programów lojalnościowych
+        9. Zaproponuj spójną identyfikację wizualną i strategię marketingową dla sklepu
         
         Kluczowe korzyści do podkreślenia: wzrost sprzedaży, optymalizacja konwersji, zwiększenie ruchu organicznego.
         """,
@@ -205,6 +210,7 @@ def generate_industry_specific_prompt(industry, job_description):
         6. Zaproponuj analizę User Experience i optymalizację czasu ładowania (<1.5s)
         7. Wspomnij o strategiach budowania zaufania (social proof, testimonials)
         8. Podkreśl umiejętność integracji z narzędziami analitycznymi i marketingowymi
+        9. Zaproponuj profesjonalne projekty graficzne i spójną identyfikację wizualną
         
         Kluczowe korzyści do podkreślenia: wzrost konwersji, lepszy ROI z kampanii, więcej jakościowych leadów.
         """,
@@ -220,6 +226,7 @@ def generate_industry_specific_prompt(industry, job_description):
         6. Zaproponuj implementację funkcji offline i optymalizację wydajności
         7. Wspomnij o zabezpieczeniach RODO/GDPR i bezpieczeństwie danych
         8. Podkreśl doświadczenie w tworzeniu aplikacji, które się skalują z rosnącą bazą użytkowników
+        9. Zaproponuj kompleksowy projekt graficzny i strategię marketingową dla aplikacji
         
         Kluczowe korzyści do podkreślenia: wysokie oceny użytkowników, niski współczynnik odrzuceń, efektywna monetyzacja.
         """,
@@ -235,6 +242,7 @@ def generate_industry_specific_prompt(industry, job_description):
         6. Zaproponuj implementację raportowania i dashboardów biznesowych
         7. Wspomnij o skalowalności rozwiązania wraz z rozwojem firmy
         8. Podkreśl doświadczenie w szkoleniach i onboardingu nowych użytkowników
+        9. Zaproponuj spójną identyfikację wizualną i strategię komunikacji systemu
         
         Kluczowe korzyści do podkreślenia: oszczędność czasu pracowników, lepsza analiza danych, automatyzacja powtarzalnych zadań.
         """,
@@ -250,8 +258,57 @@ def generate_industry_specific_prompt(industry, job_description):
         6. Zaproponuj integrację z mediami społecznościowymi i narzędziami analitycznymi
         7. Wspomnij o optymalizacji szybkości ładowania i SEO technicznym
         8. Podkreśl umiejętność wdrożenia systemu CMS dla samodzielnej aktualizacji
+        9. Zaproponuj kompleksowe wsparcie w zakresie identyfikacji wizualnej i social media
         
         Kluczowe korzyści do podkreślenia: wzmocnienie marki, wyższa pozycja w Google, wzrost zapytań od klientów.
+        """,
+        
+        "projektowanie_graficzne": f"""
+        Dla tego projektu graficznego zastosuj następujące podejście:
+        
+        1. Podkreśl nasze DOŚWIADCZENIE w tworzeniu profesjonalnych projektów graficznych
+        2. Zaznacz wiedzę z zakresu teorii koloru, typografii i kompozycji
+        3. Odnieś się do procesu badania grupy docelowej i doboru odpowiednich środków wyrazu
+        4. Wspomnij o tworzeniu spójnych systemów identyfikacji wizualnej
+        5. Podkreśl umiejętność projektowania dla różnych formatów i mediów
+        6. Zaproponuj warsztaty odkrywania tożsamości marki dla lepszego zrozumienia potrzeb
+        7. Wspomnij o przygotowaniu kompletnych ksiąg znaku i wytycznych brandingowych
+        8. Podkreśl doświadczenie w projektach zintegrowanych z kampaniami marketingowymi
+        9. Zaproponuj również wsparcie we wdrożeniu identyfikacji w mediach cyfrowych
+        
+        Kluczowe korzyści do podkreślenia: rozpoznawalna marka, spójny przekaz, profesjonalny wizerunek.
+        """,
+        
+        "marketing": f"""
+        Dla tego projektu marketingowego zastosuj następujące podejście:
+        
+        1. Podkreśl nasze DOŚWIADCZENIE w tworzeniu skutecznych kampanii marketingowych (+40% ROI)
+        2. Zaznacz wiedzę z zakresu customer journey i procesów decyzyjnych
+        3. Odnieś się do analityki marketingowej i optymalizacji kampanii
+        4. Wspomnij o integracji działań online i offline dla maksymalizacji efektów
+        5. Podkreśl umiejętność targetowania odpowiednich grup odbiorców
+        6. Zaproponuj strategie content marketingu i budowania wizerunku eksperckiego
+        7. Wspomnij o doświadczeniu w kampaniach Google Ads, Meta Ads i LinkedIn Ads
+        8. Podkreśl kompleksowe podejście łączące marketing treści, SEO i social media
+        9. Zaproponuj również wsparcie graficzne i wizualne dla kampanii
+        
+        Kluczowe korzyści do podkreślenia: zwiększenie rozpoznawalności, wzrost konwersji, budowanie lojalności klientów.
+        """,
+        
+        "social_media": f"""
+        Dla tego projektu social media zastosuj następujące podejście:
+        
+        1. Podkreśl nasze DOŚWIADCZENIE w prowadzeniu skutecznych kampanii w mediach społecznościowych
+        2. Zaznacz wiedzę z zakresu algorytmów poszczególnych platform i najlepszych praktyk
+        3. Odnieś się do tworzenia angażującej treści i budowania społeczności
+        4. Wspomnij o strategiach zwiększania zasięgów organicznych i płatnych
+        5. Podkreśl umiejętność tworzenia contentu dopasowanego do grup docelowych
+        6. Zaproponuj harmonogram publikacji i strategie zarządzania kryzysowego
+        7. Wspomnij o monitoringu efektywności i raportowaniu wyników
+        8. Podkreśl doświadczenie w tworzeniu kampanii reklamowych w social media
+        9. Zaproponuj kompleksową obsługę: strategia, grafiki, copywriting, analityka
+        
+        Kluczowe korzyści do podkreślenia: większe zaangażowanie, wzrost rozpoznawalności marki, konwersja obserwujących na klientów.
         """
     }
     
@@ -272,8 +329,9 @@ def generate_industry_specific_prompt(industry, job_description):
     6. Zaproponuj dodatkową wartość, która wyróżnia naszą ofertę
     7. Wspomnij o procesie współpracy i komunikacji podczas projektu
     8. Podkreśl elastyczność i gotowość do dostosowania rozwiązania do konkretnych potrzeb
+    9. Zaproponuj kompleksowe podejście łączące technologię z projektowaniem graficznym, identyfikacją wizualną i strategią marketingową
     
-    Kluczowe korzyści do podkreślenia: efektywność kosztowa, wysokiej jakości rezultaty, przewaga konkurencyjna.
+    Kluczowe korzyści do podkreślenia: efektywność kosztowa, wysokiej jakości rezultaty, przewaga konkurencyjna, spójny przekaz marki.
     """
 
 def apply_industry_specific_prompt(job_description, category, prompt):
@@ -324,7 +382,7 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
     else:
         # Use default prompt
         prompt = f"""
-        Dokonaj strategicznej analizy biznesowej poniższego zlecenia pod kątem potencjalnej wartości dla software house'u specjalizującego się w aplikacjach webowych, mobilnych i systemach e-commerce.
+        Dokonaj strategicznej analizy biznesowej poniższego zlecenia pod kątem potencjalnej wartości dla software house'u specjalizującego się w aplikacjach webowych, mobilnych, systemach e-commerce, projektowaniu graficznym, identyfikacji wizualnej, marketingu i social media.
         
         Opis zlecenia: {job_description}
         
@@ -335,7 +393,7 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
         
         KRYTERIA OCENY WARTOŚCI BIZNESOWEJ (skala 1-10):
         
-        1. DOPASOWANIE TECHNOLOGICZNE - czy projekt pasuje do naszych kompetencji w React, PHP, Flutter, Python, WooCommerce?
+        1. DOPASOWANIE TECHNOLOGICZNE - czy projekt pasuje do naszych kompetencji w React, PHP, Flutter, Python, WooCommerce, projektowaniu graficznym, identyfikacji wizualnej, marketingu lub social media?
         2. POTENCJAŁ DŁUGOTERMINOWY - czy zlecenie może prowadzić do stałej współpracy lub rozszerzeń projektu?
         3. PRESTIŻ I WARTOŚĆ REFERENCYJNA - czy projekt będzie atrakcyjnym case study dla przyszłych klientów?
         4. MARŻA I RENTOWNOŚĆ - czy budżet pozwala na wypracowanie satysfakcjonującej marży (min. 40%)?
@@ -343,6 +401,7 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
         6. SKALOWALNOŚĆ TECHNOLOGII - czy technologia pozwala na efektywne wykorzystanie istniejących komponentów lub bibliotek?
         7. POTENCJAŁ POWTARZALNOŚCI - czy z projektu można wyprowadzić powtarzalne rozwiązanie dla innych klientów?
         8. RYZYKO WDROŻENIA - czy projekt niesie nadzwyczajne ryzyko opóźnień lub komplikacji?
+        9. KOMPLEMENTARNOŚĆ USŁUG - czy projekt może prowadzić do sprzedaży powiązanych usług (np. strona + identyfikacja wizualna, marketing)?
         
         Przypisz wagę każdemu kryterium, uwzględniając specyfikę zlecenia, następnie oblicz średnią ważoną, gdzie:
         1 = Zlecenie kompletnie nieopłacalne lub niedopasowane
@@ -483,6 +542,7 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
         5. ELIMINACJA RYZYKA - uwzględnij gwarancję, jasny harmonogram i przewidywalne rezultaty
         6. BEZPOŚREDNI WPŁYW NA BIZNES - podkreśl jak rozwiązanie zwiększa przychody/obniża koszty
         7. WIZUALIZACJA SUKCESU - zawrzyj sekcje opisujące wyobrażalny scenariusz po wdrożeniu
+        8. INTEGRACJA USŁUG - podkreśl jak łączymy rozwiązania technologiczne z projektowaniem graficznym, identyfikacją wizualną i strategią marketingową
         
         STRUKTURA ARGUMENTACJI:
         - Użyj formatu PROBLEM > IMPLIKACJE > ROZWIĄZANIE > WARTOŚĆ dla każdej kluczowej sekcji
@@ -507,7 +567,7 @@ def generate_presentation_data(job_description, proposal, job_id="", client_info
     try:
         response = get_gemini_response(prompt)
         print(response)
-        return 'sadasdadasd'
+        
         # The response is already a string, no need to call .strip() on it
         response_text = response
         
@@ -1181,6 +1241,7 @@ def generate_email(job_description, project_slug, client_info="", job_title=""):
         5. PILNOŚĆ DZIAŁANIA - subtelnie podkreśl koszty zwlekania z decyzją 
         6. ELEMENT ZASKOCZENIA - zaoferuj coś nieoczekiwanego, co przekracza standardową propozycję
         7. SILNE CTA - zaproś do obejrzenia przygotowanej prezentacji: prezentacje.soft-synergy.com/{project_slug}
+        8. KOMPLEKSOWOŚĆ USŁUG - podkreśl, że oferujemy pełen zakres usług: rozwiązania technologiczne, projektowanie graficzne, identyfikację wizualną, marketing i social media
         
         PSYCHOLOGICZNE WYZWALACZE:
         - Wykorzystaj efekt świeżości i primacy stawiając najważniejsze treści na początku i końcu

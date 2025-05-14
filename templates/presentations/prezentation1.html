@@ -1143,7 +1143,72 @@
 
                 // --- Hero ---
                 const heroClientLogo = document.getElementById('heroClientLogo');
-                if (heroClientLogo) { heroClientLogo.src = data.hero.clientLogoSrc; heroClientLogo.alt = data.hero.clientLogoAlt; }
+                if (heroClientLogo) { 
+                    heroClientLogo.src = data.hero.clientLogoSrc;
+                    heroClientLogo.alt = data.hero.clientLogoAlt;
+                    
+                    // Create a placeholder container for initials
+                    const logoContainer = heroClientLogo.parentElement;
+                    const initialsPlaceholder = document.createElement('div');
+                    initialsPlaceholder.id = 'heroLogoPlaceholder';
+                    initialsPlaceholder.className = 'mx-auto h-16 md:h-20 w-48 md:w-56 flex items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white font-bold text-3xl md:text-4xl shadow-lg border border-cyan-400';
+                    initialsPlaceholder.style.display = 'none';
+                    
+                    // Add subtle animation to the placeholder
+                    const innerSpan = document.createElement('span');
+                    innerSpan.className = 'tracking-wide opacity-90';
+                    innerSpan.style.textShadow = '0 2px 4px rgba(0,0,0,0.3)';
+                    initialsPlaceholder.appendChild(innerSpan);
+                    
+                    logoContainer.appendChild(initialsPlaceholder);
+                    
+                    // Get initials from client name
+                    const clientName = data.hero.titlePart2ClientName || '';
+                    const initials = clientName
+                        .split(' ')
+                        .filter(word => word.length > 0)
+                        .map(word => word[0])
+                        .join('')
+                        .toUpperCase()
+                        .substring(0, 2); // Limit to 2 characters
+                    
+                    // If no initials available, use a default
+                    innerSpan.textContent = initials || 'SS'; // Default to SS (Soft Synergy) if no initials
+                    
+                    // Handle image load error
+                    heroClientLogo.onerror = function() {
+                        this.style.display = 'none';
+                        initialsPlaceholder.style.display = 'flex';
+                        
+                        // Add a subtle animation to the placeholder when it appears
+                        gsap.fromTo(initialsPlaceholder, 
+                            { opacity: 0, scale: 0.9 }, 
+                            { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }
+                        );
+                        
+                        // Add a subtle breathing animation
+                        gsap.to(innerSpan, { 
+                            opacity: 0.7, 
+                            duration: 2, 
+                            repeat: -1, 
+                            yoyo: true, 
+                            ease: "sine.inOut" 
+                        });
+                        
+                        console.log('Client logo failed to load, showing initials placeholder');
+                    };
+                    
+                    // Also handle empty source by forcing the error handler
+                    if (!data.hero.clientLogoSrc || data.hero.clientLogoSrc === '') {
+                        heroClientLogo.onerror();
+                    }
+                    
+                    // Add utility function for testing placeholder manually
+                    window.testLogoPlaceholder = function() {
+                        heroClientLogo.onerror();
+                        return 'Logo placeholder is now shown. To revert, refresh the page.';
+                    };
+                }
                 const heroTitlePart1 = document.getElementById('heroTitlePart1');
                 if (heroTitlePart1) heroTitlePart1.textContent = data.hero.titlePart1;
                 const heroTitlePart2 = document.getElementById('heroTitlePart2');
