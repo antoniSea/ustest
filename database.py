@@ -392,47 +392,59 @@ class Database:
         )
         return [dict(row) for row in cursor.fetchall()]
     
-    def schedule_scrape_task(self, scheduled_time, parameters=None):
-        """Schedule a scrape task"""
+    def schedule_scrape_task(self, scheduled_time, parameters=None, task_type='scrape'):
+        """Schedule a task to run at a specific time"""
         conn = self.get_connection()
         cursor = conn.cursor()
-        params_json = json.dumps(parameters) if parameters else '{}'
+        params_json = parameters if parameters else '{}'
         
-        cursor.execute(
-            """
-            INSERT INTO scrape_queue (task_type, status, scheduled_time, parameters)
-            VALUES (?, ?, ?, ?)
-            """,
-            ('scrape', 'pending', scheduled_time.isoformat(), params_json)
-        )
+        # Ensure scheduled_time is in isoformat string
+        if isinstance(scheduled_time, str):
+            scheduled_time_str = scheduled_time
+        else:
+            scheduled_time_str = scheduled_time.isoformat()
+            
+        # Insert the task
+        cursor.execute('''
+        INSERT INTO scrape_queue (task_type, status, scheduled_time, parameters, created_at) 
+        VALUES (?, ?, ?, ?, ?)
+        ''', (task_type, 'pending', scheduled_time_str, params_json, datetime.now().isoformat()))
+        
         conn.commit()
+        return cursor.lastrowid
     
     def get_pending_tasks(self, current_time):
-        """Get pending tasks that should be executed"""
+        """Get all pending tasks that are scheduled to run now or earlier"""
         conn = self.get_connection()
         cursor = conn.cursor()
-        cursor.execute(
-            """
-            SELECT * FROM scrape_queue 
-            WHERE status = 'pending' AND scheduled_time <= ?
-            ORDER BY scheduled_time ASC
-            """,
-            (current_time.isoformat(),)
-        )
+        
+        # Ensure current_time is in isoformat string
+        if not isinstance(current_time, str):
+            current_time = current_time.isoformat()
+            
+        cursor.execute('''
+        SELECT id, task_type, parameters, scheduled_time 
+        FROM scrape_queue 
+        WHERE status = 'pending' AND scheduled_time <= ?
+        ''', (current_time,))
+        
         return [dict(row) for row in cursor.fetchall()]
     
     def update_task_status(self, task_id, status, last_run):
-        """Update task status"""
+        """Update a task's status and last run time"""
         conn = self.get_connection()
         cursor = conn.cursor()
-        cursor.execute(
-            """
-            UPDATE scrape_queue 
-            SET status = ?, last_run = ? 
-            WHERE id = ?
-            """,
-            (status, last_run.isoformat(), task_id)
-        )
+        
+        # Ensure last_run is in isoformat string
+        if not isinstance(last_run, str):
+            last_run = last_run.isoformat()
+            
+        cursor.execute('''
+        UPDATE scrape_queue 
+        SET status = ?, last_run = ? 
+        WHERE id = ?
+        ''', (status, last_run, task_id))
+        
         conn.commit()
     
     def store_submitted_proposal(self, job_id, proposal_text, status="submitted", response_message="", submission_time=None):

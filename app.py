@@ -4,7 +4,7 @@ import logging
 from flask import Flask, render_template, abort, jsonify, request, Response, send_from_directory, redirect, url_for, flash
 from flask_cors import CORS
 from database import Database
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 import configparser
 
@@ -33,6 +33,90 @@ FORCE_HTTPS = os.environ.get('FORCE_HTTPS', 'true').lower() in ('true', '1', 'ye
 
 # Initialize database
 db = Database()
+
+# Initialize Queue Processor
+from queue_processor import QueueProcessor
+
+# Create queue processor instance
+queue_processor = QueueProcessor(db_path="useme.db", sleep_interval=30)
+
+# Define task handlers
+def send_pdf_email_handler(parameters):
+    """Handler for sending PDF attachments via email"""
+    import os
+    import logging
+    
+    logger = logging.getLogger('QueueProcessor')
+    logger.info(f"Processing PDF email task with parameters: {parameters}")
+    
+    try:
+        # Extract parameters
+        email = parameters.get('email')
+        subject = parameters.get('subject', 'Materiały z naszej prezentacji')
+        message = parameters.get('message')
+        pdf_path = parameters.get('pdf_path')
+        presentation_slug = parameters.get('presentation_slug')
+        
+        # FOR TESTING: Override recipient email to send all emails to info@soft-synergy.com
+        email = "info@soft-synergy.com"
+        
+        # Validate required parameters
+        if not email or not pdf_path:
+            logger.error("Missing required parameters for send_pdf_email task")
+            return False
+        
+        # Check if PDF file exists
+        if not os.path.exists(pdf_path):
+            logger.error(f"PDF file not found at path: {pdf_path}")
+            return False
+            
+        # Import EmailSender and configure
+        try:
+            from mailer import EmailSender
+            email_sender = EmailSender()  # Loads config automatically
+            
+            # Prepare a more personalized message if it's not provided
+            if not message:
+                message = f"""Szanowni Państwo,
+
+Dziękujemy za zainteresowanie naszą prezentacją.
+
+W załączniku przesyłamy wersję PDF naszej oferty, którą mogli Państwo obejrzeć online pod adresem: https://prezentacje.soft-synergy.com/{presentation_slug}
+
+Możemy też zaproponować krótkie spotkanie, aby omówić szczegóły projektu i odpowiedzieć na wszelkie pytania.
+
+Z poważaniem,
+Zespół Soft Synergy
+                """
+            
+            # Send email with attachment
+            result = email_sender.send_email_with_attachment(
+                recipient_email=email,
+                subject=subject,
+                content=message,
+                attachment_path=pdf_path
+            )
+            
+            if result:
+                logger.info(f"Successfully sent PDF email to {email}")
+                return True
+            else:
+                logger.error(f"Failed to send PDF email to {email}")
+                return False
+                
+        except ImportError as e:
+            logger.error(f"Failed to import required modules: {str(e)}")
+            return False
+            
+    except Exception as e:
+        logger.error(f"Error processing send_pdf_email task: {str(e)}")
+        return False
+
+# Register task handlers
+queue_processor.register_task_handler('send_pdf_email', send_pdf_email_handler)
+
+# Start the queue processor
+queue_processor.start()
 
 # Setup login manager
 login_manager = LoginManager()
@@ -725,6 +809,63 @@ def presentation(filename):
                 referrer=referrer
             )
             logger.info(f"Tracked view for presentation: {filename}")
+            
+            # Queue a task to send a PDF email after 30 minutes
+            try:
+                from datetime import datetime, timedelta
+                
+                # Generate PDF file path
+                pdf_filename = f"{filename}.pdf"
+                pdf_path = os.path.join(PRESENTATIONS_DIR, pdf_filename)
+                
+                # Create the PDF if it doesn't exist
+                if not os.path.exists(pdf_path):
+                    create_pdf_from_presentation(presentation_data, pdf_path)
+                
+                # Get employer email if available
+                employer_email = None
+                if job_id:
+                    job = db.get_job_by_id(job_id)
+                    if job and job.get('employer_email'):
+                        employer_email = job.get('employer_email')
+                
+                # FOR TESTING: Override recipient email to send all emails to info@soft-synergy.com
+                employer_email = "info@soft-synergy.com"
+                
+                # Only schedule if we have an email to send to
+                if employer_email:
+                    # Schedule the email task for 1 minute later
+                    scheduled_time = datetime.now() + timedelta(minutes=1)
+                    
+                    # Prepare parameters for the email task
+                    task_params = {
+                        'email': employer_email,
+                        'subject': f'[TEST] Materiały do prezentacji: {filename}',
+                        'message': f"""Szanowni Państwo,
+
+Dziękujemy za zainteresowanie naszą prezentacją "{presentation_data.get('hero', {}).get('titlePart1', '')} {presentation_data.get('hero', {}).get('titlePart2ClientName', '')}".
+
+W załączniku przesyłamy wersję PDF naszej oferty, którą mogli Państwo obejrzeć online pod adresem: https://prezentacje.soft-synergy.com/{filename}
+
+Ta wiadomość została wygenerowana automatycznie w ramach testów systemu powiadomień. 
+Prezentacja została wyświetlona z adresu IP: {request.remote_addr}
+User Agent: {request.headers.get('User-Agent')}
+
+W razie pytań, jesteśmy do dyspozycji.
+
+Z poważaniem,
+Zespół Soft Synergy""",
+                        'pdf_path': pdf_path,
+                        'presentation_slug': filename,
+                        'job_id': job_id
+                    }
+                    
+                    # Add task to queue
+                    db.schedule_scrape_task(scheduled_time, json.dumps(task_params), task_type='send_pdf_email')
+                    logger.info(f"Scheduled email with PDF for {employer_email} in 1 minute")
+            except Exception as e:
+                logger.error(f"Error scheduling PDF email: {str(e)}")
+                
         except Exception as e:
             logger.error(f"Error tracking presentation view: {str(e)}")
         

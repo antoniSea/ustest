@@ -100,6 +100,60 @@ class EmailSender:
         except Exception as e:
             logger.error(f"Error sending email to {recipient_email}: {str(e)}")
             return False
+    
+    def send_email_with_attachment(self, recipient_email, subject, content, attachment_path=None):
+        """
+        Send an email with a single attachment.
+        
+        Args:
+            recipient_email (str): Email address of the recipient
+            subject (str): Email subject
+            content (str): Email body content
+            attachment_path (str): Path to the attachment file
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not attachment_path:
+            # If no attachment, use regular send_email method
+            return self.send_email(recipient_email, subject, content)
+            
+        if not os.path.exists(attachment_path):
+            logger.error(f"Attachment file not found: {attachment_path}")
+            return False
+            
+        try:
+            # Create message
+            msg = MIMEMultipart()
+            msg['From'] = f"{self.config['sender_name']} <{self.config['sender_email']}>"
+            msg['To'] = recipient_email
+            msg['Subject'] = subject
+            
+            # Determine if content is HTML
+            is_html = '<html>' in content.lower()
+            
+            # Add body
+            msg.attach(MIMEText(content, 'html' if is_html else 'plain'))
+            
+            # Add the attachment
+            with open(attachment_path, 'rb') as file:
+                attachment_filename = os.path.basename(attachment_path)
+                part = MIMEApplication(file.read(), Name=attachment_filename)
+                part['Content-Disposition'] = f'attachment; filename="{attachment_filename}"'
+                msg.attach(part)
+            
+            # Connect to SMTP server
+            with smtplib.SMTP(self.config['smtp_server'], self.config['smtp_port']) as server:
+                server.starttls()
+                server.login(self.config['smtp_username'], self.config['smtp_password'])
+                server.send_message(msg)
+                
+            logger.info(f"Email with attachment '{attachment_filename}' sent to {recipient_email}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error sending email with attachment to {recipient_email}: {str(e)}")
+            return False
 
 def send_followup_email(db, min_relevance=7):
     """
