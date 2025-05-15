@@ -907,24 +907,12 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
         "count": processed_count,
         "proposals_posted": posted_count,
         "emails_sent": emails_sent,
-        "message": f"Wygenerowano {processed_count} propozycji, wysłano {posted_count} na Useme, wysłano {emails_sent} emaili"
+            "message": f"Wygenerowano {processed_count} propozycji, wysłano {posted_count} na Useme, wysłano {emails_sent} emaili"
     }
 
 def send_useme_message(job_id, message_content, use_proposal=False):
-    """
-    Send a message through Useme's contact form for a specific job.
-    
-    Args:
-        job_id (str): The Useme job ID.
-        message_content (str): The message to send.
-        use_proposal (bool): If True, use the saved proposal text as the message.
-        
-    Returns:
-        dict: Success status and message.
-    """
     logger.info(f"Sending message for job {job_id}")
     try:
-        # Initialize the Useme poster (which has the cookies)
         poster = UsemeProposalPoster()
         
         # If use_proposal is True, get the proposal text from the database
@@ -937,15 +925,10 @@ def send_useme_message(job_id, message_content, use_proposal=False):
             else:
                 logger.warning("No proposal found for this job, using provided message")
         
-        # First, we need to visit the job page to extract the correct message URL
-        # Useme uses two URL formats:
-        # 1. /pl/jobs/ID/ 
-        # 2. /pl/jobs/title,ID/ (comma format)
         
-        # Try the comma format first as it's more common
+        
         job_url = None
         
-        # Check if we have the job data in the database to get the full URL
         db = Database()
         job_data = db.get_job_by_id(job_id)
         if job_data and job_data.get('url'):
@@ -1036,7 +1019,7 @@ def send_useme_message(job_id, message_content, use_proposal=False):
                 message_link = f"/pl/mesg/compose/{job_id}/{employer_id}/"
                 logger.info(f"Found employer ID {employer_id} and constructed message link: {message_link}")
             else:
-                message_link = f"/pl/mesg/compose/{job_id}/481815/"
+                return ''
                 logger.warning(f"Using fallback message link format: {message_link}")
         
         if not message_link:
