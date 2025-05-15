@@ -851,14 +851,27 @@ def presentation(filename):
                     cursor.execute("""
                         SELECT id FROM scrape_queue 
                         WHERE task_type = 'send_pdf_email' 
-                        AND status = 'pending' 
+                        AND (status = 'pending' OR status = 'processing') 
                         AND parameters LIKE ?
                     """, (f'%"presentation_slug": "{filename}"%',))
                     
                     existing_task = cursor.fetchone()
                     
+                    # Also check if this presentation has already been emailed recently (within 24 hours)
+                    cursor.execute("""
+                        SELECT id FROM scrape_queue 
+                        WHERE task_type = 'send_pdf_email' 
+                        AND status = 'completed' 
+                        AND parameters LIKE ? 
+                        AND last_run > datetime('now', '-1 day')
+                    """, (f'%"presentation_slug": "{filename}"%',))
+                    
+                    recently_completed = cursor.fetchone()
+                    
                     if existing_task:
                         logger.info(f"Email for presentation {filename} already scheduled (task ID: {existing_task[0]}), skipping.")
+                    elif recently_completed:
+                        logger.info(f"Email for presentation {filename} already sent recently (task ID: {recently_completed[0]}), skipping.")
                     else:
                         # Schedule the email task for 30 minutes later
                         scheduled_time = datetime.now() + timedelta(minutes=30)

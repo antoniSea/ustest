@@ -220,17 +220,37 @@ def process_tasks():
         if tasks:
             logger.info(f"Processing {len(tasks)} tasks that are due")
             
+            # Create a set to track processed presentations
+            processed_presentations = set()
+            
             # Process each task
             for task in tasks:
                 # Debug the task
                 logger.info(f"Task {task['id']} scheduled for {task['scheduled_time']}")
                 
-                # Process the task
-                result = process_pdf_email_task(task)
-                
-                if result:
-                    mark_task_completed(conn, task['id'])
-                else:
+                # Check for duplicates - extract presentation slug
+                try:
+                    parameters = json.loads(task['parameters'])
+                    presentation_slug = parameters.get('presentation_slug')
+                    
+                    # Skip if we've already processed a task for this presentation
+                    if presentation_slug and presentation_slug in processed_presentations:
+                        logger.info(f"Skipping duplicate task {task['id']} for presentation {presentation_slug}")
+                        mark_task_completed(conn, task['id'])
+                        continue
+                    
+                    # Process the task
+                    result = process_pdf_email_task(task)
+                    
+                    if result:
+                        mark_task_completed(conn, task['id'])
+                        # Add to processed set
+                        if presentation_slug:
+                            processed_presentations.add(presentation_slug)
+                    else:
+                        mark_task_failed(conn, task['id'])
+                except Exception as e:
+                    logger.error(f"Error extracting parameters for task {task['id']}: {str(e)}")
                     mark_task_failed(conn, task['id'])
         else:
             logger.info("No tasks are due for processing yet")
