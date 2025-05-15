@@ -821,7 +821,8 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                 console.print(f"[green]✓[/green] Wygenerowano prezentację dla oferty {job_id}")
             except Exception as e:
                 console.print(f"[red]✗[/red] Błąd generowania prezentacji dla oferty {job_id}: {str(e)}")
-          # POST PROPOSAL TO USEME if relevance > 4
+            
+            # POST PROPOSAL TO USEME if relevance > 4
             if relevance_score > 3:
                 from useme_post_proposal import UsemeProposalPoster
                 
@@ -841,9 +842,12 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                     posted_count += 1
                 else:
                     console.print(f"[red]✗[/red] Błąd wysyłania propozycji: {result.get('error', 'Nieznany błąd')}")
-                if relevance_score > 5 and employer_email:
-                    # Get the job details from the database
-                    job = db.get_job_by_id(job_id)
+                
+                # Check if email has already been sent for this job before sending
+                db_job = db.get_job_by_id(job_id)
+                email_already_sent = db_job and db_job.get('follow_up_email_sent') == 1
+                
+                if relevance_score > 5 and employer_email and not email_already_sent:
                     # Configure EmailSender with Brevo SMTP settings
                     from mailer import EmailSender
                     
@@ -877,6 +881,9 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                         emails_sent += 1
                     else:
                         console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
+                elif email_already_sent and employer_email:
+                    console.print(f"[yellow]⚠[/yellow] Email do {employer_email} był już wcześniej wysłany, pomijam")
+                
                 # Also send a message through Useme if relevance > 7
                 if relevance_score > 7:
                     console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
