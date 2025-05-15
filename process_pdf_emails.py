@@ -26,19 +26,27 @@ def get_connection(db_path="useme.db"):
     return sqlite3.connect(db_path)
 
 def get_pending_tasks(conn, task_type="send_pdf_email"):
-    """Get all pending tasks of the specified type"""
+    """Get all pending tasks of the specified type that are due"""
     cursor = conn.cursor()
-    cursor.execute(
-        "SELECT id, parameters, task_type FROM scrape_queue WHERE status = 'pending' AND task_type = ?",
-        (task_type,)
-    )
+    
+    # Get current time
+    current_time = datetime.now().isoformat()
+    
+    cursor.execute("""
+        SELECT id, parameters, task_type, scheduled_time 
+        FROM scrape_queue 
+        WHERE status = 'pending' 
+        AND task_type = ? 
+        AND scheduled_time <= ?
+    """, (task_type, current_time))
     
     tasks = []
     for row in cursor.fetchall():
         tasks.append({
             'id': row[0],
             'parameters': row[1],
-            'task_type': row[2]
+            'task_type': row[2],
+            'scheduled_time': row[3]
         })
     
     return tasks
@@ -132,11 +140,14 @@ def process_tasks():
         # Connect to the database
         conn = get_connection()
         
-        # Get all pending tasks
+        # Get current time
+        current_time = datetime.now().isoformat()
+        
+        # Get all pending tasks that are due
         tasks = get_pending_tasks(conn)
         
         if tasks:
-            logger.info(f"Found {len(tasks)} pending tasks")
+            logger.info(f"Found {len(tasks)} pending tasks ready to process")
             
             # Process each task
             for task in tasks:
@@ -147,7 +158,27 @@ def process_tasks():
                 else:
                     mark_task_failed(conn, task['id'])
         else:
-            logger.debug("No pending tasks found")
+            logger.debug("No pending tasks found that are ready to process")
+        
+        # Also check for future tasks (for informational purposes)
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT id, task_type, scheduled_time 
+            FROM scrape_queue 
+            WHERE status = 'pending' 
+            AND task_type = 'send_pdf_email'
+            AND scheduled_time > ?
+        """, (current_time,))
+        future_tasks = cursor.fetchall()
+        
+        if future_tasks:
+            for task in future_tasks:
+                scheduled_time = datetime.fromisoformat(task[2])
+                seconds_remaining = (scheduled_time - datetime.now()).total_seconds()
+                minutes_remaining = int(seconds_remaining / 60)
+                
+                if minutes_remaining > 0:
+                    logger.info(f"Future task {task[0]} scheduled in {minutes_remaining} minutes")
             
     except Exception as e:
         logger.error(f"Error processing tasks: {str(e)}")
