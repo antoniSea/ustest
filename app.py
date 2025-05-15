@@ -845,53 +845,110 @@ def presentation(filename):
                 
                 # Only schedule if we have an email to send to
                 if employer_email:
-                    # Check if an email task is already scheduled for this presentation
-                    conn = db.get_connection()
-                    cursor = conn.cursor()
-                    cursor.execute("""
-                        SELECT id FROM scrape_queue 
-                        WHERE task_type = 'send_pdf_email' 
-                        AND (status = 'pending' OR status = 'processing') 
-                        AND parameters LIKE ?
-                    """, (f'%"presentation_slug": "{filename}"%',))
+                    existing_task_id = None
+                    recently_completed_id = None
                     
-                    existing_task = cursor.fetchone()
-                    
-                    # Also check if this presentation has already been emailed recently (within 24 hours)
-                    cursor.execute("""
-                        SELECT id FROM scrape_queue 
-                        WHERE task_type = 'send_pdf_email' 
-                        AND status = 'completed' 
-                        AND parameters LIKE ? 
-                        AND last_run > datetime('now', '-1 day')
-                    """, (f'%"presentation_slug": "{filename}"%',))
-                    
-                    recently_completed = cursor.fetchone()
-                    
-                    if existing_task:
-                        logger.info(f"Email for presentation {filename} already scheduled (task ID: {existing_task[0]}), skipping.")
-                    elif recently_completed:
-                        logger.info(f"Email for presentation {filename} already sent recently (task ID: {recently_completed[0]}), skipping.")
-                    else:
-                        # Schedule the email task for 30 minutes later
-                        scheduled_time = datetime.now() + timedelta(minutes=30)
-                        scheduled_time_str = scheduled_time.strftime("%Y-%m-%d %H:%M:%S")  # Use consistent format
+                    # Use try/except/finally to ensure database connection is always closed
+                    conn = None
+                    try:
+                        # Check if an email task is already scheduled for this presentation
+                        conn = db.get_connection()
+                        cursor = conn.cursor()
                         
-                        # Get presentation title info
-                        title_part1 = presentation_data.get('hero', {}).get('titlePart1', '')
-                        title_part2 = presentation_data.get('hero', {}).get('titlePart2ClientName', '')
-                        full_title = f"{title_part1} {title_part2}".strip()
-                        if not full_title:
-                            full_title = "Oferta współpracy"
+                        # Direct debug what's in the scrape_queue table
+                        try:
+                            cursor.execute("SELECT id, task_type, status, parameters FROM scrape_queue WHERE task_type = 'send_pdf_email'")
+                            all_tasks = cursor.fetchall()
+                            logger.info(f"Found {len(all_tasks)} total send_pdf_email tasks in the queue")
+                            
+                            # Log all tasks for debugging
+                            for task_info in all_tasks:
+                                task_id, task_type, status, params = task_info
+                                logger.info(f"Task {task_id}: {task_type}, status={status}, params={params[:50]}...")
+                        except Exception as e:
+                            logger.error(f"Error during debugging query: {str(e)}")
                         
-                        # Get company name
-                        company_name = presentation_data.get('site', {}).get('companyName', 'Soft Synergy')
+                        # Use a simpler and more reliable query to check for existing tasks
+                        presentation_key = f'presentation_slug": "{filename}'
                         
-                        # Prepare parameters for the email task
-                        task_params = {
-                            'email': employer_email,
-                            'subject': f'Materiały do prezentacji: {full_title}',
-                            'message': f"""Szanowni Państwo,
+                        # Check for pending or processing tasks first
+                        try:
+                            cursor.execute("""
+                                SELECT id FROM scrape_queue 
+                                WHERE task_type = 'send_pdf_email' 
+                                AND (status = 'pending' OR status = 'processing')
+                            """)
+                            
+                            active_tasks = cursor.fetchall()
+                            
+                            # Manually check the parameters rather than relying on LIKE
+                            for task in active_tasks:
+                                try:
+                                    task_id = task[0]
+                                    # Get this task's parameters
+                                    cursor.execute("SELECT parameters FROM scrape_queue WHERE id = ?", (task_id,))
+                                    params_row = cursor.fetchone()
+                                    if params_row:
+                                        task_params = params_row[0]
+                                        if task_params and presentation_key in task_params:
+                                            existing_task_id = task_id
+                                            logger.info(f"Found existing active task {task_id} for presentation {filename}")
+                                            break
+                                except Exception as e:
+                                    logger.error(f"Error checking parameters for task {task[0]}: {str(e)}")
+                        except Exception as e:
+                            logger.error(f"Error checking for active tasks: {str(e)}")
+                        
+                        # Also check if this presentation has already been emailed recently
+                        try:
+                            cursor.execute("""
+                                SELECT id, last_run, parameters FROM scrape_queue 
+                                WHERE task_type = 'send_pdf_email' 
+                                AND status = 'completed' 
+                                AND last_run > datetime('now', '-1 day')
+                            """)
+                            
+                            completed_tasks = cursor.fetchall()
+                            
+                            # Manually check the parameters
+                            for task in completed_tasks:
+                                try:
+                                    task_id = task[0]
+                                    last_run = task[1]
+                                    task_params = task[2]
+                                    if task_params and presentation_key in task_params:
+                                        recently_completed_id = task_id
+                                        logger.info(f"Found recently completed task {task_id} for {filename} completed at {last_run}")
+                                        break
+                                except Exception as e:
+                                    logger.error(f"Error checking completed task {task[0]}: {str(e)}")
+                        except Exception as e:
+                            logger.error(f"Error checking for completed tasks: {str(e)}")
+                        
+                        if existing_task_id:
+                            logger.info(f"Email for presentation {filename} already scheduled (task ID: {existing_task_id}), skipping.")
+                        elif recently_completed_id:
+                            logger.info(f"Email for presentation {filename} already sent recently (task ID: {recently_completed_id}), skipping.")
+                        else:
+                            # Schedule the email task for 30 minutes later
+                            scheduled_time = datetime.now() + timedelta(minutes=30)
+                            scheduled_time_str = scheduled_time.strftime("%Y-%m-%d %H:%M:%S")  # Use consistent format
+                            
+                            # Get presentation title info
+                            title_part1 = presentation_data.get('hero', {}).get('titlePart1', '')
+                            title_part2 = presentation_data.get('hero', {}).get('titlePart2ClientName', '')
+                            full_title = f"{title_part1} {title_part2}".strip()
+                            if not full_title:
+                                full_title = "Oferta współpracy"
+                            
+                            # Get company name
+                            company_name = presentation_data.get('site', {}).get('companyName', 'Soft Synergy')
+                            
+                            # Prepare parameters for the email task
+                            task_params = {
+                                'email': employer_email,
+                                'subject': f'Materiały do prezentacji: {full_title}',
+                                'message': f"""Szanowni Państwo,
 
 Dziękujemy za zainteresowanie naszą prezentacją "{full_title}".
 
@@ -901,14 +958,22 @@ Jesteśmy do Państwa dyspozycji w przypadku pytań lub potrzeby dodatkowych inf
 
 Z poważaniem,
 Zespół {company_name}""",
-                            'pdf_path': pdf_path,
-                            'presentation_slug': filename,
-                            'job_id': job_id
-                        }
-                        
-                        # Add task to queue
-                        db.schedule_scrape_task(scheduled_time_str, json.dumps(task_params), task_type='send_pdf_email')
-                        logger.info(f"Scheduled email with PDF for {employer_email} in 30 minutes (at {scheduled_time_str})")
+                                'pdf_path': pdf_path,
+                                'presentation_slug': filename,
+                                'job_id': job_id
+                            }
+                            
+                            # Add task to queue
+                            task_id = db.schedule_scrape_task(scheduled_time_str, json.dumps(task_params), task_type='send_pdf_email')
+                            logger.info(f"Scheduled email with PDF for {employer_email} in 30 minutes (at {scheduled_time_str}), task ID: {task_id}")
+                    except Exception as e:
+                        logger.error(f"Error during task scheduling process: {str(e)}")
+                        import traceback
+                        logger.error(traceback.format_exc())
+                    finally:
+                        # Close connection
+                        if conn:
+                            conn.close()
             except Exception as e:
                 logger.error(f"Error scheduling PDF email: {str(e)}")
                 
