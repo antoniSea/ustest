@@ -180,11 +180,176 @@ class UsemeProposalPoster:
             logger.error(f"Błąd podczas przekształcania URL: {str(e)}")
             return url
 
+    def extract_job_id_from_url(self, url):
+        """Extract job ID from Useme job URL."""
+        try:
+            # Usuń @ z początku URL, jeśli istnieje
+            if url.startswith('@'):
+                url = url[1:]
+                
+            # Try to extract job id from URL using regex
+            # Pattern for URLs like https://useme.com/pl/jobs/123456/
+            pattern = r'useme\.com/pl/jobs/(\d+)'
+            match = re.search(pattern, url)
+            
+            if match:
+                return match.group(1)
+                
+            # Format z nazwą projektu, np. jobs/nazwa-projektu,123456/
+            format_with_name = r'jobs/[^,]+,(\d+)'
+            match_with_name = re.search(format_with_name, url)
+            if match_with_name:
+                return match_with_name.group(1)
+                
+            # Alternative pattern for URLs without language prefix
+            alt_pattern = r'useme\.com/jobs/(\d+)'
+            match = re.search(alt_pattern, url)
+            
+            if match:
+                return match.group(1)
+                
+            # If URL is just a job ID
+            if url.isdigit():
+                return url
+                
+            # Ostatnia próba - wyodrębnij dowolny 6-cyfrowy numer
+            match_digits = re.search(r'(\d{6})', url)
+            if match_digits:
+                return match_digits.group(1)
+                
+            logger.error(f"Nie udało się wyodrębnić ID oferty z URL: {url}")
+            return None
+        except Exception as e:
+            logger.error(f"Error extracting job ID from URL {url}: {str(e)}")
+            return None
+
+    def send_message_to_employer(self, job_id, message_content):
+        """Send a direct message to the employer before submitting a proposal."""
+        try:
+            logger.info(f"Sending message to employer for job {job_id}")
+            
+            # Construct message URL
+            message_url = f"https://useme.com/pl/jobs/{job_id}/contact/"
+            
+            # Get the message page to extract CSRF token
+            response = self.session.get(message_url, headers=self.headers)
+            if response.status_code != 200:
+                logger.error(f"Failed to get message page. Status code: {response.status_code}")
+                return {
+                    "success": False,
+                    "message": f"Nie udało się pobrać strony wiadomości: Status {response.status_code}"
+                }
+            
+            # Extract CSRF token
+            soup = BeautifulSoup(response.text, 'html.parser')
+            csrf_token = None
+            csrf_input = soup.find('input', {'name': 'csrfmiddlewaretoken'})
+            
+            if csrf_input:
+                csrf_token = csrf_input.get('value')
+            else:
+                # Try JavaScript variable
+                csrf_match = re.search(r'csrfToken\s*=\s*["\']([^"\']+)["\']', response.text)
+                if csrf_match:
+                    csrf_token = csrf_match.group(1)
+                else:
+                    # Try meta tag
+                    meta_csrf = soup.find('meta', attrs={'name': 'csrf-token'})
+                    if meta_csrf and meta_csrf.get('content'):
+                        csrf_token = meta_csrf.get('content')
+                    else:
+                        logger.error("No CSRF token found in the message page")
+                        return {
+                            "success": False,
+                            "message": "Nie znaleziono tokenu CSRF na stronie wiadomości"
+                        }
+            
+            # Prepare form data for message
+            form_data = {
+                'csrfmiddlewaretoken': csrf_token,
+                'text': message_content,
+                'submit': 'Wyślij wiadomość'
+            }
+            
+            # Dodaj pola _* z formularza
+            for field_name in soup.find_all('input', {'name': re.compile(r'^_')}):
+                name = field_name.get('name')
+                value = field_name.get('value', '')
+                form_data[name] = value
+            
+            # Set headers for request
+            headers = self.headers.copy()
+            headers['Referer'] = message_url
+            headers['Content-Type'] = 'application/x-www-form-urlencoded'
+            headers['Origin'] = 'https://useme.com'
+            
+            # Send the message
+            logger.info(f"Sending message to employer for job {job_id}...")
+            response = self.session.post(
+                message_url,
+                data=form_data,
+                headers=headers,
+                allow_redirects=True
+            )
+            
+            logger.info(f"Message response status: {response.status_code}, URL: {response.url}")
+            
+            # Check if message was sent successfully
+            if response.status_code == 200 and ("Wiadomość została wysłana" in response.text or
+                                               "Twoja wiadomość została wysłana" in response.text):
+                logger.info("Message sent successfully!")
+                return {
+                    "success": True,
+                    "message": "Wiadomość została wysłana pomyślnie"
+                }
+            else:
+                # Check for error messages
+                soup = BeautifulSoup(response.text, 'html.parser')
+                error_msgs = soup.select('.errorlist li')
+                if not error_msgs:
+                    error_msgs = soup.select('.alert-danger')
+                if not error_msgs:
+                    error_msgs = soup.select('.error')
+                errors = [msg.text for msg in error_msgs] if error_msgs else []
+                
+                if errors:
+                    error_message = f"Błędy formularza wiadomości: {', '.join(errors)}"
+                else:
+                    error_message = f"Nieznany błąd podczas wysyłania wiadomości. Status: {response.status_code}"
+                
+                logger.error(error_message)
+                return {
+                    "success": False,
+                    "message": error_message
+                }
+                
+        except Exception as e:
+            logger.error(f"Błąd podczas wysyłania wiadomości: {str(e)}")
+            return {
+                "success": False,
+                "message": f"Wyjątek: {str(e)}"
+            }
+
     def post_proposal(self, job_url, proposal_text, price=None, email_content=None, attachments=None, timeline_days=None):
         """Post a proposal to a job"""
         self.employer_email = None  # Reset employer email
         try:
             logger.info(f"Posting to URL: {job_url}")
+            
+            # Extract job ID from URL
+            job_id = self.extract_job_id_from_url(job_url)
+            if not job_id:
+                return {
+                    "success": False, 
+                    "message": f"Nieprawidłowy format URL: {job_url}"
+                }
+                
+            # Jeśli podano treść wiadomości email, wyślij ją najpierw, przed propozycją
+            if email_content and email_content.strip():
+                logger.info("Email content provided, sending message first...")
+                message_result = self.send_message_to_employer(job_id, email_content)
+                if not message_result["success"]:
+                    logger.warning(f"Failed to send message: {message_result['message']}")
             
             # Process price if provided
             clean_price = None
@@ -212,14 +377,6 @@ class UsemeProposalPoster:
                 else:
                     # If already numeric, just use it
                     clean_price = price
-            
-            # Extract job ID from URL
-            job_id = self.extract_job_id_from_url(job_url)
-            if not job_id:
-                return {
-                    "success": False, 
-                    "message": f"Nieprawidłowy format URL: {job_url}"
-                }
             
             # Construct offer URL
             offer_post_url = self.convert_url_to_post_offer_format(job_url)
@@ -482,49 +639,6 @@ class UsemeProposalPoster:
                 "message": f"Wyjątek: {str(e)}",
                 "employer_email": self.employer_email
             }
-
-    def extract_job_id_from_url(self, url):
-        """Extract job ID from Useme job URL."""
-        try:
-            # Usuń @ z początku URL, jeśli istnieje
-            if url.startswith('@'):
-                url = url[1:]
-                
-            # Try to extract job id from URL using regex
-            # Pattern for URLs like https://useme.com/pl/jobs/123456/
-            pattern = r'useme\.com/pl/jobs/(\d+)'
-            match = re.search(pattern, url)
-            
-            if match:
-                return match.group(1)
-                
-            # Format z nazwą projektu, np. jobs/nazwa-projektu,123456/
-            format_with_name = r'jobs/[^,]+,(\d+)'
-            match_with_name = re.search(format_with_name, url)
-            if match_with_name:
-                return match_with_name.group(1)
-                
-            # Alternative pattern for URLs without language prefix
-            alt_pattern = r'useme\.com/jobs/(\d+)'
-            match = re.search(alt_pattern, url)
-            
-            if match:
-                return match.group(1)
-                
-            # If URL is just a job ID
-            if url.isdigit():
-                return url
-                
-            # Ostatnia próba - wyodrębnij dowolny 6-cyfrowy numer
-            match_digits = re.search(r'(\d{6})', url)
-            if match_digits:
-                return match_digits.group(1)
-                
-            logger.error(f"Nie udało się wyodrębnić ID oferty z URL: {url}")
-            return None
-        except Exception as e:
-            logger.error(f"Error extracting job ID from URL {url}: {str(e)}")
-            return None
 
 def post_proposal_from_json(json_file, job_id=None, post_all=False):
     """
