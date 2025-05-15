@@ -45,8 +45,18 @@ def send_pdf_email_handler(parameters):
     """Handler for sending PDF attachments via email"""
     import os
     import logging
+    import json
     
     logger = logging.getLogger('QueueProcessor')
+    
+    # If parameters is a string, try to parse it as JSON
+    if isinstance(parameters, str):
+        try:
+            parameters = json.loads(parameters)
+        except json.JSONDecodeError:
+            logger.error("Failed to parse parameters JSON")
+            return False
+    
     logger.info(f"Processing PDF email task with parameters: {parameters}")
     
     try:
