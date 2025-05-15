@@ -839,41 +839,63 @@ def presentation(filename):
                     if job and job.get('employer_email'):
                         employer_email = job.get('employer_email')
                 
-                # FOR TESTING: Override recipient email to send all emails to info@soft-synergy.com
+                # IMPORTANT: For real production use with clients, comment out this line
+                # For testing purposes only:
                 employer_email = "info@soft-synergy.com"
                 
                 # Only schedule if we have an email to send to
                 if employer_email:
-                    # Schedule the email task for 30 minutes later
-                    scheduled_time = datetime.now() + timedelta(minutes=30)
-                    scheduled_time_str = scheduled_time.strftime("%Y-%m-%d %H:%M:%S")  # Use consistent format
+                    # Check if an email task is already scheduled for this presentation
+                    conn = db.get_connection()
+                    cursor = conn.cursor()
+                    cursor.execute("""
+                        SELECT id FROM scrape_queue 
+                        WHERE task_type = 'send_pdf_email' 
+                        AND status = 'pending' 
+                        AND parameters LIKE ?
+                    """, (f'%"presentation_slug": "{filename}"%',))
                     
-                    # Prepare parameters for the email task
-                    task_params = {
-                        'email': employer_email,
-                        'subject': f'[TEST] Materiały do prezentacji: {filename}',
-                        'message': f"""Szanowni Państwo,
+                    existing_task = cursor.fetchone()
+                    
+                    if existing_task:
+                        logger.info(f"Email for presentation {filename} already scheduled (task ID: {existing_task[0]}), skipping.")
+                    else:
+                        # Schedule the email task for 30 minutes later
+                        scheduled_time = datetime.now() + timedelta(minutes=30)
+                        scheduled_time_str = scheduled_time.strftime("%Y-%m-%d %H:%M:%S")  # Use consistent format
+                        
+                        # Get presentation title info
+                        title_part1 = presentation_data.get('hero', {}).get('titlePart1', '')
+                        title_part2 = presentation_data.get('hero', {}).get('titlePart2ClientName', '')
+                        full_title = f"{title_part1} {title_part2}".strip()
+                        if not full_title:
+                            full_title = "Oferta współpracy"
+                        
+                        # Get company name
+                        company_name = presentation_data.get('site', {}).get('companyName', 'Soft Synergy')
+                        
+                        # Prepare parameters for the email task
+                        task_params = {
+                            'email': employer_email,
+                            'subject': f'Materiały do prezentacji: {full_title}',
+                            'message': f"""Szanowni Państwo,
 
-Dziękujemy za zainteresowanie naszą prezentacją "{presentation_data.get('hero', {}).get('titlePart1', '')} {presentation_data.get('hero', {}).get('titlePart2ClientName', '')}".
+Dziękujemy za zainteresowanie naszą prezentacją "{full_title}".
 
-W załączniku przesyłamy wersję PDF naszej oferty, którą mogli Państwo obejrzeć online pod adresem: https://prezentacje.soft-synergy.com/{filename}
+W załączniku przesyłamy wersję PDF przedstawionej oferty, którą mogli Państwo obejrzeć online.
 
-Ta wiadomość została wygenerowana automatycznie w ramach testów systemu powiadomień. 
-Prezentacja została wyświetlona z adresu IP: {request.remote_addr}
-User Agent: {request.headers.get('User-Agent')}
-
-W razie pytań, jesteśmy do dyspozycji.
+Jesteśmy do Państwa dyspozycji w przypadku pytań lub potrzeby dodatkowych informacji. Chętnie umówimy się na krótkie spotkanie, aby omówić szczegóły potencjalnej współpracy.
 
 Z poważaniem,
-Zespół Soft Synergy""",
-                        'pdf_path': pdf_path,
-                        'presentation_slug': filename,
-                        'job_id': job_id
-                    }
-                    
-                    # Add task to queue
-                    db.schedule_scrape_task(scheduled_time_str, json.dumps(task_params), task_type='send_pdf_email')
-                    logger.info(f"Scheduled email with PDF for {employer_email} in 30 minutes (at {scheduled_time_str})")
+Zespół {company_name}""",
+                            'pdf_path': pdf_path,
+                            'presentation_slug': filename,
+                            'job_id': job_id
+                        }
+                        
+                        # Add task to queue
+                        db.schedule_scrape_task(scheduled_time_str, json.dumps(task_params), task_type='send_pdf_email')
+                        logger.info(f"Scheduled email with PDF for {employer_email} in 30 minutes (at {scheduled_time_str})")
             except Exception as e:
                 logger.error(f"Error scheduling PDF email: {str(e)}")
                 

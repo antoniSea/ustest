@@ -134,8 +134,9 @@ def process_pdf_email_task(task):
         pdf_path = parameters.get('pdf_path')
         presentation_slug = parameters.get('presentation_slug')
         
-        # FOR TESTING: Override recipient email
-        email = "info@soft-synergy.com"
+        # IMPORTANT: For real production use with clients, remove this override
+        # For testing purposes only:
+        # email = "info@soft-synergy.com"
         
         # Validate required parameters
         if not email or not pdf_path:
@@ -156,7 +157,10 @@ def process_pdf_email_task(task):
 
 Dziękujemy za zainteresowanie naszą prezentacją.
 
-W załączniku przesyłamy wersję PDF naszej oferty, którą mogli Państwo obejrzeć online pod adresem: https://prezentacje.soft-synergy.com/{presentation_slug}
+W załączniku przesyłamy wersję PDF oferty, którą mogli Państwo obejrzeć online.
+
+Jesteśmy do Państwa dyspozycji w przypadku pytań lub potrzeby dodatkowych informacji.
+Chętnie umówimy się na krótkie spotkanie, aby omówić szczegóły potencjalnej współpracy.
 
 Z poważaniem,
 Zespół Soft Synergy
@@ -172,6 +176,29 @@ Zespół Soft Synergy
         
         if result:
             logger.info(f"Successfully sent PDF email to {email}")
+            
+            # Update database to prevent duplicate emails for this presentation
+            try:
+                conn = get_connection()
+                cursor = conn.cursor()
+                # Mark any other pending tasks for this presentation as completed
+                cursor.execute("""
+                    UPDATE scrape_queue 
+                    SET status = 'completed', last_run = ? 
+                    WHERE task_type = 'send_pdf_email' 
+                    AND status = 'pending' 
+                    AND parameters LIKE ?
+                    AND id != ?
+                """, (
+                    datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    f'%"presentation_slug": "{presentation_slug}"%',
+                    task_id
+                ))
+                conn.commit()
+                conn.close()
+            except Exception as e:
+                logger.error(f"Error updating related tasks: {str(e)}")
+            
             return True
         else:
             logger.error(f"Failed to send PDF email to {email}")
