@@ -398,17 +398,30 @@ class Database:
         cursor = conn.cursor()
         params_json = parameters if parameters else '{}'
         
-        # Ensure scheduled_time is in isoformat string
+        # Ensure scheduled_time is in a consistent format
         if isinstance(scheduled_time, str):
-            scheduled_time_str = scheduled_time
+            # Try to normalize the string format
+            try:
+                # Convert to datetime then back to string in our preferred format
+                dt = datetime.fromisoformat(scheduled_time.replace('Z', '+00:00'))
+                scheduled_time_str = dt.strftime("%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                try:
+                    # Try other parsing if isoformat fails
+                    dt = datetime.strptime(scheduled_time, "%Y-%m-%d %H:%M:%S")
+                    scheduled_time_str = scheduled_time  # already in the right format
+                except ValueError:
+                    # As a fallback, use the string as is
+                    scheduled_time_str = scheduled_time
         else:
-            scheduled_time_str = scheduled_time.isoformat()
-            
+            # It's a datetime object
+            scheduled_time_str = scheduled_time.strftime("%Y-%m-%d %H:%M:%S")
+        
         # Insert the task
         cursor.execute('''
         INSERT INTO scrape_queue (task_type, status, scheduled_time, parameters, created_at) 
         VALUES (?, ?, ?, ?, ?)
-        ''', (task_type, 'pending', scheduled_time_str, params_json, datetime.now().isoformat()))
+        ''', (task_type, 'pending', scheduled_time_str, params_json, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
         
         conn.commit()
         return cursor.lastrowid

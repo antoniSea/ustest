@@ -846,6 +846,7 @@ def presentation(filename):
                 if employer_email:
                     # Schedule the email task for 30 minutes later
                     scheduled_time = datetime.now() + timedelta(minutes=30)
+                    scheduled_time_str = scheduled_time.strftime("%Y-%m-%d %H:%M:%S")  # Use consistent format
                     
                     # Prepare parameters for the email task
                     task_params = {
@@ -871,8 +872,8 @@ Zespół Soft Synergy""",
                     }
                     
                     # Add task to queue
-                    db.schedule_scrape_task(scheduled_time, json.dumps(task_params), task_type='send_pdf_email')
-                    logger.info(f"Scheduled email with PDF for {employer_email} in 30 minutes")
+                    db.schedule_scrape_task(scheduled_time_str, json.dumps(task_params), task_type='send_pdf_email')
+                    logger.info(f"Scheduled email with PDF for {employer_email} in 30 minutes (at {scheduled_time_str})")
             except Exception as e:
                 logger.error(f"Error scheduling PDF email: {str(e)}")
                 

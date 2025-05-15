@@ -30,26 +30,73 @@ def get_pending_tasks(conn, task_type="send_pdf_email"):
     cursor = conn.cursor()
     
     # Get current time
-    current_time = datetime.now().isoformat()
+    current_time = datetime.now()
+    current_time_str = current_time.strftime("%Y-%m-%d %H:%M:%S")
     
+    logger.info(f"Current time: {current_time_str}")
+    
+    # First, get all pending tasks of the specified type to inspect them
     cursor.execute("""
-        SELECT id, parameters, task_type, scheduled_time 
+        SELECT id, task_type, scheduled_time, parameters 
         FROM scrape_queue 
         WHERE status = 'pending' 
-        AND task_type = ? 
-        AND scheduled_time <= ?
-    """, (task_type, current_time))
+        AND task_type = ?
+    """, (task_type,))
     
-    tasks = []
-    for row in cursor.fetchall():
-        tasks.append({
-            'id': row[0],
-            'parameters': row[1],
-            'task_type': row[2],
-            'scheduled_time': row[3]
-        })
+    all_tasks = cursor.fetchall()
     
-    return tasks
+    tasks_to_process = []
+    
+    if all_tasks:
+        logger.info(f"Found {len(all_tasks)} total pending tasks of type {task_type}")
+        for task in all_tasks:
+            task_id = task[0]
+            scheduled_time_str = task[2]
+            parameters = task[3]
+            
+            try:
+                # Try to parse the datetime - handle both ISO format and standard format
+                try:
+                    # Try ISO format first (with T and possibly fractional seconds)
+                    scheduled_time = datetime.fromisoformat(scheduled_time_str)
+                except ValueError:
+                    try:
+                        # Try standard format (YYYY-MM-DD HH:MM:SS)
+                        scheduled_time = datetime.strptime(scheduled_time_str, "%Y-%m-%d %H:%M:%S")
+                    except ValueError:
+                        # Last resort - try to parse with dateutil if available
+                        try:
+                            from dateutil import parser
+                            scheduled_time = parser.parse(scheduled_time_str)
+                        except (ImportError, ValueError):
+                            logger.error(f"Could not parse date '{scheduled_time_str}' for task {task_id}")
+                            continue
+                
+                time_diff = (scheduled_time - current_time).total_seconds()
+                minutes_remaining = int(time_diff / 60)
+                
+                if time_diff <= 0:
+                    # Task is due - add it to processing list
+                    logger.info(f"Task {task_id} is DUE for processing (scheduled at {scheduled_time_str}, {abs(minutes_remaining)} minutes ago)")
+                    tasks_to_process.append({
+                        'id': task_id,
+                        'parameters': parameters,
+                        'task_type': task_type,
+                        'scheduled_time': scheduled_time_str
+                    })
+                else:
+                    logger.info(f"Task {task_id} is scheduled for the future (in {minutes_remaining} minutes)")
+            except Exception as e:
+                logger.error(f"Error parsing scheduled_time '{scheduled_time_str}' for task {task_id}: {str(e)}")
+                import traceback
+                logger.error(traceback.format_exc())
+    
+    if tasks_to_process:
+        logger.info(f"{len(tasks_to_process)} tasks are due for processing now")
+    else:
+        logger.info("No tasks are due for processing yet")
+    
+    return tasks_to_process
 
 def mark_task_completed(conn, task_id):
     """Mark a task as completed"""
@@ -140,17 +187,18 @@ def process_tasks():
         # Connect to the database
         conn = get_connection()
         
-        # Get current time
-        current_time = datetime.now().isoformat()
-        
         # Get all pending tasks that are due
         tasks = get_pending_tasks(conn)
         
         if tasks:
-            logger.info(f"Found {len(tasks)} pending tasks ready to process")
+            logger.info(f"Processing {len(tasks)} tasks that are due")
             
             # Process each task
             for task in tasks:
+                # Debug the task
+                logger.info(f"Task {task['id']} scheduled for {task['scheduled_time']}")
+                
+                # Process the task
                 result = process_pdf_email_task(task)
                 
                 if result:
@@ -158,30 +206,12 @@ def process_tasks():
                 else:
                     mark_task_failed(conn, task['id'])
         else:
-            logger.debug("No pending tasks found that are ready to process")
+            logger.info("No tasks are due for processing yet")
         
-        # Also check for future tasks (for informational purposes)
-        cursor = conn.cursor()
-        cursor.execute("""
-            SELECT id, task_type, scheduled_time 
-            FROM scrape_queue 
-            WHERE status = 'pending' 
-            AND task_type = 'send_pdf_email'
-            AND scheduled_time > ?
-        """, (current_time,))
-        future_tasks = cursor.fetchall()
-        
-        if future_tasks:
-            for task in future_tasks:
-                scheduled_time = datetime.fromisoformat(task[2])
-                seconds_remaining = (scheduled_time - datetime.now()).total_seconds()
-                minutes_remaining = int(seconds_remaining / 60)
-                
-                if minutes_remaining > 0:
-                    logger.info(f"Future task {task[0]} scheduled in {minutes_remaining} minutes")
-            
     except Exception as e:
         logger.error(f"Error processing tasks: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
     finally:
         if 'conn' in locals():
             conn.close()
