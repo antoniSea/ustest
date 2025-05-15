@@ -79,6 +79,8 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
     - Pisz w języku polskim, profesjonalnie i przekonująco
     - Maksymalnie 200 słów
     - Wycena powinna być oparta na researchu rynkowym, jeśli jest dostępny, lub wynosić około 60% standardowej stawki rynkowej
+    - NIGDY nie proponuj śmiesznie niskich stawek, nawet jeśli budżet klienta jest bardzo niski
+    - Jeśli budżet klienta jest nierealistycznie niski, zaproponuj uczciwą stawkę rynkową i przekonaj klienta, że warto dopłacić za jakość i profesjonalizm
     - Wycena musi być wyraźnie wyodrębniona w tekście (użyj **pogrubienia**)
     - Używaj formatowania tekstu: **pogrubienia**, *kursywy*, podkreślenia, listy, nowe linie
     - Dodaj przynajmniej 2-3 puste linie między sekcjami dla lepszej czytelności
@@ -119,9 +121,13 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
     5 = Częściowo odpowiednie (np. wymaga pewnych umiejętności IT, ale nie jest to główna specjalizacja software house'u)
     10 = Idealnie dopasowane do kompetencji software house'u (np. tworzenie zaawansowanych aplikacji webowych)
     
+    WAŻNE INFORMACJE:
+    - NIE zajmujemy się modelami 3D, tworzeniem gier w Unity ani modelami architektonicznymi
+    - Obniż ocenę o 1-3 punkty, jeśli z opisu lub budżetu wynika, że klient oferuje nierealistycznie niskie wynagrodzenie w stosunku do zakresu prac
+    - Jeśli budżet jest śmiesznie niski w porównaniu do standardowych stawek rynkowych, obniż ocenę o dodatkowe 2 punkty
+    
     Zwróć tylko liczbę od 1 do 10 bez żadnych dodatkowych komentarzy.
     """
-    
     try:
         response = get_gemini_response(prompt)
         # Próba wyodrębnienia liczby z odpowiedzi
@@ -1009,9 +1015,7 @@ def send_useme_message(job_id, message_content, use_proposal=False):
                     logger.info(f"Found message link via button class: {message_link}")
                     break
                     
-        # Method 5: Try fixed pattern as last resort
         if not message_link:
-            # Try a direct format that might work based on the example
             employer_id = None
             employer_match = re.search(r'/pl/mesg/compose/\d+/(\d+)/', job_response.text)
             if employer_match:
