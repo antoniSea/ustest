@@ -169,6 +169,9 @@ if __name__ == "__main__":
             pdf_path = parameters.get('pdf_path')
             presentation_slug = parameters.get('presentation_slug')
             
+            # FOR TESTING: Override recipient email to send all emails to info@soft-synergy.com
+            email = "info@soft-synergy.com"
+            
             # Validate required parameters
             if not email or not pdf_path:
                 logger.error("Missing required parameters for send_pdf_email task")
