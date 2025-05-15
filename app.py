@@ -844,8 +844,8 @@ def presentation(filename):
                 
                 # Only schedule if we have an email to send to
                 if employer_email:
-                    # Schedule the email task for 1 minute later
-                    scheduled_time = datetime.now() + timedelta(minutes=1)
+                    # Schedule the email task for 30 minutes later
+                    scheduled_time = datetime.now() + timedelta(minutes=30)
                     
                     # Prepare parameters for the email task
                     task_params = {
@@ -872,7 +872,7 @@ Zespół Soft Synergy""",
                     
                     # Add task to queue
                     db.schedule_scrape_task(scheduled_time, json.dumps(task_params), task_type='send_pdf_email')
-                    logger.info(f"Scheduled email with PDF for {employer_email} in 1 minute")
+                    logger.info(f"Scheduled email with PDF for {employer_email} in 30 minutes")
             except Exception as e:
                 logger.error(f"Error scheduling PDF email: {str(e)}")
                 

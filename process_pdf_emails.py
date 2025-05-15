@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Process all pending PDF email tasks in the queue.
-This script is a one-time tool to handle pending tasks that haven't been processed.
+Process PDF email tasks in the queue continuously.
+This script runs as a daemon, checking for new tasks every minute.
 """
 
 import json
@@ -9,6 +9,7 @@ import logging
 import os
 import sys
 import sqlite3
+import time
 from datetime import datetime
 
 from mailer import EmailSender
@@ -125,32 +126,58 @@ Zespół Soft Synergy
         logger.error(f"Error processing send_pdf_email task: {str(e)}")
         return False
 
-def main():
-    """Main function to process all pending PDF email tasks"""
-    logger.info("Starting PDF email processor...")
-    
-    # Connect to the database
-    conn = get_connection()
-    
-    # Get all pending tasks
-    tasks = get_pending_tasks(conn)
-    
-    if not tasks:
-        logger.info("No pending tasks found.")
-        return
-    
-    logger.info(f"Found {len(tasks)} pending tasks")
-    
-    # Process each task
-    for task in tasks:
-        result = process_pdf_email_task(task)
+def process_tasks():
+    """Process all pending tasks"""
+    try:
+        # Connect to the database
+        conn = get_connection()
         
-        if result:
-            mark_task_completed(conn, task['id'])
+        # Get all pending tasks
+        tasks = get_pending_tasks(conn)
+        
+        if tasks:
+            logger.info(f"Found {len(tasks)} pending tasks")
+            
+            # Process each task
+            for task in tasks:
+                result = process_pdf_email_task(task)
+                
+                if result:
+                    mark_task_completed(conn, task['id'])
+                else:
+                    mark_task_failed(conn, task['id'])
         else:
-            mark_task_failed(conn, task['id'])
+            logger.debug("No pending tasks found")
+            
+    except Exception as e:
+        logger.error(f"Error processing tasks: {str(e)}")
+    finally:
+        if 'conn' in locals():
+            conn.close()
+
+def main():
+    """Main function to continuously process PDF email tasks"""
+    logger.info("Starting PDF email processor daemon...")
     
-    logger.info("Finished processing tasks")
+    try:
+        # Run continuously
+        while True:
+            # Process pending tasks
+            process_tasks()
+            
+            # Log status
+            logger.debug("Waiting for new tasks...")
+            
+            # Sleep for 60 seconds
+            time.sleep(60)
+            
+    except KeyboardInterrupt:
+        logger.info("Process terminated by user")
+    except Exception as e:
+        logger.error(f"Unexpected error: {str(e)}")
+        return 1
+    
+    return 0
 
 if __name__ == "__main__":
-    main() 
+    sys.exit(main()) 
