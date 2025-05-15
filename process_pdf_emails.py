@@ -28,7 +28,7 @@ def get_pending_tasks(conn, task_type="send_pdf_email"):
     """Get all pending tasks of the specified type"""
     cursor = conn.cursor()
     cursor.execute(
-        "SELECT id, parameters, task_type FROM tasks WHERE status = 'pending' AND task_type = ?",
+        "SELECT id, parameters, task_type FROM scrape_queue WHERE status = 'pending' AND task_type = ?",
         (task_type,)
     )
     
@@ -46,7 +46,7 @@ def mark_task_completed(conn, task_id):
     """Mark a task as completed"""
     cursor = conn.cursor()
     cursor.execute(
-        "UPDATE tasks SET status = 'completed', completed_at = ? WHERE id = ?",
+        "UPDATE scrape_queue SET status = 'completed', last_run = ? WHERE id = ?",
         (datetime.now().isoformat(), task_id)
     )
     conn.commit()
@@ -55,7 +55,7 @@ def mark_task_failed(conn, task_id):
     """Mark a task as failed"""
     cursor = conn.cursor()
     cursor.execute(
-        "UPDATE tasks SET status = 'failed', completed_at = ? WHERE id = ?",
+        "UPDATE scrape_queue SET status = 'failed', last_run = ? WHERE id = ?",
         (datetime.now().isoformat(), task_id)
     )
     conn.commit()
