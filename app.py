@@ -1237,69 +1237,108 @@ def create_pdf_from_presentation(presentation_data, output_path):
     from reportlab.lib.pagesizes import A4
     from reportlab.lib import colors
     from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, Image
+    from reportlab.platypus.flowables import Flowable
     from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
     from reportlab.lib.units import inch, cm
     from reportlab.pdfbase import pdfmetrics
     from reportlab.pdfbase.ttfonts import TTFont
+    from reportlab.graphics.shapes import Drawing, Line
     import re
+    import os
     
-    # Register fonts with Polish character support
-    try:
-        # Try to register DejaVu font (has good support for Polish characters)
-        pdfmetrics.registerFont(TTFont('DejaVu', '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
-        pdfmetrics.registerFont(TTFont('DejaVuBold', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
-        font_name = 'DejaVu'
-        bold_font_name = 'DejaVuBold'
-        logger.info("Using DejaVu font for PDF generation")
-    except:
-        try:
-            # Try Mac OS specific fonts first
-            pdfmetrics.registerFont(TTFont('Arial', '/System/Library/Fonts/Supplemental/Arial.ttf'))
-            pdfmetrics.registerFont(TTFont('ArialBold', '/System/Library/Fonts/Supplemental/Arial Bold.ttf'))
-            font_name = 'Arial'
-            bold_font_name = 'ArialBold'
-            logger.info("Using macOS system Arial font for PDF generation")
-        except:
-            try:
-                # Try regular Mac font paths
-                pdfmetrics.registerFont(TTFont('Arial', '/Library/Fonts/Arial.ttf'))
-                pdfmetrics.registerFont(TTFont('ArialBold', '/Library/Fonts/Arial Bold.ttf'))
-                font_name = 'Arial'
-                bold_font_name = 'ArialBold'
-                logger.info("Using Arial font for PDF generation")
-            except:
+    # Define brand colors
+    BRAND_PRIMARY = colors.HexColor('#0066cc')  # Blue
+    BRAND_SECONDARY = colors.HexColor('#00cc99')  # Teal
+    BRAND_DARK = colors.HexColor('#333333')  # Dark Gray
+    BRAND_LIGHT = colors.HexColor('#f5f5f5')  # Light Gray
+    BRAND_ACCENT = colors.HexColor('#ff6600')  # Orange
+    
+    # Register fonts with proper Polish character support
+    fonts_registered = False
+    
+    # List of font directories to try
+    font_directories = [
+        '/usr/share/fonts/truetype/',
+        '/usr/local/share/fonts/',
+        '/Library/Fonts/',
+        '/System/Library/Fonts/',
+        '/System/Library/Fonts/Supplemental/',
+        'C:/Windows/Fonts/',
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fonts/')
+    ]
+    
+    # Create the fonts directory if it doesn't exist
+    os.makedirs(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fonts/'), exist_ok=True)
+    
+    # Try to find and register fonts with good Unicode/Polish support
+    font_files_to_try = [
+        # Liberation fonts (good free fonts with excellent Unicode support)
+        ('Liberation', 'LiberationSans-Regular.ttf', 'LiberationSans-Bold.ttf'),
+        # DejaVu (excellent Unicode support)
+        ('DejaVu', 'DejaVuSans.ttf', 'DejaVuSans-Bold.ttf'),
+        # Noto Sans (Google's font with comprehensive language support)
+        ('Noto', 'NotoSans-Regular.ttf', 'NotoSans-Bold.ttf'),
+        # Lato (popular web font with good Polish support)
+        ('Lato', 'Lato-Regular.ttf', 'Lato-Bold.ttf'),
+        # Source Sans Pro
+        ('SourceSans', 'SourceSansPro-Regular.ttf', 'SourceSansPro-Bold.ttf'),
+        # Ubuntu
+        ('Ubuntu', 'Ubuntu-R.ttf', 'Ubuntu-B.ttf'),
+        # Arial/Helvetica
+        ('Arial', 'Arial.ttf', 'Arial Bold.ttf')
+    ]
+    
+    for font_name_base, regular_file, bold_file in font_files_to_try:
+        for font_dir in font_directories:
+            regular_path = None
+            bold_path = None
+            
+            # Try looking in this directory and its subdirectories
+            for root, dirs, files in os.walk(font_dir):
+                if regular_file in files:
+                    regular_path = os.path.join(root, regular_file)
+                if bold_file in files:
+                    bold_path = os.path.join(root, bold_file)
+                
+                # Break early if we found both files
+                if regular_path and bold_path:
+                    break
+            
+            # If both fonts found, register them
+            if regular_path and bold_path:
                 try:
-                    # Try using SF Pro (macOS default font)
-                    pdfmetrics.registerFont(TTFont('SFPro', '/System/Library/Fonts/SFProText-Regular.otf'))
-                    pdfmetrics.registerFont(TTFont('SFProBold', '/System/Library/Fonts/SFProText-Bold.otf'))
-                    font_name = 'SFPro'
-                    bold_font_name = 'SFProBold'
-                    logger.info("Using macOS SF Pro font for PDF generation")
-                except:
-                    try:
-                        # Try using ReportLab's built-in TTF fonts if available
-                        from reportlab.pdfbase.pdfmetrics import registerFontFamily
-                        from reportlab.pdfbase.ttfonts import TTFont
-                        from reportlab.lib.fonts import addMapping
-
-                        # Use reportlab's built-in free fonts
-                        pdfmetrics.registerFont(TTFont('FreeSans', 'FreeSans.ttf', 
-                            subfontIndex=0, asciiReadable=True)) 
-                        pdfmetrics.registerFont(TTFont('FreeSansBold', 'FreeSansBold.ttf', 
-                            subfontIndex=0, asciiReadable=True))
-                            
-                        # Register the font family for regular/bold variants
-                        registerFontFamily('FreeSans', normal='FreeSans', bold='FreeSansBold')
-
-                        font_name = 'FreeSans'
-                        bold_font_name = 'FreeSansBold'
-                        logger.info("Using ReportLab's FreeSans TTF font for PDF generation")
-                    except:
-                        # Fallback to built-in Helvetica (may not support all Polish characters)
-                        font_name = 'Helvetica'
-                        bold_font_name = 'Helvetica-Bold'
-                        logger.info("Using built-in Helvetica font for PDF generation")
+                    pdfmetrics.registerFont(TTFont(font_name_base, regular_path))
+                    pdfmetrics.registerFont(TTFont(f"{font_name_base}Bold", bold_path))
+                    font_name = font_name_base
+                    bold_font_name = f"{font_name_base}Bold"
+                    fonts_registered = True
+                    logger.info(f"Using {font_name_base} fonts for PDF generation from {regular_path}")
+                    break
+                except Exception as e:
+                    logger.warning(f"Failed to register {font_name_base} fonts: {str(e)}")
+        
+        if fonts_registered:
+            break
+    
+    # If no font was successfully registered, use Helvetica as fallback
+    if not fonts_registered:
+        font_name = 'Helvetica'
+        bold_font_name = 'Helvetica-Bold'
+        logger.warning("Using built-in Helvetica font for PDF generation (Polish characters may not display correctly)")
+    
+    # Custom Flowable for horizontal line
+    class HorizontalLine(Flowable):
+        def __init__(self, width, height=0.5, color=BRAND_PRIMARY):
+            Flowable.__init__(self)
+            self.width = width
+            self.height = height
+            self.color = color
+            
+        def draw(self):
+            self.canv.setStrokeColor(self.color)
+            self.canv.setLineWidth(self.height)
+            self.canv.line(0, 0, self.width, 0)
     
     # Function to strip HTML tags from text
     def strip_html(text):
@@ -1333,83 +1372,246 @@ def create_pdf_from_presentation(presentation_data, output_path):
     scope = presentation_data.get('scope', {})
     pricing = presentation_data.get('pricing', {})
     
-    # Create the PDF document
-    doc = SimpleDocTemplate(
+    # Create the PDF document with custom settings
+    class PDFWithHeaderAndFooter(SimpleDocTemplate):
+        def __init__(self, *args, **kwargs):
+            self.company_name = kwargs.pop('company_name', 'Company')
+            self.logo_text = kwargs.pop('logo_text', '')
+            self.logo_accent = kwargs.pop('logo_accent', '')
+            SimpleDocTemplate.__init__(self, *args, **kwargs)
+            
+        def build(self, flowables, **kwargs):
+            self._calc()  # Calculate document size
+            
+            # Create a canvas with header and footer
+            from reportlab.pdfgen import canvas
+            self.canv = canvas.Canvas(self.filename, pagesize=self.pagesize)
+            
+            # Create page templates
+            from reportlab.platypus.frames import Frame
+            from reportlab.platypus.doctemplate import PageTemplate
+            
+            # Set up frames to hold the content
+            frame = Frame(
+                self.leftMargin, 
+                self.bottomMargin, 
+                self.width, 
+                self.height-0.75*inch,  # Make room for header
+                id='normal'
+            )
+            
+            # Create page template with callbacks for headers/footers
+            template = PageTemplate(
+                id='standard',
+                frames=[frame],
+                onPage=self._add_page_elements
+            )
+            
+            # Register the template
+            self.addPageTemplates([template])
+            
+            # Build the document with the template
+            SimpleDocTemplate.build(self, flowables, **kwargs)
+            
+        def _add_page_elements(self, canvas, doc):
+            canvas.saveState()
+            
+            # Header
+            header_color = BRAND_PRIMARY
+            page_width = self.pagesize[0]
+            page_height = self.pagesize[1]
+            
+            # Add a color band at the top
+            canvas.setFillColor(header_color)
+            canvas.rect(0, page_height-0.5*inch, page_width, 0.5*inch, fill=1, stroke=0)
+            
+            # Add logo/company name
+            canvas.setFillColor(BRAND_DARK)
+            canvas.setFont(bold_font_name, 12)
+            
+            if self.logo_text:
+                text = self.logo_text
+                if self.logo_accent:
+                    # Measure the width of the first part
+                    text_width = canvas.stringWidth(text, bold_font_name, 12)
+                    canvas.drawString(self.leftMargin, page_height-0.75*inch, text)
+                    
+                    # Draw the accent part in the brand color
+                    canvas.setFillColor(BRAND_ACCENT)
+                    canvas.drawString(self.leftMargin + text_width, page_height-0.75*inch, self.logo_accent)
+                else:
+                    canvas.drawString(self.leftMargin, page_height-0.75*inch, text)
+            else:
+                canvas.drawString(self.leftMargin, page_height-0.75*inch, self.company_name)
+            
+            # Add page number in the header
+            canvas.setFillColor(BRAND_DARK)
+            canvas.setFont(font_name, 9)
+            page_num = f"Strona {doc.page}"
+            canvas.drawRightString(page_width - self.rightMargin, page_height-0.75*inch, page_num)
+            
+            # Footer
+            canvas.setFillColor(BRAND_DARK)
+            canvas.setFont(font_name, 8)
+            footer_text = f"© {current_year} {self.company_name}. Wszystkie prawa zastrzeżone."
+            canvas.drawCentredString(page_width/2, self.bottomMargin/2, footer_text)
+            
+            # Add a subtle line above the footer
+            canvas.setStrokeColor(BRAND_LIGHT)
+            canvas.setLineWidth(0.5)
+            canvas.line(self.leftMargin, self.bottomMargin*0.75, page_width - self.rightMargin, self.bottomMargin*0.75)
+            
+            canvas.restoreState()
+    
+    # Create the PDF document with our custom class
+    doc = PDFWithHeaderAndFooter(
         output_path,
         pagesize=A4,
         rightMargin=72,
         leftMargin=72,
-        topMargin=72,
+        topMargin=90,  # Increased to make room for header
         bottomMargin=72,
-        encoding='utf-8'
+        encoding='utf-8',
+        company_name=company_name,
+        logo_text=logo_text,
+        logo_accent=logo_accent
     )
     
     # Styles
     styles = getSampleStyleSheet()
-    # Modify existing Title style instead of adding a new one with the same name
-    styles['Title'].fontSize = 24
-    styles['Title'].alignment = TA_CENTER
-    styles['Title'].spaceAfter = 20
-    styles['Title'].fontName = bold_font_name
     
+    # Main title style
+    styles.add(ParagraphStyle(
+        name='MainTitle',
+        parent=styles['Title'],
+        fontName=bold_font_name,
+        fontSize=26,
+        leading=32,
+        alignment=TA_CENTER,
+        textColor=BRAND_PRIMARY,
+        spaceAfter=20
+    ))
+    
+    # Subtitle style
     styles.add(ParagraphStyle(
         name='Subtitle',
         parent=styles['Normal'],
+        fontName=font_name,
         fontSize=16,
+        leading=20,
         alignment=TA_CENTER,
-        spaceAfter=30,
-        textColor=colors.gray,
-        fontName=font_name
+        textColor=BRAND_DARK,
+        spaceAfter=30
     ))
+    
+    # Section title style
     styles.add(ParagraphStyle(
         name='SectionTitle',
         parent=styles['Heading1'],
+        fontName=bold_font_name,
         fontSize=18,
-        spaceAfter=12,
-        fontName=bold_font_name
+        leading=22,
+        textColor=BRAND_PRIMARY,
+        spaceAfter=10
     ))
+    
+    # Section subtitle style
     styles.add(ParagraphStyle(
         name='SectionSubtitle',
         parent=styles['Normal'],
+        fontName=font_name,
         fontSize=14,
-        spaceAfter=20,
-        textColor=colors.gray,
-        fontName=font_name
+        leading=18,
+        textColor=BRAND_DARK,
+        spaceAfter=20
     ))
+    
+    # Feature title style
     styles.add(ParagraphStyle(
         name='FeatureTitle',
         parent=styles['Heading2'],
+        fontName=bold_font_name,
         fontSize=14,
-        spaceAfter=8,
-        fontName=bold_font_name
+        leading=18,
+        textColor=BRAND_SECONDARY,
+        spaceAfter=8
     ))
+    
+    # Normal text style
+    styles.add(ParagraphStyle(
+        name='BodyText',
+        parent=styles['Normal'],
+        fontName=font_name,
+        fontSize=11,
+        leading=15,
+        textColor=BRAND_DARK,
+        spaceAfter=12
+    ))
+    
+    # Bullet point style
+    styles.add(ParagraphStyle(
+        name='BulletPoint',
+        parent=styles['Normal'],
+        fontName=font_name,
+        fontSize=11,
+        leading=15,
+        leftIndent=20,
+        textColor=BRAND_DARK,
+        spaceAfter=6
+    ))
+    
+    # Price style
+    styles.add(ParagraphStyle(
+        name='Price',
+        parent=styles['Normal'],
+        fontName=bold_font_name,
+        fontSize=14,
+        leading=18,
+        textColor=BRAND_ACCENT,
+        spaceAfter=8
+    ))
+    
+    # Footer style
     styles.add(ParagraphStyle(
         name='Footer',
         parent=styles['Normal'],
-        fontSize=10,
+        fontName=font_name,
+        fontSize=9,
+        leading=11,
         alignment=TA_CENTER,
-        textColor=colors.gray,
-        fontName=font_name
+        textColor=colors.gray
     ))
     
-    # Update default styles to use our font
-    styles['Normal'].fontName = font_name
-    styles['Heading1'].fontName = bold_font_name
-    styles['Heading2'].fontName = bold_font_name
-    
-    # Flowable elements
+    # Create elements list
     elements = []
     
     # Title page
-    elements.append(Paragraph(f"{logo_text}{logo_accent}", styles['Title']))
-    elements.append(Spacer(1, 1*inch))
-    elements.append(Paragraph(f"{title_part1} {title_part2}", styles['Title']))
+    elements.append(Paragraph(f"{title_part1} {title_part2}", styles['MainTitle']))
     elements.append(Paragraph(strip_html(subtitle), styles['Subtitle']))
-    elements.append(Paragraph(f"Wygenerowano: {datetime.now().strftime('%d.%m.%Y')}", styles['Normal']))
+    
+    # Add horizontal line
+    elements.append(HorizontalLine(450, 1))
+    elements.append(Spacer(1, 0.5*inch))
+    
+    # Add date
+    elements.append(Paragraph(f"Przygotowano: {datetime.now().strftime('%d.%m.%Y')}", styles['BodyText']))
+    elements.append(Spacer(1, 1*inch))
+    
+    # Try to add a logo if available
+    logo_path = os.path.join('static', 'images', 'logo.png')
+    if os.path.exists(logo_path):
+        try:
+            logo = Image(logo_path, width=2*inch, height=1*inch, kind='proportional')
+            elements.append(logo)
+        except Exception as e:
+            logger.warning(f"Could not add logo image: {str(e)}")
+    
     elements.append(PageBreak())
     
     # Understanding section
     elements.append(Paragraph(strip_html(understanding.get('sectionTitle', 'Zrozumienie Potrzeb')), styles['SectionTitle']))
+    elements.append(HorizontalLine(450, 0.5))
+    elements.append(Spacer(1, 0.1*inch))
     elements.append(Paragraph(strip_html(understanding.get('sectionSubtitle', '')), styles['SectionSubtitle']))
     
     # Problem and Solution
@@ -1417,37 +1619,45 @@ def create_pdf_from_presentation(presentation_data, output_path):
     solution = understanding.get('solution', {})
     
     elements.append(Paragraph(strip_html(problem.get('title', 'Problem')), styles['FeatureTitle']))
-    elements.append(Paragraph(strip_html(problem.get('description', '')), styles['Normal']))
+    elements.append(Paragraph(strip_html(problem.get('description', '')), styles['BodyText']))
     
     # Problem points
     for point in problem.get('points', []):
-        elements.append(Paragraph(f"• {strip_html(point)}", styles['Normal']))
+        bullet_text = f"• {strip_html(point)}"
+        elements.append(Paragraph(bullet_text, styles['BulletPoint']))
     
-    elements.append(Spacer(1, 0.5*inch))
+    elements.append(Spacer(1, 0.3*inch))
     
     elements.append(Paragraph(strip_html(solution.get('title', 'Rozwiązanie')), styles['FeatureTitle']))
-    elements.append(Paragraph(strip_html(solution.get('description', '')), styles['Normal']))
+    elements.append(Paragraph(strip_html(solution.get('description', '')), styles['BodyText']))
     
     # Solution points
     for point in solution.get('points', []):
-        elements.append(Paragraph(f"• {strip_html(point)}", styles['Normal']))
+        bullet_text = f"• {strip_html(point)}"
+        elements.append(Paragraph(bullet_text, styles['BulletPoint']))
     
     elements.append(PageBreak())
     
     # Scope section
     elements.append(Paragraph(strip_html(scope.get('sectionTitle', 'Zakres Prac')), styles['SectionTitle']))
+    elements.append(HorizontalLine(450, 0.5))
+    elements.append(Spacer(1, 0.1*inch))
     elements.append(Paragraph(strip_html(scope.get('sectionSubtitle', '')), styles['SectionSubtitle']))
     
     # Modules
     for i, module in enumerate(scope.get('modules', [])):
+        # Add a subtle separator between modules except for the first one
+        if i > 0:
+            elements.append(Spacer(1, 0.1*inch))
+            elements.append(HorizontalLine(450, 0.25, BRAND_LIGHT))
+            elements.append(Spacer(1, 0.2*inch))
+            
         elements.append(Paragraph(strip_html(module.get('title', '')), styles['FeatureTitle']))
-        elements.append(Paragraph(strip_html(module.get('description', '')), styles['Normal']))
+        elements.append(Paragraph(strip_html(module.get('description', '')), styles['BodyText']))
         
         # Module features
         for feature in module.get('features', []):
-            elements.append(Paragraph(f"• {strip_html(feature)}", styles['Normal']))
-        
-        elements.append(Spacer(1, 0.3*inch))
+            elements.append(Paragraph(f"• {strip_html(feature)}", styles['BulletPoint']))
         
         # Add page break after every second module
         if i % 2 == 1 and i < len(scope.get('modules', [])) - 1:
@@ -1457,14 +1667,26 @@ def create_pdf_from_presentation(presentation_data, output_path):
     
     # Pricing section
     elements.append(Paragraph(strip_html(pricing.get('sectionTitle', 'Wycena')), styles['SectionTitle']))
+    elements.append(HorizontalLine(450, 0.5))
+    elements.append(Spacer(1, 0.1*inch))
     elements.append(Paragraph(strip_html(pricing.get('sectionSubtitle', '')), styles['SectionSubtitle']))
     
     # Packages
-    for package in pricing.get('packages', []):
+    for i, package in enumerate(pricing.get('packages', [])):
+        # Add a subtle separator between packages except for the first one
+        if i > 0:
+            elements.append(Spacer(1, 0.2*inch))
+            elements.append(HorizontalLine(450, 0.25, BRAND_LIGHT))
+            elements.append(Spacer(1, 0.2*inch))
+            
         elements.append(Paragraph(strip_html(package.get('name', '')), styles['FeatureTitle']))
-        elements.append(Paragraph(strip_html(package.get('description', '')), styles['Normal']))
-        elements.append(Paragraph(f"Cena: {strip_html(package.get('price', ''))}", styles['Normal']))
-        elements.append(Paragraph(strip_html(package.get('priceNote', '')), styles['Normal']))
+        elements.append(Paragraph(strip_html(package.get('description', '')), styles['BodyText']))
+        
+        # Make the price stand out
+        elements.append(Paragraph(f"Cena: {strip_html(package.get('price', ''))}", styles['Price']))
+        
+        if package.get('priceNote'):
+            elements.append(Paragraph(strip_html(package.get('priceNote', '')), styles['BodyText']))
         
         # Package features
         for feature in package.get('features', []):
@@ -1472,15 +1694,9 @@ def create_pdf_from_presentation(presentation_data, output_path):
                 included = feature.get('included', True)
                 text = strip_html(feature.get('text', ''))
                 icon = '✓' if included else '✗'
-                elements.append(Paragraph(f"{icon} {text}", styles['Normal']))
+                elements.append(Paragraph(f"{icon} {text}", styles['BulletPoint']))
             else:
-                elements.append(Paragraph(f"✓ {strip_html(feature)}", styles['Normal']))
-        
-        elements.append(Spacer(1, 0.3*inch))
-    
-    # Footer
-    elements.append(Spacer(1, 1*inch))
-    elements.append(Paragraph(f"© {current_year} {company_name}. Wszystkie prawa zastrzeżone.", styles['Footer']))
+                elements.append(Paragraph(f"✓ {strip_html(feature)}", styles['BulletPoint']))
     
     # Build the PDF
     try:
