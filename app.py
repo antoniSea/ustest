@@ -819,16 +819,11 @@ def presentation(filename):
             logger.info(f"Tracked view for presentation: {filename}")
             
             # Get employer email if available
-            employer_email = None
-            if job_id:
-                job = db.get_job_by_id(job_id)
-                if job and job.get('employer_email'):
-                    employer_email = job.get('employer_email')
+            
             
             # IMPORTANT: For real production use with clients, comment out this line
             # For testing purposes only:
-            # employer_email = "info@soft-synergy.com"
-            print(employer_email)
+            employer_email = "info@soft-synergy.com"
             # Only send email if we have an email to send to
             if employer_email:
                 # Check if we've already sent an email for this presentation in the database
