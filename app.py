@@ -828,7 +828,7 @@ def presentation(filename):
             # IMPORTANT: For real production use with clients, comment out this line
             # For testing purposes only:
             # employer_email = "info@soft-synergy.com"
-            
+            print(employer_email)
             # Only send email if we have an email to send to
             if employer_email:
                 # Check if we've already sent an email for this presentation in the database
