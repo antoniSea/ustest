@@ -107,7 +107,7 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
 def evaluate_relevance(job_description, client_info="", budget="", timeline="", additional_requirements=""):
     """Evaluate the relevance of a job for a software house on a scale from 1 to 10."""
     prompt = f"""
-    Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce. zajmujemy się równiez seo, grafikami identyfikacjami wizualnymi i projektami ui
+    Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce. zajmujemy się równiez seo, grafikami identyfikacjami wizualnymi i projektami ui prowadzimy równiez profile social media
     
     Opis zlecenia: {job_description}
     
