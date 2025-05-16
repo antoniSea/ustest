@@ -882,11 +882,11 @@ Zespół {company_name}"""
                         
                         # Send the email immediately
                         try:
+                            from mailer import EmailSender
                             # Import the send_email function from appropriate module
-                            from utils.email_sender import send_email_with_attachment
-                            
+                            email_sender = EmailSender()
                             # Send the email
-                            send_result = send_email_with_attachment(
+                            send_result = email_sender.send_email_with_attachment(
                                 recipient=employer_email,
                                 subject=subject,
                                 message=message,
