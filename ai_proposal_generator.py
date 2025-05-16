@@ -822,8 +822,23 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
             except Exception as e:
                 console.print(f"[red]✗[/red] Błąd generowania prezentacji dla oferty {job_id}: {str(e)}")
             
+            if relevance_score > 7:
+                console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
+                try:
+                    # Send message using the proposal text
+                    message_result = send_useme_message(job_id=job_id, message_content="", use_proposal=True)
+                    
+                    if message_result.get('success'):
+                        console.print(f"[bold green]Successfully sent message through Useme for job {job_id}[/bold green]")
+                        # Update the job in the database
+                        db.mark_message_sent(job_id)
+                    else:
+                        console.print(f"[bold red]Failed to send message through Useme: {message_result.get('message')}[/bold red]")
+                except Exception as e:
+                    console.print(f"[bold red]Error sending message through Useme: {str(e)}[/bold red]")
+                
             # POST PROPOSAL TO USEME if relevance > 4
-            if relevance_score > 3:
+            if relevance_score > 5:
                 from useme_post_proposal import UsemeProposalPoster
                 
                 poster = UsemeProposalPoster()
@@ -869,36 +884,13 @@ def generate_proposals_from_database(db=None, min_relevance=5, limit=10, auto_sa
                     
                     if email_sender.send_email(recipient_email, subject, email_content):
                         # Update the database to mark email as sent
-                        conn = db.get_connection()
-                        cursor = conn.cursor()
-                        cursor.execute("""
-                            UPDATE jobs 
-                            SET follow_up_email_sent = 1, follow_up_email_sent_at = ? 
-                            WHERE job_id = ?
-                        """, (datetime.now().isoformat(), job_id))
-                        conn.commit()
+                    
                         console.print(f"[green]✓[/green] Wysłano email do pracodawcy: {recipient_email}")
                         emails_sent += 1
                     else:
                         console.print(f"[red]✗[/red] Błąd wysyłania emaila do {recipient_email}")
                 elif email_already_sent and employer_email:
                     console.print(f"[yellow]⚠[/yellow] Email do {employer_email} był już wcześniej wysłany, pomijam")
-                
-                # Also send a message through Useme if relevance > 7
-                if relevance_score > 7:
-                    console.print(f"[bold yellow]Relevance score {relevance_score} > 7, sending message through Useme...[/bold yellow]")
-                    try:
-                        # Send message using the proposal text
-                        message_result = send_useme_message(job_id=job_id, message_content="", use_proposal=True)
-                        
-                        if message_result.get('success'):
-                            console.print(f"[bold green]Successfully sent message through Useme for job {job_id}[/bold green]")
-                            # Update the job in the database
-                            db.mark_message_sent(job_id)
-                        else:
-                            console.print(f"[bold red]Failed to send message through Useme: {message_result.get('message')}[/bold red]")
-                    except Exception as e:
-                        console.print(f"[bold red]Error sending message through Useme: {str(e)}[/bold red]")
                 
                 # Small delay to avoid rate limiting
                 time.sleep(1.5)
