@@ -107,7 +107,7 @@ def generate_proposal(job_description, client_info="", budget="", timeline="", a
 def evaluate_relevance(job_description, client_info="", budget="", timeline="", additional_requirements=""):
     """Evaluate the relevance of a job for a software house on a scale from 1 to 10."""
     prompt = f"""
-    Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce.
+    Oceń na skali od 1 do 10, jak bardzo poniższe zlecenie jest odpowiednie dla software house'u specjalizującego się w tworzeniu stron internetowych, aplikacji webowych i mobilnych oraz systemów e-commerce. zajmujemy się równiez seo, grafikami identyfikacjami wizualnymi i projektami ui
     
     Opis zlecenia: {job_description}
     
@@ -122,7 +122,7 @@ def evaluate_relevance(job_description, client_info="", budget="", timeline="", 
     10 = Idealnie dopasowane do kompetencji software house'u (np. tworzenie zaawansowanych aplikacji webowych)
     
     WAŻNE INFORMACJE:
-    - NIE zajmujemy się modelami 3D, tworzeniem gier w Unity ani modelami architektonicznymi
+    - NIE zajmujemy się modelami 3D, tworzeniem gier w Unity ani modelami architektonicznymi,
     - Obniż ocenę o 1-3 punkty, jeśli z opisu lub budżetu wynika, że klient oferuje nierealistycznie niskie wynagrodzenie w stosunku do zakresu prac
     - Jeśli budżet jest śmiesznie niski w porównaniu do standardowych stawek rynkowych, obniż ocenę o dodatkowe 2 punkty
     
