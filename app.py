@@ -129,7 +129,7 @@ queue_processor.start()
 # Setup login manager
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'admin'
 
 # Mock user for simple auth
 class User(UserMixin):
@@ -169,11 +169,12 @@ def serve_avatar(filename):
     return send_from_directory(AVATARS_DIR, filename)
 
 @app.route('/')
-@login_required
 def index():
     """
-    Display a list of available presentations
+    Display a list of available presentations if logged in, otherwise redirect to soft-synergy.com
     """
+    if not current_user.is_authenticated:
+        return redirect('https://soft-synergy.com')
     presentations = []
     try:
         # Get all JSON files in the presentations directory
@@ -939,15 +940,13 @@ Zespół {company_name}"""
         logger.error(f"Error displaying presentation {filename}: {str(e)}")
         return render_template('error.html', error=str(e)), 500
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-        
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        
         # Simple auth - in production use a proper auth system
         if (username == 'admin' and password == 'usemebot') or (username == 'admin' and password == 'a'):
             user = User('admin')
@@ -956,13 +955,12 @@ def login():
             return redirect(next_page or url_for('index'))
         else:
             flash('Nieprawidłowa nazwa użytkownika lub hasło', 'error')
-    
     return render_template('login.html')
 
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('admin'))
 
 @app.route('/presentation-stats')
 @login_required
