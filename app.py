@@ -927,10 +927,6 @@ Zespół {company_name}"""
                     logger.error(f"Error checking/recording email status: {str(e)}")
                     import traceback
                     logger.error(traceback.format_exc())
-                finally:
-                    # Close connection
-                    if conn:
-                        # conn.close()
                 
         except Exception as e:
             logger.error(f"Error tracking presentation view: {str(e)}")

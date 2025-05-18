@@ -56,8 +56,6 @@ def update_database_schema(db_path="useme.db"):
         # conn.close()
     except Exception as e:
         logger.error(f"Błąd podczas aktualizacji schematu bazy danych: {str(e)}")
-        if conn:
-            # conn.close()
 
 if __name__ == "__main__":
     update_database_schema()

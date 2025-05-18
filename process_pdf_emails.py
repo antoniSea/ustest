@@ -259,9 +259,6 @@ def process_tasks():
         logger.error(f"Error processing tasks: {str(e)}")
         import traceback
         logger.error(traceback.format_exc())
-    finally:
-        if 'conn' in locals():
-            # conn.close()/
 
 def main():
     """Main function to continuously process PDF email tasks"""
