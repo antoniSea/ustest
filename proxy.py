@@ -88,3 +88,53 @@ def get_gemini_response(prompt):
     # This already returns text, so no need to do response.text or similar in the caller
     return test_proxy_with_gemini(proxy, prompt, api_key, model, backup_api_key)
 
+
+
+
+server {
+    server_name hosting.soft-synergy.com;
+
+    # Logi
+    access_log /var/log/nginx/hosting.soft-synergy.com.access.log;
+    error_log /var/log/nginx/hosting.soft-synergy.com.error.log;
+
+    # Katalog główny
+    root /var/www/html/soft-synergy;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Konfiguracja PHP
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php/php-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+    }
+
+    # Blokowanie dostępu do plików .htaccess
+    location ~ /\.ht {
+        deny all;
+    }
+
+
+}
+server {
+    if ($host = hosting.soft-synergy.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+
+    listen 80;
+    listen [::]:80;
+    server_name hosting.soft-synergy.com;
+    return 404; # managed by Certbot
+
+
+}                                                                                                                                            

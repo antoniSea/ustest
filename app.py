@@ -930,7 +930,7 @@ Zespół {company_name}"""
                 finally:
                     # Close connection
                     if conn:
-                        conn.close()
+                        # conn.close()
                 
         except Exception as e:
             logger.error(f"Error tracking presentation view: {str(e)}")
@@ -1706,7 +1706,7 @@ if __name__ == '__main__':
         logger.error("Please use a different port with --port or stop the program using this port.")
         import sys
         sys.exit(1)
-    sock.close()
+    # sock.close()
     
     # Force binding to all network interfaces with configured port
     try:

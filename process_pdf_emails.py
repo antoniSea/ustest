@@ -195,7 +195,7 @@ Zespół Soft Synergy
                     task_id
                 ))
                 conn.commit()
-                conn.close()
+                # conn.close()
             except Exception as e:
                 logger.error(f"Error updating related tasks: {str(e)}")
             
@@ -261,7 +261,7 @@ def process_tasks():
         logger.error(traceback.format_exc())
     finally:
         if 'conn' in locals():
-            conn.close()
+            # conn.close()/
 
 def main():
     """Main function to continuously process PDF email tasks"""

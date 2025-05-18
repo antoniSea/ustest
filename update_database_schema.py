@@ -53,11 +53,11 @@ def update_database_schema(db_path="useme.db"):
         for column in updated_columns:
             logger.info(f"  {column[1]} ({column[2]})")
         
-        conn.close()
+        # conn.close()
     except Exception as e:
         logger.error(f"Błąd podczas aktualizacji schematu bazy danych: {str(e)}")
         if conn:
-            conn.close()
+            # conn.close()
 
 if __name__ == "__main__":
     update_database_schema()
