@@ -908,16 +908,15 @@ Zespół {company_name}"""
                             # Import the send_email function from appropriate module
                             email_sender = EmailSender()
                             # Send the email
-                            send_result = email_sender.send_email_with_attachment(
-                                recipient=employer_email,
+                            result = email_sender.send_email_with_attachment(
+                                recipient_email=employer_email,
                                 subject=subject,
-                                message=message,
-                                attachment_path=pdf_path,
-                                attachment_name=pdf_filename
+                                content=message,
+                                attachment_path=pdf_path
                             )
                             
                             # Log the result
-                            if send_result:
+                            if result:
                                 logger.info(f"Successfully sent PDF email for presentation {filename} to {employer_email}")
                                 
                                 # Record that we've sent an email for this presentation
