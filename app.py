@@ -34,6 +34,23 @@ FORCE_HTTPS = os.environ.get('FORCE_HTTPS', 'true').lower() in ('true', '1', 'ye
 # Initialize database
 db = Database()
 
+# Ensure presentation_emails table exists
+try:
+    conn = db.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS presentation_emails (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            presentation_slug TEXT NOT NULL,
+            recipient_email TEXT NOT NULL,
+            job_id TEXT,
+            sent_at TEXT NOT NULL
+        )
+    """)
+    conn.commit()
+except Exception as e:
+    logger.error(f"Error creating presentation_emails table: {str(e)}")
+
 # Initialize Queue Processor
 from queue_processor import QueueProcessor
 
