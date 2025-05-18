@@ -820,11 +820,20 @@ def presentation(filename):
             logger.info(f"Tracked view for presentation: {filename}")
             
             # Get employer email if available
-            
-            
-            # IMPORTANT: For real production use with clients, comment out this line
-            # For testing purposes only:
-            employer_email = "info@soft-synergy.com"
+            employer_email = presentation_data.get('employer_email')
+            # Jeśli nie ma, spróbuj pobrać z bazy danych na podstawie job_id
+            if not employer_email and job_id:
+                try:
+                    conn = db.get_connection()
+                    cursor = conn.cursor()
+                    cursor.execute("SELECT employer_email FROM jobs WHERE job_id = ?", (job_id,))
+                    row = cursor.fetchone()
+                    if row and (isinstance(row, dict) and row.get('employer_email')):
+                        employer_email = row['employer_email']
+                    elif row and hasattr(row, '__getitem__'):
+                        employer_email = row[0] if row[0] else None
+                except Exception as e:
+                    logger.error(f"Error fetching employer_email from DB: {str(e)}")
             # Only send email if we have an email to send to
             if employer_email:
                 # Check if we've already sent an email for this presentation in the database
